@@ -69,7 +69,7 @@ Siga os passos abaixo para executar o projeto localmente.
 Abra o terminal e execute:
 
 ```
-git clone https://github.com/seu-usuario/patasdf.git
+git clone https://github.com/claricenunes/PatasDF.git
 ```
 
 ### 2. Acessar a pasta do projeto
