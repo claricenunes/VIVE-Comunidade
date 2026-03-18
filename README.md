@@ -17,7 +17,7 @@ O projeto tem como objetivo:
 
 ---
 
-## 🐶 Como funciona
+## 🐾 Como funciona
 
 O funcionamento da plataforma é simples:
 
