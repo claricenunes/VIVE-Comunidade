@@ -124,68 +124,11 @@
     .animal-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
     .pill { background: var(--bg-warm); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 12px; color: var(--text-muted); }
     .animal-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; margin-bottom: 1rem; }
-    .animal-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border); gap: 8px; flex-wrap: wrap; }
-    .contact-info { font-size: 12px; color: var(--text-muted); font-weight: 400; }
-    .card-btns { display: flex; gap: 7px; flex-shrink: 0; }
-    .btn-whatsapp-card { background: transparent; border: 1.5px solid #25D366; color: #128C44; border-radius: 20px; padding: 7px 13px; font-size: 12px; font-family: 'DM Sans', sans-serif; cursor: pointer; font-weight: 500; transition: all 0.2s; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
-    .btn-whatsapp-card:hover { background: #f0fff4; transform: scale(1.04); }
-    /* Card action area — dois botões empilhados */
-    .card-action-area {
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .btn-adotar-main {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      background: var(--teal);
-      color: #fff;
-      border: none;
-      border-radius: 50px;
-      padding: 10px 18px;
-      font-size: 13px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      width: 100%;
-    }
-    .btn-adotar-main:hover {
-      background: var(--teal-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(29,158,117,0.28);
-    }
-    .btn-wpp-secondary {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      background: transparent;
-      color: #25D366;
-      border: 1.5px solid #25D366;
-      border-radius: 50px;
-      padding: 8px 18px;
-      font-size: 13px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-      width: 100%;
-    }
-    .btn-wpp-secondary:hover {
-      background: #25D366;
-      color: #fff;
-      transform: translateY(-1px);
-    }
-
-    .btn-adotar { background: var(--teal); color: #fff; border: none; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-family: 'DM Sans', sans-serif; cursor: pointer; font-weight: 500; transition: background 0.2s, transform 0.15s; white-space: nowrap; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
-    .btn-adotar:hover { background: var(--teal-dark); transform: scale(1.04); }
+    .card-action-area { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
+    .btn-adotar-main { display: flex; align-items: center; justify-content: center; gap: 7px; background: var(--teal); color: #fff; border: none; border-radius: 50px; padding: 10px 18px; font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 600; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; width: 100%; }
+    .btn-adotar-main:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(29,158,117,0.28); }
+    .btn-wpp-secondary { display: flex; align-items: center; justify-content: center; gap: 7px; background: transparent; color: #25D366; border: 1.5px solid #25D366; border-radius: 50px; padding: 8px 18px; font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; transition: all 0.2s; width: 100%; }
+    .btn-wpp-secondary:hover { background: #25D366; color: #fff; transform: translateY(-1px); }
     .empty-state { text-align: center; padding: 3rem; color: var(--text-muted); display: none; }
 
     /* MAP */
@@ -203,103 +146,209 @@
     .map-placeholder p { font-size: 14px; color: var(--text-muted); max-width: 420px; position: relative; z-index: 1; font-weight: 300; }
     .map-placeholder .btn { position: relative; z-index: 1; margin-top: 0.5rem; }
 
-    /* HELP */
-    .help-section { background: var(--bg-warm); padding: 6rem 0; }
-    .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 3.5rem; }
-    .help-card { border-radius: var(--radius-lg); padding: 2.25rem 2rem; border: 1px solid transparent; transition: transform 0.22s, box-shadow 0.22s; }
-    .help-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-sm); }
-    .help-card.adoptar { background: var(--teal-light); border-color: rgba(159,225,203,0.4); }
-    .help-card.temporario { background: var(--amber-light); border-color: rgba(250,199,117,0.4); }
-    .help-card.divulgar { background: var(--coral-light); border-color: rgba(245,196,179,0.4); }
-    .help-icon { font-size: 2.8rem; margin-bottom: 1.25rem; display: block; }
-    .help-card h3 { font-size: 1.15rem; font-weight: 500; margin-bottom: 0.6rem; }
-    .help-card p { font-size: 14px; line-height: 1.7; opacity: 0.75; font-weight: 300; }
-    .help-card .btn { margin-top: 1.5rem; font-size: 13px; padding: 8px 18px; }
-    .help-card.adoptar .btn { background: var(--teal); color: #fff; }
-    .help-card.adoptar .btn:hover { background: var(--teal-dark); }
-    .help-card.temporario .btn { background: var(--amber); color: var(--text); }
-    .help-card.temporario .btn:hover { background: var(--amber-dark); color: #fff; }
-    .help-card.divulgar .btn { background: var(--coral); color: #fff; }
-    .help-card.divulgar .btn:hover { background: #993C1D; }
+    /* (seção Como ajudar removida) */
 
-    /* FORM */
-    .form-section { padding: 6rem 0; }
-    .form-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
-    .form-info h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1rem; }
-    .form-info p { font-size: 14px; color: var(--text-muted); line-height: 1.75; font-weight: 300; margin-bottom: 1.5rem; }
-    .form-checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .form-checklist li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-muted); }
-    .check-icon { width: 22px; height: 22px; background: var(--teal-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
-    .form-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 2.5rem; box-shadow: var(--shadow-sm); }
-    .form-card h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 1.75rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
-    .form-group { margin-bottom: 1.15rem; }
-    .form-group label { display: block; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
-    .form-group input, .form-group select, .form-group textarea { width: 100%; border: 1px solid var(--border-md); border-radius: var(--radius-sm); padding: 10px 14px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); background: var(--bg); transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(29,158,117,0.12); }
-    .form-group textarea { resize: vertical; min-height: 90px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-note { font-size: 12px; color: var(--text-muted); margin-top: 0.75rem; text-align: center; font-weight: 300; }
-    .form-success { display: none; text-align: center; padding: 2rem; }
-    .form-success .success-icon { font-size: 3rem; margin-bottom: 1rem; }
-    .form-success h4 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 0.5rem; }
-    .form-success p { font-size: 14px; color: var(--text-muted); font-weight: 300; }
+    /* ============================================================
+       SECTION DE AÇÃO (substitui os formulários longos)
+    ============================================================ */
+    .action-section { padding: 6rem 0; }
+    .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3.5rem; }
 
-    /* INTEREST TABS */
-    .interest-section { background: var(--bg-warm); padding: 6rem 0; }
-    .interest-tabs { display: flex; gap: 0; margin-top: 3rem; border-radius: var(--radius-lg) var(--radius-lg) 0 0; overflow: hidden; border: 1px solid var(--border-md); border-bottom: none; }
-    .interest-tab { flex: 1; padding: 1.1rem 1.5rem; background: var(--bg-card); border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.22s; border-right: 1px solid var(--border-md); position: relative; }
-    .interest-tab:last-child { border-right: none; }
-    .interest-tab::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: transparent; transition: background 0.22s; }
-    .interest-tab.active { color: var(--text); background: var(--bg); }
-    .interest-tab.active.tab-adopt::after { background: var(--teal); }
-    .interest-tab.active.tab-temp::after  { background: var(--amber); }
-    .interest-tab .tab-icon { font-size: 1.3rem; }
-    .interest-tab .tab-badge { font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 500; }
-    .tab-adopt .tab-badge { background: var(--teal-light); color: var(--teal-dark); }
-    .tab-temp  .tab-badge { background: var(--amber-light); color: var(--amber-dark); }
-    .interest-panels { border: 1px solid var(--border-md); border-radius: 0 0 var(--radius-xl) var(--radius-xl); background: var(--bg); padding: 2.5rem; }
-    .interest-panel { display: none; }
-    .interest-panel.active { display: block; }
-    .interest-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
-    .interest-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; }
-    .interest-info p { font-size: 14px; color: var(--text-muted); line-height: 1.75; font-weight: 300; margin-bottom: 1.5rem; }
-    .info-highlight { border-radius: var(--radius-md); padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }
-    .info-highlight.teal { background: var(--teal-light); border-left: 3px solid var(--teal); }
-    .info-highlight.amber { background: var(--amber-light); border-left: 3px solid var(--amber); }
-    .info-highlight p { font-size: 13px; margin: 0; color: var(--text); opacity: 0.9; }
-    .checkbox-group { display: flex; flex-direction: column; gap: 8px; }
-    .checkbox-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-muted); cursor: pointer; }
-    .checkbox-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--teal); cursor: pointer; flex-shrink: 0; }
-    .radio-group { display: flex; flex-direction: column; gap: 10px; }
-    .radio-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-muted); cursor: pointer; }
-    .radio-item input[type="radio"] { width: 16px; height: 16px; accent-color: var(--teal); cursor: pointer; flex-shrink: 0; }
-    .radio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .btn-adopt  { background: var(--teal); color: #fff; }
-    .btn-adopt:hover  { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,158,117,0.25); }
-    .btn-amber-form { background: var(--amber); color: var(--text); font-weight: 600; }
-    .btn-amber-form:hover { background: var(--amber-dark); color: #fff; transform: translateY(-2px); }
+    .action-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: transform 0.22s, box-shadow 0.22s;
+      position: relative;
+      overflow: hidden;
+    }
+    .action-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+    .action-card.card-adopt::before  { background: linear-gradient(90deg, var(--teal), var(--teal-mid)); }
+    .action-card.card-temp::before   { background: linear-gradient(90deg, var(--amber), #FAC775); }
+    .action-card.card-cad::before    { background: linear-gradient(90deg, var(--coral), #F5A58A); }
+    .action-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
 
-    /* ANIMAL SELECT */
-    .animal-choice-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
-    .choice-btn { border: 1.5px solid var(--border-md); border-radius: var(--radius-md); padding: 14px 12px; text-align: center; cursor: pointer; transition: all 0.2s; background: var(--bg); font-family: 'DM Sans', sans-serif; }
-    .choice-btn:hover { border-color: var(--teal); }
-    .choice-btn.selected-adopt { border-color: var(--teal); background: var(--teal-light); }
-    .choice-btn.selected-temp { border-color: var(--amber); background: var(--amber-light); }
-    .choice-btn .choice-icon { font-size: 1.6rem; display: block; margin-bottom: 5px; }
-    .choice-btn .choice-label { font-size: 13px; font-weight: 500; color: var(--text); }
-    .choice-btn .choice-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
-    .animal-list-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
-    .animal-select-card { border: 1.5px solid var(--border-md); border-radius: var(--radius-md); padding: 10px 12px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 10px; background: var(--bg); }
-    .animal-select-card:hover { border-color: var(--teal); }
-    .animal-select-card.selected { border-color: var(--teal); background: var(--teal-light); }
-    .animal-select-card.selected-temp { border-color: var(--amber); background: var(--amber-light); }
-    .animal-select-card input[type="radio"], .animal-select-card input[type="checkbox"] { accent-color: var(--teal); width: 15px; height: 15px; flex-shrink: 0; }
-    .animal-card-mini { flex: 1; }
-    .animal-card-mini .mini-name { font-size: 13px; font-weight: 500; color: var(--text); }
-    .animal-card-mini .mini-info { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
-    .animal-card-mini .mini-emoji { font-size: 1.4rem; }
-    .collapsible-section { overflow: hidden; max-height: 0; transition: max-height 0.4s ease, opacity 0.3s ease; opacity: 0; }
-    .collapsible-section.open { max-height: 1200px; opacity: 1; }
+    .action-card-icon { font-size: 2.5rem; }
+    .action-card-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; }
+    .action-card-desc  { font-size: 14px; color: var(--text-muted); line-height: 1.75; font-weight: 300; flex: 1; }
+
+    .action-checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .action-checklist li { display: flex; align-items: center; gap: 9px; font-size: 13px; color: var(--text-muted); }
+    .action-check { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+    .action-check.teal  { background: var(--teal-light); }
+    .action-check.amber { background: var(--amber-light); }
+    .action-check.coral { background: var(--coral-light); }
+
+    .btn-action-adopt {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--teal); color: #fff; border: none; border-radius: 50px;
+      padding: 14px 24px; font-family: 'DM Sans', sans-serif; font-size: 15px;
+      font-weight: 600; cursor: pointer; transition: all 0.22s; width: 100%;
+    }
+    .btn-action-adopt:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,158,117,0.28); }
+
+    .btn-action-temp {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--amber); color: var(--text); border: none; border-radius: 50px;
+      padding: 14px 24px; font-family: 'DM Sans', sans-serif; font-size: 15px;
+      font-weight: 700; cursor: pointer; transition: all 0.22s; width: 100%;
+    }
+    .btn-action-temp:hover { background: var(--amber-dark); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(239,159,39,0.32); }
+
+    .btn-action-cad {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--coral); color: #fff; border: none; border-radius: 50px;
+      padding: 14px 24px; font-family: 'DM Sans', sans-serif; font-size: 15px;
+      font-weight: 600; cursor: pointer; transition: all 0.22s; width: 100%;
+    }
+    .btn-action-cad:hover { background: #993C1D; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(216,90,48,0.28); }
+
+    .action-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      font-weight: 300;
+    }
+    .action-note a { color: var(--teal); }
+
+    /* ============================================================
+       MODAL DE TERMOS — NOVO DESIGN SIMPLIFICADO
+    ============================================================ */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+      z-index: 9000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal-box {
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      max-width: 580px; width: 100%;
+      max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.22);
+      transform: translateY(20px) scale(0.98);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    .modal-overlay.open .modal-box { transform: translateY(0) scale(1); }
+
+    .modal-header {
+      padding: 2rem 2rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+      position: sticky; top: 0; background: var(--bg-card); z-index: 1;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+    .modal-header-text h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .modal-header-text p  { font-size: 13px; color: var(--text-muted); font-weight: 300; }
+    .modal-close { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--border-md); background: var(--bg-warm); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; transition: all 0.18s; color: var(--text-muted); }
+    .modal-close:hover { background: var(--teal-light); border-color: var(--teal); color: var(--teal); }
+
+    /* Badge do tipo de ação no modal */
+    .modal-action-badge {
+      margin: 1.5rem 2rem 0;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .modal-action-badge.adopt { background: var(--teal-light); border: 1px solid rgba(29,158,117,0.2); }
+    .modal-action-badge.temp  { background: var(--amber-light); border: 1px solid rgba(239,159,39,0.25); }
+    .modal-action-badge.cad   { background: var(--coral-light); border: 1px solid rgba(216,90,48,0.2); }
+    .modal-action-badge-icon { font-size: 2rem; flex-shrink: 0; }
+    .modal-action-badge-text h4 { font-size: 14px; font-weight: 600; color: var(--text); }
+    .modal-action-badge-text p  { font-size: 12px; color: var(--text-muted); font-weight: 300; }
+
+    /* Contrato */
+    .modal-contract {
+      margin: 1.25rem 2rem;
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      max-height: 280px;
+      overflow-y: auto;
+    }
+    .modal-contract h5 { font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1.5px; }
+    .modal-contract ol { padding-left: 1.25rem; display: flex; flex-direction: column; gap: 10px; }
+    .modal-contract ol li { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+    .modal-contract ol li strong { color: var(--text); font-weight: 500; }
+    .modal-contract .disclaimer {
+      margin-top: 1rem; padding: 0.9rem 1rem;
+      background: rgba(29,158,117,0.08); border-radius: 8px;
+      border-left: 3px solid var(--teal);
+    }
+    .modal-contract .disclaimer.amber { background: rgba(239,159,39,0.08); border-left-color: var(--amber); }
+    .modal-contract .disclaimer.coral { background: rgba(216,90,48,0.08); border-left-color: var(--coral); }
+    .modal-contract .disclaimer p { font-size: 12px; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+    .modal-contract .disclaimer p strong { color: var(--text); font-weight: 500; }
+
+    /* Aceite */
+    .modal-accept-area { margin: 0 2rem 1.5rem; }
+
+    .btn-accept {
+      width: 100%; border: none; border-radius: var(--radius-lg);
+      padding: 1.1rem 1.5rem;
+      font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      transition: all 0.22s;
+    }
+    .btn-accept.adopt { background: var(--teal-light); color: var(--teal-deep); border: 2px solid rgba(29,158,117,0.25); }
+    .btn-accept.adopt:hover { background: var(--teal); color: #fff; border-color: var(--teal); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,158,117,0.28); }
+    .btn-accept.temp  { background: var(--amber-light); color: var(--amber-dark); border: 2px solid rgba(239,159,39,0.3); }
+    .btn-accept.temp:hover  { background: var(--amber); color: var(--text); border-color: var(--amber); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(239,159,39,0.3); }
+    .btn-accept.cad   { background: var(--coral-light); color: var(--coral); border: 2px solid rgba(216,90,48,0.25); }
+    .btn-accept.cad:hover   { background: var(--coral); color: #fff; border-color: var(--coral); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(216,90,48,0.28); }
+
+    .btn-accept .accept-icon {
+      width: 26px; height: 26px; border-radius: 50%;
+      border: 2px solid currentColor;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; flex-shrink: 0;
+      transition: all 0.2s;
+    }
+
+    .modal-footer {
+      padding: 1rem 2rem 2rem;
+      display: flex; gap: 10px; justify-content: space-between; align-items: center;
+      border-top: 1px solid var(--border); margin-top: 0;
+    }
+    .btn-cancel { background: transparent; border: 1.5px solid var(--border-md); color: var(--text-muted); padding: 10px 22px; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
+    .btn-cancel:hover { border-color: var(--coral); color: var(--coral); }
+
+    .btn-ir-forms {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      border: none; border-radius: 50px;
+      padding: 12px 26px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
+      cursor: pointer; transition: all 0.22s; flex: 1;
+      text-decoration: none;
+    }
+    .btn-ir-forms.adopt { background: var(--teal); color: #fff; }
+    .btn-ir-forms.adopt:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(29,158,117,0.28); }
+    .btn-ir-forms.temp  { background: var(--amber); color: var(--text); }
+    .btn-ir-forms.temp:hover  { background: var(--amber-dark); color: #fff; transform: translateY(-1px); }
+    .btn-ir-forms.cad   { background: var(--coral); color: #fff; }
+    .btn-ir-forms.cad:hover   { background: #993C1D; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(216,90,48,0.28); }
+    .btn-ir-forms:disabled, .btn-ir-forms[aria-disabled="true"] { opacity: 0.38; cursor: not-allowed; transform: none; box-shadow: none; pointer-events: none; }
+
+    .modal-must-read {
+      font-size: 12px; color: var(--text-muted); text-align: center;
+      padding: 0.5rem 2rem 1rem; font-weight: 300;
+    }
 
     /* CRIADORA */
     .criadora-section { padding: 6rem 0; background: var(--bg); }
@@ -311,7 +360,6 @@
     .criadora-ph .ph-icon { font-size: 4.5rem; }
     .criadora-ph p { font-size: 11px; opacity: .6; text-align: center; max-width: 120px; }
     .criadora-badge { position: absolute; background: var(--bg-card); border: 1px solid var(--border-md); border-radius: var(--radius-md); padding: .65rem .9rem; box-shadow: var(--shadow-md); font-size: 12px; font-weight: 500; display: flex; align-items: center; gap: 7px; }
-    .criadora-badge .bi { font-size: 1.2rem; }
     .criadora-badge.b1 { bottom: 1.5rem; right: -1.25rem; }
     .criadora-badge.b2 { top: 1.5rem; left: -1.25rem; }
     .criadora-badge .bl { display: block; font-size: 10px; color: var(--text-muted); font-weight: 400; margin-top: 1px; }
@@ -355,553 +403,10 @@
     .footer-bottom { max-width: 1100px; margin: 2rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 12px; }
     .footer-bottom a { color: var(--amber); text-decoration: none; }
 
-    /* ============================================================
-       MODAL DE CONTRATO — NOVO
-    ============================================================ */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      z-index: 9000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    .modal-overlay.open {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .modal-box {
-      background: var(--bg-card);
-      border-radius: var(--radius-xl);
-      max-width: 640px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.22);
-      transform: translateY(20px) scale(0.98);
-      transition: transform 0.3s ease;
-      position: relative;
-    }
-    .modal-overlay.open .modal-box {
-      transform: translateY(0) scale(1);
-    }
-
-    .modal-header {
-      padding: 2rem 2rem 1.25rem;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 1rem;
-      position: sticky;
-      top: 0;
-      background: var(--bg-card);
-      z-index: 1;
-      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-    }
-    .modal-header-text h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-    .modal-header-text p {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-weight: 300;
-    }
-    .modal-close {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      border: 1px solid var(--border-md);
-      background: var(--bg-warm);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      flex-shrink: 0;
-      transition: all 0.18s;
-      color: var(--text-muted);
-    }
-    .modal-close:hover { background: var(--teal-light); border-color: var(--teal); color: var(--teal); }
-
-    /* Preview do animal no modal */
-    .modal-animal-preview {
-      margin: 1.5rem 2rem;
-      background: var(--bg-warm);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .modal-animal-emoji { font-size: 2.5rem; flex-shrink: 0; }
-    .modal-animal-info h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
-    .modal-animal-info p  { font-size: 13px; color: var(--text-muted); font-weight: 300; }
-    .modal-animal-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
-    .modal-badge { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 2px 9px; font-size: 11px; color: var(--text-muted); }
-
-    /* Texto do contrato */
-    .modal-contract {
-      margin: 0 2rem 1.5rem;
-      background: var(--bg-warm);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      max-height: 260px;
-      overflow-y: auto;
-    }
-    .modal-contract h5 {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .modal-contract ol {
-      padding-left: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .modal-contract ol li {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.65;
-      font-weight: 300;
-    }
-    .modal-contract ol li strong { color: var(--text); font-weight: 500; }
-
-    /* Dados do interessado no modal */
-    .modal-requester {
-      margin: 0 2rem 1.5rem;
-    }
-    .modal-requester-title {
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-    }
-    .modal-requester-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-    .modal-requester-item {
-      background: var(--bg-warm);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 10px 12px;
-    }
-    .modal-requester-item .mri-label { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; }
-    .modal-requester-item .mri-val   { font-size: 13px; font-weight: 500; color: var(--text); }
-
-    /* Botão de ciência — substitui o checkbox */
-    .modal-aware-section {
-      margin: 0 2rem 0;
-    }
-
-    /* Botão grande "Estou ciente" */
-    .btn-aware {
-      width: 100%;
-      border: none;
-      border-radius: var(--radius-lg);
-      padding: 1.1rem 1.5rem;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      transition: all 0.22s;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-aware-adopt {
-      background: var(--teal-light);
-      color: var(--teal-deep);
-      border: 2px solid rgba(29,158,117,0.3);
-    }
-    .btn-aware-adopt:hover {
-      background: var(--teal);
-      color: #fff;
-      border-color: var(--teal);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(29,158,117,0.28);
-    }
-    .btn-aware-temp {
-      background: var(--amber-light);
-      color: var(--amber-dark);
-      border: 2px solid rgba(239,159,39,0.35);
-    }
-    .btn-aware-temp:hover {
-      background: var(--amber);
-      color: var(--text);
-      border-color: var(--amber);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(239,159,39,0.32);
-    }
-    /* estado ativo (após clicar) */
-    .btn-aware.aware-confirmed-adopt {
-      background: var(--teal);
-      color: #fff;
-      border-color: var(--teal);
-      cursor: default;
-      transform: none;
-      box-shadow: none;
-    }
-    .btn-aware.aware-confirmed-temp {
-      background: var(--amber);
-      color: var(--text);
-      border-color: var(--amber);
-      cursor: default;
-      transform: none;
-      box-shadow: none;
-    }
-    .btn-aware .aware-check {
-      width: 22px; height: 22px;
-      border-radius: 50%;
-      border: 2px solid currentColor;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px;
-      flex-shrink: 0;
-      transition: all 0.2s;
-    }
-    .btn-aware.aware-confirmed-adopt .aware-check,
-    .btn-aware.aware-confirmed-temp  .aware-check {
-      background: rgba(255,255,255,0.3);
-      border-color: transparent;
-    }
-    .btn-aware .aware-sub {
-      font-size: 11px;
-      font-weight: 400;
-      opacity: 0.7;
-      margin-top: 1px;
-      display: block;
-    }
-    .btn-aware .aware-label-wrap { text-align: left; }
-
-    /* Footer do modal */
-    .modal-footer {
-      padding: 1rem 2rem 2rem;
-      display: flex;
-      gap: 10px;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid var(--border);
-      margin-top: 1.25rem;
-    }
-    .modal-footer .btn-cancel {
-      background: transparent;
-      border: 1.5px solid var(--border-md);
-      color: var(--text-muted);
-      padding: 10px 22px;
-      border-radius: 50px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-      flex-shrink: 0;
-    }
-    .modal-footer .btn-cancel:hover { border-color: var(--coral); color: var(--coral); }
-    .modal-footer .btn-confirm-adopt {
-      background: var(--teal);
-      color: #fff;
-      border: none;
-      padding: 11px 26px;
-      border-radius: 50px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      flex: 1;
-      justify-content: center;
-    }
-    .modal-footer .btn-confirm-adopt:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(29,158,117,0.28); }
-    .modal-footer .btn-confirm-adopt:disabled { opacity: 0.38; cursor: not-allowed; transform: none; box-shadow: none; }
-    .modal-footer .btn-confirm-temp {
-      background: var(--amber);
-      color: var(--text);
-      border: none;
-      padding: 11px 26px;
-      border-radius: 50px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      flex: 1;
-      justify-content: center;
-    }
-    .modal-footer .btn-confirm-temp:hover { background: var(--amber-dark); color: #fff; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(239,159,39,0.3); }
-    .modal-footer .btn-confirm-temp:disabled { opacity: 0.38; cursor: not-allowed; transform: none; box-shadow: none; }
-
-    /* Spinner no botão */
-    .btn-spinner {
-      width: 16px; height: 16px;
-      border: 2px solid rgba(255,255,255,0.35);
-      border-top-color: #fff;
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-      display: none;
-    }
-    .btn-spinner.amber-spin {
-      border-color: rgba(44,44,42,0.25);
-      border-top-color: var(--text);
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-
-    /* ============================================================
-       FORMULÁRIO MULTI-STEP — CADASTRAR ANIMAL
-    ============================================================ */
-    .cad-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 4rem;
-      align-items: start;
-      margin-top: 3rem;
-    }
-
-    /* Passos laterais */
-    .cad-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-      margin-bottom: 1.75rem;
-    }
-    .cad-step {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-    .cad-step-num {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--teal-light);
-      color: var(--teal-dark);
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      border: 2px solid rgba(29,158,117,0.2);
-    }
-    .cad-step-title {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text);
-      line-height: 1.3;
-    }
-    .cad-step-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-      font-weight: 300;
-      margin-top: 2px;
-    }
-
-    /* Box de isenção lateral */
-    .cad-isenção, .cad-isencao {
-      background: var(--coral-light);
-      border: 1px solid rgba(216,90,48,0.2);
-      border-left: 3px solid var(--coral);
-      border-radius: var(--radius-md);
-      padding: 1rem 1.25rem;
-    }
-    .cad-isencao-title {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--coral);
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-    }
-    .cad-isenção p, .cad-isencao p {
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      font-weight: 300;
-    }
-    .cad-isenção p strong, .cad-isencao p strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* Stepper */
-    .cad-stepper {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1.75rem;
-      padding-bottom: 1.25rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .cad-step-tab {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--text-light);
-      transition: color 0.2s;
-      white-space: nowrap;
-    }
-    .cad-step-tab.active { color: var(--teal); }
-    .cad-step-tab.done   { color: var(--teal-dark); }
-    .step-tab-num {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--bg-warm);
-      border: 1.5px solid var(--border-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 700;
-      flex-shrink: 0;
-      transition: all 0.2s;
-    }
-    .cad-step-tab.active .step-tab-num {
-      background: var(--teal);
-      border-color: var(--teal);
-      color: #fff;
-    }
-    .cad-step-tab.done .step-tab-num {
-      background: var(--teal-light);
-      border-color: var(--teal);
-      color: var(--teal-dark);
-    }
-    .cad-step-divider {
-      flex: 1;
-      height: 1px;
-      background: var(--border-md);
-      margin: 0 10px;
-    }
-
-    /* Steps do form */
-    .cad-form-step { display: none; }
-    .cad-form-step.active { display: block; }
-
-    /* Botões de navegação */
-    .cad-next-btn {
-      width: 100%;
-      background: var(--teal);
-      color: #fff;
-      border: none;
-      border-radius: 50px;
-      padding: 13px 24px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.22s;
-      margin-top: 0.5rem;
-    }
-    .cad-next-btn:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,158,117,0.25); }
-    .cad-back-btn {
-      background: transparent;
-      border: 1.5px solid var(--border-md);
-      color: var(--text-muted);
-      border-radius: 50px;
-      padding: 12px 20px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .cad-back-btn:hover { border-color: var(--teal); color: var(--teal); }
-
-    /* Validação visual dos steps */
-    .cad-form-step .form-group input.invalid,
-    .cad-form-step .form-group select.invalid,
-    .cad-form-step .form-group textarea.invalid {
-      border-color: var(--coral);
-      box-shadow: 0 0 0 3px rgba(216,90,48,0.1);
-    }
-    .field-error {
-      font-size: 11px;
-      color: var(--coral);
-      margin-top: 4px;
-      display: none;
-    }
-    .field-error.show { display: block; }
-
-    @media (max-width: 768px) {
-      .cad-layout { grid-template-columns: 1fr; gap: 2rem; }
-      .cad-stepper { flex-wrap: wrap; gap: 6px; }
-      .cad-step-divider { display: none; }
-      .cad-step-tab { font-size: 11px; }
-    }
-
-    /* ============================================================
-       FORMULÁRIO MULTI-STEP — CADASTRAR ANIMAL
-    ============================================================ */
-    .cad-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: start; margin-top: 3rem; }
-    .cad-steps { display: flex; flex-direction: column; gap: 1.1rem; margin-bottom: 1.75rem; }
-    .cad-step { display: flex; align-items: flex-start; gap: 14px; }
-    .cad-step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--teal-light); color: var(--teal-dark); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid rgba(29,158,117,0.2); }
-    .cad-step-title { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.3; }
-    .cad-step-sub { font-size: 12px; color: var(--text-muted); font-weight: 300; margin-top: 2px; }
-    .cad-isencao { background: var(--coral-light); border: 1px solid rgba(216,90,48,0.2); border-left: 3px solid var(--coral); border-radius: var(--radius-md); padding: 1rem 1.25rem; }
-    .cad-isenção { background: var(--coral-light); border: 1px solid rgba(216,90,48,0.2); border-left: 3px solid var(--coral); border-radius: var(--radius-md); padding: 1rem 1.25rem; }
-    .cad-isencao-title { font-size: 12px; font-weight: 600; color: var(--coral); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.8px; }
-    .cad-isencao p, .cad-isenção p { font-size: 12px; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
-    .cad-isencao p strong, .cad-isenção p strong { color: var(--text); font-weight: 500; }
-    .cad-stepper { display: flex; align-items: center; margin-bottom: 1.75rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); gap: 6px; }
-    .cad-step-tab { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; color: var(--text-light); transition: color 0.2s; white-space: nowrap; }
-    .cad-step-tab.active { color: var(--teal); }
-    .cad-step-tab.done   { color: var(--teal-dark); }
-    .step-tab-num { width: 22px; height: 22px; border-radius: 50%; background: var(--bg-warm); border: 1.5px solid var(--border-md); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; transition: all 0.2s; }
-    .cad-step-tab.active .step-tab-num { background: var(--teal); border-color: var(--teal); color: #fff; }
-    .cad-step-tab.done .step-tab-num { background: var(--teal-light); border-color: var(--teal); color: var(--teal-dark); }
-    .cad-step-divider { flex: 1; height: 1px; background: var(--border-md); }
-    .cad-form-step { display: none; }
-    .cad-form-step.active { display: block; }
-    .cad-next-btn { width: 100%; background: var(--teal); color: #fff; border: none; border-radius: 50px; padding: 13px 24px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; transition: all 0.22s; margin-top: 0.5rem; }
-    .cad-next-btn:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,158,117,0.25); }
-    .cad-back-btn { background: transparent; border: 1.5px solid var(--border-md); color: var(--text-muted); border-radius: 50px; padding: 12px 20px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-    .cad-back-btn:hover { border-color: var(--teal); color: var(--teal); }
-    .cad-form-step .form-group input.invalid, .cad-form-step .form-group select.invalid, .cad-form-step .form-group textarea.invalid { border-color: var(--coral); box-shadow: 0 0 0 3px rgba(216,90,48,0.1); }
-    @media (max-width: 768px) {
-      .cad-layout { grid-template-columns: 1fr; gap: 2rem; }
-      .cad-step-divider { display: none; }
-      .cad-step-tab { font-size: 11px; }
-    }
-
     /* ANIMAÇÕES */
     @keyframes fadeUp   { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes scrollPulse { 0%, 100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 0.9; transform: scaleY(1.2); } }
+    @keyframes scrollPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.9; } }
     @keyframes dotPulse { 0%, 100% { transform: rotate(-45deg) scale(1); } 50% { transform: rotate(-45deg) scale(1.15); } }
 
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -914,111 +419,114 @@
       .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 66px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; gap: 1.25rem; z-index: 199; animation: fadeDown 0.2s ease; }
       .hero { min-height: 80vh; padding: 5rem 1.5rem 4rem; }
       .stat-item { padding: 1.4rem 1.5rem; }
-      .form-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-      .form-row { grid-template-columns: 1fr; }
       .hero-ctas { flex-direction: column; align-items: center; }
       .hero-ctas .btn { width: 100%; justify-content: center; }
       .footer-inner { flex-direction: column; }
       .footer-bottom { flex-direction: column; text-align: center; }
-      .interest-layout { grid-template-columns: 1fr; gap: 2rem; }
-      .interest-tab { font-size: 13px; padding: 1rem; }
-      .interest-panels { padding: 1.5rem; }
-      .radio-grid { grid-template-columns: 1fr; }
       .criadora-layout { grid-template-columns: 1fr; gap: 2.5rem; }
       .criadora-photo-col { order: -1; }
       .criadora-frame { width: 240px; }
       .criadora-circle { width: 240px; height: 240px; }
       .criadora-badge.b1 { right: 0; }
       .criadora-badge.b2 { left: 0; }
-      .modal-requester-grid { grid-template-columns: 1fr; }
-      .modal-animal-preview { flex-direction: column; text-align: center; }
+      .action-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ======================== MODAL DE CONTRATO ======================== -->
-  <div class="modal-overlay" id="contratoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <!-- ======================== MODAL DE TERMOS ======================== -->
+  <!--
+    INSTRUÇÕES: substitua os valores das constantes no JS no final do arquivo:
+      FORMS_ADOTAR  — link do Google Forms para adoção
+      FORMS_TEMP    — link do Google Forms para lar temporário
+      FORMS_CADASTRAR — link do Google Forms para cadastrar animal
+  -->
+  <div class="modal-overlay" id="termoModal" role="dialog" aria-modal="true" aria-labelledby="termoModalTitle">
     <div class="modal-box">
 
       <div class="modal-header">
         <div class="modal-header-text">
-          <h3 id="modalTitle">📋 Termo de Compromisso</h3>
-          <p id="modalSubtitle">Leia com atenção antes de confirmar</p>
+          <h3 id="termoModalTitle">📋 Termo de Compromisso</h3>
+          <p id="termoModalSubtitle">Leia com atenção antes de prosseguir</p>
         </div>
         <button class="modal-close" onclick="fecharModal()" aria-label="Fechar">✕</button>
       </div>
 
-      <!-- Preview do animal -->
-      <div class="modal-animal-preview" id="modalAnimalPreview">
-        <div class="modal-animal-emoji" id="modalAnimalEmoji">🐾</div>
-        <div class="modal-animal-info">
-          <h4 id="modalAnimalNome">—</h4>
-          <p  id="modalAnimalDesc">—</p>
-          <div class="modal-animal-badges" id="modalAnimalBadges"></div>
+      <!-- Badge dinâmico do tipo -->
+      <div class="modal-action-badge adopt" id="modalActionBadge">
+        <div class="modal-action-badge-icon" id="modalActionIcon">🏠</div>
+        <div class="modal-action-badge-text">
+          <h4 id="modalActionTitle">Adoção Responsável</h4>
+          <p  id="modalActionDesc">Compromisso permanente com o animal</p>
         </div>
       </div>
 
-      <!-- Texto do contrato (adoção) -->
-      <div class="modal-contract" id="modalContractAdopt">
+      <!-- Contrato Adoção -->
+      <div class="modal-contract" id="contractAdopt">
         <h5>Termo de Adoção Responsável</h5>
         <ol>
           <li><strong>Compromisso com o bem-estar:</strong> Comprometo-me a oferecer ao animal adotado alimentação adequada, água fresca, abrigo seguro e cuidados veterinários sempre que necessário.</li>
-          <li><strong>Não abandono:</strong> Comprometo-me a NÃO abandonar o animal em qualquer circunstância. Em caso de impossibilidade de continuação, buscarei novo lar responsável com apoio do PatasDF.</li>
+          <li><strong>Não abandono:</strong> Comprometo-me a NÃO abandonar o animal em qualquer circunstância. Em caso de impossibilidade, buscarei novo lar responsável com apoio do PatasDF.</li>
           <li><strong>Vacinação:</strong> Comprometo-me a manter as vacinas em dia.</li>
-          <li><strong>Ambiente seguro:</strong> Garantirei que o animal terá espaço adequado, sem acesso a situações de risco como rua sem supervisão, maus-tratos ou negligência.</li>
-          <li><strong>Acompanhamento:</strong> Aceito uma visita de acompanhamento opcional nos primeiros 30 dias após a adoção, caso o responsável pelo animal solicite.</li>
-          <li><strong>Veracidade das informações:</strong> Confirmo que todas as informações fornecidas neste formulário são verdadeiras e que estou em condições de receber o animal.</li>
+          <li><strong>Ambiente seguro:</strong> Garantirei que o animal terá espaço adequado, sem acesso a situações de risco.</li>
+          <li><strong>Acompanhamento:</strong> Aceito uma visita de acompanhamento opcional nos primeiros 30 dias.</li>
+          <li><strong>Veracidade:</strong> Confirmo que todas as informações fornecidas no formulário são verdadeiras.</li>
         </ol>
-        <div style="margin-top:1rem;padding:0.9rem 1rem;background:rgba(29,158,117,0.08);border-radius:8px;border-left:3px solid var(--teal);">
-          <p style="font-size:12px;color:var(--text-muted);line-height:1.6;font-weight:300;">
-            <strong style="color:var(--text);font-weight:500;">ℹ️ Sobre o papel do PatasDF:</strong> O PatasDF é uma plataforma de intermediação gratuita. Após o contato entre adotante e responsável pelo animal ser estabelecido via WhatsApp, <strong style="font-weight:500;">o PatasDF não se responsabiliza pelo processo de adoção, entrega, saúde ou qualquer acordo firmado entre as partes.</strong> Nossa função é facilitar a conexão — a responsabilidade pelo processo é inteiramente dos envolvidos.
-          </p>
+        <div class="disclaimer">
+          <p><strong>ℹ️ Sobre o papel do PatasDF:</strong> Somos uma plataforma de intermediação gratuita. Após o contato estabelecido via WhatsApp, <strong>o PatasDF não se responsabiliza pelo processo de adoção, entrega, saúde ou qualquer acordo firmado entre as partes.</strong></p>
         </div>
       </div>
 
-      <!-- Texto do contrato (lar temporário) -->
-      <div class="modal-contract" id="modalContractTemp" style="display:none;">
+      <!-- Contrato Lar Temporário -->
+      <div class="modal-contract" id="contractTemp" style="display:none;">
         <h5>Termo de Lar Temporário</h5>
         <ol>
-          <li><strong>Período de acolhimento:</strong> Comprometo-me a acolher o animal pelo período combinado, com possibilidade de extensão mediante acordo com o responsável pelo PatasDF.</li>
-          <li><strong>Cuidados básicos:</strong> Oferecerei ao animal alimentação adequada, água fresca, higiene e acompanhamento veterinário de urgência se necessário.</li>
-          <li><strong>Divulgação ativa:</strong> Comprometerei a divulgar o animal nas minhas redes sociais e círculo de contatos para facilitar a adoção definitiva.</li>
-          <li><strong>Comunicação:</strong> Manterei contato regular com o responsável pelo animal e avisarei com antecedência caso não consiga mais manter o lar temporário.</li>
-          <li><strong>Devolução segura:</strong> Em caso de necessidade de encerramento antecipado, devolverei o animal de forma segura e planejada, nunca o abandonando.</li>
-          <li><strong>Veracidade:</strong> Confirmo que todas as informações fornecidas são verdadeiras e que tenho condições de receber o animal temporariamente.</li>
+          <li><strong>Período de acolhimento:</strong> Comprometo-me a acolher o animal pelo período combinado, com possibilidade de extensão mediante acordo.</li>
+          <li><strong>Cuidados básicos:</strong> Oferecerei alimentação adequada, água fresca, higiene e acompanhamento veterinário de urgência.</li>
+          <li><strong>Divulgação ativa:</strong> Comprometerei a divulgar o animal nas redes sociais para facilitar a adoção definitiva.</li>
+          <li><strong>Comunicação:</strong> Manterei contato regular com o responsável e avisarei com antecedência caso não consiga mais manter o lar.</li>
+          <li><strong>Devolução segura:</strong> Em caso de encerramento antecipado, devolverei o animal de forma segura e planejada, nunca o abandonando.</li>
+          <li><strong>Veracidade:</strong> Confirmo que todas as informações fornecidas são verdadeiras.</li>
         </ol>
-      </div>
-
-      <!-- Dados do interessado -->
-      <div class="modal-requester">
-        <div class="modal-requester-title">Seus dados</div>
-        <div class="modal-requester-grid" id="modalRequesterGrid">
-          <!-- preenchido via JS -->
+        <div class="disclaimer amber">
+          <p><strong>ℹ️ Sobre o papel do PatasDF:</strong> Somos uma plataforma de intermediação gratuita. A responsabilidade pelo processo de acolhimento é inteiramente dos envolvidos após o primeiro contato.</p>
         </div>
       </div>
 
-      <!-- Botão de ciência -->
-      <div class="modal-aware-section" id="modalAwareSection">
-        <button class="btn-aware btn-aware-adopt" id="btnAware" onclick="toggleAware()">
-          <div class="aware-check" id="awareCheckIcon">○</div>
-          <div class="aware-label-wrap">
-            <span id="awareMainLabel">Estou ciente de que a adoção é permanente</span>
-            <span class="aware-sub" id="awareSubLabel">Li os termos acima e assumo este compromisso</span>
-          </div>
+      <!-- Contrato Cadastrar Animal -->
+      <div class="modal-contract" id="contractCad" style="display:none;">
+        <h5>Termo de Publicação de Animal</h5>
+        <ol>
+          <li><strong>Publicação pública:</strong> Ao cadastrar, autorizo que as informações do animal (nome, fotos, descrição, cidade e WhatsApp) sejam exibidas publicamente no PatasDF.</li>
+          <li><strong>Responsabilidade:</strong> O PatasDF é uma plataforma gratuita de intermediação. <strong>Após o primeiro contato via WhatsApp, o PatasDF não se responsabiliza</strong> por acordos, entrega, saúde do animal ou qualquer resultado da adoção.</li>
+          <li><strong>Veracidade:</strong> Confirmo que todas as informações fornecidas são verdadeiras. Informações falsas que prejudiquem o animal ou o adotante são de minha exclusiva responsabilidade.</li>
+          <li><strong>Bem-estar:</strong> Comprometo-me a continuar zelando pelo bem-estar do animal até que ele seja efetivamente entregue a um adotante responsável.</li>
+          <li><strong>Notificações:</strong> Autorizo o PatasDF a encaminhar meu contato a pessoas com perfil compatível que demonstrarem interesse em adotar este animal.</li>
+        </ol>
+        <div class="disclaimer coral">
+          <p><strong>ℹ️ Dados no formulário externo:</strong> As informações serão coletadas via Google Forms. O PatasDF não armazena seus dados diretamente — eles ficam protegidos na sua conta Google associada ao formulário.</p>
+        </div>
+      </div>
+
+      <!-- Aceite -->
+      <div class="modal-accept-area">
+        <button class="btn-accept adopt" id="btnAceite" onclick="toggleAceite()">
+          <div class="accept-icon" id="aceiteIcon">○</div>
+          <span id="aceiteLabel">Li e aceito os termos acima</span>
         </button>
       </div>
+
+      <p class="modal-must-read" id="mustReadMsg">⬆️ Leia os termos e clique em aceitar para continuar</p>
 
       <div class="modal-footer">
         <button class="btn-cancel" onclick="fecharModal()">Cancelar</button>
-        <button class="btn-confirm-adopt" id="btnConfirmarAdocao" disabled onclick="confirmarAdocao()">
-          <span class="btn-spinner" id="spinnerAdocao"></span>
-          🏠 Confirmar adoção
-        </button>
-        <button class="btn-confirm-temp" id="btnConfirmarTemp" style="display:none;" disabled onclick="confirmarTemp()">
-          <span class="btn-spinner amber-spin" id="spinnerTemp"></span>
-          ⏳ Confirmar lar temporário
-        </button>
+        <a  class="btn-ir-forms adopt" id="btnIrForms"
+            href="#" target="_blank" rel="noopener"
+            aria-disabled="true"
+            onclick="return validarAceiteEIr(event)">
+          📋 Ir para o formulário →
+        </a>
       </div>
 
     </div>
@@ -1034,11 +542,10 @@
       </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#como-funciona">Como funciona</a></li>
-        <li><a href="animais.html">Animais</a></li>
+        <li><a href="#animais">Animais</a></li>
         <li><a href="#mapa">Mapa</a></li>
-        <li><a href="#ajudar">Como ajudar</a></li>
         <li><a href="#sobre-criadora">Sobre</a></li>
-        <li><a href="#cadastrar" class="nav-cta">Cadastrar animal</a></li>
+        <li><a href="#quero-ajudar" class="nav-cta">Quero participar</a></li>
       </ul>
     </div>
   </nav>
@@ -1100,9 +607,9 @@
       <div class="steps-grid">
         <div class="step-card reveal"><div class="step-num">01</div><h3>Encontrei um animal</h3><p>Você encontrou um animal abandonado nas ruas do DF e quer ajudar a encontrar um lar.</p></div>
         <div class="step-card reveal"><div class="step-num">02</div><h3>Acesso o site</h3><p>Abre o PatasDF em qualquer celular, sem precisar criar conta ou instalar nada.</p></div>
-        <div class="step-card reveal"><div class="step-num">03</div><h3>Preencho o formulário</h3><p>Nome, tipo, idade, foto e contato. Todo o cadastro leva menos de 2 minutos.</p></div>
-        <div class="step-card reveal"><div class="step-num">04</div><h3>Animal entra no mapa</h3><p>Os dados vão direto para a plataforma e o animal aparece visível no mapa do DF.</p></div>
-        <div class="step-card reveal"><div class="step-num">05</div><h3>Família encontrada!</h3><p>Quem quer adotar vê o animal, entra em contato com o responsável e a história muda.</p></div>
+        <div class="step-card reveal"><div class="step-num">03</div><h3>Aceito os termos</h3><p>Lê o termo de compromisso e confirma o aceite. Simples e transparente.</p></div>
+        <div class="step-card reveal"><div class="step-num">04</div><h3>Preencho o formulário</h3><p>Você é direcionado ao Google Forms. Leva menos de 2 minutos.</p></div>
+        <div class="step-card reveal"><div class="step-num">05</div><h3>Família encontrada!</h3><p>O animal aparece no site e quem quer adotar entra em contato diretamente.</p></div>
       </div>
     </div>
   </section>
@@ -1121,7 +628,7 @@
           <button class="filter-pill" onclick="filterAnimals('gato', this)">🐱 Gatos</button>
         </div>
       </div>
-      <div id="animaisLoading" style="text-align:center; padding:3rem; color:var(--text-muted); grid-column:1/-1;">
+      <div id="animaisLoading" style="text-align:center; padding:3rem; color:var(--text-muted);">
         <div style="font-size:2.5rem; margin-bottom:0.75rem;">🐾</div>
         <p>Carregando animais disponíveis...</p>
       </div>
@@ -1133,7 +640,7 @@
         <button onclick="carregarAnimais()" style="margin-top:1rem;border:1.5px solid var(--border-md);background:transparent;border-radius:24px;padding:8px 20px;cursor:pointer;font-family:inherit;font-size:14px;">Tentar novamente</button>
       </div>
       <div id="verMaisArea" style="display:none;text-align:center;margin-top:2.5rem;">
-        <a href="animais.html" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--teal);border:1.5px solid var(--teal);border-radius:50px;padding:13px 32px;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;text-decoration:none;transition:all .22s;">Ver todos os animais →</a>
+        <a href="animais.html" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--teal);border:1.5px solid var(--teal);border-radius:50px;padding:13px 32px;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;text-decoration:none;transition:all .22s;" onmouseover="this.style.background='var(--teal)';this.style.color='#fff';" onmouseout="this.style.background='transparent';this.style.color='var(--teal)';">Ver todos os animais →</a>
       </div>
     </div>
   </section>
@@ -1152,37 +659,78 @@
           <div class="map-dot" data-e="🐱" style="left:38%;top:65%;"></div>
           <div style="font-size:3rem;position:relative;z-index:1;">🗺️</div>
           <h3>Mapa do Distrito Federal</h3>
-          <p>Aqui será exibido o Google My Maps com todos os animais disponíveis para adoção em tempo real.<br><br><strong>Para configurar:</strong> crie um mapa no Google My Maps e cole o link do iframe acima no código.</p>
+          <p>Aqui será exibido o Google My Maps com todos os animais disponíveis para adoção em tempo real.</p>
           <a href="https://mymaps.google.com" target="_blank" rel="noopener" class="btn btn-primary">Criar mapa no Google My Maps →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- COMO AJUDAR -->
-  <section class="help-section" id="ajudar">
+  <!-- ======================== SEÇÃO DE AÇÃO ======================== -->
+  <section class="action-section" id="quero-ajudar">
     <div class="container">
-      <span class="section-label reveal">Como ajudar</span>
-      <h2 class="section-title reveal">Existem muitas formas<br>de fazer a diferença</h2>
-      <p class="section-sub reveal">Você não precisa adotar para salvar uma vida. Cada pequena ação conta.</p>
-      <div class="help-grid">
-        <div class="help-card adoptar reveal">
-          <span class="help-icon">🏠</span>
-          <h3>Adotar</h3>
-          <p>Abra sua casa para um animal que precisa de amor. A adoção responsável transforma duas vidas: a sua e a dele.</p>
-          <a href="#quero-ajudar" class="btn" onclick="openTab('adopt')">Quero adotar</a>
+      <span class="section-label reveal">Quero participar</span>
+      <h2 class="section-title reveal">Como você quer<br>fazer a diferença?</h2>
+      <p class="section-sub reveal">Escolha uma das opções abaixo. Você vai ler os termos de compromisso e depois será direcionado ao formulário do Google para preencher seus dados com segurança.</p>
+
+      <div class="action-grid">
+
+        <!-- CARD ADOTAR -->
+        <div class="action-card card-adopt reveal">
+          <div class="action-card-icon">🏠</div>
+          <div class="action-card-title">Quero adotar</div>
+          <p class="action-card-desc">Registre seu interesse em adotar um animal do DF. Preencha seu perfil e te indicaremos o melhor match — ou escolha um animal específico que você já viu.</p>
+          <ul class="action-checklist">
+            <li><div class="action-check teal">✓</div> Adoção 100% gratuita</li>
+            <li><div class="action-check teal">✓</div> Compromisso permanente com o animal</li>
+            <li><div class="action-check teal">✓</div> Você escolhe quem adota</li>
+          </ul>
+          <button class="btn-action-adopt" onclick="abrirModal('adopt')">
+            🏠 Quero adotar — ler termos e preencher formulário
+          </button>
+          <p class="action-note">Após aceitar os termos, você será levado ao Google Forms</p>
         </div>
-        <div class="help-card temporario reveal">
-          <span class="help-icon">⏳</span>
-          <h3>Ser lar temporário</h3>
-          <p>Não pode adotar definitivamente? Cuide de um animal por um tempo enquanto ele não encontra um lar permanente.</p>
-          <a href="#quero-ajudar" class="btn" onclick="openTab('temp')">Quero ser lar temporário</a>
+
+        <!-- CARD LAR TEMPORÁRIO -->
+        <div class="action-card card-temp reveal">
+          <div class="action-card-icon">⏳</div>
+          <div class="action-card-title">Quero ser lar temporário</div>
+          <p class="action-card-desc">Acolha um animal por algumas semanas enquanto ele não encontra um lar definitivo. Não precisa adotar — só cuidar com carinho por um tempo.</p>
+          <ul class="action-checklist">
+            <li><div class="action-check amber">✓</div> Duração média de 2 a 8 semanas</li>
+            <li><div class="action-check amber">✓</div> Ajuda a divulgar para adoção</li>
+            <li><div class="action-check amber">✓</div> Salva vidas sem compromisso eterno</li>
+          </ul>
+          <button class="btn-action-temp" onclick="abrirModal('temp')">
+            ⏳ Ser lar temporário — ler termos e preencher formulário
+          </button>
+          <p class="action-note">Após aceitar os termos, você será levado ao Google Forms</p>
         </div>
-        <div class="help-card divulgar reveal">
-          <span class="help-icon">📣</span>
-          <h3>Divulgar</h3>
-          <p>Compartilhe os animais nas redes sociais. Um repost pode ser a virada de vida de um bichinho que precisa de um lar.</p>
-          <a href="#animais" class="btn">Ver animais para divulgar</a>
+
+        <!-- CARD CADASTRAR ANIMAL -->
+        <div class="action-card card-cad reveal" id="cadastrar">
+          <div class="action-card-icon">🐾</div>
+          <div class="action-card-title">Cadastrar animal para adoção</div>
+          <p class="action-card-desc">Encontrou um animal abandonado ou precisa colocar seu pet para adoção? Cadastre aqui. O animal entra no site e no mapa do DF imediatamente.</p>
+          <ul class="action-checklist">
+            <li><div class="action-check coral">✓</div> Sem criar conta, 100% gratuito</li>
+            <li><div class="action-check coral">✓</div> Animal aparece no mapa do DF</li>
+            <li><div class="action-check coral">✓</div> Você controla quem adota</li>
+          </ul>
+          <button class="btn-action-cad" onclick="abrirModal('cad')">
+            📋 Cadastrar animal — ler termos e preencher formulário
+          </button>
+          <p class="action-note">Após aceitar os termos, você será levado ao Google Forms</p>
+        </div>
+
+      </div>
+
+      <!-- Info sobre segurança de dados -->
+      <div style="margin-top:2.5rem; background:var(--bg-warm); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.5rem 2rem; display:flex; align-items:flex-start; gap:1rem; max-width:680px;">
+        <span style="font-size:1.5rem; flex-shrink:0;">🔒</span>
+        <div>
+          <strong style="font-size:14px; display:block; margin-bottom:4px;">Seus dados ficam protegidos</strong>
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.7; font-weight:300;">Os formulários são hospedados no Google Forms. O PatasDF não armazena suas informações diretamente — os dados ficam na infraestrutura segura do Google, associados ao formulário criado pela Clarice. Nenhum dado é vendido ou compartilhado com terceiros.</p>
         </div>
       </div>
     </div>
@@ -1197,8 +745,8 @@
             <div class="criadora-circle">
               <img src="fotos/clarice.jpg" alt="Clarice Nunes" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
             </div>
-            <div class="criadora-badge b2"><span class="bi">🎓</span><div><strong>CEUB · Eng. de Software</strong><span class="bl">2º semestre</span></div></div>
-            <div class="criadora-badge b1"><span class="bi">🐾</span><div><strong>Criadora do PatasDF</strong><span class="bl">em memória do Bolt & Max</span></div></div>
+            <div class="criadora-badge b2"><span>🎓</span><div><strong>CEUB · Eng. de Software</strong><span class="bl">2º semestre</span></div></div>
+            <div class="criadora-badge b1"><span>🐾</span><div><strong>Criadora do PatasDF</strong><span class="bl">em memória do Bolt & Max</span></div></div>
           </div>
         </div>
         <div class="criadora-text">
@@ -1225,549 +773,11 @@
     </div>
   </section>
 
-  <!-- CADASTRO DE ANIMAL -->
-  <section class="form-section" id="cadastrar">
-    <div class="container">
-      <span class="section-label reveal">Cadastrar animal</span>
-      <h2 class="section-title reveal">Quer colocar um animal<br>para <span style="color:var(--teal);">adoção?</span></h2>
-      <p class="section-sub reveal" style="margin-bottom:0;">Preencha o formulário abaixo. Quanto mais detalhes, mais rápido o animal encontra um lar.</p>
-
-      <div class="cad-layout">
-
-        <!-- ── COLUNA ESQUERDA: info + passos ── -->
-        <div class="cad-info reveal">
-
-          <div class="cad-steps">
-            <div class="cad-step">
-              <div class="cad-step-num">01</div>
-              <div>
-                <div class="cad-step-title">Preencha o formulário</div>
-                <div class="cad-step-sub">Dados do animal e o seu contato WhatsApp</div>
-              </div>
-            </div>
-            <div class="cad-step">
-              <div class="cad-step-num">02</div>
-              <div>
-                <div class="cad-step-title">Animal entra no site</div>
-                <div class="cad-step-sub">Fica visível para quem quer adotar no DF</div>
-              </div>
-            </div>
-            <div class="cad-step">
-              <div class="cad-step-num">03</div>
-              <div>
-                <div class="cad-step-title">Interessados te contactam</div>
-                <div class="cad-step-sub">Diretamente pelo WhatsApp que você informou</div>
-              </div>
-            </div>
-            <div class="cad-step">
-              <div class="cad-step-num">04</div>
-              <div>
-                <div class="cad-step-title">Você escolhe o adotante</div>
-                <div class="cad-step-sub">A decisão final é sempre sua</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="cad-isenção">
-            <div class="cad-isencao-title">⚠️ Sobre a responsabilidade</div>
-            <p>O PatasDF é uma plataforma de intermediação gratuita. Após o primeiro contato via WhatsApp entre você e o interessado, <strong>o PatasDF não se responsabiliza</strong> por acordos, entrega, saúde do animal ou qualquer resultado da adoção. Nossa função é apenas facilitar a conexão.</p>
-          </div>
-
-          <ul class="form-checklist" style="margin-top:1.25rem;">
-            <li><div class="check-icon">✓</div> 100% gratuito, sem criar conta</li>
-            <li><div class="check-icon">✓</div> Você controla quem adota</li>
-            <li><div class="check-icon">✓</div> Pode remover ou atualizar a qualquer momento</li>
-            <li><div class="check-icon">✓</div> Animal aparece no mapa do DF</li>
-          </ul>
-        </div>
-
-        <!-- ── COLUNA DIREITA: formulário ── -->
-        <div class="form-card reveal">
-          <div id="formContent">
-
-            <!-- STEPPER -->
-            <div class="cad-stepper" id="cadStepper">
-              <div class="cad-step-tab active" id="stepTab1">
-                <span class="step-tab-num">1</span> Sobre o animal
-              </div>
-              <div class="cad-step-divider"></div>
-              <div class="cad-step-tab" id="stepTab2">
-                <span class="step-tab-num">2</span> Saúde & comportamento
-              </div>
-              <div class="cad-step-divider"></div>
-              <div class="cad-step-tab" id="stepTab3">
-                <span class="step-tab-num">3</span> Seus dados & termo
-              </div>
-            </div>
-
-            <!-- ═══ STEP 1: Dados básicos do animal ═══ -->
-            <div class="cad-form-step active" id="cadStep1">
-
-              <div class="form-group">
-                <label for="animalNome">Nome do animal *</label>
-                <input type="text" id="animalNome" placeholder="Ex: Bolinha, Mimi, Thor..." />
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="animalTipo">Tipo *</label>
-                  <select id="animalTipo">
-                    <option value="">Selecione...</option>
-                    <option value="cachorro">🐶 Cachorro</option>
-                    <option value="gato">🐱 Gato</option>
-                    <option value="outro">Outro</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="animalSexo">Sexo *</label>
-                  <select id="animalSexo">
-                    <option value="">Selecione...</option>
-                    <option value="macho">Macho</option>
-                    <option value="femea">Fêmea</option>
-                    <option value="nao_sei">Não sei</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="animalIdade">Idade aproximada *</label>
-                  <select id="animalIdade">
-                    <option value="">Selecione...</option>
-                    <option>Filhote (0–6 meses)</option>
-                    <option>Jovem (6m–2 anos)</option>
-                    <option>Adulto (2–7 anos)</option>
-                    <option>Idoso (7+ anos)</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="animalPorte">Porte *</label>
-                  <select id="animalPorte">
-                    <option value="">Selecione...</option>
-                    <option>Pequeno (até 10kg)</option>
-                    <option>Médio (10–25kg)</option>
-                    <option>Grande (acima de 25kg)</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="animalCidade">Cidade / Bairro onde está o animal *</label>
-                <input type="text" id="animalCidade" placeholder="Ex: Asa Sul, Taguatinga, Ceilândia..." />
-              </div>
-
-              <div class="form-group">
-                <label for="animalFoto">Link da foto *</label>
-                <input type="url" id="animalFoto" placeholder="Google Drive, Imgur, iCloud... (link público)" />
-                <span style="font-size:11px;color:var(--text-muted);margin-top:4px;display:block;">Dica: no Google Drive clique em "Compartilhar" → "Qualquer pessoa com o link"</span>
-              </div>
-
-              <button class="cad-next-btn" onclick="cadNextStep(1)">
-                Próximo — Saúde & comportamento →
-              </button>
-            </div>
-
-            <!-- ═══ STEP 2: Saúde e comportamento ═══ -->
-            <div class="cad-form-step" id="cadStep2">
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Castrado(a)? *</label>
-                  <div class="radio-group" style="margin-top:6px;">
-                    <label class="radio-item"><input type="radio" name="animalCastrado" value="sim"> Sim</label>
-                    <label class="radio-item"><input type="radio" name="animalCastrado" value="nao"> Não</label>
-                    <label class="radio-item"><input type="radio" name="animalCastrado" value="nao_sei"> Não sei</label>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label>Vacinado(a)? *</label>
-                  <div class="radio-group" style="margin-top:6px;">
-                    <label class="radio-item"><input type="radio" name="animalVacinado" value="sim"> Sim</label>
-                    <label class="radio-item"><input type="radio" name="animalVacinado" value="nao"> Não</label>
-                    <label class="radio-item"><input type="radio" name="animalVacinado" value="nao_sei"> Não sei</label>
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label>Com quem convive bem? *</label>
-                <div class="checkbox-group" style="margin-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-                  <label class="checkbox-item"><input type="checkbox" id="convCriancas"> 👶 Crianças</label>
-                  <label class="checkbox-item"><input type="checkbox" id="convCachorros"> 🐶 Outros cachorros</label>
-                  <label class="checkbox-item"><input type="checkbox" id="convGatos"> 🐱 Gatos</label>
-                  <label class="checkbox-item"><input type="checkbox" id="convIdosos"> 👴 Idosos</label>
-                  <label class="checkbox-item"><input type="checkbox" id="convNenhum"> 🙅 Prefere ser único pet</label>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label>Onde pode morar? *</label>
-                <div class="checkbox-group" style="margin-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-                  <label class="checkbox-item"><input type="checkbox" id="moraApto"> 🏢 Apartamento</label>
-                  <label class="checkbox-item"><input type="checkbox" id="moraCasaSem"> 🏠 Casa sem quintal</label>
-                  <label class="checkbox-item"><input type="checkbox" id="moraCasaCom"> 🌳 Casa com quintal</label>
-                  <label class="checkbox-item"><input type="checkbox" id="moraQualquer"> ✅ Qualquer ambiente</label>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="animalDesc">Descrição do animal *</label>
-                <textarea id="animalDesc" placeholder="Conte sobre o comportamento, como ele foi encontrado ou sua história, qualquer informação importante para o futuro adotante..." style="min-height:100px;"></textarea>
-              </div>
-
-              <div class="form-group">
-                <label for="animalNecessidades">Necessidades especiais ou condições de saúde</label>
-                <input type="text" id="animalNecessidades" placeholder="Ex: usa medicamento, problema na pata, timidez extrema... (deixe em branco se não tiver)" />
-              </div>
-
-              <div style="display:flex;gap:10px;">
-                <button class="cad-back-btn" onclick="cadBackStep(2)">← Voltar</button>
-                <button class="cad-next-btn" style="flex:1;" onclick="cadNextStep(2)">
-                  Próximo — Seus dados & termo →
-                </button>
-              </div>
-            </div>
-
-            <!-- ═══ STEP 3: Dados de quem cadastra + termo ═══ -->
-            <div class="cad-form-step" id="cadStep3">
-
-              <div class="form-group">
-                <label for="cadNome">Seu nome *</label>
-                <input type="text" id="cadNome" placeholder="Ex: Ana Souza" />
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="animalContato">Seu WhatsApp *</label>
-                  <input type="tel" id="animalContato" placeholder="(61) 9xxxx-xxxx" />
-                </div>
-                <div class="form-group">
-                  <label for="cadEmail">Seu e-mail *</label>
-                  <input type="email" id="cadEmail" placeholder="seu@email.com" />
-                  <span style="font-size:11px;color:var(--text-muted);margin-top:4px;display:block;">Vamos te notificar quando houver interesse</span>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label>Qual é a sua relação com o animal? *</label>
-                <div class="radio-group" style="margin-top:6px;">
-                  <label class="radio-item"><input type="radio" name="cadRelacao" value="tutor"> Sou o(a) tutor(a) atual</label>
-                  <label class="radio-item"><input type="radio" name="cadRelacao" value="resgatador"> Resgatei na rua</label>
-                  <label class="radio-item"><input type="radio" name="cadRelacao" value="temporario"> Estou cuidando temporariamente</label>
-                  <label class="radio-item"><input type="radio" name="cadRelacao" value="outro"> Outro</label>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="cadMotivo">Por que está colocando para adoção? *</label>
-                <textarea id="cadMotivo" placeholder="Ex: mudança para apartamento sem pet, alergia na família, não consigo mais cuidar... Seja honesto(a) — isso ajuda a encontrar o adotante certo." style="min-height:80px;"></textarea>
-              </div>
-
-              <!-- Termo de isenção + aceite -->
-              <div id="termoCadastroBox" style="background:var(--bg-warm);border:1px solid var(--border-md);border-radius:12px;padding:1.25rem;margin-bottom:1rem;">
-                <p style="font-size:12px;font-weight:600;color:var(--text);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.75rem;">📋 Termo de publicação</p>
-
-                <div style="max-height:160px;overflow-y:auto;margin-bottom:.85rem;">
-                  <p style="font-size:12px;color:var(--text-muted);line-height:1.75;font-weight:300;">
-                    <strong style="color:var(--text);font-weight:500;">1. Publicação pública:</strong> Ao cadastrar, autorizo que as informações do animal (nome, fotos, descrição, cidade e WhatsApp) sejam exibidas publicamente no PatasDF para facilitar a adoção.<br><br>
-                    <strong style="color:var(--text);font-weight:500;">2. Responsabilidade:</strong> O PatasDF é uma plataforma gratuita de intermediação. Após o contato ser estabelecido entre mim e o(a) interessado(a) via WhatsApp, <strong style="color:var(--text);">o PatasDF não se responsabiliza</strong> por acordos, entrega, saúde do animal, arrependimentos ou qualquer resultado do processo de adoção. A responsabilidade pelo processo é inteiramente das partes envolvidas.<br><br>
-                    <strong style="color:var(--text);font-weight:500;">3. Veracidade:</strong> Confirmo que todas as informações fornecidas são verdadeiras. Informações falsas que prejudiquem o animal ou o adotante são de minha exclusiva responsabilidade.<br><br>
-                    <strong style="color:var(--text);font-weight:500;">4. Bem-estar do animal:</strong> Comprometo-me a continuar zelando pelo bem-estar do animal até que ele seja efetivamente entregue a um adotante responsável, não o abandonando em hipótese alguma.<br><br>
-                    <strong style="color:var(--text);font-weight:500;">5. Notificações:</strong> Autorizo o PatasDF a encaminhar meu contato (WhatsApp e/ou e-mail) a pessoas com perfil compatível que demonstrarem interesse em adotar este animal.
-                  </p>
-                </div>
-
-                <div style="display:flex;align-items:flex-start;gap:10px;">
-                  <input type="checkbox" id="termoCadastroCheck" style="width:17px;height:17px;accent-color:var(--teal);flex-shrink:0;margin-top:2px;cursor:pointer;" onchange="toggleBtnCadastrar()">
-                  <label for="termoCadastroCheck" style="font-size:13px;color:var(--text);line-height:1.6;cursor:pointer;font-weight:500;">
-                    Li e aceito os termos acima. Confirmo que as informações são verdadeiras.
-                  </label>
-                </div>
-              </div>
-
-              <div style="display:flex;gap:10px;">
-                <button class="cad-back-btn" onclick="cadBackStep(3)">← Voltar</button>
-                <button class="btn btn-primary" id="btnCadastrar" style="flex:1;justify-content:center;padding:13px;opacity:0.4;pointer-events:none;" onclick="submitForm()">
-                  <span class="btn-spinner" id="spinnerCadastro"></span>
-                  🐾 Cadastrar animal
-                </button>
-              </div>
-              <p class="form-note" style="margin-top:.75rem;">Você receberá um e-mail de confirmação após o cadastro.</p>
-            </div>
-
-          </div>
-
-          <!-- Sucesso -->
-          <div class="form-success" id="formSuccess">
-            <div class="success-icon">🎉</div>
-            <h4>Animal cadastrado com sucesso!</h4>
-            <p>Em breve ele aparecerá no site. Você receberá um e-mail de confirmação e será notificado quando houver interessados compatíveis. Obrigado por ajudar a mudar uma vida!</p>
-            <button class="btn btn-primary" style="margin:1.5rem auto 0;" onclick="resetForm()">Cadastrar outro animal</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- FORMULÁRIOS ADOTAR / LAR TEMP -->
-  <section class="interest-section" id="quero-ajudar">
-    <div class="container">
-      <span class="section-label reveal">Quero ajudar</span>
-      <h2 class="section-title reveal">Você quer adotar ou ser<br>lar temporário?</h2>
-      <p class="section-sub reveal">Preencha o formulário abaixo e entraremos em contato com animais compatíveis com o seu perfil.</p>
-
-      <div class="interest-tabs reveal">
-        <button class="interest-tab tab-adopt active" id="tabAdopt" onclick="openTab('adopt')">
-          <span class="tab-icon">🏠</span> Quero adotar <span class="tab-badge">Permanente</span>
-        </button>
-        <button class="interest-tab tab-temp" id="tabTemp" onclick="openTab('temp')">
-          <span class="tab-icon">⏳</span> Quero ser lar temporário <span class="tab-badge">Temporário</span>
-        </button>
-      </div>
-
-      <div class="interest-panels reveal">
-
-        <!-- PAINEL ADOÇÃO -->
-        <div class="interest-panel active" id="panelAdopt">
-          <div class="interest-layout">
-            <div class="interest-info">
-              <h3>Adoção responsável começa aqui</h3>
-              <p>Ao preencher este formulário, você entra para nossa lista de adotantes interessados. Quando um animal compatível com o seu perfil for cadastrado, entraremos em contato.</p>
-              <div class="info-highlight teal"><p>🐾 A adoção no PatasDF é sempre <strong>gratuita</strong>. Adote seu novo melhor amigo!</p></div>
-              <p>O que esperamos de um adotante responsável:</p>
-              <ul class="form-checklist">
-                <li><div class="check-icon" style="background:var(--teal-light);">✓</div> Oferecer ambiente seguro e amoroso</li>
-                <li><div class="check-icon" style="background:var(--teal-light);">✓</div> Comprometer-se com vacinação e saúde</li>
-                <li><div class="check-icon" style="background:var(--teal-light);">✓</div> Não abandonar o animal em nenhuma circunstância</li>
-                <li><div class="check-icon" style="background:var(--teal-light);">✓</div> Permitir visita de acompanhamento (opcional)</li>
-              </ul>
-            </div>
-            <div>
-              <div id="adoptFormContent">
-                <div class="form-group">
-                  <label>Você tem um animal em mente? *</label>
-                  <div class="animal-choice-toggle">
-                    <div class="choice-btn" id="adoptChoiceSpecific" onclick="setAdoptChoice('specific')"><span class="choice-icon">🔍</span><div class="choice-label">Escolher um animal</div><div class="choice-sub">Vi um animal específico</div></div>
-                    <div class="choice-btn" id="adoptChoiceAny" onclick="setAdoptChoice('any')"><span class="choice-icon">🐾</span><div class="choice-label">Aceito qualquer um</div><div class="choice-sub">Me indiquem o melhor match</div></div>
-                  </div>
-                </div>
-                <div class="collapsible-section" id="adoptSpecificSection">
-                  <div class="form-group" style="margin-top:4px;">
-                    <label>Selecione o animal que você quer adotar *</label>
-                    <div class="animal-list-grid" id="adoptAnimalList"></div>
-                    <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">Não encontrou? Veja todos na seção <a href="#animais" style="color:var(--teal);">Animais disponíveis</a>.</p>
-                  </div>
-                </div>
-                <div class="collapsible-section" id="adoptAnySection">
-                  <div class="form-group" style="margin-top:4px;">
-                    <label>Qual tipo de animal você prefere?</label>
-                    <div class="radio-grid" style="margin-top:6px;">
-                      <label class="radio-item"><input type="radio" name="adoptTipoPref" value="cachorro"> 🐶 Cachorro</label>
-                      <label class="radio-item"><input type="radio" name="adoptTipoPref" value="gato"> 🐱 Gato</label>
-                      <label class="radio-item"><input type="radio" name="adoptTipoPref" value="qualquer"> Tanto faz</label>
-                      <label class="radio-item"><input type="radio" name="adoptTipoPref" value="outro"> Outro</label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label>Porte preferido</label>
-                    <div class="radio-grid" style="margin-top:6px;">
-                      <label class="radio-item"><input type="radio" name="adoptPorte" value="pequeno"> Pequeno</label>
-                      <label class="radio-item"><input type="radio" name="adoptPorte" value="medio"> Médio</label>
-                      <label class="radio-item"><input type="radio" name="adoptPorte" value="grande"> Grande</label>
-                      <label class="radio-item"><input type="radio" name="adoptPorte" value="indiferente"> Indiferente</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="collapsible-section" id="adoptCommonFields">
-                  <div class="form-group" style="margin-top:4px;">
-                    <label for="adoptNome">Seu nome completo *</label>
-                    <input type="text" id="adoptNome" placeholder="Ex: Maria da Silva" />
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group"><label for="adoptContato">WhatsApp *</label><input type="tel" id="adoptContato" placeholder="(61) 9xxxx-xxxx" /></div>
-                    <div class="form-group"><label for="adoptEmail">E-mail</label><input type="email" id="adoptEmail" placeholder="seu@email.com" /></div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group"><label for="adoptCidade">Cidade/Bairro *</label><input type="text" id="adoptCidade" placeholder="Ex: Asa Norte, Gama..." /></div>
-                    <div class="form-group">
-                      <label for="adoptIdade">Sua faixa etária</label>
-                      <select id="adoptIdade"><option value="">Selecione...</option><option>18–25 anos</option><option>26–35 anos</option><option>36–50 anos</option><option>50+ anos</option></select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label>Sua situação de moradia *</label>
-                    <div class="radio-group" style="margin-top:6px;">
-                      <label class="radio-item"><input type="radio" name="adoptMoradia" value="casa_quintal"> Casa com quintal</label>
-                      <label class="radio-item"><input type="radio" name="adoptMoradia" value="casa_sem"> Casa sem quintal</label>
-                      <label class="radio-item"><input type="radio" name="adoptMoradia" value="apto"> Apartamento</label>
-                      <label class="radio-item"><input type="radio" name="adoptMoradia" value="outro"> Outro</label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label>Sua casa já tem outros animais?</label>
-                    <div class="checkbox-group" style="margin-top:6px;">
-                      <label class="checkbox-item"><input type="checkbox"> Cachorro(s)</label>
-                      <label class="checkbox-item"><input type="checkbox"> Gato(s)</label>
-                      <label class="checkbox-item"><input type="checkbox"> Nenhum animal ainda</label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label>Há crianças em casa?</label>
-                    <div class="radio-group" style="margin-top:6px;">
-                      <label class="radio-item"><input type="radio" name="adoptCriancas" value="sim"> Sim</label>
-                      <label class="radio-item"><input type="radio" name="adoptCriancas" value="nao"> Não</label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="adoptMotivo">Por que você quer adotar? *</label>
-                    <textarea id="adoptMotivo" placeholder="Conte um pouco sobre sua motivação, sua rotina e como será a vida do animal com você..."></textarea>
-                  </div>
-                  <button class="btn btn-adopt" style="width:100%;justify-content:center;padding:13px;border-radius:50px;border:none;font-size:15px;cursor:pointer;" onclick="submitAdopt()">
-                    🏠 Enviar interesse em adotar
-                  </button>
-                  <p class="form-note">Suas informações serão usadas apenas para encontrar o animal mais compatível com você.</p>
-                </div>
-              </div>
-              <div class="form-success" id="adoptSuccess">
-                <div class="success-icon">🥰</div>
-                <h4>Interesse registrado!</h4>
-                <p>Muito obrigado! Quando um animal compatível for cadastrado, entraremos em contato pelo WhatsApp. Você está salvando uma vida!</p>
-                <button class="btn btn-adopt" style="margin:1.5rem auto 0;border-radius:50px;padding:10px 24px;border:none;cursor:pointer;" onclick="resetAdopt()">Registrar outro interesse</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- PAINEL LAR TEMPORÁRIO -->
-        <div class="interest-panel" id="panelTemp">
-          <div class="interest-layout">
-            <div class="interest-info">
-              <h3>Lar temporário salva vidas</h3>
-              <p>O lar temporário é fundamental para animais que precisam de cuidados enquanto aguardam adoção. Você não precisa adotar definitivamente — apenas acolher por um tempo.</p>
-              <div class="info-highlight amber"><p>⏳ A duração média do lar temporário no DF é de <strong>2 a 8 semanas</strong>.</p></div>
-              <p>O que o lar temporário envolve:</p>
-              <ul class="form-checklist">
-                <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Alimentação e cuidados básicos</li>
-                <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Acompanhamento veterinário caso necessário</li>
-                <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Ajudar a divulgar o animal para adoção</li>
-                <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Muito cuidado & carinho</li>
-              </ul>
-            </div>
-            <div>
-              <div id="tempFormContent">
-                <div class="form-group">
-                  <label>Você tem um animal em mente? *</label>
-                  <div class="animal-choice-toggle">
-                    <div class="choice-btn" id="tempChoiceSpecific" onclick="setTempChoice('specific')"><span class="choice-icon">🔍</span><div class="choice-label">Escolher um animal</div><div class="choice-sub">Vi um animal específico</div></div>
-                    <div class="choice-btn" id="tempChoiceAny" onclick="setTempChoice('any')"><span class="choice-icon">🐾</span><div class="choice-label">Aceito qualquer um</div><div class="choice-sub">Me indiquem quem precisa</div></div>
-                  </div>
-                </div>
-                <div class="collapsible-section" id="tempSpecificSection">
-                  <div class="form-group" style="margin-top:4px;">
-                    <label>Selecione o(s) animal(is) que você pode acolher *</label>
-                    <p style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">Pode selecionar mais de um.</p>
-                    <div class="animal-list-grid" id="tempAnimalList"></div>
-                    <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">Veja mais na seção <a href="#animais" style="color:var(--amber);">Animais disponíveis</a>.</p>
-                  </div>
-                </div>
-                <div class="collapsible-section" id="tempAnySection">
-                  <div class="form-group" style="margin-top:4px;">
-                    <label>Quais tipos de animais você pode acolher? *</label>
-                    <div class="checkbox-group" style="margin-top:6px;">
-                      <label class="checkbox-item"><input type="checkbox" id="tempCachorro"> 🐶 Cachorros</label>
-                      <label class="checkbox-item"><input type="checkbox" id="tempGato"> 🐱 Gatos</label>
-                      <label class="checkbox-item"><input type="checkbox" id="tempFilhote"> 🍼 Filhotes (exige mais atenção)</label>
-                      <label class="checkbox-item"><input type="checkbox" id="tempIdoso"> 🐾 Idosos ou com necessidades especiais</label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label>Porte que consegue acolher</label>
-                    <div class="radio-grid" style="margin-top:6px;">
-                      <label class="radio-item"><input type="radio" name="tempPorte" value="pequeno"> Pequeno</label>
-                      <label class="radio-item"><input type="radio" name="tempPorte" value="medio"> Médio</label>
-                      <label class="radio-item"><input type="radio" name="tempPorte" value="grande"> Grande</label>
-                      <label class="radio-item"><input type="radio" name="tempPorte" value="indiferente"> Indiferente</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="collapsible-section" id="tempCommonFields">
-                  <div class="form-group" style="margin-top:4px;">
-                    <label for="tempNome">Seu nome completo *</label>
-                    <input type="text" id="tempNome" placeholder="Ex: João Souza" />
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group"><label for="tempContato">WhatsApp *</label><input type="tel" id="tempContato" placeholder="(61) 9xxxx-xxxx" /></div>
-                    <div class="form-group"><label for="tempEmail">E-mail</label><input type="email" id="tempEmail" placeholder="seu@email.com" /></div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group"><label for="tempCidade">Cidade/Bairro *</label><input type="text" id="tempCidade" placeholder="Ex: Brasília, Taguatinga..." /></div>
-                    <div class="form-group">
-                      <label for="tempDisponibilidade">Disponibilidade *</label>
-                      <select id="tempDisponibilidade"><option value="">Selecione...</option><option>Imediata</option><option>Em até 2 semanas</option><option>Em até 1 mês</option><option>Depende do caso</option></select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label>Por quanto tempo pode acolher? *</label>
-                    <div class="radio-group" style="margin-top:6px;">
-                      <label class="radio-item"><input type="radio" name="tempDuracao" value="2sem"> Até 2 semanas</label>
-                      <label class="radio-item"><input type="radio" name="tempDuracao" value="1mes"> Até 1 mês</label>
-                      <label class="radio-item"><input type="radio" name="tempDuracao" value="3mes"> Até 3 meses</label>
-                      <label class="radio-item"><input type="radio" name="tempDuracao" value="indefinido"> Até ser adotado (sem prazo)</label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label>Sua situação de moradia *</label>
-                    <div class="radio-group" style="margin-top:6px;">
-                      <label class="radio-item"><input type="radio" name="tempMoradia" value="casa_quintal"> Casa com quintal</label>
-                      <label class="radio-item"><input type="radio" name="tempMoradia" value="casa_sem"> Casa sem quintal</label>
-                      <label class="radio-item"><input type="radio" name="tempMoradia" value="apto"> Apartamento</label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label>Há outros animais em casa?</label>
-                    <div class="checkbox-group" style="margin-top:6px;">
-                      <label class="checkbox-item"><input type="checkbox"> Cachorro(s)</label>
-                      <label class="checkbox-item"><input type="checkbox"> Gato(s)</label>
-                      <label class="checkbox-item"><input type="checkbox"> Nenhum</label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label>Já foi lar temporário antes?</label>
-                    <div class="radio-group" style="margin-top:6px;">
-                      <label class="radio-item"><input type="radio" name="tempExp" value="sim"> Sim, tenho experiência</label>
-                      <label class="radio-item"><input type="radio" name="tempExp" value="nao"> Não, mas estou disposto(a) a aprender</label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="tempObs">Informações adicionais</label>
-                    <textarea id="tempObs" placeholder="Conte sobre sua rotina, restrições ou qualquer informação que ajude a encontrar o match certo..."></textarea>
-                  </div>
-                  <button class="btn btn-amber-form" style="width:100%;justify-content:center;padding:13px;border-radius:50px;border:none;font-size:15px;cursor:pointer;" onclick="submitTemp()">
-                    ⏳ Quero ser lar temporário
-                  </button>
-                  <p class="form-note">Entraremos em contato assim que houver um animal que combine com seu perfil.</p>
-                </div>
-              </div>
-              <div class="form-success" id="tempSuccess">
-                <div class="success-icon">🌟</div>
-                <h4>Incrível! Você é um herói!</h4>
-                <p>Seu cadastro de lar temporário foi registrado com sucesso. Entraremos em contato quando houver um animal compatível esperando por um lar como o seu.</p>
-                <button class="btn btn-amber-form" style="margin:1.5rem auto 0;border-radius:50px;padding:10px 24px;border:none;cursor:pointer;" onclick="resetTemp()">Atualizar meu cadastro</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
   <!-- CTA FINAL -->
   <div class="cta-section">
-    <h2>Um formulário pode salvar uma vida</h2>
-    <p>Leva menos de 2 minutos. Sem cadastro, sem custo. Só amor e comunidade.</p>
-    <a href="#cadastrar" class="btn btn-amber">🐾 Cadastrar animal agora</a>
+    <h2>Um clique pode salvar uma vida</h2>
+    <p>Leva menos de 2 minutos. Leia os termos e preencha o formulário. Só amor e comunidade.</p>
+    <button class="btn btn-amber" onclick="abrirModal('cad')">🐾 Cadastrar animal agora</button>
   </div>
 
   <!-- FOOTER -->
@@ -1781,10 +791,9 @@
         <h4>Navegação</h4>
         <ul>
           <li><a href="#como-funciona">Como funciona</a></li>
-          <li><a href="animais.html">Animais disponíveis</a></li>
+          <li><a href="#animais">Animais disponíveis</a></li>
           <li><a href="#mapa">Mapa do DF</a></li>
-          <li><a href="#ajudar">Como ajudar</a></li>
-          <li><a href="#cadastrar">Cadastrar animal</a></li>
+          <li><a href="#quero-ajudar">Quero participar</a></li>
         </ul>
       </div>
       <div class="footer-links">
@@ -1798,7 +807,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 PatasDF · Engenharia de Software</span>
+      <span>© 2025 PatasDF · Engenharia de Software · Todos os direitos garantidos</span>
       <span>Feito com 🐾 por <a href="sobre.html">Clarice Nunes</a></span>
     </div>
   </footer>
@@ -1806,23 +815,170 @@
   <!-- ======================== JAVASCRIPT ======================== -->
   <script>
     /* ============================================================
-       CONFIGURAÇÕES — SUBSTITUA COM SUAS URLs REAIS
+       ⚠️ CONFIGURE AQUI OS LINKS DOS SEUS GOOGLE FORMS
+       Substitua os # pelos links reais dos seus formulários:
     ============================================================ */
-    
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNqkM-QoE3UJi5s13ztdYP1AviMrzVzAykjMvlJGNkOUG0vPtFNit_wLXswIvPndAHMA/exec';
+    const FORMS_ADOTAR     = '#'; // Ex: 'https://forms.gle/XXXXXXX'
+    const FORMS_TEMP       = '#'; // Ex: 'https://forms.gle/YYYYYYY'
+    const FORMS_CADASTRAR  = '#'; // Ex: 'https://forms.gle/ZZZZZZZ'
+
     const ANIMALS_URL = 'https://raw.githubusercontent.com/SEU_USUARIO/patasdf/main/animais.json';
 
     /* ============================================================
-       ESTADO GLOBAL
+       ESTADO DO MODAL
     ============================================================ */
-    let ANIMALS     = [];
-    let filtroAtual = 'todos';
-    let adoptChoice = null;
-    let tempChoice  = null;
+    let _modalTipo    = null; // 'adopt' | 'temp' | 'cad'
+    let _aceiteFeito  = false;
 
-    // Dados pendentes para o modal
-    let _pendingAdoptData = null;
-    let _pendingTempData  = null;
+    const MODAL_CONFIG = {
+      adopt: {
+        badgeClass:   'adopt',
+        icon:         '🏠',
+        title:        'Adoção Responsável',
+        desc:         'Compromisso permanente com o animal',
+        modalTitle:   '📋 Termo de Adoção Responsável',
+        modalSub:     'Leia com atenção antes de ir ao formulário',
+        btnLabel:     '🏠 Ir para o formulário de adoção →',
+        btnClass:     'adopt',
+        aceiteLabel:  'Li e aceito o Termo de Adoção Responsável',
+        formsUrl:     () => FORMS_ADOTAR,
+        contract:     'contractAdopt',
+      },
+      temp: {
+        badgeClass:   'temp',
+        icon:         '⏳',
+        title:        'Lar Temporário',
+        desc:         'Acolhimento temporário com compromisso',
+        modalTitle:   '📋 Termo de Lar Temporário',
+        modalSub:     'Leia com atenção antes de ir ao formulário',
+        btnLabel:     '⏳ Ir para o formulário de lar temporário →',
+        btnClass:     'temp',
+        aceiteLabel:  'Li e aceito o Termo de Lar Temporário',
+        formsUrl:     () => FORMS_TEMP,
+        contract:     'contractTemp',
+      },
+      cad: {
+        badgeClass:   'cad',
+        icon:         '🐾',
+        title:        'Cadastrar Animal',
+        desc:         'Publicação pública com autorização',
+        modalTitle:   '📋 Termo de Publicação de Animal',
+        modalSub:     'Leia com atenção antes de ir ao formulário',
+        btnLabel:     '📋 Ir para o formulário de cadastro →',
+        btnClass:     'cad',
+        aceiteLabel:  'Li e aceito o Termo de Publicação',
+        formsUrl:     () => FORMS_CADASTRAR,
+        contract:     'contractCad',
+      },
+    };
+
+    /* ============================================================
+       ABRIR MODAL
+    ============================================================ */
+    function abrirModal(tipo) {
+      _modalTipo   = tipo;
+      _aceiteFeito = false;
+
+      const cfg = MODAL_CONFIG[tipo];
+
+      // Badge
+      const badge = document.getElementById('modalActionBadge');
+      badge.className = `modal-action-badge ${cfg.badgeClass}`;
+      document.getElementById('modalActionIcon').textContent  = cfg.icon;
+      document.getElementById('modalActionTitle').textContent = cfg.title;
+      document.getElementById('modalActionDesc').textContent  = cfg.desc;
+
+      // Título
+      document.getElementById('termoModalTitle').textContent   = cfg.modalTitle;
+      document.getElementById('termoModalSubtitle').textContent = cfg.modalSub;
+
+      // Contratos — mostra só o correto
+      ['contractAdopt','contractTemp','contractCad'].forEach(id => {
+        document.getElementById(id).style.display = (id === cfg.contract) ? '' : 'none';
+      });
+
+      // Botão de aceite
+      const btnAceite = document.getElementById('btnAceite');
+      btnAceite.className = `btn-accept ${cfg.badgeClass}`;
+      document.getElementById('aceiteIcon').textContent  = '○';
+      document.getElementById('aceiteLabel').textContent = cfg.aceiteLabel;
+
+      // Botão ir forms
+      const btnForms = document.getElementById('btnIrForms');
+      btnForms.className = `btn-ir-forms ${cfg.btnClass}`;
+      btnForms.textContent = cfg.btnLabel;
+      btnForms.setAttribute('aria-disabled', 'true');
+      btnForms.href = cfg.formsUrl();
+
+      // Mensagem
+      document.getElementById('mustReadMsg').style.display = '';
+
+      // Abre overlay
+      document.getElementById('termoModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    /* ============================================================
+       FECHAR MODAL
+    ============================================================ */
+    function fecharModal() {
+      document.getElementById('termoModal').classList.remove('open');
+      document.body.style.overflow = '';
+      _aceiteFeito = false;
+      _modalTipo   = null;
+    }
+
+    // Fecha clicando fora
+    document.getElementById('termoModal').addEventListener('click', function(e) {
+      if (e.target === this) fecharModal();
+    });
+    // Fecha com ESC
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
+
+    /* ============================================================
+       TOGGLE ACEITE
+    ============================================================ */
+    function toggleAceite() {
+      _aceiteFeito = !_aceiteFeito;
+      const icon   = document.getElementById('aceiteIcon');
+      const btnA   = document.getElementById('btnAceite');
+      const btnF   = document.getElementById('btnIrForms');
+      const msg    = document.getElementById('mustReadMsg');
+
+      if (_aceiteFeito) {
+        icon.textContent = '✓';
+        // estado "confirmado" — escurece o fundo do botão
+        btnA.style.filter = 'brightness(0.88)';
+        btnA.style.cursor = 'default';
+        btnF.removeAttribute('aria-disabled');
+        msg.style.display = 'none';
+      } else {
+        icon.textContent = '○';
+        btnA.style.filter = '';
+        btnA.style.cursor = '';
+        btnF.setAttribute('aria-disabled', 'true');
+        msg.style.display = '';
+      }
+    }
+
+    /* ============================================================
+       VALIDAR ACEITE AO CLICAR NO BOTÃO "IR PARA FORMULÁRIO"
+    ============================================================ */
+    function validarAceiteEIr(e) {
+      if (!_aceiteFeito) {
+        e.preventDefault();
+        // Pisca o botão de aceite para chamar atenção
+        const btn = document.getElementById('btnAceite');
+        btn.style.outline = '3px solid var(--coral)';
+        setTimeout(() => btn.style.outline = '', 900);
+        document.getElementById('mustReadMsg').textContent = '⚠️ Você precisa aceitar os termos para continuar';
+        return false;
+      }
+      // aceite feito — o link abre normalmente (target="_blank")
+      // pequeno delay para a aba abrir antes de fechar o modal
+      setTimeout(fecharModal, 300);
+      return true;
+    }
 
     /* ============================================================
        MENU MOBILE
@@ -1850,6 +1006,9 @@
     /* ============================================================
        FILTRO DE ANIMAIS
     ============================================================ */
+    let ANIMALS     = [];
+    let filtroAtual = 'todos';
+
     function filterAnimals(tipo, btn) {
       document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
@@ -1858,7 +1017,7 @@
     }
 
     /* ============================================================
-       BOTÃO QUERO ADOTAR (cards de animal)
+       CONTATO WHATSAPP
     ============================================================ */
     function entrarContato(nome, contato) {
       if (contato && !contato.includes('xxxx')) {
@@ -1870,36 +1029,22 @@
       }
     }
 
-    /* Botão "Quero adotar" dos cards → abre formulário e pré-seleciona o animal */
+    /* Botão "Quero adotar" dos cards → abre modal de adoção */
     function irAdotarDoCard(id) {
-      // Guarda o id para pré-selecionar no formulário
       try { sessionStorage.setItem('patasdf_adotar_id', id); } catch(e) {}
-      // Abre a aba de adoção
-      openTab('adopt');
-      setAdoptChoice('specific');
-      // Aguarda o collapsible abrir e seleciona o animal
-      setTimeout(() => {
-        const input = document.getElementById('input-adopt-' + id);
-        if (input) {
-          input.checked = true;
-          onAnimalChange('adopt', id, 'radio', input);
-        }
-        document.getElementById('quero-ajudar').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 200);
+      abrirModal('adopt');
     }
 
     /* ============================================================
-       CARREGAR ANIMAIS DO JSON
+       DADOS EMBUTIDOS + CARREGAR ANIMAIS
     ============================================================ */
-    // Dados embutidos — sempre disponíveis, sem depender de fetch ou servidor
     const ANIMAIS_EMBUTIDOS = [
-      { id:'teste1', nome:'Batatinha',  tipo:'cachorro', idade:'~1 ano',   porte:'Pequeno', cidade:'Asa Norte',   descricao:'Vira-lata amarelinho, super dócil e vacinado. Adora colo e brinca com qualquer um. Já castrado. Encontrado perto do Parque da Cidade.', contato:'(61) 99999-0001' },
-      { id:'ex1',    nome:'Bolinha',    tipo:'cachorro', idade:'~2 anos',  porte:'Médio',   cidade:'Asa Sul',     descricao:'Muito carinhoso, brinca com crianças e já é castrado. Encontrado abandonado na quadra 308 Sul.',    contato:'(61) 98888-1111' },
-      { id:'ex2',    nome:'Mimi',       tipo:'gato',     idade:'~8 meses', porte:'Pequeno', cidade:'Taguatinga',  descricao:'Gatinha dócil, vacinada e sociável com outros gatos. Adora dormir no colo.',                       contato:'(61) 97777-2222' },
-      { id:'ex3',    nome:'Thor',       tipo:'cachorro', idade:'~4 anos',  porte:'Grande',  cidade:'Ceilândia',   descricao:'Cão tranquilo e protetor, gosta de caminhadas longas. Ótimo com crianças.',                       contato:'(61) 96666-3333' },
-      { id:'ex4',    nome:'Mingau',     tipo:'gato',     idade:'~3 anos',  porte:'Médio',   cidade:'Guará',       descricao:'Independente mas carinhoso. Castrado e vacinado em dia. Vive bem em apartamento.',                contato:'(61) 95555-4444' },
-      { id:'ex5',    nome:'Pipoca',     tipo:'cachorro', idade:'~1 ano',   porte:'Pequeno', cidade:'Sobradinho',  descricao:'Brincalhona e energética. Adora crianças e outros cães. Ainda precisa ser castrada.',             contato:'(61) 94444-5555' },
-      { id:'ex6',    nome:'Nala',       tipo:'gato',     idade:'~6 meses', porte:'Pequeno', cidade:'Samambaia',   descricao:'Curiosa e cheia de energia. Filhote resgatada da rua, precisa de vacinas e muito amor.',          contato:'(61) 93333-6666' },
+      { id:'ex1', nome:'Bolinha', tipo:'cachorro', idade:'~2 anos',  porte:'Médio',   cidade:'Asa Sul',    descricao:'Muito carinhoso, brinca com crianças e já é castrado. Encontrado abandonado na quadra 308 Sul.',   contato:'(61) 98888-1111' },
+      { id:'ex2', nome:'Mimi',    tipo:'gato',     idade:'~8 meses', porte:'Pequeno', cidade:'Taguatinga', descricao:'Gatinha dócil, vacinada e sociável com outros gatos. Adora dormir no colo.',                      contato:'(61) 97777-2222' },
+      { id:'ex3', nome:'Thor',    tipo:'cachorro', idade:'~4 anos',  porte:'Grande',  cidade:'Ceilândia',  descricao:'Cão tranquilo e protetor, gosta de caminhadas longas. Ótimo com crianças.',                      contato:'(61) 96666-3333' },
+      { id:'ex4', nome:'Mingau',  tipo:'gato',     idade:'~3 anos',  porte:'Médio',   cidade:'Guará',      descricao:'Independente mas carinhoso. Castrado e vacinado em dia. Vive bem em apartamento.',               contato:'(61) 95555-4444' },
+      { id:'ex5', nome:'Pipoca',  tipo:'cachorro', idade:'~1 ano',   porte:'Pequeno', cidade:'Sobradinho', descricao:'Brincalhona e energética. Adora crianças e outros cães. Ainda precisa ser castrada.',            contato:'(61) 94444-5555' },
+      { id:'ex6', nome:'Nala',    tipo:'gato',     idade:'~6 meses', porte:'Pequeno', cidade:'Samambaia',  descricao:'Curiosa e cheia de energia. Filhote resgatada da rua, precisa de vacinas e muito amor.',         contato:'(61) 93333-6666' },
     ];
 
     async function carregarAnimais() {
@@ -1911,77 +1056,30 @@
       grid.style.display    = 'none';
       erro.style.display    = 'none';
 
-      // Tenta carregar do JSON externo (funciona em servidor/GitHub Pages)
       let carregouExterno = false;
       try {
         const resp = await fetch(ANIMALS_URL + '?t=' + Date.now());
         if (resp.ok) {
           const dados = await resp.json();
           const disponiveis = dados.filter(a => !a.status || a.status === 'disponivel');
-          if (disponiveis.length > 0) {
-            ANIMALS = disponiveis;
-            carregouExterno = true;
-          }
+          if (disponiveis.length > 0) { ANIMALS = disponiveis; carregouExterno = true; }
         }
-      } catch (e) {
-        // silencioso — usa dados embutidos abaixo
-      }
+      } catch(e) { /* usa embutidos */ }
 
-      // Se não carregou do externo, usa os dados embutidos
-      if (!carregouExterno) {
-        ANIMALS = ANIMAIS_EMBUTIDOS;
-      }
+      if (!carregouExterno) ANIMALS = ANIMAIS_EMBUTIDOS;
 
       loading.style.display = 'none';
       grid.style.display    = '';
       renderizarCards(filtroAtual);
       if (ANIMALS.length > 0) document.getElementById('verMaisArea').style.display = '';
-
-      // Verifica se veio da página animais.html com um animal pré-selecionado
-      verificarPreSelecao();
     }
 
-    /* ============================================================
-       PRÉ-SELECIONAR ANIMAL (vindo de animais.html)
-    ============================================================ */
-    function verificarPreSelecao() {
-      let id = null;
-      try { id = sessionStorage.getItem('patasdf_adotar_id'); } catch(e) {}
-      if (!id) return;
-
-      // Limpa para não repetir em reload
-      try { sessionStorage.removeItem('patasdf_adotar_id'); } catch(e) {}
-
-      // Abre a aba de adoção e escolhe "animal específico"
-      openTab('adopt');
-      setAdoptChoice('specific');
-
-      // Aguarda a lista renderizar (collapsible precisa de um tick)
-      setTimeout(() => {
-        const input = document.getElementById('input-adopt-' + id);
-        if (input) {
-          input.checked = true;
-          onAnimalChange('adopt', id, 'radio', input);
-        }
-        // Rola suavemente até o formulário
-        const el = document.getElementById('quero-ajudar');
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 150);
-    }
-
-    /* ============================================================
-       RENDERIZAR CARDS
-    ============================================================ */
     function renderizarCards(filtro) {
       const grid       = document.getElementById('animalsGrid');
       const emptyState = document.getElementById('emptyState');
       const lista = filtro === 'todos' ? ANIMALS : ANIMALS.filter(a => a.tipo === filtro);
 
-      if (lista.length === 0) {
-        grid.innerHTML = '';
-        emptyState.style.display = 'block';
-        return;
-      }
+      if (lista.length === 0) { grid.innerHTML = ''; emptyState.style.display = 'block'; return; }
       emptyState.style.display = 'none';
 
       const bgMap    = { cachorro: '#FFF3E0', gato: '#F3E5F5' };
@@ -2010,9 +1108,9 @@
             </div>
             <p class="animal-desc">${a.descricao || ''}</p>
             <div class="card-action-area">
-              <a class="btn-adotar-main" href="#quero-ajudar" onclick="irAdotarDoCard('${idS}')">
+              <button class="btn-adotar-main" onclick="irAdotarDoCard('${idS}')">
                 🏠 Quero adotar este animal
-              </a>
+              </button>
               <button class="btn-wpp-secondary" onclick="entrarContato('${nomeS}','${contS}')">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.119 1.532 5.849L.057 23.617a.75.75 0 00.921.921l5.767-1.475A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.713 9.713 0 01-4.964-1.362l-.355-.211-3.683.942.96-3.598-.232-.372A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
                 Falar direto no WhatsApp
@@ -2025,21 +1123,19 @@
 
     carregarAnimais();
 
-    /* ============================================================
-       STRIP DE ANIMAIS
-    ============================================================ */
+    /* Strip */
     async function carregarStrip() {
       try {
         const r = await fetch(ANIMALS_URL + '?t=' + Date.now());
         if (!r.ok) return;
         const dados = await r.json();
         const disponiveis = dados.filter(a => !a.status || a.status === 'disponivel');
-        if (disponiveis.length === 0) return;
+        if (!disponiveis.length) return;
         const emojiMap = { cachorro: '🐶', gato: '🐱' };
         const items = disponiveis.map(a => `
           <div class="strip-item">
-            <span class="si-emoji">${emojiMap[a.tipo] || '🐾'}</span>
-            <div><div class="si-name">${a.nome || 'Animal'}</div><div class="si-info">${[a.tipo, a.cidade].filter(Boolean).join(' · ')}</div></div>
+            <span class="si-emoji">${emojiMap[a.tipo]||'🐾'}</span>
+            <div><div class="si-name">${a.nome||'Animal'}</div><div class="si-info">${[a.tipo,a.cidade].filter(Boolean).join(' · ')}</div></div>
           </div>`).join('');
         const extra = `<div class="strip-item"><span class="si-emoji">🐾</span><div><div class="si-name">Novos animais todo dia</div><div class="si-info">Cadastre o seu também →</div></div></div>`;
         document.getElementById('stripInner').innerHTML = items + extra + items + extra;
@@ -2047,633 +1143,16 @@
     }
     carregarStrip();
 
-    /* ============================================================
-       RENDERIZAR LISTA DE ANIMAIS NOS FORMULÁRIOS
-    ============================================================ */
-    function renderAnimalList(containerId, mode) {
-      const container = document.getElementById(containerId);
-      const inputType = mode === 'adopt' ? 'radio' : 'checkbox';
-      const inputName = mode === 'adopt' ? 'adoptAnimalChoice' : 'tempAnimalChoice';
-      const emojiMap  = { cachorro: '🐶', gato: '🐱' };
-
-      if (ANIMALS.length === 0) {
-        container.innerHTML = '<p style="font-size:13px;color:var(--text-muted);">Nenhum animal disponível no momento.</p>';
-        return;
+    /* Detecta ?adotar=1 vindo da página animais.html e abre o modal de adoção */
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('adotar') === '1') {
+        // Aguarda o DOM estar pronto e os dados carregados
+        setTimeout(() => abrirModal('adopt'), 400);
+        // Limpa o parâmetro da URL sem recarregar
+        history.replaceState(null, '', window.location.pathname + '#quero-ajudar');
       }
-
-      container.innerHTML = ANIMALS.map(a => {
-        const emoji   = emojiMap[a.tipo] || '🐾';
-        const info    = [a.tipo, a.idade, a.cidade].filter(Boolean).join(' · ');
-        const inputId = `input-${mode}-${a.id}`;
-        return `
-        <label class="animal-select-card" id="card-${mode}-${a.id}" for="${inputId}">
-          <input type="${inputType}" id="${inputId}" name="${inputName}" value="${a.id}"
-            style="accent-color:${mode==='adopt'?'var(--teal)':'var(--amber)'};"
-            onchange="onAnimalChange('${mode}','${a.id}','${inputType}',this)">
-          <div class="animal-card-mini">
-            <div class="mini-emoji">${emoji}</div>
-            <div class="mini-name">${a.nome}</div>
-            <div class="mini-info">${info}</div>
-          </div>
-        </label>`;
-      }).join('');
-    }
-
-    function onAnimalChange(mode, id, type, inputEl) {
-      const selectedClass = mode === 'adopt' ? 'selected' : 'selected-temp';
-      if (type === 'radio') {
-        document.querySelectorAll(`[id^="card-${mode}-"]`).forEach(c => c.classList.remove(selectedClass));
-        if (inputEl.checked) document.getElementById(`card-${mode}-${id}`).classList.add(selectedClass);
-      } else {
-        document.getElementById(`card-${mode}-${id}`).classList.toggle(selectedClass, inputEl.checked);
-      }
-    }
-
-    /* ============================================================
-       ABAS ADOTAR / LAR TEMPORÁRIO
-    ============================================================ */
-    function openTab(tab) {
-      const isAdopt = tab === 'adopt';
-      document.getElementById('tabAdopt').classList.toggle('active', isAdopt);
-      document.getElementById('tabTemp').classList.toggle('active', !isAdopt);
-      document.getElementById('panelAdopt').classList.toggle('active', isAdopt);
-      document.getElementById('panelTemp').classList.toggle('active', !isAdopt);
-    }
-
-    /* ============================================================
-       LÓGICA DE ESCOLHA — ADOÇÃO
-    ============================================================ */
-    function setAdoptChoice(choice) {
-      adoptChoice = choice;
-      document.getElementById('adoptChoiceSpecific').classList.toggle('selected-adopt', choice === 'specific');
-      document.getElementById('adoptChoiceAny').classList.toggle('selected-adopt', choice === 'any');
-      document.getElementById('adoptSpecificSection').classList.toggle('open', choice === 'specific');
-      document.getElementById('adoptAnySection').classList.toggle('open', choice === 'any');
-      document.getElementById('adoptCommonFields').classList.add('open');
-      if (choice === 'specific') renderAnimalList('adoptAnimalList', 'adopt');
-    }
-
-    /* ============================================================
-       LÓGICA DE ESCOLHA — LAR TEMPORÁRIO
-    ============================================================ */
-    function setTempChoice(choice) {
-      tempChoice = choice;
-      document.getElementById('tempChoiceSpecific').classList.toggle('selected-temp', choice === 'specific');
-      document.getElementById('tempChoiceAny').classList.toggle('selected-temp', choice === 'any');
-      document.getElementById('tempSpecificSection').classList.toggle('open', choice === 'specific');
-      document.getElementById('tempAnySection').classList.toggle('open', choice === 'any');
-      document.getElementById('tempCommonFields').classList.add('open');
-      if (choice === 'specific') renderAnimalList('tempAnimalList', 'temp');
-    }
-
-    /* ============================================================
-       FORMULÁRIO DE CADASTRO DE ANIMAL → Apps Script
-    ============================================================ */
-    /* ============================================================
-       STEPPER — CADASTRAR ANIMAL
-    ============================================================ */
-    let cadCurrentStep = 1;
-
-    function cadNextStep(from) {
-      if (!cadValidateStep(from)) return;
-      cadGoToStep(from + 1);
-    }
-
-    function cadBackStep(from) {
-      cadGoToStep(from - 1);
-    }
-
-    function cadGoToStep(n) {
-      // esconde step atual
-      document.querySelector('.cad-form-step.active')?.classList.remove('active');
-      document.getElementById('cadStep' + n).classList.add('active');
-
-      // atualiza stepper tabs
-      for (let i = 1; i <= 3; i++) {
-        const tab = document.getElementById('stepTab' + i);
-        tab.classList.remove('active', 'done');
-        if (i < n)  tab.classList.add('done');
-        if (i === n) tab.classList.add('active');
-      }
-
-      cadCurrentStep = n;
-
-      // scroll suave para o topo do form
-      document.getElementById('cadastrar').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    function cadValidateStep(step) {
-      let ok = true;
-
-      function checkField(id) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const val = el.value.trim();
-        if (!val) {
-          el.classList.add('invalid');
-          ok = false;
-          // remove invalid on input
-          el.addEventListener('input', () => el.classList.remove('invalid'), { once: true });
-          el.addEventListener('change', () => el.classList.remove('invalid'), { once: true });
-        }
-      }
-
-      function checkRadio(name) {
-        if (!document.querySelector('input[name="' + name + '"]:checked')) {
-          ok = false;
-        }
-      }
-
-      if (step === 1) {
-        checkField('animalNome');
-        checkField('animalTipo');
-        checkField('animalSexo');
-        checkField('animalIdade');
-        checkField('animalPorte');
-        checkField('animalCidade');
-        checkField('animalFoto');
-        if (!ok) alert('Por favor, preencha todos os campos obrigatórios desta etapa.');
-      }
-
-      if (step === 2) {
-        checkRadio('animalCastrado');
-        checkRadio('animalVacinado');
-        checkField('animalDesc');
-        // ao menos um convívio
-        const convOk = ['convCriancas','convCachorros','convGatos','convIdosos','convNenhum'].some(id => document.getElementById(id)?.checked);
-        // ao menos um tipo de moradia
-        const moraOk = ['moraApto','moraCasaSem','moraCasaCom','moraQualquer'].some(id => document.getElementById(id)?.checked);
-        if (!convOk || !moraOk || !ok) {
-          if (!ok || !convOk || !moraOk) alert('Por favor, preencha todos os campos obrigatórios desta etapa (incluindo convívio e moradia).');
-          ok = false;
-        }
-      }
-
-      return ok;
-    }
-
-    /* ============================================================
-       SUBMIT FORMULÁRIO DE CADASTRO → Apps Script
-    ============================================================ */
-    async function submitForm() {
-      // coleta todos os dados das 3 etapas
-      const nome    = document.getElementById('animalNome').value.trim();
-      const tipo    = document.getElementById('animalTipo').value;
-      const sexo    = document.getElementById('animalSexo').value;
-      const idade   = document.getElementById('animalIdade').value;
-      const porte   = document.getElementById('animalPorte').value;
-      const cidade  = document.getElementById('animalCidade').value.trim();
-      const fotoUrl = document.getElementById('animalFoto').value.trim();
-      const castrado  = document.querySelector('input[name="animalCastrado"]:checked')?.value  || '';
-      const vacinado  = document.querySelector('input[name="animalVacinado"]:checked')?.value  || '';
-      const desc      = document.getElementById('animalDesc').value.trim();
-      const necessidades = document.getElementById('animalNecessidades').value.trim();
-      const convivio  = ['convCriancas','convCachorros','convGatos','convIdosos','convNenhum']
-                          .filter(id => document.getElementById(id)?.checked)
-                          .map(id => ({ convCriancas:'Crianças', convCachorros:'Cachorros', convGatos:'Gatos', convIdosos:'Idosos', convNenhum:'Prefere ser único pet' })[id])
-                          .join(', ');
-      const moradia   = ['moraApto','moraCasaSem','moraCasaCom','moraQualquer']
-                          .filter(id => document.getElementById(id)?.checked)
-                          .map(id => ({ moraApto:'Apartamento', moraCasaSem:'Casa sem quintal', moraCasaCom:'Casa com quintal', moraQualquer:'Qualquer ambiente' })[id])
-                          .join(', ');
-      const cadNome    = document.getElementById('cadNome').value.trim();
-      const contato    = document.getElementById('animalContato').value.trim();
-      const cadEmail   = document.getElementById('cadEmail').value.trim();
-      const relacao    = document.querySelector('input[name="cadRelacao"]:checked')?.value || '';
-      const motivo     = document.getElementById('cadMotivo').value.trim();
-
-      if (!cadNome || !contato || !cadEmail || !relacao || !motivo) {
-        alert('Por favor, preencha todos os campos obrigatórios desta etapa.');
-        return;
-      }
-
-      const btn     = document.getElementById('btnCadastrar');
-      const spinner = document.getElementById('spinnerCadastro');
-      btn.style.opacity = '0.6';
-      btn.style.pointerEvents = 'none';
-      spinner.style.display = 'inline-block';
-
-      try {
-        const payload1 = JSON.stringify({
-            acao: 'cadastrarAnimal',
-            nome, tipo, sexo, idade, porte, cidade, fotoUrl,
-            castrado, vacinado, convivio, moradia,
-            desc, necessidades,
-            cadNome, contato, cadEmail, relacao, motivo,
-            timestamp: new Date().toISOString()
-          });
-        const form1 = new FormData();
-        form1.append('dados', payload1);
-        const resp = await fetch(SCRIPT_URL, {
-  method: 'POST',
-  mode: 'no-cors',
-  body: form1
-});
-
-const data = await resp.json();
-console.log(data);
-        document.getElementById('formContent').style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
-      } catch (e) {
-        console.error(e);
-        alert('Erro ao enviar. Verifique sua conexão e tente novamente.');
-        btn.style.opacity = '1';
-        btn.style.pointerEvents = 'auto';
-      } finally {
-        spinner.style.display = 'none';
-      }
-    }
-
-    function resetForm() {
-      document.getElementById('formContent').style.display = '';
-      document.getElementById('formSuccess').style.display = 'none';
-      // reseta campos de texto
-      ['animalNome','animalCidade','animalDesc','animalFoto','animalNecessidades',
-       'animalContato','cadNome','cadEmail','cadMotivo'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.value = '';
-      });
-      ['animalTipo','animalSexo','animalIdade','animalPorte'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.value = '';
-      });
-      // reseta radios e checkboxes
-      document.querySelectorAll('#cadStep1 input, #cadStep2 input, #cadStep3 input[type="radio"], #cadStep3 input[type="checkbox"]')
-        .forEach(el => { el.checked = false; el.classList.remove('invalid'); });
-      // reseta checkbox do termo
-      const chk = document.getElementById('termoCadastroCheck');
-      if (chk) { chk.checked = false; toggleBtnCadastrar(); }
-      // volta pro step 1
-      cadGoToStep(1);
-    }
-
-    function toggleBtnCadastrar() {
-      const chk = document.getElementById('termoCadastroCheck');
-      const btn = document.getElementById('btnCadastrar');
-      if (!chk || !btn) return;
-      if (chk.checked) {
-        btn.style.opacity = '1';
-        btn.style.pointerEvents = 'auto';
-      } else {
-        btn.style.opacity = '0.4';
-        btn.style.pointerEvents = 'none';
-      }
-    }
-
-    /* ============================================================
-       SUBMIT ADOÇÃO → abre modal de contrato
-    ============================================================ */
-    function submitAdopt() {
-      const nome    = document.getElementById('adoptNome').value.trim();
-      const contato = document.getElementById('adoptContato').value.trim();
-      const cidade  = document.getElementById('adoptCidade').value.trim();
-      const motivo  = document.getElementById('adoptMotivo').value.trim();
-      const moradia = document.querySelector('input[name="adoptMoradia"]:checked');
-
-      if (!adoptChoice) {
-        alert('Por favor, indique se você quer um animal específico ou aceita qualquer um.');
-        return;
-      }
-      if (!nome || !contato || !cidade || !motivo || !moradia) {
-        alert('Por favor, preencha todos os campos obrigatórios (*).');
-        return;
-      }
-      if (adoptChoice === 'specific' && !document.querySelector('input[name="adoptAnimalChoice"]:checked')) {
-        alert('Por favor, selecione o animal que você deseja adotar.');
-        return;
-      }
-
-      // Coleta animal selecionado (se específico)
-      let animalSelecionado = null;
-      if (adoptChoice === 'specific') {
-        const checkedId = document.querySelector('input[name="adoptAnimalChoice"]:checked')?.value;
-        animalSelecionado = ANIMALS.find(a => a.id === checkedId) || null;
-      }
-
-      // Preferências (se aceita qualquer)
-      const tipoPref  = document.querySelector('input[name="adoptTipoPref"]:checked')?.value  || '';
-      const portePref = document.querySelector('input[name="adoptPorte"]:checked')?.value     || '';
-      const email     = document.getElementById('adoptEmail').value.trim();
-      const idadeFx   = document.getElementById('adoptIdade').value;
-
-      _pendingAdoptData = { nome, contato, email, cidade, idadeFx, moradia: moradia.value, motivo, adoptChoice, animalSelecionado, tipoPref, portePref };
-
-      atualizarPreviewModal('adopt', animalSelecionado, { nome, contato, cidade, moradia: moradia.value });
-      abrirModal('adopt');
-    }
-
-    /* ============================================================
-       SUBMIT LAR TEMPORÁRIO → abre modal de contrato
-    ============================================================ */
-    function submitTemp() {
-      const nome    = document.getElementById('tempNome').value.trim();
-      const contato = document.getElementById('tempContato').value.trim();
-      const cidade  = document.getElementById('tempCidade').value.trim();
-      const disp    = document.getElementById('tempDisponibilidade').value;
-      const duracao = document.querySelector('input[name="tempDuracao"]:checked');
-      const moradia = document.querySelector('input[name="tempMoradia"]:checked');
-
-      if (!tempChoice) {
-        alert('Por favor, indique se você tem um animal em mente ou aceita qualquer um.');
-        return;
-      }
-      if (!nome || !contato || !cidade || !disp || !duracao || !moradia) {
-        alert('Por favor, preencha todos os campos obrigatórios (*).');
-        return;
-      }
-      if (tempChoice === 'specific') {
-        const checked = document.querySelectorAll('input[name="tempAnimalChoice"]:checked');
-        if (checked.length === 0) { alert('Por favor, selecione pelo menos um animal.'); return; }
-      } else {
-        const tipoOk = ['tempCachorro','tempGato','tempFilhote','tempIdoso'].some(id => document.getElementById(id).checked);
-        if (!tipoOk) { alert('Por favor, selecione pelo menos um tipo de animal que você pode acolher.'); return; }
-      }
-
-      // Animais selecionados (se específico)
-      let animaisSelecionados = [];
-      if (tempChoice === 'specific') {
-        const checkedIds = Array.from(document.querySelectorAll('input[name="tempAnimalChoice"]:checked')).map(el => el.value);
-        animaisSelecionados = ANIMALS.filter(a => checkedIds.includes(a.id));
-      }
-
-      const email = document.getElementById('tempEmail').value.trim();
-      const obs   = document.getElementById('tempObs').value.trim();
-
-      _pendingTempData = { nome, contato, email, cidade, disp, duracao: duracao.value, moradia: moradia.value, obs, tempChoice, animaisSelecionados };
-
-      // Para o preview do modal, usa o primeiro animal selecionado (ou null)
-      const primeiroAnimal = animaisSelecionados[0] || null;
-      atualizarPreviewModal('temp', primeiroAnimal, { nome, contato, cidade, moradia: moradia.value }, animaisSelecionados.length);
-      abrirModal('temp');
-    }
-
-    /* ============================================================
-       MODAL — FUNÇÕES DE CONTROLE
-    ============================================================ */
-
-    /**
-     * atualizarPreviewModal — preenche o conteúdo do modal antes de abrir
-     * @param {string} tipo    - 'adopt' ou 'temp'
-     * @param {object} animal  - objeto do animal (ou null)
-     * @param {object} pessoa  - { nome, contato, cidade, moradia }
-     * @param {number} qtd     - quantidade de animais (lar temp com múltiplos)
-     */
-    function atualizarPreviewModal(tipo, animal, pessoa, qtd) {
-      const emojiMap = { cachorro: '🐶', gato: '🐱' };
-
-      // Título e subtítulo do modal
-      if (tipo === 'adopt') {
-        document.getElementById('modalTitle').textContent    = '📋 Termo de Adoção Responsável';
-        document.getElementById('modalSubtitle').textContent = 'Leia com atenção antes de confirmar a adoção';
-      } else {
-        document.getElementById('modalTitle').textContent    = '📋 Termo de Lar Temporário';
-        document.getElementById('modalSubtitle').textContent = 'Leia com atenção antes de confirmar o acolhimento';
-      }
-
-      // Preview do animal
-      if (animal) {
-        document.getElementById('modalAnimalEmoji').textContent = emojiMap[animal.tipo] || '🐾';
-        document.getElementById('modalAnimalNome').textContent  = animal.nome;
-        document.getElementById('modalAnimalDesc').textContent  = animal.descricao || '';
-        const badges = [animal.tipo, animal.idade, animal.cidade, animal.porte].filter(Boolean);
-        document.getElementById('modalAnimalBadges').innerHTML  = badges.map(b => `<span class="modal-badge">${b}</span>`).join('');
-      } else {
-        // "Aceito qualquer um" ou lar temp sem específico
-        document.getElementById('modalAnimalEmoji').textContent = '🐾';
-        document.getElementById('modalAnimalNome').textContent  = tipo === 'adopt'
-          ? 'Match a definir'
-          : (qtd > 1 ? `${qtd} animais selecionados` : 'Match a definir');
-        document.getElementById('modalAnimalDesc').textContent  = tipo === 'adopt'
-          ? 'Você será notificado quando um animal compatível for cadastrado.'
-          : 'Você será contatado quando um animal precisar de lar temporário.';
-        document.getElementById('modalAnimalBadges').innerHTML  = '';
-      }
-
-      // Contratos (mostra o correto)
-      document.getElementById('modalContractAdopt').style.display = tipo === 'adopt' ? '' : 'none';
-      document.getElementById('modalContractTemp').style.display  = tipo === 'temp'  ? '' : 'none';
-
-      // Dados do interessado
-      const moradiaLabel = {
-        casa_quintal: 'Casa com quintal',
-        casa_sem:     'Casa sem quintal',
-        apto:         'Apartamento',
-        outro:        'Outro'
-      };
-      document.getElementById('modalRequesterGrid').innerHTML = `
-        <div class="modal-requester-item"><div class="mri-label">Nome</div><div class="mri-val">${pessoa.nome}</div></div>
-        <div class="modal-requester-item"><div class="mri-label">WhatsApp</div><div class="mri-val">${pessoa.contato}</div></div>
-        <div class="modal-requester-item"><div class="mri-label">Cidade/Bairro</div><div class="mri-val">${pessoa.cidade}</div></div>
-        <div class="modal-requester-item"><div class="mri-label">Moradia</div><div class="mri-val">${moradiaLabel[pessoa.moradia] || pessoa.moradia}</div></div>
-      `;
-
-      // Reset do botão "Estou ciente"
-      _awareConfirmed = false;
-      const btn = document.getElementById('btnAware');
-      btn.classList.remove('aware-confirmed-adopt', 'aware-confirmed-temp');
-      btn.className = `btn-aware ${tipo === 'adopt' ? 'btn-aware-adopt' : 'btn-aware-temp'}`;
-      document.getElementById('awareCheckIcon').textContent = '○';
-      document.getElementById('awareMainLabel').textContent = tipo === 'adopt'
-        ? 'Estou ciente de que a adoção é permanente'
-        : 'Estou ciente de que assumo o compromisso de lar temporário';
-      document.getElementById('awareSubLabel').textContent = 'Li os termos acima e assumo este compromisso';
-
-      // Botões do footer
-      document.getElementById('btnConfirmarAdocao').style.display = tipo === 'adopt' ? '' : 'none';
-      document.getElementById('btnConfirmarTemp').style.display   = tipo === 'temp'  ? '' : 'none';
-      document.getElementById('btnConfirmarAdocao').disabled = true;
-      document.getElementById('btnConfirmarTemp').disabled   = true;
-    }
-
-    function abrirModal(tipo) {
-      const overlay = document.getElementById('contratoModal');
-      overlay.dataset.tipo = tipo;
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function fecharModal() {
-      const overlay = document.getElementById('contratoModal');
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-      // Reset do botão aware
-      _awareConfirmed = false;
-      const btn = document.getElementById('btnAware');
-      btn.className = 'btn-aware btn-aware-adopt';
-      document.getElementById('awareCheckIcon').textContent = '○';
-      document.getElementById('awareMainLabel').textContent = 'Estou ciente de que a adoção é permanente';
-      document.getElementById('awareSubLabel').textContent  = 'Li os termos acima e assumo este compromisso';
-      document.getElementById('btnConfirmarAdocao').disabled = true;
-      document.getElementById('btnConfirmarTemp').disabled   = true;
-    }
-
-    // Fecha ao clicar fora do box
-    document.getElementById('contratoModal').addEventListener('click', function(e) {
-      if (e.target === this) fecharModal();
-    });
-
-    // Fecha com ESC
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') fecharModal();
-    });
-
-    /* ============================================================
-       BOTÃO "ESTOU CIENTE"
-    ============================================================ */
-    let _awareConfirmed = false;
-
-    function toggleAware() {
-      _awareConfirmed = !_awareConfirmed;
-      const btn  = document.getElementById('btnAware');
-      const icon = document.getElementById('awareCheckIcon');
-      const tipo = document.getElementById('contratoModal').dataset.tipo;
-
-      if (_awareConfirmed) {
-        btn.classList.remove('btn-aware-adopt', 'btn-aware-temp');
-        btn.classList.add(tipo === 'adopt' ? 'aware-confirmed-adopt' : 'aware-confirmed-temp');
-        icon.textContent = '✓';
-        document.getElementById('awareMainLabel').textContent = tipo === 'adopt'
-          ? 'Ciente — adoção é permanente ✓'
-          : 'Ciente — assumo o compromisso de lar temporário ✓';
-        document.getElementById('awareSubLabel').textContent = 'Pode confirmar o envio abaixo';
-      } else {
-        btn.classList.remove('aware-confirmed-adopt', 'aware-confirmed-temp');
-        btn.classList.add(tipo === 'adopt' ? 'btn-aware-adopt' : 'btn-aware-temp');
-        icon.textContent = '○';
-        document.getElementById('awareMainLabel').textContent = tipo === 'adopt'
-          ? 'Estou ciente de que a adoção é permanente'
-          : 'Estou ciente de que assumo o compromisso de lar temporário';
-        document.getElementById('awareSubLabel').textContent = 'Li os termos acima e assumo este compromisso';
-      }
-
-      document.getElementById('btnConfirmarAdocao').disabled = !_awareConfirmed;
-      document.getElementById('btnConfirmarTemp').disabled   = !_awareConfirmed;
-    }
-
-    /* ============================================================
-       CONFIRMAR ADOÇÃO → envia ao Apps Script
-    ============================================================ */
-    async function confirmarAdocao() {
-  console.log("Confirmado!");
-
-  if (!_pendingAdoptData) return;
-
-      const btnConfirmar = document.getElementById('btnConfirmarAdocao');
-      const spinner      = document.getElementById('spinnerAdocao');
-      btnConfirmar.disabled        = true;
-      spinner.style.display        = 'inline-block';
-
-      try {
-        const payload2 = JSON.stringify({
-            acao: 'interesseAdocao',
-            ..._pendingAdoptData,
-            animalId:   _pendingAdoptData.animalSelecionado?.id   || '',
-            animalNome: _pendingAdoptData.animalSelecionado?.nome || 'match a definir',
-            timestamp:  new Date().toISOString()
-          });
-        const form2 = new FormData();
-        form2.append('dados', payload2);
-        const resp = await fetch(SCRIPT_URL, {
-  method: 'POST',
-  mode: 'no-cors',
-  body: form2
-});
-const data = await resp.json();
-console.log(data);
-
-        fecharModal();
-        document.getElementById('adoptFormContent').style.display = 'none';
-        document.getElementById('adoptSuccess').style.display     = 'block';
-        _pendingAdoptData = null;
-
-      } catch (e) {
-        console.error(e);
-        alert('Erro ao enviar. Verifique sua conexão e tente novamente.');
-        btnConfirmar.disabled = false;
-      } finally {
-        spinner.style.display = 'none';
-      }
-    }
-
-    /* ============================================================
-       CONFIRMAR LAR TEMPORÁRIO → envia ao Apps Script
-    ============================================================ */
-    async function confirmarTemp() {
-  if (!_pendingTempData) return;
-
-  const btnConfirmar = document.getElementById('btnConfirmarTemp');
-  const spinner      = document.getElementById('spinnerTemp');
-  btnConfirmar.disabled = true;
-  spinner.style.display = 'inline-block';
-
-  try {
-    const payload3 = JSON.stringify({
-      acao: 'larTemporario',
-      ..._pendingTempData,
-      animaisIds:   _pendingTempData.animaisSelecionados.map(a => a.id).join(', ') || '',
-      animaisNomes: _pendingTempData.animaisSelecionados.map(a => a.nome).join(', ') || 'match a definir',
-      timestamp:    new Date().toISOString()
-    });
-
-    const form3 = new FormData();
-    form3.append('dados', payload3);
-
-    const resp = await await fetch(SCRIPT_URL, {
-  method: 'POST',
-  mode: 'no-cors',
-  body: form3
-});
-
-    // evita erro de CORS
-    let data = null;
-    try {
-      data = await resp.json();
-    } catch(e) {
-      console.log('Resposta não veio como JSON (normal)');
-    }
-
-    console.log(data);
-
-    fecharModal();
-    document.getElementById('tempFormContent').style.display = 'none';
-    document.getElementById('tempSuccess').style.display     = 'block';
-    _pendingTempData = null;
-
-  } catch (e) {
-    console.error(e);
-    alert('Erro ao enviar. Verifique sua conexão e tente novamente.');
-    btnConfirmar.disabled = false;
-  } finally {
-    spinner.style.display = 'none';
-  }
-}
-
-    /* ============================================================
-       RESET FORMULÁRIOS
-    ============================================================ */
-    function resetAdopt() {
-      adoptChoice = null;
-      _pendingAdoptData = null;
-      document.getElementById('adoptFormContent').style.display = '';
-      document.getElementById('adoptSuccess').style.display     = 'none';
-      ['adoptChoiceSpecific','adoptChoiceAny'].forEach(id => document.getElementById(id).classList.remove('selected-adopt'));
-      ['adoptSpecificSection','adoptAnySection','adoptCommonFields'].forEach(id => document.getElementById(id).classList.remove('open'));
-      ['adoptNome','adoptContato','adoptEmail','adoptCidade','adoptMotivo'].forEach(id => document.getElementById(id).value = '');
-      document.getElementById('adoptIdade').value = '';
-      document.querySelectorAll('#panelAdopt input[type="radio"], #panelAdopt input[type="checkbox"]').forEach(el => { el.checked = false; });
-    }
-
-    function resetTemp() {
-      tempChoice = null;
-      _pendingTempData = null;
-      document.getElementById('tempFormContent').style.display = '';
-      document.getElementById('tempSuccess').style.display     = 'none';
-      ['tempChoiceSpecific','tempChoiceAny'].forEach(id => document.getElementById(id).classList.remove('selected-temp'));
-      ['tempSpecificSection','tempAnySection','tempCommonFields'].forEach(id => document.getElementById(id).classList.remove('open'));
-      ['tempNome','tempContato','tempEmail','tempCidade','tempObs'].forEach(id => document.getElementById(id).value = '');
-      document.getElementById('tempDisponibilidade').value = '';
-      document.querySelectorAll('#panelTemp input[type="radio"], #panelTemp input[type="checkbox"]').forEach(el => { el.checked = false; });
-    }
+    })();
   </script>
 
 </body>

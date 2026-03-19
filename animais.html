@@ -22,6 +22,8 @@
       --amber:       #EF9F27;
       --amber-dark:  #BA7517;
       --amber-light: #FAEEDA;
+      --coral:       #D85A30;
+      --coral-light: #FAECE7;
       --text:        #2C2C2A;
       --text-muted:  #888780;
       --text-light:  #B4B2A9;
@@ -40,16 +42,17 @@
     .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
     /* NAVBAR */
-    .navbar { position: sticky; top: 0; z-index: 200; background: rgba(255,253,248,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); height: 66px; display: flex; align-items: center; }
+    .navbar { position: sticky; top: 0; z-index: 200; background: rgba(255,253,248,0.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); height: 66px; display: flex; align-items: center; }
     .navbar .container { width: 100%; display: flex; align-items: center; justify-content: space-between; }
     .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--teal-dark); text-decoration: none; display: flex; align-items: center; gap: 8px; }
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
     .nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--teal); }
-    .nav-cta { background: var(--teal); color: #fff !important; padding: 8px 20px; border-radius: 24px; font-size: 14px; font-weight: 500; }
-    .nav-cta:hover { background: var(--teal-dark) !important; }
+    .nav-active { color: var(--teal) !important; font-weight: 500; }
+    .nav-cta { background: var(--teal); color: #fff !important; padding: 8px 20px; border-radius: 24px; font-size: 14px; font-weight: 500; transition: background 0.2s, transform 0.15s !important; }
+    .nav-cta:hover { background: var(--teal-dark) !important; color: #fff !important; transform: scale(1.03); }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
 
     /* PAGE HEADER */
     .page-header { background: var(--teal-deep); color: #fff; padding: 4rem 2rem 3.5rem; position: relative; overflow: hidden; }
@@ -93,13 +96,27 @@
     .animal-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
     .pill { background: var(--bg-warm); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 12px; color: var(--text-muted); }
     .animal-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; flex: 1; margin-bottom: 1rem; }
-    .animal-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border); gap: 8px; flex-wrap: wrap; }
-    .contact-info { font-size: 13px; color: var(--teal); font-weight: 500; }
-    .card-actions { display: flex; gap: 7px; }
-    .btn-whatsapp { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); border-radius: 20px; padding: 7px 14px; font-size: 12px; font-family: 'DM Sans', sans-serif; cursor: pointer; font-weight: 500; transition: all 0.2s; white-space: nowrap; }
-    .btn-whatsapp:hover { background: var(--teal-light); }
-    .btn-adotar { background: var(--teal); color: #fff; border: none; border-radius: 20px; padding: 7px 16px; font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer; font-weight: 500; transition: background 0.2s, transform 0.15s; text-decoration: none; display: inline-flex; align-items: center; white-space: nowrap; }
-    .btn-adotar:hover { background: var(--teal-dark); transform: scale(1.04); }
+
+    /* Botões dos cards — idênticos ao index */
+    .card-action-area { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
+
+    .btn-adotar-main {
+      display: flex; align-items: center; justify-content: center; gap: 7px;
+      background: var(--teal); color: #fff; border: none; border-radius: 50px;
+      padding: 11px 18px; font-size: 13px; font-family: 'DM Sans', sans-serif;
+      font-weight: 600; cursor: pointer; text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s; width: 100%;
+    }
+    .btn-adotar-main:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(29,158,117,0.28); }
+
+    .btn-wpp-secondary {
+      display: flex; align-items: center; justify-content: center; gap: 7px;
+      background: transparent; color: #25D366; border: 1.5px solid #25D366;
+      border-radius: 50px; padding: 9px 18px; font-size: 13px;
+      font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer;
+      transition: all 0.2s; width: 100%;
+    }
+    .btn-wpp-secondary:hover { background: #25D366; color: #fff; transform: translateY(-1px); }
 
     /* EMPTY */
     .empty-state { grid-column: 1/-1; text-align: center; padding: 5rem 2rem; color: var(--text-muted); }
@@ -118,13 +135,11 @@
     footer { background: var(--text); color: rgba(255,255,255,0.55); padding: 3rem 2rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
     .footer-brand .logo { color: #fff; font-size: 20px; }
-    .footer-copy { font-size: 12px; }
+    .footer-copy { font-size: 12px; text-align: right; line-height: 1.8; }
     .footer-copy a { color: var(--amber); text-decoration: none; }
 
-    /* ANIMAÇÃO */
     @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* RESPONSIVO */
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -134,12 +149,14 @@
       .search-box input { width: 120px; }
       .cta-banner { flex-direction: column; text-align: center; padding: 2rem; }
       .animals-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; gap: 1rem; }
+      .footer-copy { text-align: left; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
+  <!-- NAVBAR — espelho exato do index.html -->
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="logo">🐾 PatasDF</a>
@@ -148,11 +165,10 @@
       </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html#como-funciona">Como funciona</a></li>
-        <li><a href="animais.html" style="color:var(--teal);font-weight:500;">Animais</a></li>
+        <li><a href="animais.html" class="nav-active">Animais</a></li>
         <li><a href="index.html#mapa">Mapa</a></li>
-        <li><a href="index.html#ajudar">Como ajudar</a></li>
         <li><a href="index.html#sobre-criadora">Sobre</a></li>
-        <li><a href="index.html#cadastrar" class="nav-cta">Cadastrar animal</a></li>
+        <li><a href="index.html#quero-ajudar" class="nav-cta">Quero participar</a></li>
       </ul>
     </div>
   </nav>
@@ -200,9 +216,9 @@
       <div class="cta-banner">
         <div class="cta-banner-text">
           <h3>Encontrou um animal abandonado?</h3>
-          <p>Cadastre agora — leva menos de 2 minutos e ajuda a salvar uma vida.</p>
+          <p>Leia os termos e preencha o formulário — leva menos de 2 minutos e ajuda a salvar uma vida.</p>
         </div>
-        <a href="index.html#cadastrar" class="btn-banner">🐾 Cadastrar animal</a>
+        <a href="index.html#quero-ajudar" class="btn-banner">🐾 Quero participar</a>
       </div>
 
       <div class="animals-grid" id="animalsGrid">
@@ -219,29 +235,35 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand"><a href="index.html" class="logo">🐾 PatasDF</a></div>
-      <div class="footer-copy">© 2025 PatasDF · Feito com 🐾 por <a href="sobre.html">Clarice Nunes</a></div>
+      <div class="footer-copy">
+        © 2025 PatasDF · Todos os direitos garantidos<br>
+        Feito com 🐾 por <a href="sobre.html">Clarice Nunes</a>
+      </div>
     </div>
   </footer>
 
   <script>
+    /* ============================================================
+       ⚠️ CONFIGURE O LINK DO GOOGLE FORMS DE ADOÇÃO
+       Mesmo valor do FORMS_ADOTAR no index.html
+    ============================================================ */
+    const FORMS_ADOTAR = '#'; // Ex: 'https://forms.gle/XXXXXXX'
+
     const ANIMALS_URL = 'animais.json';
 
-    // Mesmos dados do index.html — sempre disponíveis sem servidor
     const ANIMAIS_EMBUTIDOS = [
-      { id:'teste1', nome:'Batatinha',  tipo:'cachorro', idade:'~1 ano',   porte:'Pequeno', cidade:'Asa Norte',   descricao:'Vira-lata amarelinho, super dócil e vacinado. Adora colo e brinca com qualquer um. Já castrado. Encontrado perto do Parque da Cidade.',  contato:'(61) 99999-0001' },
-      { id:'ex1',    nome:'Bolinha',    tipo:'cachorro', idade:'~2 anos',  porte:'Médio',   cidade:'Asa Sul',     descricao:'Muito carinhoso, brinca com crianças e já é castrado. Encontrado abandonado na quadra 308 Sul.',                                          contato:'(61) 98888-1111' },
-      { id:'ex2',    nome:'Mimi',       tipo:'gato',     idade:'~8 meses', porte:'Pequeno', cidade:'Taguatinga',  descricao:'Gatinha dócil, vacinada e sociável com outros gatos. Adora dormir no colo.',                                                             contato:'(61) 97777-2222' },
-      { id:'ex3',    nome:'Thor',       tipo:'cachorro', idade:'~4 anos',  porte:'Grande',  cidade:'Ceilândia',   descricao:'Cão tranquilo e protetor, gosta de caminhadas longas. Ótimo com crianças.',                                                              contato:'(61) 96666-3333' },
-      { id:'ex4',    nome:'Mingau',     tipo:'gato',     idade:'~3 anos',  porte:'Médio',   cidade:'Guará',       descricao:'Independente mas carinhoso. Castrado e vacinado em dia. Vive bem em apartamento.',                                                       contato:'(61) 95555-4444' },
-      { id:'ex5',    nome:'Pipoca',     tipo:'cachorro', idade:'~1 ano',   porte:'Pequeno', cidade:'Sobradinho',  descricao:'Brincalhona e energética. Adora crianças e outros cães. Ainda precisa ser castrada.',                                                    contato:'(61) 94444-5555' },
-      { id:'ex6',    nome:'Nala',       tipo:'gato',     idade:'~6 meses', porte:'Pequeno', cidade:'Samambaia',   descricao:'Curiosa e cheia de energia. Filhote resgatada da rua, precisa de vacinas e muito amor.',                                                 contato:'(61) 93333-6666' },
+      { id:'ex1', nome:'Bolinha', tipo:'cachorro', idade:'~2 anos',  porte:'Médio',   cidade:'Asa Sul',    descricao:'Muito carinhoso, brinca com crianças e já é castrado. Encontrado abandonado na quadra 308 Sul.',   contato:'(61) 98888-1111' },
+      { id:'ex2', nome:'Mimi',    tipo:'gato',     idade:'~8 meses', porte:'Pequeno', cidade:'Taguatinga', descricao:'Gatinha dócil, vacinada e sociável com outros gatos. Adora dormir no colo.',                      contato:'(61) 97777-2222' },
+      { id:'ex3', nome:'Thor',    tipo:'cachorro', idade:'~4 anos',  porte:'Grande',  cidade:'Ceilândia',  descricao:'Cão tranquilo e protetor, gosta de caminhadas longas. Ótimo com crianças.',                      contato:'(61) 96666-3333' },
+      { id:'ex4', nome:'Mingau',  tipo:'gato',     idade:'~3 anos',  porte:'Médio',   cidade:'Guará',      descricao:'Independente mas carinhoso. Castrado e vacinado em dia. Vive bem em apartamento.',               contato:'(61) 95555-4444' },
+      { id:'ex5', nome:'Pipoca',  tipo:'cachorro', idade:'~1 ano',   porte:'Pequeno', cidade:'Sobradinho', descricao:'Brincalhona e energética. Adora crianças e outros cães. Ainda precisa ser castrada.',            contato:'(61) 94444-5555' },
+      { id:'ex6', nome:'Nala',    tipo:'gato',     idade:'~6 meses', porte:'Pequeno', cidade:'Samambaia',  descricao:'Curiosa e cheia de energia. Filhote resgatada da rua, precisa de vacinas e muito amor.',         contato:'(61) 93333-6666' },
     ];
 
     let ANIMALS     = [];
     let filtroAtual = 'todos';
     let buscaAtual  = '';
 
-    /* ---------- CARREGAR ---------- */
     async function carregar() {
       let carregouExterno = false;
       try {
@@ -261,7 +283,6 @@
       renderizar();
     }
 
-    /* ---------- FILTRAR / BUSCAR ---------- */
     function filtrar(tipo, btn) {
       document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
@@ -277,13 +298,12 @@
     function getLista() {
       let l = filtroAtual === 'todos' ? ANIMALS : ANIMALS.filter(a => a.tipo === filtroAtual);
       if (buscaAtual) l = l.filter(a =>
-        (a.nome || '').toLowerCase().includes(buscaAtual) ||
+        (a.nome   || '').toLowerCase().includes(buscaAtual) ||
         (a.cidade || '').toLowerCase().includes(buscaAtual)
       );
       return l;
     }
 
-    /* ---------- RENDERIZAR ---------- */
     function renderizar() {
       const grid  = document.getElementById('animalsGrid');
       const lista = getLista();
@@ -310,7 +330,6 @@
         const tipo  = a.tipo ? (a.tipo[0].toUpperCase() + a.tipo.slice(1)) : 'Animal';
         const nomeS = (a.nome    || '').replace(/'/g, "\\'");
         const contS = (a.contato || '').replace(/'/g, "\\'");
-        const idS   = (a.id      || '').replace(/'/g, "\\'");
 
         return `
         <div class="animal-card" style="animation: fadeUp 0.4s ${i * 60}ms ease both;">
@@ -322,24 +341,25 @@
           <div class="animal-body">
             <div class="animal-name">${a.nome || 'Sem nome'}</div>
             <div class="animal-meta">
-              ${a.idade  ? `<span class="pill">${a.idade}</span>` : ''}
+              ${a.idade  ? `<span class="pill">${a.idade}</span>`     : ''}
               ${a.cidade ? `<span class="pill">📍 ${a.cidade}</span>` : ''}
-              ${a.porte  ? `<span class="pill">${a.porte}</span>` : ''}
+              ${a.porte  ? `<span class="pill">${a.porte}</span>`     : ''}
             </div>
             <p class="animal-desc">${a.descricao || ''}</p>
-            <div class="animal-footer">
-              <span class="contact-info">📱 ${a.contato || ''}</span>
-              <div class="card-actions">
-                <button class="btn-whatsapp" onclick="abrirWhatsApp('${nomeS}','${contS}')">WhatsApp</button>
-                <a class="btn-adotar" href="index.html#quero-ajudar" onclick="irParaAdotar('${idS}')">Quero adotar →</a>
-              </div>
+            <div class="card-action-area">
+              <button class="btn-adotar-main" onclick="irParaAdotar()">
+                🏠 Quero adotar este animal
+              </button>
+              <button class="btn-wpp-secondary" onclick="abrirWhatsApp('${nomeS}','${contS}')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.119 1.532 5.849L.057 23.617a.75.75 0 00.921.921l5.767-1.475A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.713 9.713 0 01-4.964-1.362l-.355-.211-3.683.942.96-3.598-.232-.372A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+                Falar direto no WhatsApp
+              </button>
             </div>
           </div>
         </div>`;
       }).join('');
     }
 
-    /* ---------- WHATSAPP ---------- */
     function abrirWhatsApp(nome, contato) {
       if (contato && !contato.includes('xxxx')) {
         const num = contato.replace(/\D/g, '');
@@ -350,20 +370,18 @@
       }
     }
 
-    /* ---------- IR PARA FORMULÁRIO DE ADOÇÃO ----------
-       Salva o id do animal no sessionStorage.
-       O index.html lê esse id ao carregar e pré-seleciona
-       o animal + abre a aba "Quero adotar" automaticamente.
-    ---------------------------------------------------- */
-    function irParaAdotar(id) {
-      try { sessionStorage.setItem('patasdf_adotar_id', id); } catch(e) {}
-      // A navegação para index.html#quero-ajudar acontece via href do <a>
+    /* "Quero adotar este animal" — leva para o index com flag
+       para abrir o modal de termos de adoção automaticamente */
+    function irParaAdotar() {
+      window.location.href = 'index.html?adotar=1#quero-ajudar';
     }
 
-    /* ---------- MENU MOBILE ---------- */
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('open');
     }
+    document.querySelectorAll('#navLinks a').forEach(link => {
+      link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+    });
 
     carregar();
   </script>
