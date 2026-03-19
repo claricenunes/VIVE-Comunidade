@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre a criadora — AdotaDF</title>
+  <meta name="description" content="Conheça Clarice Nunes, estudante de Engenharia de Software no CEUB e criadora do AdotaDF, plataforma de adoção de animais do Distrito Federal." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:        #1D9E75;
+      --teal-dark:   #0F6E56;
+      --teal-deep:   #085041;
+      --teal-light:  #E1F5EE;
+      --teal-mid:    #9FE1CB;
+      --amber:       #EF9F27;
+      --amber-dark:  #BA7517;
+      --amber-light: #FAEEDA;
+      --coral:       #D85A30;
+      --coral-light: #FAECE7;
+      --text:        #2C2C2A;
+      --text-muted:  #888780;
+      --text-light:  #B4B2A9;
+      --bg:          #FFFDF8;
+      --bg-warm:     #FBF7F0;
+      --bg-card:     #FFFFFF;
+      --border:      rgba(0,0,0,0.08);
+      --border-md:   rgba(0,0,0,0.13);
+      --radius-sm:   8px;
+      --radius-md:   14px;
+      --radius-lg:   20px;
+      --radius-xl:   28px;
+      --shadow-sm:   0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md:   0 8px 32px rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,253,248,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      height: 66px; display: flex; align-items: center;
+    }
+    .navbar .container { width:100%; display:flex; align-items:center; justify-content:space-between; }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--teal-dark); text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .nav-links { display:flex; align-items:center; gap:2rem; list-style:none; }
+    .nav-links a { font-size:14px; color:var(--text-muted); text-decoration:none; transition:color .2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--teal); }
+    .nav-cta { background:var(--teal); color:#fff!important; padding:8px 20px; border-radius:24px; font-size:14px; font-weight:500; }
+    .nav-cta:hover { background:var(--teal-dark)!important; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+    .hamburger span { display:block; width:22px; height:2px; background:var(--text); border-radius:2px; }
+
+    /* ===== HERO PROFILE ===== */
+    .profile-hero {
+      padding: 5rem 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .profile-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 90% 50%, rgba(29,158,117,.08) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(239,159,39,.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .profile-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      position: relative; z-index: 1;
+    }
+
+    /* Foto / avatar */
+    .photo-wrapper {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 3rem;
+    }
+    .photo-frame {
+      position: relative;
+      width: 320px;
+    }
+    .photo-circle {
+      width: 320px; height: 320px;
+      border-radius: 50% 50% 50% 40%;
+      background: var(--teal-light);
+      border: 3px solid var(--teal-mid);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .photo-circle img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .photo-placeholder {
+      display: flex; flex-direction: column; align-items: center;
+      gap: .5rem; color: var(--teal-dark);
+    }
+    .photo-placeholder .ph-icon { font-size: 5rem; }
+    .photo-placeholder p { font-size: 12px; opacity: .6; text-align: center; max-width: 140px; }
+
+    /* Badges flutuantes */
+    .badge-float {
+      position: absolute;
+      background: var(--bg-card);
+      border: 1px solid var(--border-md);
+      border-radius: var(--radius-md);
+      padding: .75rem 1rem;
+      box-shadow: var(--shadow-md);
+      font-size: 13px; font-weight: 500;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .badge-float .bf-icon { font-size: 1.4rem; }
+    .badge-ceub  { bottom: 2.5rem; right: -1.5rem; }
+    .badge-bolt  { top: 1.5rem;   left: -1.5rem; }
+    .badge-ceub  .label { color: var(--teal-dark); font-size: 11px; display:block; opacity:.7; }
+    .badge-bolt  .label { color: var(--text-muted); font-size: 11px; display:block; }
+
+    /* Texto hero */
+    .profile-text { padding-bottom: 3rem; }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 500; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--teal);
+      margin-bottom: .75rem; display: block;
+    }
+    .profile-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900; line-height: 1.06;
+      letter-spacing: -1px;
+      margin-bottom: 1.5rem;
+    }
+    .profile-text h1 .name-teal { color: var(--teal); }
+    .profile-text .tagline {
+      font-size: 1.05rem; color: var(--text-muted);
+      font-weight: 300; line-height: 1.75;
+      max-width: 480px; margin-bottom: 2rem;
+    }
+
+    /* Chips de info */
+    .info-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .chip {
+      background: var(--bg-warm); border: 1px solid var(--border-md);
+      border-radius: 30px; padding: 6px 14px;
+      font-size: 13px; color: var(--text-muted);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .chip.teal { background: var(--teal-light); color: var(--teal-dark); border-color: rgba(29,158,117,.2); }
+    .chip.amber { background: var(--amber-light); color: var(--amber-dark); border-color: rgba(239,159,39,.2); }
+
+    /* Redes sociais */
+    .social-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .social-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1.5px solid var(--border-md); border-radius: 30px;
+      padding: 9px 18px; font-size: 13px; font-weight: 500;
+      text-decoration: none; color: var(--text);
+      background: var(--bg-card); transition: all .22s;
+    }
+    .social-btn:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+    .social-btn.github:hover  { border-color: #333; color: #333; }
+    .social-btn.linkedin:hover { border-color: #0A66C2; color: #0A66C2; }
+    .social-btn.instagram:hover { border-color: #E1306C; color: #E1306C; }
+
+    /* ===== DIVISOR ===== */
+    .divider {
+      height: 1px; background: var(--border);
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    /* ===== SEÇÕES DE CONTEÚDO ===== */
+    .content-section { padding: 5rem 0; }
+    .content-section.alt { background: var(--bg-warm); padding: 5rem 2rem; }
+    .content-section.alt .container { max-width: 1100px; margin: 0 auto; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .two-col.reverse { direction: rtl; }
+    .two-col.reverse > * { direction: ltr; }
+
+    .section-eyebrow {
+      font-size: 11px; font-weight: 500; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--teal);
+      margin-bottom: .75rem; display: block;
+    }
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700; line-height: 1.12;
+      margin-bottom: 1.5rem;
+    }
+    .body-text {
+      font-size: 1rem; color: var(--text-muted);
+      line-height: 1.85; font-weight: 300;
+    }
+    .body-text + .body-text { margin-top: 1rem; }
+
+    /* Pullquote */
+    .pullquote {
+      border-left: 3px solid var(--teal);
+      padding: 1.5rem 1.75rem;
+      background: var(--teal-light);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin: 2rem 0;
+    }
+    .pullquote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; font-style: italic;
+      line-height: 1.6; color: var(--teal-deep);
+    }
+    .pullquote cite {
+      display: block; margin-top: .75rem;
+      font-size: 12px; color: var(--teal-dark);
+      font-style: normal; font-weight: 500;
+      letter-spacing: .5px;
+    }
+
+    /* Pet cards */
+    .pet-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .pet-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.5rem;
+      display: flex; align-items: flex-start; gap: 1.25rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .pet-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .pet-emoji {
+      font-size: 2.8rem; line-height: 1;
+      background: var(--bg-warm); border-radius: var(--radius-md);
+      padding: .75rem; flex-shrink: 0;
+    }
+    .pet-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700; margin-bottom: .3rem;
+    }
+    .pet-info .pet-meta {
+      font-size: 12px; color: var(--text-light);
+      font-weight: 500; letter-spacing: .5px;
+      text-transform: uppercase; margin-bottom: .6rem;
+    }
+    .pet-info p { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+    .pet-card.memorial { border-color: rgba(29,158,117,.25); background: var(--teal-light); }
+    .pet-card.memorial .pet-info h4 { color: var(--teal-deep); }
+    .pet-card.memorial .pet-meta { color: var(--teal-dark); }
+
+    /* Timeline do projeto */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 7px; top: 8px; bottom: 0;
+      width: 1.5px; background: var(--teal-mid);
+    }
+    .tl-item { position: relative; padding-bottom: 2rem; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: -1.55rem; top: 6px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--teal); border: 2.5px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--teal-mid);
+    }
+    .tl-item h4 { font-size: 15px; font-weight: 500; margin-bottom: .3rem; }
+    .tl-item p { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+    .tl-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--teal);
+      margin-bottom: .4rem; display: block;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: .75rem; margin-top: 1.5rem;
+    }
+    .skill-chip {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: .75rem 1rem;
+      font-size: 13px; font-weight: 500; text-align: center;
+      transition: border-color .2s, background .2s;
+    }
+    .skill-chip:hover { border-color: var(--teal); background: var(--teal-light); }
+
+    /* ===== CTA CONTATO ===== */
+    .contact-cta {
+      background: var(--teal-deep); color: #fff;
+      text-align: center; padding: 6rem 2rem;
+    }
+    .contact-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700; margin-bottom: 1rem;
+    }
+    .contact-cta p { opacity: .7; max-width: 480px; margin: 0 auto 2.5rem; font-weight: 300; }
+    .contact-cta-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn-contact {
+      display: inline-flex; align-items: center; gap: 8px;
+      border-radius: 50px; padding: 13px 28px; font-size: 15px; font-weight: 500;
+      text-decoration: none; font-family: 'DM Sans', sans-serif;
+      transition: all .22s; cursor: pointer; border: none;
+    }
+    .btn-contact.primary { background: var(--amber); color: var(--text); }
+    .btn-contact.primary:hover { background: #FAC775; transform: translateY(-2px); }
+    .btn-contact.ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.4); }
+    .btn-contact.ghost:hover { border-color: #fff; transform: translateY(-2px); }
+
+    /* ===== FOOTER ===== */
+    footer { background: #2C2C2A; color: rgba(255,255,255,.55); padding: 3rem 2rem; }
+    .footer-inner { max-width:1100px; margin:0 auto; display:flex; align-items:flex-start; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-brand .logo { color:#fff; font-size:20px; margin-bottom:.75rem; }
+    .footer-brand p { font-size:13px; line-height:1.7; max-width:280px; }
+    .footer-links h4 { color:#fff; font-size:13px; font-weight:500; margin-bottom:1rem; }
+    .footer-links ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .footer-links ul a { font-size:13px; color:rgba(255,255,255,.5); text-decoration:none; transition:color .2s; }
+    .footer-links ul a:hover { color:var(--amber); }
+    .footer-bottom { max-width:1100px; margin:2rem auto 0; padding-top:2rem; border-top:1px solid rgba(255,255,255,.08); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-size:12px; }
+    .footer-bottom a { color:var(--amber); text-decoration:none; }
+
+    /* ===== REVEAL ===== */
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .nav-links.open {
+        display:flex; flex-direction:column;
+        position:absolute; top:66px; left:0; right:0;
+        background:var(--bg); border-bottom:1px solid var(--border);
+        padding:1.5rem 2rem; gap:1.25rem; z-index:199;
+      }
+      .profile-layout { grid-template-columns:1fr; gap:2rem; }
+      .photo-wrapper { order:-1; padding-bottom:1rem; }
+      .photo-frame { width:260px; }
+      .photo-circle { width:260px; height:260px; }
+      .badge-ceub { right:0; }
+      .badge-bolt { left:0; }
+      .two-col { grid-template-columns:1fr; gap:2.5rem; }
+      .two-col.reverse { direction:ltr; }
+      .footer-inner { flex-direction:column; }
+      .footer-bottom { flex-direction:column; text-align:center; }
+      .contact-cta-links { flex-direction:column; align-items:center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">🐾 AdotaDF</a>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#como-funciona">Como funciona</a></li>
+        <li><a href="animais.html">Animais</a></li>
+        <li><a href="index.html#mapa">Mapa</a></li>
+        <li><a href="sobre.html" class="active">Sobre</a></li>
+        <li><a href="index.html#cadastrar" class="nav-cta">Cadastrar animal</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO PERFIL -->
+  <section class="profile-hero">
+    <div class="container">
+      <div class="profile-layout">
+
+        <!-- FOTO -->
+        <div class="photo-wrapper reveal">
+          <div class="photo-frame">
+            <div class="photo-circle">
+              <!--
+                ✅ Para adicionar sua foto:
+                Substitua o bloco .photo-placeholder por:
+                <img src="foto.jpg" alt="Clarice Nunes" />
+                Coloque a foto no mesmo repositório do site.
+              -->
+              <div class="photo-placeholder">
+                <span class="ph-icon">🧑‍💻</span>
+                <p>Sua foto aqui</p>
+              </div>
+            </div>
+
+            <!-- Badge CEUB -->
+            <div class="badge-float badge-ceub">
+              <span class="bf-icon">🎓</span>
+              <div>
+                <strong>Engenharia de Software</strong>
+                <span class="label">CEUB · 2º semestre</span>
+              </div>
+            </div>
+
+            <!-- Badge Bolt -->
+            <div class="badge-float badge-bolt">
+              <span class="bf-icon">🐶</span>
+              <div>
+                <strong>Criadora do AdotaDF</strong>
+                <span class="label">em memória do Bolt e da Max</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TEXTO -->
+        <div class="profile-text">
+          <span class="hero-eyebrow reveal">Conheça a criadora</span>
+          <h1 class="reveal">
+            Oi, eu sou a<br>
+            <span class="name-teal">Clarice Nunes</span>
+          </h1>
+          <p class="tagline reveal">
+            Estudante de Engenharia de Software, apaixonada por animais e
+            acredito que a tecnologia existe para gerar impacto real na vida das pessoas —
+            e dos animais também!
+          </p>
+
+          <div class="info-chips reveal">
+            <span class="chip teal">📍 Brasília, DF</span>
+            <span class="chip teal">💻 Engenharia de Software</span>
+            <span class="chip amber">🐾 Criadora do AdotaDF</span>
+            <span class="chip">🤝 Voluntariado</span>
+          </div>
+
+          <div class="social-links reveal">
+            <a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener" class="social-btn instagram">
+              <span>📸</span> @claricesnunes
+            </a>
+            <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener" class="social-btn linkedin">
+              <span>💼</span> LinkedIn
+            </a>
+            <a href="https://github.com/claricenunes" target="_blank" rel="noopener" class="social-btn github">
+              <span>🐙</span> GitHub
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- POR QUE CRIEI O PROJETO -->
+  <section class="content-section">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <span class="section-eyebrow reveal">A motivação</span>
+          <h2 class="section-heading reveal">Por que criei o AdotaDF</h2>
+
+          <div class="pullquote reveal">
+            <p>"Criei o AdotaDF porque sempre gostei muito de animais e queria usar a tecnologia para gerar algum impacto social."</p>
+            <cite>— Clarice Nunes</cite>
+          </div>
+
+          <p class="body-text reveal">
+            Vejo muitos animais precisando de um lar e pessoas querendo adotar, mas sem
+            saber exatamente onde encontrar ou como ajudar. Percebi que existia um gap muito
+            simples de resolver: faltava uma plataforma acessível que conectasse essas duas partes.
+          </p>
+          <p class="body-text reveal">
+            Então pensei em criar algo simples que pudesse conectar essas duas coisas — sem
+            burocracia, sem custo, e que qualquer pessoa pudesse usar pelo celular.
+            O AdotaDF nasceu dessa ideia.
+          </p>
+        </div>
+
+        <div>
+          <span class="section-eyebrow reveal">A origem</span>
+          <h2 class="section-heading reveal">Como o projeto tomou forma</h2>
+
+          <div class="timeline reveal">
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <span class="tl-label">O começo</span>
+              <h4>Observando o problema</h4>
+              <p>Sempre participei de trabalhos voluntários, mas a rotina corrida tornava difícil dedicar tempo regular. Comecei a pensar em como contribuir de forma contínua, mesmo à distância.</p>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <span class="tl-label">A virada</span>
+              <h4>A perda da Max</h4>
+              <p>A partida recente da minha cachorra Max me tocou profundamente e me motivou ainda mais a criar algo que honrasse o amor que ela me ensinou.</p>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <span class="tl-label">A solução</span>
+              <h4>Tecnologia + impacto social</h4>
+              <p>Juntei meus conhecimentos em Engenharia de Software com a causa que me move. O AdotaDF nasceu como projeto de extensão do CEUB.</p>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <span class="tl-label">Hoje</span>
+              <h4>Plataforma no ar, 100% gratuita</h4>
+              <p>Um site simples, comunitário e escalável que conecta animais abandonados do DF com famílias que querem adotar.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MINHA HISTÓRIA COM ANIMAIS -->
+  <section class="content-section alt">
+    <div class="container">
+      <span class="section-eyebrow reveal">Minha história</span>
+      <h2 class="section-heading reveal">Animais que marcaram minha vida</h2>
+      <p class="body-text reveal" style="max-width:600px; margin-bottom:2.5rem;">
+        Sempre gostei muito de animais. Eles me ensinaram sobre amor incondicional, presença e a importância de cada vida — por menor que pareça.
+      </p>
+
+      <div class="two-col reveal">
+        <div class="pet-cards">
+
+          <div class="pet-card">
+            <div class="pet-emoji">🐶</div>
+            <div class="pet-info">
+              <p class="pet-meta">Vira-lata · Médio porte · Adotado</p>
+              <h4>Bolt</h4>
+              <p>
+                Meu primeiro cachorro adotado. Um vira-lata de porte médio cheio de energia e
+                personalidade. O Bolt foi quem me ensinou desde cedo que adotar é o caminho —
+                e que amor não tem raça.
+              </p>
+            </div>
+          </div>
+
+          <div class="pet-card memorial">
+            <div class="pet-emoji">🐕</div>
+            <div class="pet-info">
+              <p class="pet-meta">Vira-lata · Médio porte · In memoriam 🌿</p>
+              <h4>Max</h4>
+              <p>
+                Conheci a Max durante meu intercâmbio — outro vira-lata adorável, de porte médio.
+                Ela me acompanhou em um momento especial da vida. A sua partida recente
+                foi o que me deu coragem de transformar a dor em ação. O AdotaDF nasceu, em parte, por ela.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div>
+          <p class="body-text">
+            Ter vivido com o Bolt e a Max me mostrou de perto o quanto um animal resgatado
+            transforma uma casa em lar. São dois vira-latas que não tinham nada de especial
+            no pedigree — e que foram tudo.
+          </p>
+          <p class="body-text" style="margin-top:1rem;">
+            Quando a Max partiu, senti uma mistura de tristeza e gratidão. E também uma vontade
+            grande de fazer algo. Não deixar que a dor ficasse parada. O AdotaDF é uma forma de
+            honrar os dois — e de ajudar outros animais a encontrarem famílias que os amem tanto
+            quanto eu amei os meus.
+          </p>
+
+          <div style="margin-top:2rem; padding:1.5rem; background:var(--amber-light); border-radius:var(--radius-lg); border:1px solid rgba(239,159,39,.2);">
+            <p style="font-size:14px; color:var(--amber-dark); font-weight:500; margin-bottom:.5rem;">
+              🌿 Em memória da Max
+            </p>
+            <p style="font-size:13px; color:var(--text-muted); font-weight:300; line-height:1.7;">
+              "Obrigada por me ensinar que amor de cachorro é incondicional. Você virou projeto."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE O PROJETO DE EXTENSÃO -->
+  <section class="content-section">
+    <div class="container">
+      <div class="two-col reverse">
+        <div>
+          <span class="section-eyebrow reveal">Projeto de extensão</span>
+          <h2 class="section-heading reveal">Tecnologia a serviço da comunidade</h2>
+
+          <p class="body-text reveal">
+            O AdotaDF é desenvolvido como projeto de extensão do curso de
+            <strong>Engenharia de Software no CEUB</strong>, conectando o aprendizado
+            técnico da faculdade com um problema real da comunidade do Distrito Federal.
+          </p>
+          <p class="body-text reveal" style="margin-top:1rem;">
+            A proposta é simples: usar ferramentas gratuitas e acessíveis — Google Forms,
+            Sheets, Apps Script e GitHub Pages — para criar uma plataforma que qualquer
+            ONG, protetor independente ou cidadão possa usar sem custo algum.
+          </p>
+
+          <div style="display:flex; gap:1.5rem; margin-top:2rem; flex-wrap:wrap;" class="reveal">
+            <div style="text-align:center;">
+              <div style="font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:700; color:var(--teal);">100%</div>
+              <div style="font-size:12px; color:var(--text-muted);">Gratuito</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:700; color:var(--teal);">DF</div>
+              <div style="font-size:12px; color:var(--text-muted);">Foco local</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:700; color:var(--teal);">∞</div>
+              <div style="font-size:12px; color:var(--text-muted);">Escalável</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <span class="section-eyebrow reveal">Tecnologias</span>
+          <h2 class="section-heading reveal" style="font-size:1.6rem;">O que aprendi construindo o AdotaDF</h2>
+
+          <div class="skills-grid reveal">
+            <div class="skill-chip">HTML & CSS</div>
+            <div class="skill-chip">JavaScript</div>
+            <div class="skill-chip">GitHub Pages</div>
+            <div class="skill-chip">Google Forms</div>
+            <div class="skill-chip">Google Sheets</div>
+            <div class="skill-chip">Apps Script</div>
+            <div class="skill-chip">JSON / APIs</div>
+            <div class="skill-chip">UX Design</div>
+            <div class="skill-chip">Acessibilidade</div>
+            <div class="skill-chip">Git</div>
+          </div>
+
+          <p class="body-text reveal" style="margin-top:1.5rem;">
+            Cada peça do projeto foi uma oportunidade de aprender algo novo — desde
+            automações no Google Apps Script até pensar na experiência de quem usa o site
+            pelo celular em campo, cadastrando um animal que acabou de encontrar.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA CONTATO -->
+  <div class="contact-cta">
+    <h2>Vamos conversar?</h2>
+    <p>
+      Tem alguma sugestão para o projeto, quer colaborar ou quer dizer oi?
+      Entra em contato comigo!!
+    </p>
+    <div class="contact-cta-links">
+      <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener" class="btn-contact primary">
+        💼 LinkedIn
+      </a>
+      <a href="https://github.com/claricenunes" target="_blank" rel="noopener" class="btn-contact ghost">
+        🐙 GitHub
+      </a>
+      <a href="index.html#cadastrar" class="btn-contact ghost">
+        🐾 Usar o AdotaDF
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">🐾 AdotaDF</a>
+        <p>Plataforma gratuita e comunitária para conectar animais abandonados do DF com famílias amorosas.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="index.html#como-funciona">Como funciona</a></li>
+          <li><a href="animais.html">Animais disponíveis</a></li>
+          <li><a href="index.html#mapa">Mapa do DF</a></li>
+          <li><a href="index.html#ajudar">Como ajudar</a></li>
+          <li><a href="index.html#cadastrar">Cadastrar animal</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Clarice Nunes</h4>
+        <ul>
+          <li><a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/claricenunes" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 AdotaDF · CEUB · Engenharia de Software</span>
+      <span>Feito com 🐾 por Clarice Nunes</span>
+    </div>
+  </footer>
+
+  <script>
+    /* Reveal on scroll */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 55);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* Nav mobile */
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+    document.querySelectorAll('#navLinks a').forEach(l =>
+      l.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+    );
+  </script>
+</body>
+</html>

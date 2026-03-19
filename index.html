@@ -64,9 +64,6 @@
       overflow-x: hidden;
     }
 
-    /* ===========================
-       UTILITÁRIOS
-    =========================== */
     .container {
       max-width: 1100px;
       margin: 0 auto;
@@ -152,9 +149,7 @@
       box-shadow: 0 8px 24px rgba(239,159,39,0.35);
     }
 
-    /* ===========================
-       NAVBAR
-    =========================== */
+    /* NAVBAR */
     .navbar {
       position: sticky;
       top: 0;
@@ -216,7 +211,7 @@
       transform: scale(1.03);
     }
 
-    /* Hamburger (mobile) */
+    /* Hamburger for mobile */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -233,9 +228,7 @@
       transition: all 0.3s;
     }
 
-    /* ===========================
-       HERO
-    =========================== */
+    /* HERO*/
     .hero {
       min-height: 90vh;
       display: flex;
@@ -258,7 +251,7 @@
         radial-gradient(ellipse 40% 40% at 50% 50%, rgba(29,158,117,0.04) 0%, transparent 60%);
     }
 
-    /* Patas decorativas de fundo */
+    /* Patas de fundo */
     .hero-paw {
       position: absolute;
       font-size: 8rem;
@@ -361,9 +354,7 @@
       animation: scrollPulse 2s ease-in-out infinite;
     }
 
-    /* ===========================
-       STATS BAR
-    =========================== */
+    /*  STATS BAR*/
     .stats-bar {
       background: var(--teal-deep);
       display: flex;
@@ -394,9 +385,7 @@
       margin-top: 4px;
     }
 
-    /* ===========================
-       COMO FUNCIONA
-    =========================== */
+    /* COMO FUNCIONA */
     .section-pad {
       padding: 6rem 0;
     }
@@ -455,9 +444,7 @@
       font-weight: 300;
     }
 
-    /* ===========================
-       ANIMAIS
-    =========================== */
+    /* ANIMAIS */
     .animals-section {
       background: var(--bg-warm);
       padding: 6rem 0;
@@ -624,9 +611,7 @@
       display: none;
     }
 
-    /* ===========================
-       MAPA
-    =========================== */
+    /* MAPA */
     .map-section { padding: 6rem 0; }
 
     .map-wrapper {
@@ -658,7 +643,7 @@
       overflow: hidden;
     }
 
-    /* Pontos animados no placeholder */
+    /* Pontos no placeholder */
     .map-dot {
       position: absolute;
       width: 38px;
@@ -702,9 +687,7 @@
       margin-top: 0.5rem;
     }
 
-    /* ===========================
-       COMO AJUDAR
-    =========================== */
+    /* COMO AJUDAR */
     .help-section {
       background: var(--bg-warm);
       padding: 6rem 0;
@@ -763,9 +746,7 @@
     .help-card.divulgar .btn { background: var(--coral); color: #fff; }
     .help-card.divulgar .btn:hover { background: #993C1D; }
 
-    /* ===========================
-       FORMULÁRIO / CADASTRO
-    =========================== */
+    /* FORM CADASTRO*/
     .form-section { padding: 6rem 0; }
 
     .form-layout {
@@ -904,9 +885,7 @@
       font-weight: 300;
     }
 
-    /* ===========================
-       FORMULÁRIOS ADOÇÃO / LAR TEMP
-    =========================== */
+    /* FORM ADOÇÃO / LAR TEMP*/
     .interest-section {
       background: var(--bg-warm);
       padding: 6rem 0;
@@ -1073,9 +1052,7 @@
       .radio-grid { grid-template-columns: 1fr; }
     }
 
-    /* ===========================
-       SELETOR DE ANIMAL (adoção/lar temp)
-    =========================== */
+    /* SELETOR DE ANIMAL (adoção/lar temp)*/
     .animal-choice-toggle {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1155,9 +1132,7 @@
       opacity: 1;
     }
 
-    /* ===========================
-       CTA SECTION
-    =========================== */
+    /* CTA SECTION */
     .cta-section {
       background: var(--teal-deep);
       color: #fff;
@@ -1182,9 +1157,7 @@
       font-weight: 300;
     }
 
-    /* ===========================
-       FOOTER
-    =========================== */
+    /* FOOTER*/
     footer {
       background: var(--text);
       color: rgba(255,255,255,0.55);
@@ -1254,9 +1227,7 @@
       text-decoration: none;
     }
 
-    /* ===========================
-       ANIMAÇÕES
-    =========================== */
+    /* ANIMAÇÕES*/
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -1288,9 +1259,7 @@
       transform: translateY(0);
     }
 
-    /* ===========================
-       RESPONSIVO
-    =========================== */
+    /* RESPONSIVO*/
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -1329,9 +1298,7 @@
 </head>
 <body>
 
-  <!-- ========================
-       NAVBAR
-  ======================== -->
+  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container">
       <a href="#" class="logo">🐾 AdotaDF</a>
@@ -1352,9 +1319,7 @@
     </div>
   </nav>
 
-  <!-- ========================
-       HERO
-  ======================== -->
+  <!-- HERO-->
   <section class="hero">
     <div class="hero-glow"></div>
     <!-- Patas decorativas -->
@@ -1383,9 +1348,7 @@
     </div>
   </section>
 
-  <!-- ========================
-       STATS BAR
-  ======================== -->
+  <!-- STATS BAR-->
   <div class="stats-bar">
     <div class="stat-item">
       <div class="stat-num">100%</div>
@@ -1405,9 +1368,7 @@
     </div>
   </div>
 
-  <!-- ========================
-       COMO FUNCIONA
-  ======================== -->
+  <!-- COMO FUNCIONA-->
   <section class="section-pad" id="como-funciona">
     <div class="container">
       <span class="section-label reveal">Como funciona</span>
@@ -1444,9 +1405,7 @@
     </div>
   </section>
 
-  <!-- ========================
-       ANIMAIS DISPONÍVEIS
-  ======================== -->
+  <!-- ANIMAIS DISPONÍVEIS -->
   <section class="animals-section" id="animais">
     <div class="container">
       <div class="animals-header">
@@ -1605,9 +1564,7 @@
     </div>
   </section>
 
-  <!-- ========================
-       MAPA
-  ======================== -->
+  <!-- MAPA-->
   <section class="map-section" id="mapa">
     <div class="container">
       <span class="section-label reveal">Mapa de adoção</span>
@@ -1650,9 +1607,7 @@
     </div>
   </section>
 
-  <!-- ========================
-       COMO AJUDAR
-  ======================== -->
+  <!-- COMO AJUDAR-->
   <section class="help-section" id="ajudar">
     <div class="container">
       <span class="section-label reveal">Como ajudar</span>
@@ -1684,9 +1639,7 @@
     </div>
   </section>
 
-  <!-- ========================
-       CADASTRO DE ANIMAL
-  ======================== -->
+  <!-- CADASTRO DE ANIMAL-->
   <section class="form-section" id="cadastrar">
     <div class="container">
       <span class="section-label reveal">Cadastrar animal</span>
@@ -1801,9 +1754,7 @@
     </div>
   </section>
 
-  <!-- ========================
-       FORMULÁRIOS: ADOTAR / LAR TEMP
-  ======================== -->
+  <!-- FORMULÁRIOS: ADOTAR / LAR TEMP-->
   <section class="interest-section" id="quero-ajudar">
     <div class="container">
       <span class="section-label reveal">Quero ajudar</span>
