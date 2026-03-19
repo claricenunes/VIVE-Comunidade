@@ -1808,10 +1808,9 @@
     /* ============================================================
        CONFIGURAÇÕES — SUBSTITUA COM SUAS URLs REAIS
     ============================================================ */
+    
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNqkM-QoE3UJi5s13ztdYP1AviMrzVzAykjMvlJGNkOUG0vPtFNit_wLXswIvPndAHMA/exec';
-    const ANIMALS_URL  = 'animais.json';
-    // Após publicar no GitHub Pages:
-    // const ANIMALS_URL = 'https://raw.githubusercontent.com/SEU_USUARIO/patasdf/main/animais.json';
+    const ANIMALS_URL = 'https://raw.githubusercontent.com/SEU_USUARIO/patasdf/main/animais.json';
 
     /* ============================================================
        ESTADO GLOBAL
@@ -2265,7 +2264,14 @@
           });
         const form1 = new FormData();
         form1.append('dados', payload1);
-        await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: form1 });
+        const resp = await fetch(SCRIPT_URL, {
+  method: 'POST',
+  mode: 'no-cors',
+  body: form1
+});
+
+const data = await resp.json();
+console.log(data);
         document.getElementById('formContent').style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
       } catch (e) {
@@ -2548,7 +2554,9 @@
        CONFIRMAR ADOÇÃO → envia ao Apps Script
     ============================================================ */
     async function confirmarAdocao() {
-      if (!_pendingAdoptData) return;
+  console.log("Confirmado!");
+
+  if (!_pendingAdoptData) return;
 
       const btnConfirmar = document.getElementById('btnConfirmarAdocao');
       const spinner      = document.getElementById('spinnerAdocao');
@@ -2565,7 +2573,13 @@
           });
         const form2 = new FormData();
         form2.append('dados', payload2);
-        await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: form2 });
+        const resp = await fetch(SCRIPT_URL, {
+  method: 'POST',
+  mode: 'no-cors',
+  body: form2
+});
+const data = await resp.json();
+console.log(data);
 
         fecharModal();
         document.getElementById('adoptFormContent').style.display = 'none';
@@ -2585,38 +2599,54 @@
        CONFIRMAR LAR TEMPORÁRIO → envia ao Apps Script
     ============================================================ */
     async function confirmarTemp() {
-      if (!_pendingTempData) return;
+  if (!_pendingTempData) return;
 
-      const btnConfirmar = document.getElementById('btnConfirmarTemp');
-      const spinner      = document.getElementById('spinnerTemp');
-      btnConfirmar.disabled = true;
-      spinner.style.display = 'inline-block';
+  const btnConfirmar = document.getElementById('btnConfirmarTemp');
+  const spinner      = document.getElementById('spinnerTemp');
+  btnConfirmar.disabled = true;
+  spinner.style.display = 'inline-block';
 
-      try {
-        const payload3 = JSON.stringify({
-            acao: 'larTemporario',
-            ..._pendingTempData,
-            animaisIds:   _pendingTempData.animaisSelecionados.map(a => a.id).join(', ')   || '',
-            animaisNomes: _pendingTempData.animaisSelecionados.map(a => a.nome).join(', ') || 'match a definir',
-            timestamp:    new Date().toISOString()
-          });
-        const form3 = new FormData();
-        form3.append('dados', payload3);
-        await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: form3 });
+  try {
+    const payload3 = JSON.stringify({
+      acao: 'larTemporario',
+      ..._pendingTempData,
+      animaisIds:   _pendingTempData.animaisSelecionados.map(a => a.id).join(', ') || '',
+      animaisNomes: _pendingTempData.animaisSelecionados.map(a => a.nome).join(', ') || 'match a definir',
+      timestamp:    new Date().toISOString()
+    });
 
-        fecharModal();
-        document.getElementById('tempFormContent').style.display = 'none';
-        document.getElementById('tempSuccess').style.display     = 'block';
-        _pendingTempData = null;
+    const form3 = new FormData();
+    form3.append('dados', payload3);
 
-      } catch (e) {
-        console.error(e);
-        alert('Erro ao enviar. Verifique sua conexão e tente novamente.');
-        btnConfirmar.disabled = false;
-      } finally {
-        spinner.style.display = 'none';
-      }
+    const resp = await await fetch(SCRIPT_URL, {
+  method: 'POST',
+  mode: 'no-cors',
+  body: form3
+});
+
+    // evita erro de CORS
+    let data = null;
+    try {
+      data = await resp.json();
+    } catch(e) {
+      console.log('Resposta não veio como JSON (normal)');
     }
+
+    console.log(data);
+
+    fecharModal();
+    document.getElementById('tempFormContent').style.display = 'none';
+    document.getElementById('tempSuccess').style.display     = 'block';
+    _pendingTempData = null;
+
+  } catch (e) {
+    console.error(e);
+    alert('Erro ao enviar. Verifique sua conexão e tente novamente.');
+    btnConfirmar.disabled = false;
+  } finally {
+    spinner.style.display = 'none';
+  }
+}
 
     /* ============================================================
        RESET FORMULÁRIOS
