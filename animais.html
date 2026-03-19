@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animais disponíveis — AdotaDF</title>
+  <meta name="description" content="Veja todos os animais disponíveis para adoção no Distrito Federal. Cachorros e gatos esperando por um lar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:        #1D9E75;
+      --teal-dark:   #0F6E56;
+      --teal-deep:   #085041;
+      --teal-light:  #E1F5EE;
+      --teal-mid:    #9FE1CB;
+      --amber:       #EF9F27;
+      --amber-dark:  #BA7517;
+      --amber-light: #FAEEDA;
+      --coral:       #D85A30;
+      --coral-light: #FAECE7;
+      --text:        #2C2C2A;
+      --text-muted:  #888780;
+      --text-light:  #B4B2A9;
+      --bg:          #FFFDF8;
+      --bg-warm:     #FBF7F0;
+      --bg-card:     #FFFFFF;
+      --border:      rgba(0,0,0,0.08);
+      --border-md:   rgba(0,0,0,0.13);
+      --radius-sm:   8px;
+      --radius-md:   14px;
+      --radius-lg:   20px;
+      --radius-xl:   28px;
+      --shadow-sm:   0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md:   0 8px 32px rgba(0,0,0,0.08);
+      --shadow-lg:   0 16px 56px rgba(0,0,0,0.10);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,253,248,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      height: 66px;
+      display: flex; align-items: center;
+    }
+    .navbar .container { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--teal-dark); text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--teal); }
+    .nav-cta {
+      background: var(--teal); color: #fff !important;
+      padding: 8px 20px; border-radius: 24px;
+      font-size: 14px; font-weight: 500;
+    }
+    .nav-cta:hover { background: var(--teal-dark) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }
+
+    /* ===== PAGE HERO ===== */
+    .page-hero {
+      background: var(--teal-deep);
+      color: #fff;
+      padding: 4rem 2rem 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '🐾';
+      position: absolute; right: 6%; top: 50%;
+      transform: translateY(-50%);
+      font-size: 9rem; opacity: 0.06;
+      pointer-events: none;
+    }
+    .page-hero .container { position: relative; z-index: 1; }
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; opacity: .6; margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: #fff; text-decoration: none; }
+    .breadcrumb a:hover { opacity: .9; }
+    .breadcrumb span { opacity: .5; }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700; line-height: 1.1;
+      margin-bottom: .75rem;
+    }
+    .page-hero p { font-size: 1rem; opacity: .75; max-width: 520px; font-weight: 300; }
+
+    /* ===== FILTROS ===== */
+    .filters-bar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 66px; z-index: 100;
+      padding: .9rem 0;
+    }
+    .filters-inner {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      gap: 1rem; flex-wrap: wrap;
+    }
+    .filter-group { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-pill {
+      background: var(--bg-warm); border: 1px solid var(--border-md);
+      border-radius: 30px; padding: 6px 16px;
+      font-size: 13px; color: var(--text-muted);
+      cursor: pointer; transition: all .2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .filter-pill:hover { border-color: var(--teal); color: var(--teal); }
+    .filter-pill.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+
+    .search-bar {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--bg-warm);
+      border: 1px solid var(--border-md);
+      border-radius: 30px; padding: 6px 14px;
+    }
+    .search-bar input {
+      border: none; background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; color: var(--text);
+      outline: none; width: 180px;
+    }
+    .search-bar input::placeholder { color: var(--text-light); }
+
+    .results-count {
+      font-size: 13px; color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* ===== GRID ===== */
+    .animals-section { padding: 3rem 0 5rem; }
+
+    .animals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .animal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: transform .22s, box-shadow .22s;
+      opacity: 0; transform: translateY(16px);
+      animation: cardIn .4s ease forwards;
+    }
+    .animal-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+
+    @keyframes cardIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animal-img {
+      width: 100%; height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem; position: relative; overflow: hidden;
+    }
+    .animal-tag {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(255,255,255,.94); border: 1px solid var(--border);
+      border-radius: 20px; padding: 4px 12px;
+      font-size: 12px; font-weight: 500;
+    }
+    .animal-status {
+      position: absolute; top: 12px; left: 12px;
+      background: var(--teal); color: #fff;
+      border-radius: 20px; padding: 4px 12px;
+      font-size: 11px; font-weight: 500;
+    }
+    .animal-body { padding: 1.35rem; }
+    .animal-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-weight: 700; margin-bottom: 6px;
+    }
+    .animal-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+    .pill {
+      background: var(--bg-warm); border: 1px solid var(--border);
+      border-radius: 20px; padding: 3px 10px;
+      font-size: 12px; color: var(--text-muted);
+    }
+    .animal-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; margin-bottom: 1rem; }
+    .animal-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 1rem; border-top: 1px solid var(--border);
+    }
+    .contact-info { font-size: 13px; color: var(--teal); font-weight: 500; }
+    .btn-adotar {
+      background: var(--teal); color: #fff; border: none;
+      border-radius: 20px; padding: 7px 18px; font-size: 13px;
+      font-family: 'DM Sans', sans-serif; cursor: pointer;
+      font-weight: 500; transition: background .2s, transform .15s;
+    }
+    .btn-adotar:hover { background: var(--teal-dark); transform: scale(1.04); }
+
+    /* ===== ESTADOS ===== */
+    .state-box {
+      grid-column: 1 / -1;
+      text-align: center; padding: 4rem 2rem;
+      color: var(--text-muted);
+    }
+    .state-box .state-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .state-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; margin-bottom: .5rem; color: var(--text);
+    }
+    .state-box p { font-size: 14px; font-weight: 300; }
+
+    /* ===== LOAD MORE ===== */
+    .load-more-area {
+      text-align: center; margin-top: 2.5rem;
+    }
+    .btn-load {
+      background: transparent; color: var(--teal);
+      border: 1.5px solid var(--teal);
+      border-radius: 50px; padding: 12px 32px;
+      font-size: 15px; font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer; transition: all .22s;
+    }
+    .btn-load:hover { background: var(--teal); color: #fff; }
+
+    /* ===== CTA BOTTOM ===== */
+    .cta-bottom {
+      background: var(--teal-deep); color: #fff;
+      text-align: center; padding: 5rem 2rem;
+    }
+    .cta-bottom h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700; margin-bottom: 1rem;
+    }
+    .cta-bottom p { opacity: .7; max-width: 440px; margin: 0 auto 2rem; font-weight: 300; }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--amber); color: var(--text);
+      border: none; border-radius: 50px; padding: 14px 32px;
+      font-size: 15px; font-weight: 600;
+      font-family: 'DM Sans', sans-serif; cursor: pointer;
+      text-decoration: none; transition: all .22s;
+    }
+    .btn-cta:hover { background: #FAC775; transform: translateY(-2px); }
+
+    /* ===== FOOTER ===== */
+    footer { background: #2C2C2A; color: rgba(255,255,255,.55); padding: 3rem 2rem; }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    }
+    .footer-brand .logo { color: #fff; font-size: 20px; margin-bottom: .75rem; }
+    .footer-brand p { font-size: 13px; line-height: 1.7; max-width: 280px; }
+    .footer-links h4 { color: #fff; font-size: 13px; font-weight: 500; margin-bottom: 1rem; }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-links ul a { font-size: 13px; color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
+    .footer-links ul a:hover { color: var(--amber); }
+    .footer-bottom {
+      max-width: 1100px; margin: 2rem auto 0;
+      padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.08);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem; font-size: 12px;
+    }
+    .footer-bottom a { color: var(--amber); text-decoration: none; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 66px; left: 0; right: 0;
+        background: var(--bg); border-bottom: 1px solid var(--border);
+        padding: 1.5rem 2rem; gap: 1.25rem; z-index: 199;
+      }
+      .filters-inner { flex-direction: column; align-items: flex-start; }
+      .search-bar input { width: 130px; }
+      .footer-inner { flex-direction: column; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">🐾 AdotaDF</a>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#como-funciona">Como funciona</a></li>
+        <li><a href="animais.html" class="active">Animais</a></li>
+        <li><a href="index.html#mapa">Mapa</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="index.html#cadastrar" class="nav-cta">Cadastrar animal</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Início</a>
+        <span>/</span>
+        <span>Animais disponíveis</span>
+      </div>
+      <h1>Animais esperando<br>por um lar no DF</h1>
+      <p>Todos os animais cadastrados na plataforma, disponíveis para adoção ou lar temporário no Distrito Federal.</p>
+    </div>
+  </div>
+
+  <!-- FILTROS -->
+  <div class="filters-bar">
+    <div class="container">
+      <div class="filters-inner">
+        <div class="filter-group">
+          <button class="filter-pill active" onclick="aplicarFiltro('todos', this)">Todos</button>
+          <button class="filter-pill" onclick="aplicarFiltro('cachorro', this)">🐶 Cachorros</button>
+          <button class="filter-pill" onclick="aplicarFiltro('gato', this)">🐱 Gatos</button>
+          <button class="filter-pill" onclick="aplicarFiltro('pequeno', this)">Pequeno porte</button>
+          <button class="filter-pill" onclick="aplicarFiltro('medio', this)">Médio porte</button>
+          <button class="filter-pill" onclick="aplicarFiltro('grande', this)">Grande porte</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+          <div class="search-bar">
+            <span style="font-size:14px; color:var(--text-light);">🔍</span>
+            <input type="text" id="searchInput" placeholder="Buscar por nome ou cidade..." oninput="buscar(this.value)" />
+          </div>
+          <span class="results-count" id="resultsCount"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRID DE ANIMAIS -->
+  <section class="animals-section">
+    <div class="container">
+
+      <!-- Loading -->
+      <div id="loadingState" style="text-align:center; padding:4rem; color:var(--text-muted);">
+        <div style="font-size:2.5rem; margin-bottom:.75rem; display:inline-block; animation: spin 1.5s linear infinite;">🐾</div>
+        <p>Carregando animais...</p>
+      </div>
+
+      <div class="animals-grid" id="animalsGrid" style="display:none;"></div>
+
+      <!-- Load more -->
+      <div class="load-more-area" id="loadMoreArea" style="display:none;">
+        <button class="btn-load" onclick="mostrarMais()">Ver mais animais</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-bottom">
+    <h2>Encontrou o seu novo melhor amigo?</h2>
+    <p>Entre em contato com o responsável e dê um lar para quem mais precisa.</p>
+    <a href="index.html#quero-ajudar" class="btn-cta">🏠 Quero adotar</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">🐾 AdotaDF</a>
+        <p>Plataforma gratuita e comunitária para conectar animais abandonados do DF com famílias amorosas.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="index.html#como-funciona">Como funciona</a></li>
+          <li><a href="animais.html">Animais disponíveis</a></li>
+          <li><a href="index.html#mapa">Mapa do DF</a></li>
+          <li><a href="index.html#ajudar">Como ajudar</a></li>
+          <li><a href="index.html#cadastrar">Cadastrar animal</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Projeto</h4>
+        <ul>
+          <li><a href="sobre.html">Sobre a criadora</a></li>
+          <li><a href="https://github.com/claricenunes" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 AdotaDF · Projeto de extensão · CEUB · Engenharia de Software</span>
+      <span>Feito com 🐾 por <a href="sobre.html">Clarice Nunes</a></span>
+    </div>
+  </footer>
+
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+
+  <script>
+    /* ===== CONFIG ===== */
+    const ANIMALS_URL = 'animais.json';
+    // Após publicar: 'https://raw.githubusercontent.com/SEU_USUARIO/adotadf/main/animais.json'
+
+    const POR_PAGINA = 12;
+    let todosAnimais  = [];
+    let animaisFiltrados = [];
+    let paginaAtual  = 1;
+    let filtroTipo   = 'todos';
+    let termoBusca   = '';
+
+    const bgMap    = { cachorro:'#FFF3E0', gato:'#F3E5F5' };
+    const emojiMap = { cachorro:'🐶', gato:'🐱' };
+
+    /* ===== CARREGA JSON ===== */
+    async function carregarAnimais() {
+      try {
+        const r = await fetch(ANIMALS_URL + '?t=' + Date.now());
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const dados = await r.json();
+        todosAnimais = dados.filter(a => !a.status || a.status === 'disponivel');
+      } catch {
+        todosAnimais = [
+          { id:'ex1', nome:'Bolinha',  tipo:'cachorro', idade:'~2 anos',  porte:'medio',   cidade:'Asa Sul',    descricao:'Muito carinhoso, brinca com crianças e já é castrado.',      contato:'(61) 9xxxx-xxxx' },
+          { id:'ex2', nome:'Mimi',     tipo:'gato',     idade:'~8 meses', porte:'pequeno', cidade:'Taguatinga', descricao:'Gatinha dócil, vacinada e sociável com outros gatos.',         contato:'(61) 9xxxx-xxxx' },
+          { id:'ex3', nome:'Thor',     tipo:'cachorro', idade:'~4 anos',  porte:'grande',  cidade:'Ceilândia',  descricao:'Cão tranquilo, gosta de caminhadas. Ideal pra quem tem espaço.', contato:'(61) 9xxxx-xxxx' },
+          { id:'ex4', nome:'Mingau',   tipo:'gato',     idade:'~3 anos',  porte:'medio',   cidade:'Guará',      descricao:'Independente mas carinhoso. Castrado e vacinado em dia.',       contato:'(61) 9xxxx-xxxx' },
+          { id:'ex5', nome:'Pipoca',   tipo:'cachorro', idade:'~1 ano',   porte:'pequeno', cidade:'Sobradinho', descricao:'Brincalhona e energética. Adora crianças.',                     contato:'(61) 9xxxx-xxxx' },
+          { id:'ex6', nome:'Nala',     tipo:'gato',     idade:'~6 meses', porte:'pequeno', cidade:'Samambaia',  descricao:'Curiosa e cheia de energia. Precisa de vacinas e amor.',        contato:'(61) 9xxxx-xxxx' },
+          { id:'ex7', nome:'Rex',      tipo:'cachorro', idade:'~5 anos',  porte:'grande',  cidade:'Planaltina', descricao:'Cão forte e leal. Ótimo cão de companhia para adultos.',         contato:'(61) 9xxxx-xxxx' },
+          { id:'ex8', nome:'Luna',     tipo:'gato',     idade:'~1 ano',   porte:'pequeno', cidade:'Águas Claras', descricao:'Gatinha linda, super sociável e brincalhona.',               contato:'(61) 9xxxx-xxxx' },
+        ];
+      }
+      document.getElementById('loadingState').style.display = 'none';
+      document.getElementById('animalsGrid').style.display = '';
+      filtrar();
+    }
+
+    /* ===== FILTROS + BUSCA ===== */
+    function aplicarFiltro(tipo, btn) {
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      filtroTipo = tipo;
+      paginaAtual = 1;
+      filtrar();
+    }
+
+    function buscar(termo) {
+      termoBusca = termo.toLowerCase().trim();
+      paginaAtual = 1;
+      filtrar();
+    }
+
+    function filtrar() {
+      animaisFiltrados = todosAnimais.filter(a => {
+        const matchTipo = filtroTipo === 'todos'
+          ? true
+          : filtroTipo === a.tipo
+          || (filtroTipo === 'pequeno' && (a.porte || '').toLowerCase().includes('pequen'))
+          || (filtroTipo === 'medio'   && (a.porte || '').toLowerCase().includes('dio'))
+          || (filtroTipo === 'grande'  && (a.porte || '').toLowerCase().includes('grand'));
+
+        const matchBusca = !termoBusca
+          || (a.nome   || '').toLowerCase().includes(termoBusca)
+          || (a.cidade || '').toLowerCase().includes(termoBusca)
+          || (a.tipo   || '').toLowerCase().includes(termoBusca);
+
+        return matchTipo && matchBusca;
+      });
+
+      renderizar();
+    }
+
+    /* ===== RENDERIZA ===== */
+    function renderizar() {
+      const grid = document.getElementById('animalsGrid');
+      const loadArea = document.getElementById('loadMoreArea');
+      const count = document.getElementById('resultsCount');
+
+      const slice = animaisFiltrados.slice(0, paginaAtual * POR_PAGINA);
+      const temMais = slice.length < animaisFiltrados.length;
+
+      count.textContent = animaisFiltrados.length + ' animal' + (animaisFiltrados.length !== 1 ? 'is' : '');
+
+      if (animaisFiltrados.length === 0) {
+        grid.innerHTML = `
+          <div class="state-box">
+            <div class="state-icon">🔍</div>
+            <h3>Nenhum animal encontrado</h3>
+            <p>Tente outro filtro ou volte em breve — novos animais são cadastrados diariamente.</p>
+          </div>`;
+        loadArea.style.display = 'none';
+        return;
+      }
+
+      grid.innerHTML = slice.map((a, i) => {
+        const bg    = bgMap[a.tipo]    || '#F5F5F5';
+        const emoji = emojiMap[a.tipo] || '🐾';
+        const tipo  = a.tipo ? (a.tipo.charAt(0).toUpperCase() + a.tipo.slice(1)) : 'Animal';
+        const delay = (i % POR_PAGINA) * 0.04;
+        return `
+        <div class="animal-card" data-tipo="${a.tipo||''}" style="animation-delay:${delay}s">
+          <div class="animal-img" style="background:${bg};">
+            ${a.foto ? `<img src="${a.foto}" alt="${a.nome}" style="width:100%;height:100%;object-fit:cover;">` : emoji}
+            <div class="animal-tag">${tipo}</div>
+            <div class="animal-status">Disponível</div>
+          </div>
+          <div class="animal-body">
+            <div class="animal-name">${a.nome || 'Sem nome'}</div>
+            <div class="animal-meta">
+              ${a.idade  ? `<span class="pill">${a.idade}</span>`  : ''}
+              ${a.cidade ? `<span class="pill">${a.cidade}</span>` : ''}
+              ${a.porte  ? `<span class="pill">${a.porte.charAt(0).toUpperCase()+a.porte.slice(1)} porte</span>` : ''}
+            </div>
+            <p class="animal-desc">${a.descricao || ''}</p>
+            <div class="animal-footer">
+              <span class="contact-info">📱 ${a.contato || ''}</span>
+              <button class="btn-adotar" onclick="adotar('${(a.nome||'').replace(/'/g,"\\'")}','${(a.contato||'').replace(/'/g,"\\'")}')">
+                Quero adotar
+              </button>
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+
+      loadArea.style.display = temMais ? 'block' : 'none';
+    }
+
+    function mostrarMais() {
+      paginaAtual++;
+      renderizar();
+      // Scroll suave para o novo conteúdo
+      setTimeout(() => {
+        const cards = document.querySelectorAll('.animal-card');
+        const novo = cards[( paginaAtual - 1) * POR_PAGINA];
+        if (novo) novo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+
+    function adotar(nome, contato) {
+      if (contato && !contato.includes('xxxx')) {
+        const num = contato.replace(/\D/g, '');
+        const msg = encodeURIComponent(`Olá! Vi o(a) ${nome} no AdotaDF e tenho interesse em adotar. Podemos conversar?`);
+        window.open(`https://wa.me/55${num}?text=${msg}`, '_blank');
+      } else {
+        alert(`💚 Entre em contato com o responsável pelo número exibido no card do(a) ${nome}.`);
+      }
+    }
+
+    /* ===== NAV MOBILE ===== */
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+    document.querySelectorAll('#navLinks a').forEach(l =>
+      l.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+    );
+
+    /* ===== INIT ===== */
+    carregarAnimais();
+  </script>
+</body>
+</html>
