@@ -124,9 +124,67 @@
     .animal-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
     .pill { background: var(--bg-warm); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 12px; color: var(--text-muted); }
     .animal-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; margin-bottom: 1rem; }
-    .animal-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border); }
-    .contact-info { font-size: 13px; color: var(--teal); font-weight: 500; }
-    .btn-adotar { background: var(--teal); color: #fff; border: none; border-radius: 20px; padding: 7px 18px; font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer; font-weight: 500; transition: background 0.2s, transform 0.15s; }
+    .animal-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border); gap: 8px; flex-wrap: wrap; }
+    .contact-info { font-size: 12px; color: var(--text-muted); font-weight: 400; }
+    .card-btns { display: flex; gap: 7px; flex-shrink: 0; }
+    .btn-whatsapp-card { background: transparent; border: 1.5px solid #25D366; color: #128C44; border-radius: 20px; padding: 7px 13px; font-size: 12px; font-family: 'DM Sans', sans-serif; cursor: pointer; font-weight: 500; transition: all 0.2s; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+    .btn-whatsapp-card:hover { background: #f0fff4; transform: scale(1.04); }
+    /* Card action area — dois botões empilhados */
+    .card-action-area {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .btn-adotar-main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      width: 100%;
+    }
+    .btn-adotar-main:hover {
+      background: var(--teal-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(29,158,117,0.28);
+    }
+    .btn-wpp-secondary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      background: transparent;
+      color: #25D366;
+      border: 1.5px solid #25D366;
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      width: 100%;
+    }
+    .btn-wpp-secondary:hover {
+      background: #25D366;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .btn-adotar { background: var(--teal); color: #fff; border: none; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-family: 'DM Sans', sans-serif; cursor: pointer; font-weight: 500; transition: background 0.2s, transform 0.15s; white-space: nowrap; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
     .btn-adotar:hover { background: var(--teal-dark); transform: scale(1.04); }
     .empty-state { text-align: center; padding: 3rem; color: var(--text-muted); display: none; }
 
@@ -618,6 +676,228 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+
+    /* ============================================================
+       FORMULÁRIO MULTI-STEP — CADASTRAR ANIMAL
+    ============================================================ */
+    .cad-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    /* Passos laterais */
+    .cad-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin-bottom: 1.75rem;
+    }
+    .cad-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .cad-step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--teal-light);
+      color: var(--teal-dark);
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 2px solid rgba(29,158,117,0.2);
+    }
+    .cad-step-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .cad-step-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-top: 2px;
+    }
+
+    /* Box de isenção lateral */
+    .cad-isenção, .cad-isencao {
+      background: var(--coral-light);
+      border: 1px solid rgba(216,90,48,0.2);
+      border-left: 3px solid var(--coral);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+    }
+    .cad-isencao-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--coral);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .cad-isenção p, .cad-isencao p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .cad-isenção p strong, .cad-isencao p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Stepper */
+    .cad-stepper {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cad-step-tab {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-light);
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .cad-step-tab.active { color: var(--teal); }
+    .cad-step-tab.done   { color: var(--teal-dark); }
+    .step-tab-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--bg-warm);
+      border: 1.5px solid var(--border-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .cad-step-tab.active .step-tab-num {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+    .cad-step-tab.done .step-tab-num {
+      background: var(--teal-light);
+      border-color: var(--teal);
+      color: var(--teal-dark);
+    }
+    .cad-step-divider {
+      flex: 1;
+      height: 1px;
+      background: var(--border-md);
+      margin: 0 10px;
+    }
+
+    /* Steps do form */
+    .cad-form-step { display: none; }
+    .cad-form-step.active { display: block; }
+
+    /* Botões de navegação */
+    .cad-next-btn {
+      width: 100%;
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 13px 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.22s;
+      margin-top: 0.5rem;
+    }
+    .cad-next-btn:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,158,117,0.25); }
+    .cad-back-btn {
+      background: transparent;
+      border: 1.5px solid var(--border-md);
+      color: var(--text-muted);
+      border-radius: 50px;
+      padding: 12px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .cad-back-btn:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* Validação visual dos steps */
+    .cad-form-step .form-group input.invalid,
+    .cad-form-step .form-group select.invalid,
+    .cad-form-step .form-group textarea.invalid {
+      border-color: var(--coral);
+      box-shadow: 0 0 0 3px rgba(216,90,48,0.1);
+    }
+    .field-error {
+      font-size: 11px;
+      color: var(--coral);
+      margin-top: 4px;
+      display: none;
+    }
+    .field-error.show { display: block; }
+
+    @media (max-width: 768px) {
+      .cad-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .cad-stepper { flex-wrap: wrap; gap: 6px; }
+      .cad-step-divider { display: none; }
+      .cad-step-tab { font-size: 11px; }
+    }
+
+    /* ============================================================
+       FORMULÁRIO MULTI-STEP — CADASTRAR ANIMAL
+    ============================================================ */
+    .cad-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+    .cad-steps { display: flex; flex-direction: column; gap: 1.1rem; margin-bottom: 1.75rem; }
+    .cad-step { display: flex; align-items: flex-start; gap: 14px; }
+    .cad-step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--teal-light); color: var(--teal-dark); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid rgba(29,158,117,0.2); }
+    .cad-step-title { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.3; }
+    .cad-step-sub { font-size: 12px; color: var(--text-muted); font-weight: 300; margin-top: 2px; }
+    .cad-isencao { background: var(--coral-light); border: 1px solid rgba(216,90,48,0.2); border-left: 3px solid var(--coral); border-radius: var(--radius-md); padding: 1rem 1.25rem; }
+    .cad-isenção { background: var(--coral-light); border: 1px solid rgba(216,90,48,0.2); border-left: 3px solid var(--coral); border-radius: var(--radius-md); padding: 1rem 1.25rem; }
+    .cad-isencao-title { font-size: 12px; font-weight: 600; color: var(--coral); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.8px; }
+    .cad-isencao p, .cad-isenção p { font-size: 12px; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+    .cad-isencao p strong, .cad-isenção p strong { color: var(--text); font-weight: 500; }
+    .cad-stepper { display: flex; align-items: center; margin-bottom: 1.75rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); gap: 6px; }
+    .cad-step-tab { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; color: var(--text-light); transition: color 0.2s; white-space: nowrap; }
+    .cad-step-tab.active { color: var(--teal); }
+    .cad-step-tab.done   { color: var(--teal-dark); }
+    .step-tab-num { width: 22px; height: 22px; border-radius: 50%; background: var(--bg-warm); border: 1.5px solid var(--border-md); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; transition: all 0.2s; }
+    .cad-step-tab.active .step-tab-num { background: var(--teal); border-color: var(--teal); color: #fff; }
+    .cad-step-tab.done .step-tab-num { background: var(--teal-light); border-color: var(--teal); color: var(--teal-dark); }
+    .cad-step-divider { flex: 1; height: 1px; background: var(--border-md); }
+    .cad-form-step { display: none; }
+    .cad-form-step.active { display: block; }
+    .cad-next-btn { width: 100%; background: var(--teal); color: #fff; border: none; border-radius: 50px; padding: 13px 24px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; transition: all 0.22s; margin-top: 0.5rem; }
+    .cad-next-btn:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,158,117,0.25); }
+    .cad-back-btn { background: transparent; border: 1.5px solid var(--border-md); color: var(--text-muted); border-radius: 50px; padding: 12px 20px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+    .cad-back-btn:hover { border-color: var(--teal); color: var(--teal); }
+    .cad-form-step .form-group input.invalid, .cad-form-step .form-group select.invalid, .cad-form-step .form-group textarea.invalid { border-color: var(--coral); box-shadow: 0 0 0 3px rgba(216,90,48,0.1); }
+    @media (max-width: 768px) {
+      .cad-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .cad-step-divider { display: none; }
+      .cad-step-tab { font-size: 11px; }
+    }
+
     /* ANIMAÇÕES */
     @keyframes fadeUp   { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
@@ -949,103 +1229,283 @@
   <section class="form-section" id="cadastrar">
     <div class="container">
       <span class="section-label reveal">Cadastrar animal</span>
-      <h2 class="section-title reveal">Encontrou um animal?<br>Registre agora</h2>
-      <div class="form-layout">
-        <div class="form-info reveal">
-          <h3>Por que cadastrar?</h3>
-          <p>Ao cadastrar um animal, ele fica visível para centenas de pessoas do DF que estão procurando adotar. Quanto mais informações você fornecer, mais rápido ele encontra um lar.</p>
-          <ul class="form-checklist">
-            <li><div class="check-icon">✓</div> 100% gratuito</li>
-            <li><div class="check-icon">✓</div> Sem criar conta</li>
-            <li><div class="check-icon">✓</div> Leva menos de 2 minutos</li>
-            <li><div class="check-icon">✓</div> Animal aparece no mapa automaticamente</li>
-            <li><div class="check-icon">✓</div> Você controla o contato com interessados</li>
+      <h2 class="section-title reveal">Quer colocar um animal<br>para <span style="color:var(--teal);">adoção?</span></h2>
+      <p class="section-sub reveal" style="margin-bottom:0;">Preencha o formulário abaixo. Quanto mais detalhes, mais rápido o animal encontra um lar.</p>
+
+      <div class="cad-layout">
+
+        <!-- ── COLUNA ESQUERDA: info + passos ── -->
+        <div class="cad-info reveal">
+
+          <div class="cad-steps">
+            <div class="cad-step">
+              <div class="cad-step-num">01</div>
+              <div>
+                <div class="cad-step-title">Preencha o formulário</div>
+                <div class="cad-step-sub">Dados do animal e o seu contato WhatsApp</div>
+              </div>
+            </div>
+            <div class="cad-step">
+              <div class="cad-step-num">02</div>
+              <div>
+                <div class="cad-step-title">Animal entra no site</div>
+                <div class="cad-step-sub">Fica visível para quem quer adotar no DF</div>
+              </div>
+            </div>
+            <div class="cad-step">
+              <div class="cad-step-num">03</div>
+              <div>
+                <div class="cad-step-title">Interessados te contactam</div>
+                <div class="cad-step-sub">Diretamente pelo WhatsApp que você informou</div>
+              </div>
+            </div>
+            <div class="cad-step">
+              <div class="cad-step-num">04</div>
+              <div>
+                <div class="cad-step-title">Você escolhe o adotante</div>
+                <div class="cad-step-sub">A decisão final é sempre sua</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cad-isenção">
+            <div class="cad-isencao-title">⚠️ Sobre a responsabilidade</div>
+            <p>O PatasDF é uma plataforma de intermediação gratuita. Após o primeiro contato via WhatsApp entre você e o interessado, <strong>o PatasDF não se responsabiliza</strong> por acordos, entrega, saúde do animal ou qualquer resultado da adoção. Nossa função é apenas facilitar a conexão.</p>
+          </div>
+
+          <ul class="form-checklist" style="margin-top:1.25rem;">
+            <li><div class="check-icon">✓</div> 100% gratuito, sem criar conta</li>
+            <li><div class="check-icon">✓</div> Você controla quem adota</li>
+            <li><div class="check-icon">✓</div> Pode remover ou atualizar a qualquer momento</li>
+            <li><div class="check-icon">✓</div> Animal aparece no mapa do DF</li>
           </ul>
         </div>
+
+        <!-- ── COLUNA DIREITA: formulário ── -->
         <div class="form-card reveal">
-          <h3>🐾 Cadastrar animal para adoção</h3>
           <div id="formContent">
-            <div class="form-group">
-              <label for="animalNome">Nome do animal *</label>
-              <input type="text" id="animalNome" placeholder="Ex: Bolinha, Mimi, Thor..." required />
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="animalTipo">Tipo *</label>
-                <select id="animalTipo" required>
-                  <option value="">Selecione...</option>
-                  <option value="cachorro">🐶 Cachorro</option>
-                  <option value="gato">🐱 Gato</option>
-                  <option value="outro">Outro</option>
-                </select>
+
+            <!-- STEPPER -->
+            <div class="cad-stepper" id="cadStepper">
+              <div class="cad-step-tab active" id="stepTab1">
+                <span class="step-tab-num">1</span> Sobre o animal
               </div>
-              <div class="form-group">
-                <label for="animalIdade">Idade aproximada *</label>
-                <select id="animalIdade" required>
-                  <option value="">Selecione...</option>
-                  <option>Filhote (0–6 meses)</option>
-                  <option>Jovem (6m–2 anos)</option>
-                  <option>Adulto (2–7 anos)</option>
-                  <option>Idoso (7+ anos)</option>
-                </select>
+              <div class="cad-step-divider"></div>
+              <div class="cad-step-tab" id="stepTab2">
+                <span class="step-tab-num">2</span> Saúde & comportamento
               </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="animalPorte">Porte *</label>
-                <select id="animalPorte">
-                  <option value="">Selecione...</option>
-                  <option>Pequeno</option>
-                  <option>Médio</option>
-                  <option>Grande</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="animalCidade">Cidade/Bairro *</label>
-                <input type="text" id="animalCidade" placeholder="Ex: Asa Sul, Taguatinga..." required />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="animalDesc">Descrição *</label>
-              <textarea id="animalDesc" placeholder="Descreva o animal: comportamento, saúde, onde foi encontrado, se é castrado/vacinado..." required></textarea>
-            </div>
-            <div class="form-group">
-              <label for="animalContato">Seu contato (WhatsApp) *</label>
-              <input type="tel" id="animalContato" placeholder="(61) 9xxxx-xxxx" required />
-            </div>
-            <div class="form-group">
-              <label for="animalFoto">Link da foto *</label>
-              <input type="url" id="animalFoto" placeholder="Cole aqui o link da foto (Google Drive, Imgur, etc.)" />
-            </div>
-            <!-- Termo de isenção para quem cadastra -->
-            <div id="termoCadastroBox" style="background:var(--bg-warm);border:1px solid var(--border-md);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:1rem;">
-              <p style="font-size:12px;font-weight:600;color:var(--text);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.6rem;">📋 Importante — leia antes de cadastrar</p>
-              <p style="font-size:12px;color:var(--text-muted);line-height:1.7;font-weight:300;">
-                O <strong style="font-weight:500;color:var(--text);">PatasDF</strong> é uma plataforma gratuita de intermediação. Ao cadastrar um animal, você autoriza a divulgação pública das informações fornecidas para facilitar a adoção.
-                <br><br>
-                Interessados em adotar <strong style="font-weight:500;color:var(--text);">entrarão em contato com você diretamente pelo WhatsApp</strong> informado. A partir desse contato, <strong style="font-weight:500;color:var(--text);">o PatasDF não se responsabiliza</strong> por qualquer acordo, entrega, saúde do animal ou resultado da adoção — nossa função é apenas facilitar a conexão entre as partes.
-              </p>
-              <div style="display:flex;align-items:flex-start;gap:9px;margin-top:.85rem;">
-                <input type="checkbox" id="termoCadastroCheck" style="width:16px;height:16px;accent-color:var(--teal);flex-shrink:0;margin-top:2px;cursor:pointer;" onchange="toggleBtnCadastrar()">
-                <label for="termoCadastroCheck" style="font-size:12px;color:var(--text);line-height:1.6;cursor:pointer;">
-                  Li e entendi o aviso acima. Concordo em divulgar as informações do animal publicamente.
-                </label>
+              <div class="cad-step-divider"></div>
+              <div class="cad-step-tab" id="stepTab3">
+                <span class="step-tab-num">3</span> Seus dados & termo
               </div>
             </div>
 
-            <button class="btn btn-primary" id="btnCadastrar" style="width:100%;justify-content:center;padding:13px;opacity:0.4;pointer-events:none;" onclick="submitForm()">
-              <span class="btn-spinner" id="spinnerCadastro"></span>
-              🐾 Cadastrar animal
-            </button>
-            <p class="form-note">As informações serão compartilhadas publicamente para facilitar a adoção.</p>
+            <!-- ═══ STEP 1: Dados básicos do animal ═══ -->
+            <div class="cad-form-step active" id="cadStep1">
+
+              <div class="form-group">
+                <label for="animalNome">Nome do animal *</label>
+                <input type="text" id="animalNome" placeholder="Ex: Bolinha, Mimi, Thor..." />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="animalTipo">Tipo *</label>
+                  <select id="animalTipo">
+                    <option value="">Selecione...</option>
+                    <option value="cachorro">🐶 Cachorro</option>
+                    <option value="gato">🐱 Gato</option>
+                    <option value="outro">Outro</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="animalSexo">Sexo *</label>
+                  <select id="animalSexo">
+                    <option value="">Selecione...</option>
+                    <option value="macho">Macho</option>
+                    <option value="femea">Fêmea</option>
+                    <option value="nao_sei">Não sei</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="animalIdade">Idade aproximada *</label>
+                  <select id="animalIdade">
+                    <option value="">Selecione...</option>
+                    <option>Filhote (0–6 meses)</option>
+                    <option>Jovem (6m–2 anos)</option>
+                    <option>Adulto (2–7 anos)</option>
+                    <option>Idoso (7+ anos)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="animalPorte">Porte *</label>
+                  <select id="animalPorte">
+                    <option value="">Selecione...</option>
+                    <option>Pequeno (até 10kg)</option>
+                    <option>Médio (10–25kg)</option>
+                    <option>Grande (acima de 25kg)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="animalCidade">Cidade / Bairro onde está o animal *</label>
+                <input type="text" id="animalCidade" placeholder="Ex: Asa Sul, Taguatinga, Ceilândia..." />
+              </div>
+
+              <div class="form-group">
+                <label for="animalFoto">Link da foto *</label>
+                <input type="url" id="animalFoto" placeholder="Google Drive, Imgur, iCloud... (link público)" />
+                <span style="font-size:11px;color:var(--text-muted);margin-top:4px;display:block;">Dica: no Google Drive clique em "Compartilhar" → "Qualquer pessoa com o link"</span>
+              </div>
+
+              <button class="cad-next-btn" onclick="cadNextStep(1)">
+                Próximo — Saúde & comportamento →
+              </button>
+            </div>
+
+            <!-- ═══ STEP 2: Saúde e comportamento ═══ -->
+            <div class="cad-form-step" id="cadStep2">
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Castrado(a)? *</label>
+                  <div class="radio-group" style="margin-top:6px;">
+                    <label class="radio-item"><input type="radio" name="animalCastrado" value="sim"> Sim</label>
+                    <label class="radio-item"><input type="radio" name="animalCastrado" value="nao"> Não</label>
+                    <label class="radio-item"><input type="radio" name="animalCastrado" value="nao_sei"> Não sei</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Vacinado(a)? *</label>
+                  <div class="radio-group" style="margin-top:6px;">
+                    <label class="radio-item"><input type="radio" name="animalVacinado" value="sim"> Sim</label>
+                    <label class="radio-item"><input type="radio" name="animalVacinado" value="nao"> Não</label>
+                    <label class="radio-item"><input type="radio" name="animalVacinado" value="nao_sei"> Não sei</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Com quem convive bem? *</label>
+                <div class="checkbox-group" style="margin-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+                  <label class="checkbox-item"><input type="checkbox" id="convCriancas"> 👶 Crianças</label>
+                  <label class="checkbox-item"><input type="checkbox" id="convCachorros"> 🐶 Outros cachorros</label>
+                  <label class="checkbox-item"><input type="checkbox" id="convGatos"> 🐱 Gatos</label>
+                  <label class="checkbox-item"><input type="checkbox" id="convIdosos"> 👴 Idosos</label>
+                  <label class="checkbox-item"><input type="checkbox" id="convNenhum"> 🙅 Prefere ser único pet</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Onde pode morar? *</label>
+                <div class="checkbox-group" style="margin-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+                  <label class="checkbox-item"><input type="checkbox" id="moraApto"> 🏢 Apartamento</label>
+                  <label class="checkbox-item"><input type="checkbox" id="moraCasaSem"> 🏠 Casa sem quintal</label>
+                  <label class="checkbox-item"><input type="checkbox" id="moraCasaCom"> 🌳 Casa com quintal</label>
+                  <label class="checkbox-item"><input type="checkbox" id="moraQualquer"> ✅ Qualquer ambiente</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="animalDesc">Descrição do animal *</label>
+                <textarea id="animalDesc" placeholder="Conte sobre o comportamento, como ele foi encontrado ou sua história, qualquer informação importante para o futuro adotante..." style="min-height:100px;"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="animalNecessidades">Necessidades especiais ou condições de saúde</label>
+                <input type="text" id="animalNecessidades" placeholder="Ex: usa medicamento, problema na pata, timidez extrema... (deixe em branco se não tiver)" />
+              </div>
+
+              <div style="display:flex;gap:10px;">
+                <button class="cad-back-btn" onclick="cadBackStep(2)">← Voltar</button>
+                <button class="cad-next-btn" style="flex:1;" onclick="cadNextStep(2)">
+                  Próximo — Seus dados & termo →
+                </button>
+              </div>
+            </div>
+
+            <!-- ═══ STEP 3: Dados de quem cadastra + termo ═══ -->
+            <div class="cad-form-step" id="cadStep3">
+
+              <div class="form-group">
+                <label for="cadNome">Seu nome *</label>
+                <input type="text" id="cadNome" placeholder="Ex: Ana Souza" />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="animalContato">Seu WhatsApp *</label>
+                  <input type="tel" id="animalContato" placeholder="(61) 9xxxx-xxxx" />
+                </div>
+                <div class="form-group">
+                  <label for="cadEmail">Seu e-mail *</label>
+                  <input type="email" id="cadEmail" placeholder="seu@email.com" />
+                  <span style="font-size:11px;color:var(--text-muted);margin-top:4px;display:block;">Vamos te notificar quando houver interesse</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Qual é a sua relação com o animal? *</label>
+                <div class="radio-group" style="margin-top:6px;">
+                  <label class="radio-item"><input type="radio" name="cadRelacao" value="tutor"> Sou o(a) tutor(a) atual</label>
+                  <label class="radio-item"><input type="radio" name="cadRelacao" value="resgatador"> Resgatei na rua</label>
+                  <label class="radio-item"><input type="radio" name="cadRelacao" value="temporario"> Estou cuidando temporariamente</label>
+                  <label class="radio-item"><input type="radio" name="cadRelacao" value="outro"> Outro</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="cadMotivo">Por que está colocando para adoção? *</label>
+                <textarea id="cadMotivo" placeholder="Ex: mudança para apartamento sem pet, alergia na família, não consigo mais cuidar... Seja honesto(a) — isso ajuda a encontrar o adotante certo." style="min-height:80px;"></textarea>
+              </div>
+
+              <!-- Termo de isenção + aceite -->
+              <div id="termoCadastroBox" style="background:var(--bg-warm);border:1px solid var(--border-md);border-radius:12px;padding:1.25rem;margin-bottom:1rem;">
+                <p style="font-size:12px;font-weight:600;color:var(--text);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.75rem;">📋 Termo de publicação</p>
+
+                <div style="max-height:160px;overflow-y:auto;margin-bottom:.85rem;">
+                  <p style="font-size:12px;color:var(--text-muted);line-height:1.75;font-weight:300;">
+                    <strong style="color:var(--text);font-weight:500;">1. Publicação pública:</strong> Ao cadastrar, autorizo que as informações do animal (nome, fotos, descrição, cidade e WhatsApp) sejam exibidas publicamente no PatasDF para facilitar a adoção.<br><br>
+                    <strong style="color:var(--text);font-weight:500;">2. Responsabilidade:</strong> O PatasDF é uma plataforma gratuita de intermediação. Após o contato ser estabelecido entre mim e o(a) interessado(a) via WhatsApp, <strong style="color:var(--text);">o PatasDF não se responsabiliza</strong> por acordos, entrega, saúde do animal, arrependimentos ou qualquer resultado do processo de adoção. A responsabilidade pelo processo é inteiramente das partes envolvidas.<br><br>
+                    <strong style="color:var(--text);font-weight:500;">3. Veracidade:</strong> Confirmo que todas as informações fornecidas são verdadeiras. Informações falsas que prejudiquem o animal ou o adotante são de minha exclusiva responsabilidade.<br><br>
+                    <strong style="color:var(--text);font-weight:500;">4. Bem-estar do animal:</strong> Comprometo-me a continuar zelando pelo bem-estar do animal até que ele seja efetivamente entregue a um adotante responsável, não o abandonando em hipótese alguma.<br><br>
+                    <strong style="color:var(--text);font-weight:500;">5. Notificações:</strong> Autorizo o PatasDF a encaminhar meu contato (WhatsApp e/ou e-mail) a pessoas com perfil compatível que demonstrarem interesse em adotar este animal.
+                  </p>
+                </div>
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <input type="checkbox" id="termoCadastroCheck" style="width:17px;height:17px;accent-color:var(--teal);flex-shrink:0;margin-top:2px;cursor:pointer;" onchange="toggleBtnCadastrar()">
+                  <label for="termoCadastroCheck" style="font-size:13px;color:var(--text);line-height:1.6;cursor:pointer;font-weight:500;">
+                    Li e aceito os termos acima. Confirmo que as informações são verdadeiras.
+                  </label>
+                </div>
+              </div>
+
+              <div style="display:flex;gap:10px;">
+                <button class="cad-back-btn" onclick="cadBackStep(3)">← Voltar</button>
+                <button class="btn btn-primary" id="btnCadastrar" style="flex:1;justify-content:center;padding:13px;opacity:0.4;pointer-events:none;" onclick="submitForm()">
+                  <span class="btn-spinner" id="spinnerCadastro"></span>
+                  🐾 Cadastrar animal
+                </button>
+              </div>
+              <p class="form-note" style="margin-top:.75rem;">Você receberá um e-mail de confirmação após o cadastro.</p>
+            </div>
+
           </div>
+
+          <!-- Sucesso -->
           <div class="form-success" id="formSuccess">
             <div class="success-icon">🎉</div>
             <h4>Animal cadastrado com sucesso!</h4>
-            <p>Em breve ele aparecerá no mapa e na lista de animais disponíveis. Obrigado por ajudar a mudar uma vida!</p>
+            <p>Em breve ele aparecerá no site. Você receberá um e-mail de confirmação e será notificado quando houver interessados compatíveis. Obrigado por ajudar a mudar uma vida!</p>
             <button class="btn btn-primary" style="margin:1.5rem auto 0;" onclick="resetForm()">Cadastrar outro animal</button>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -1348,7 +1808,7 @@
     /* ============================================================
        CONFIGURAÇÕES — SUBSTITUA COM SUAS URLs REAIS
     ============================================================ */
-    const SCRIPT_URL   = 'https://script.google.com/macros/s/AKfycbxVU70gQezUICo29HL3c44In6U3AhAHLvo6DOX1onuBkQXdG-JIP17ucuvauq_LxxC-/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzE7S7zzNxb0CfRTiVPnGyh2vUmP8jr9Jh5Gyi/exec';
     const ANIMALS_URL  = 'animais.json';
     // Após publicar no GitHub Pages:
     // const ANIMALS_URL = 'https://raw.githubusercontent.com/SEU_USUARIO/patasdf/main/animais.json';
@@ -1402,7 +1862,7 @@
        BOTÃO QUERO ADOTAR (cards de animal)
     ============================================================ */
     function entrarContato(nome, contato) {
-      if (contato && contato !== '(61) 9xxxx-xxxx') {
+      if (contato && !contato.includes('xxxx')) {
         const num = contato.replace(/\D/g, '');
         const msg = encodeURIComponent(`Olá! Vi o(a) ${nome} no PatasDF e tenho interesse em adotar. Podemos conversar?`);
         window.open(`https://wa.me/55${num}?text=${msg}`, '_blank');
@@ -1411,11 +1871,30 @@
       }
     }
 
+    /* Botão "Quero adotar" dos cards → abre formulário e pré-seleciona o animal */
+    function irAdotarDoCard(id) {
+      // Guarda o id para pré-selecionar no formulário
+      try { sessionStorage.setItem('patasdf_adotar_id', id); } catch(e) {}
+      // Abre a aba de adoção
+      openTab('adopt');
+      setAdoptChoice('specific');
+      // Aguarda o collapsible abrir e seleciona o animal
+      setTimeout(() => {
+        const input = document.getElementById('input-adopt-' + id);
+        if (input) {
+          input.checked = true;
+          onAnimalChange('adopt', id, 'radio', input);
+        }
+        document.getElementById('quero-ajudar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 200);
+    }
+
     /* ============================================================
        CARREGAR ANIMAIS DO JSON
     ============================================================ */
     // Dados embutidos — sempre disponíveis, sem depender de fetch ou servidor
     const ANIMAIS_EMBUTIDOS = [
+      { id:'teste1', nome:'Batatinha',  tipo:'cachorro', idade:'~1 ano',   porte:'Pequeno', cidade:'Asa Norte',   descricao:'Vira-lata amarelinho, super dócil e vacinado. Adora colo e brinca com qualquer um. Já castrado. Encontrado perto do Parque da Cidade.', contato:'(61) 99999-0001' },
       { id:'ex1',    nome:'Bolinha',    tipo:'cachorro', idade:'~2 anos',  porte:'Médio',   cidade:'Asa Sul',     descricao:'Muito carinhoso, brinca com crianças e já é castrado. Encontrado abandonado na quadra 308 Sul.',    contato:'(61) 98888-1111' },
       { id:'ex2',    nome:'Mimi',       tipo:'gato',     idade:'~8 meses', porte:'Pequeno', cidade:'Taguatinga',  descricao:'Gatinha dócil, vacinada e sociável com outros gatos. Adora dormir no colo.',                       contato:'(61) 97777-2222' },
       { id:'ex3',    nome:'Thor',       tipo:'cachorro', idade:'~4 anos',  porte:'Grande',  cidade:'Ceilândia',   descricao:'Cão tranquilo e protetor, gosta de caminhadas longas. Ótimo com crianças.',                       contato:'(61) 96666-3333' },
@@ -1515,6 +1994,7 @@
         const tipo  = a.tipo ? (a.tipo.charAt(0).toUpperCase() + a.tipo.slice(1)) : 'Animal';
         const nomeS = (a.nome    || '').replace(/'/g, "\\'");
         const contS = (a.contato || '').replace(/'/g, "\\'");
+        const idS   = (a.id      || '').replace(/'/g, "\\'");
         return `
         <div class="animal-card" data-tipo="${a.tipo || ''}">
           <div class="animal-img" style="background:${bg};">
@@ -1530,9 +2010,14 @@
               ${a.porte  ? `<span class="pill">${a.porte}</span>`  : ''}
             </div>
             <p class="animal-desc">${a.descricao || ''}</p>
-            <div class="animal-footer">
-              <span class="contact-info">📱 ${a.contato || ''}</span>
-              <button class="btn-adotar" onclick="entrarContato('${nomeS}','${contS}')">Quero adotar</button>
+            <div class="card-action-area">
+              <a class="btn-adotar-main" href="#quero-ajudar" onclick="irAdotarDoCard('${idS}')">
+                🏠 Quero adotar este animal
+              </a>
+              <button class="btn-wpp-secondary" onclick="entrarContato('${nomeS}','${contS}')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.119 1.532 5.849L.057 23.617a.75.75 0 00.921.921l5.767-1.475A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.713 9.713 0 01-4.964-1.362l-.355-.211-3.683.942.96-3.598-.232-.372A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+                Falar direto no WhatsApp
+              </button>
             </div>
           </div>
         </div>`;
@@ -1645,40 +2130,150 @@
     /* ============================================================
        FORMULÁRIO DE CADASTRO DE ANIMAL → Apps Script
     ============================================================ */
+    /* ============================================================
+       STEPPER — CADASTRAR ANIMAL
+    ============================================================ */
+    let cadCurrentStep = 1;
+
+    function cadNextStep(from) {
+      if (!cadValidateStep(from)) return;
+      cadGoToStep(from + 1);
+    }
+
+    function cadBackStep(from) {
+      cadGoToStep(from - 1);
+    }
+
+    function cadGoToStep(n) {
+      // esconde step atual
+      document.querySelector('.cad-form-step.active')?.classList.remove('active');
+      document.getElementById('cadStep' + n).classList.add('active');
+
+      // atualiza stepper tabs
+      for (let i = 1; i <= 3; i++) {
+        const tab = document.getElementById('stepTab' + i);
+        tab.classList.remove('active', 'done');
+        if (i < n)  tab.classList.add('done');
+        if (i === n) tab.classList.add('active');
+      }
+
+      cadCurrentStep = n;
+
+      // scroll suave para o topo do form
+      document.getElementById('cadastrar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function cadValidateStep(step) {
+      let ok = true;
+
+      function checkField(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const val = el.value.trim();
+        if (!val) {
+          el.classList.add('invalid');
+          ok = false;
+          // remove invalid on input
+          el.addEventListener('input', () => el.classList.remove('invalid'), { once: true });
+          el.addEventListener('change', () => el.classList.remove('invalid'), { once: true });
+        }
+      }
+
+      function checkRadio(name) {
+        if (!document.querySelector('input[name="' + name + '"]:checked')) {
+          ok = false;
+        }
+      }
+
+      if (step === 1) {
+        checkField('animalNome');
+        checkField('animalTipo');
+        checkField('animalSexo');
+        checkField('animalIdade');
+        checkField('animalPorte');
+        checkField('animalCidade');
+        checkField('animalFoto');
+        if (!ok) alert('Por favor, preencha todos os campos obrigatórios desta etapa.');
+      }
+
+      if (step === 2) {
+        checkRadio('animalCastrado');
+        checkRadio('animalVacinado');
+        checkField('animalDesc');
+        // ao menos um convívio
+        const convOk = ['convCriancas','convCachorros','convGatos','convIdosos','convNenhum'].some(id => document.getElementById(id)?.checked);
+        // ao menos um tipo de moradia
+        const moraOk = ['moraApto','moraCasaSem','moraCasaCom','moraQualquer'].some(id => document.getElementById(id)?.checked);
+        if (!convOk || !moraOk || !ok) {
+          if (!ok || !convOk || !moraOk) alert('Por favor, preencha todos os campos obrigatórios desta etapa (incluindo convívio e moradia).');
+          ok = false;
+        }
+      }
+
+      return ok;
+    }
+
+    /* ============================================================
+       SUBMIT FORMULÁRIO DE CADASTRO → Apps Script
+    ============================================================ */
     async function submitForm() {
+      // coleta todos os dados das 3 etapas
       const nome    = document.getElementById('animalNome').value.trim();
       const tipo    = document.getElementById('animalTipo').value;
+      const sexo    = document.getElementById('animalSexo').value;
       const idade   = document.getElementById('animalIdade').value;
       const porte   = document.getElementById('animalPorte').value;
       const cidade  = document.getElementById('animalCidade').value.trim();
-      const desc    = document.getElementById('animalDesc').value.trim();
-      const contato = document.getElementById('animalContato').value.trim();
       const fotoUrl = document.getElementById('animalFoto').value.trim();
+      const castrado  = document.querySelector('input[name="animalCastrado"]:checked')?.value  || '';
+      const vacinado  = document.querySelector('input[name="animalVacinado"]:checked')?.value  || '';
+      const desc      = document.getElementById('animalDesc').value.trim();
+      const necessidades = document.getElementById('animalNecessidades').value.trim();
+      const convivio  = ['convCriancas','convCachorros','convGatos','convIdosos','convNenhum']
+                          .filter(id => document.getElementById(id)?.checked)
+                          .map(id => ({ convCriancas:'Crianças', convCachorros:'Cachorros', convGatos:'Gatos', convIdosos:'Idosos', convNenhum:'Prefere ser único pet' })[id])
+                          .join(', ');
+      const moradia   = ['moraApto','moraCasaSem','moraCasaCom','moraQualquer']
+                          .filter(id => document.getElementById(id)?.checked)
+                          .map(id => ({ moraApto:'Apartamento', moraCasaSem:'Casa sem quintal', moraCasaCom:'Casa com quintal', moraQualquer:'Qualquer ambiente' })[id])
+                          .join(', ');
+      const cadNome    = document.getElementById('cadNome').value.trim();
+      const contato    = document.getElementById('animalContato').value.trim();
+      const cadEmail   = document.getElementById('cadEmail').value.trim();
+      const relacao    = document.querySelector('input[name="cadRelacao"]:checked')?.value || '';
+      const motivo     = document.getElementById('cadMotivo').value.trim();
 
-      if (!nome || !tipo || !idade || !cidade || !desc || !contato || !fotoUrl) {
-        alert('Por favor, preencha todos os campos obrigatórios (*).');
+      if (!cadNome || !contato || !cadEmail || !relacao || !motivo) {
+        alert('Por favor, preencha todos os campos obrigatórios desta etapa.');
         return;
       }
 
       const btn     = document.getElementById('btnCadastrar');
       const spinner = document.getElementById('spinnerCadastro');
-      btn.disabled  = true;
+      btn.style.opacity = '0.6';
+      btn.style.pointerEvents = 'none';
       spinner.style.display = 'inline-block';
 
       try {
-        await fetch(SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',          // Apps Script não retorna CORS headers
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ acao: 'cadastrarAnimal', nome, tipo, idade, porte, cidade, desc, contato, fotoUrl })
-        });
+        const payload1 = JSON.stringify({
+            acao: 'cadastrarAnimal',
+            nome, tipo, sexo, idade, porte, cidade, fotoUrl,
+            castrado, vacinado, convivio, moradia,
+            desc, necessidades,
+            cadNome, contato, cadEmail, relacao, motivo,
+            timestamp: new Date().toISOString()
+          });
+        const form1 = new FormData();
+        form1.append('dados', payload1);
+        await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: form1 });
         document.getElementById('formContent').style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
       } catch (e) {
         console.error(e);
         alert('Erro ao enviar. Verifique sua conexão e tente novamente.');
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
       } finally {
-        btn.disabled = false;
         spinner.style.display = 'none';
       }
     }
@@ -1686,15 +2281,24 @@
     function resetForm() {
       document.getElementById('formContent').style.display = '';
       document.getElementById('formSuccess').style.display = 'none';
-      ['animalNome','animalCidade','animalDesc','animalContato','animalFoto'].forEach(id => {
-        document.getElementById(id).value = '';
+      // reseta campos de texto
+      ['animalNome','animalCidade','animalDesc','animalFoto','animalNecessidades',
+       'animalContato','cadNome','cadEmail','cadMotivo'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
       });
-      document.getElementById('animalTipo').value  = '';
-      document.getElementById('animalIdade').value = '';
-      document.getElementById('animalPorte').value = '';
-      // reseta o checkbox do termo
+      ['animalTipo','animalSexo','animalIdade','animalPorte'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+      // reseta radios e checkboxes
+      document.querySelectorAll('#cadStep1 input, #cadStep2 input, #cadStep3 input[type="radio"], #cadStep3 input[type="checkbox"]')
+        .forEach(el => { el.checked = false; el.classList.remove('invalid'); });
+      // reseta checkbox do termo
       const chk = document.getElementById('termoCadastroCheck');
       if (chk) { chk.checked = false; toggleBtnCadastrar(); }
+      // volta pro step 1
+      cadGoToStep(1);
     }
 
     function toggleBtnCadastrar() {
@@ -1952,18 +2556,16 @@
       spinner.style.display        = 'inline-block';
 
       try {
-        await fetch(SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
+        const payload2 = JSON.stringify({
             acao: 'interesseAdocao',
             ..._pendingAdoptData,
             animalId:   _pendingAdoptData.animalSelecionado?.id   || '',
             animalNome: _pendingAdoptData.animalSelecionado?.nome || 'match a definir',
             timestamp:  new Date().toISOString()
-          })
-        });
+          });
+        const form2 = new FormData();
+        form2.append('dados', payload2);
+        await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: form2 });
 
         fecharModal();
         document.getElementById('adoptFormContent').style.display = 'none';
@@ -1991,18 +2593,16 @@
       spinner.style.display = 'inline-block';
 
       try {
-        await fetch(SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
+        const payload3 = JSON.stringify({
             acao: 'larTemporario',
             ..._pendingTempData,
             animaisIds:   _pendingTempData.animaisSelecionados.map(a => a.id).join(', ')   || '',
             animaisNomes: _pendingTempData.animaisSelecionados.map(a => a.nome).join(', ') || 'match a definir',
             timestamp:    new Date().toISOString()
-          })
-        });
+          });
+        const form3 = new FormData();
+        form3.append('dados', payload3);
+        await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: form3 });
 
         fecharModal();
         document.getElementById('tempFormContent').style.display = 'none';
