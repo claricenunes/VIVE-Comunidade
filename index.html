@@ -4,465 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PatasDF — Rede de Adoção de Animais do Distrito Federal</title>
-  <meta name="description" content="Plataforma gratuita que conecta animais abandonados do DF com famílias que querem adotar. Cadastre animais, veja o mapa e encontre seu novo melhor amigo." />
-  <meta property="og:title" content="PatasDF — Adoção de Animais no DF" />
-  <meta property="og:description" content="Conectamos animais abandonados do Distrito Federal com famílias amorosas. Grátis, simples e comunitário." />
-  <meta property="og:type" content="website" />
-
+  <meta name="description" content="Plataforma gratuita que conecta animais abandonados do DF com famílias que querem adotar." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --teal:        #1D9E75;
-      --teal-dark:   #0F6E56;
-      --teal-deep:   #085041;
-      --teal-light:  #E1F5EE;
-      --teal-mid:    #9FE1CB;
-      --amber:       #EF9F27;
-      --amber-dark:  #BA7517;
-      --amber-light: #FAEEDA;
-      --coral:       #D85A30;
-      --coral-light: #FAECE7;
-      --text:        #2C2C2A;
-      --text-muted:  #888780;
-      --text-light:  #B4B2A9;
-      --bg:          #FFFDF8;
-      --bg-warm:     #FBF7F0;
-      --bg-card:     #FFFFFF;
-      --border:      rgba(0,0,0,0.08);
-      --border-md:   rgba(0,0,0,0.13);
-      --radius-sm:   8px;
-      --radius-md:   14px;
-      --radius-lg:   20px;
-      --radius-xl:   28px;
-      --shadow-sm:   0 2px 8px rgba(0,0,0,0.06);
-      --shadow-md:   0 8px 32px rgba(0,0,0,0.08);
-      --shadow-lg:   0 16px 56px rgba(0,0,0,0.10);
-    }
-
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-    .section-label { font-size: 11px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem; display: block; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 700; color: var(--text); line-height: 1.12; margin-bottom: 1rem; }
-    .section-sub { font-size: 1rem; color: var(--text-muted); max-width: 520px; line-height: 1.75; font-weight: 300; }
-
-    .btn { display: inline-flex; align-items: center; gap: 8px; border: none; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; transition: all 0.22s ease; text-decoration: none; white-space: nowrap; }
-    .btn-primary { background: var(--teal); color: #fff; padding: 13px 28px; font-size: 15px; }
-    .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,158,117,0.28); }
-    .btn-secondary { background: transparent; color: var(--text); padding: 12px 28px; font-size: 15px; border: 1.5px solid var(--border-md); }
-    .btn-secondary:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
-    .btn-amber { background: var(--amber); color: var(--text); padding: 14px 32px; font-size: 16px; font-weight: 600; }
-    .btn-amber:hover { background: #FAC775; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(239,159,39,0.35); }
-
-    /* NAVBAR */
-    .navbar { position: sticky; top: 0; z-index: 200; background: rgba(255,253,248,0.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); height: 66px; display: flex; align-items: center; }
-    .navbar .container { width: 100%; display: flex; align-items: center; justify-content: space-between; }
-    .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--teal-dark); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
-    .nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--teal); }
-    .nav-cta { background: var(--teal); color: #fff !important; padding: 8px 20px; border-radius: 24px; font-size: 14px; font-weight: 500; transition: background 0.2s, transform 0.15s !important; }
-    .nav-cta:hover { background: var(--teal-dark) !important; color: #fff !important; transform: scale(1.03); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
-
-    /* HERO */
-    .hero { min-height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem 5rem; position: relative; overflow: hidden; }
-    .hero-glow { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 55% 45% at 15% 85%, rgba(29,158,117,0.12) 0%, transparent 65%), radial-gradient(ellipse 50% 55% at 85% 15%, rgba(239,159,39,0.12) 0%, transparent 65%), radial-gradient(ellipse 40% 40% at 50% 50%, rgba(29,158,117,0.04) 0%, transparent 60%); }
-    .hero-paw { position: absolute; font-size: 8rem; opacity: 0.04; pointer-events: none; user-select: none; }
-    .hero-paw:nth-child(1) { top: 8%;  left: 3%;  transform: rotate(-20deg); font-size: 6rem; }
-    .hero-paw:nth-child(2) { top: 70%; left: 5%;  transform: rotate(15deg);  font-size: 5rem; }
-    .hero-paw:nth-child(3) { top: 15%; right: 5%; transform: rotate(30deg);  font-size: 7rem; }
-    .hero-paw:nth-child(4) { top: 60%; right: 3%; transform: rotate(-10deg); font-size: 5rem; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--amber-light); color: var(--amber-dark); border: 1px solid rgba(250,199,117,0.5); border-radius: 30px; padding: 6px 18px; font-size: 13px; font-weight: 500; margin-bottom: 2rem; position: relative; z-index: 1; animation: fadeDown 0.7s ease both; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; line-height: 1.03; color: var(--text); letter-spacing: -1.5px; max-width: 860px; position: relative; z-index: 1; animation: fadeUp 0.7s 0.15s ease both; }
-    .hero h1 .hl { color: var(--teal); position: relative; display: inline-block; }
-    .hero h1 .hl::after { content: ''; position: absolute; bottom: 4px; left: 0; right: 0; height: 7px; background: var(--amber); border-radius: 4px; opacity: 0.4; z-index: -1; }
-    .hero-sub { font-size: 1.15rem; color: var(--text-muted); max-width: 520px; margin: 1.75rem auto 0; font-weight: 300; line-height: 1.75; position: relative; z-index: 1; animation: fadeUp 0.7s 0.28s ease both; }
-    .hero-ctas { display: flex; gap: 1rem; margin-top: 2.75rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; animation: fadeUp 0.7s 0.4s ease both; }
-    .hero-scroll { display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--text-light); font-size: 12px; z-index: 1; margin-top: 3rem; animation: fadeUp 1s 0.8s ease both; }
-    .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--text-light), transparent); animation: scrollPulse 2s ease-in-out infinite; }
-
-    /* STATS */
-    .stats-bar { background: var(--teal-deep); display: flex; justify-content: center; flex-wrap: wrap; }
-    .stat-item { padding: 1.75rem 3.5rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); flex: 1; min-width: 140px; }
-    .stat-item:last-child { border-right: none; }
-    .stat-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--amber); line-height: 1; }
-    .stat-label { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; }
-
-    /* STEPS */
-    .section-pad { padding: 6rem 0; }
-    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.25rem; margin-top: 3.5rem; }
-    .step-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem 1.75rem; position: relative; overflow: hidden; transition: transform 0.22s, box-shadow 0.22s; }
-    .step-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--teal), var(--teal-mid)); opacity: 0; transition: opacity 0.22s; }
-    .step-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
-    .step-card:hover::before { opacity: 1; }
-    .step-num { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; color: var(--teal-light); line-height: 1; margin-bottom: 1.25rem; }
-    .step-card h3 { font-size: 16px; font-weight: 500; margin-bottom: 0.5rem; }
-    .step-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
-
-    /* ANIMALS */
-    .animals-section { background: var(--bg-warm); padding: 6rem 0; }
-    .animals-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
-    .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
-    .filter-pill { background: var(--bg-card); border: 1px solid var(--border-md); border-radius: 30px; padding: 6px 16px; font-size: 13px; color: var(--text-muted); cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
-    .filter-pill:hover, .filter-pill.active { background: var(--teal); color: #fff; border-color: var(--teal); }
-    .animals-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
-    .animal-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: transform 0.22s, box-shadow 0.22s; }
-    .animal-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-    .animal-img { width: 100%; height: 210px; display: flex; align-items: center; justify-content: center; font-size: 5.5rem; position: relative; overflow: hidden; }
-    .animal-tag { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.94); border: 1px solid var(--border); border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 500; color: var(--text); }
-    .animal-status { position: absolute; top: 12px; left: 12px; background: var(--teal); color: #fff; border-radius: 20px; padding: 4px 12px; font-size: 11px; font-weight: 500; }
-    .animal-body { padding: 1.35rem; }
-    .animal-name { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
-    .animal-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
-    .pill { background: var(--bg-warm); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 12px; color: var(--text-muted); }
-    .animal-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; margin-bottom: 1rem; }
-    .card-action-area { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
-    .btn-adotar-main { display: flex; align-items: center; justify-content: center; gap: 7px; background: var(--teal); color: #fff; border: none; border-radius: 50px; padding: 10px 18px; font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 600; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; width: 100%; }
-    .btn-adotar-main:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(29,158,117,0.28); }
-    .btn-wpp-secondary { display: flex; align-items: center; justify-content: center; gap: 7px; background: transparent; color: #25D366; border: 1.5px solid #25D366; border-radius: 50px; padding: 8px 18px; font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; transition: all 0.2s; width: 100%; }
-    .btn-wpp-secondary:hover { background: #25D366; color: #fff; transform: translateY(-1px); }
-    .empty-state { text-align: center; padding: 3rem; color: var(--text-muted); display: none; }
-
-    /* MAP */
-    .map-section { padding: 6rem 0; }
-    .map-wrapper { margin-top: 3rem; border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--border); background: var(--bg-warm); }
-    .map-wrapper iframe { width: 100%; height: 480px; border: none; display: block; }
-    .map-placeholder { height: 480px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; text-align: center; padding: 2rem; position: relative; overflow: hidden; }
-    .map-dot { position: absolute; width: 38px; height: 38px; background: var(--teal); border-radius: 50% 50% 50% 0; transform: rotate(-45deg); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(29,158,117,0.4); animation: dotPulse 2.5s ease-in-out infinite; }
-    .map-dot::after { content: attr(data-e); transform: rotate(45deg); font-size: 15px; }
-    .map-dot:nth-child(2) { left: 25%; top: 30%; animation-delay: 0.5s; }
-    .map-dot:nth-child(3) { left: 60%; top: 45%; background: var(--amber); animation-delay: 1s; }
-    .map-dot:nth-child(4) { left: 75%; top: 20%; background: var(--coral); animation-delay: 1.5s; }
-    .map-dot:nth-child(5) { left: 40%; top: 65%; animation-delay: 0.8s; }
-    .map-placeholder h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; position: relative; z-index: 1; }
-    .map-placeholder p { font-size: 14px; color: var(--text-muted); max-width: 420px; position: relative; z-index: 1; font-weight: 300; }
-    .map-placeholder .btn { position: relative; z-index: 1; margin-top: 0.5rem; }
-
-    /* (seção Como ajudar removida) */
-
-    /* ============================================================
-       SECTION DE AÇÃO (substitui os formulários longos)
-    ============================================================ */
-    .action-section { padding: 6rem 0; }
-    .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3.5rem; }
-
-    .action-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: 2.5rem 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      transition: transform 0.22s, box-shadow 0.22s;
-      position: relative;
-      overflow: hidden;
-    }
-    .action-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-    }
-    .action-card.card-adopt::before  { background: linear-gradient(90deg, var(--teal), var(--teal-mid)); }
-    .action-card.card-temp::before   { background: linear-gradient(90deg, var(--amber), #FAC775); }
-    .action-card.card-cad::before    { background: linear-gradient(90deg, var(--coral), #F5A58A); }
-    .action-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-
-    .action-card-icon { font-size: 2.5rem; }
-    .action-card-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; }
-    .action-card-desc  { font-size: 14px; color: var(--text-muted); line-height: 1.75; font-weight: 300; flex: 1; }
-
-    .action-checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .action-checklist li { display: flex; align-items: center; gap: 9px; font-size: 13px; color: var(--text-muted); }
-    .action-check { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
-    .action-check.teal  { background: var(--teal-light); }
-    .action-check.amber { background: var(--amber-light); }
-    .action-check.coral { background: var(--coral-light); }
-
-    .btn-action-adopt {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      background: var(--teal); color: #fff; border: none; border-radius: 50px;
-      padding: 14px 24px; font-family: 'DM Sans', sans-serif; font-size: 15px;
-      font-weight: 600; cursor: pointer; transition: all 0.22s; width: 100%;
-    }
-    .btn-action-adopt:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,158,117,0.28); }
-
-    .btn-action-temp {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      background: var(--amber); color: var(--text); border: none; border-radius: 50px;
-      padding: 14px 24px; font-family: 'DM Sans', sans-serif; font-size: 15px;
-      font-weight: 700; cursor: pointer; transition: all 0.22s; width: 100%;
-    }
-    .btn-action-temp:hover { background: var(--amber-dark); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(239,159,39,0.32); }
-
-    .btn-action-cad {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      background: var(--coral); color: #fff; border: none; border-radius: 50px;
-      padding: 14px 24px; font-family: 'DM Sans', sans-serif; font-size: 15px;
-      font-weight: 600; cursor: pointer; transition: all 0.22s; width: 100%;
-    }
-    .btn-action-cad:hover { background: #993C1D; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(216,90,48,0.28); }
-
-    .action-note {
-      font-size: 12px;
-      color: var(--text-muted);
-      text-align: center;
-      font-weight: 300;
-    }
-    .action-note a { color: var(--teal); }
-
-    /* ============================================================
-       MODAL DE TERMOS — NOVO DESIGN SIMPLIFICADO
-    ============================================================ */
-    .modal-overlay {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-      z-index: 9000;
-      display: flex; align-items: center; justify-content: center;
-      padding: 1.5rem;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    .modal-overlay.open { opacity: 1; pointer-events: all; }
-    .modal-box {
-      background: var(--bg-card);
-      border-radius: var(--radius-xl);
-      max-width: 580px; width: 100%;
-      max-height: 90vh; overflow-y: auto;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.22);
-      transform: translateY(20px) scale(0.98);
-      transition: transform 0.3s ease;
-      position: relative;
-    }
-    .modal-overlay.open .modal-box { transform: translateY(0) scale(1); }
-
-    .modal-header {
-      padding: 2rem 2rem 1.25rem;
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
-      position: sticky; top: 0; background: var(--bg-card); z-index: 1;
-      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-    }
-    .modal-header-text h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-    .modal-header-text p  { font-size: 13px; color: var(--text-muted); font-weight: 300; }
-    .modal-close { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--border-md); background: var(--bg-warm); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; transition: all 0.18s; color: var(--text-muted); }
-    .modal-close:hover { background: var(--teal-light); border-color: var(--teal); color: var(--teal); }
-
-    /* Badge do tipo de ação no modal */
-    .modal-action-badge {
-      margin: 1.5rem 2rem 0;
-      padding: 1rem 1.25rem;
-      border-radius: var(--radius-md);
-      display: flex; align-items: center; gap: 12px;
-    }
-    .modal-action-badge.adopt { background: var(--teal-light); border: 1px solid rgba(29,158,117,0.2); }
-    .modal-action-badge.temp  { background: var(--amber-light); border: 1px solid rgba(239,159,39,0.25); }
-    .modal-action-badge.cad   { background: var(--coral-light); border: 1px solid rgba(216,90,48,0.2); }
-    .modal-action-badge-icon { font-size: 2rem; flex-shrink: 0; }
-    .modal-action-badge-text h4 { font-size: 14px; font-weight: 600; color: var(--text); }
-    .modal-action-badge-text p  { font-size: 12px; color: var(--text-muted); font-weight: 300; }
-
-    /* Contrato */
-    .modal-contract {
-      margin: 1.25rem 2rem;
-      background: var(--bg-warm);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      max-height: 280px;
-      overflow-y: auto;
-    }
-    .modal-contract h5 { font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1.5px; }
-    .modal-contract ol { padding-left: 1.25rem; display: flex; flex-direction: column; gap: 10px; }
-    .modal-contract ol li { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
-    .modal-contract ol li strong { color: var(--text); font-weight: 500; }
-    .modal-contract .disclaimer {
-      margin-top: 1rem; padding: 0.9rem 1rem;
-      background: rgba(29,158,117,0.08); border-radius: 8px;
-      border-left: 3px solid var(--teal);
-    }
-    .modal-contract .disclaimer.amber { background: rgba(239,159,39,0.08); border-left-color: var(--amber); }
-    .modal-contract .disclaimer.coral { background: rgba(216,90,48,0.08); border-left-color: var(--coral); }
-    .modal-contract .disclaimer p { font-size: 12px; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
-    .modal-contract .disclaimer p strong { color: var(--text); font-weight: 500; }
-
-    /* Aceite */
-    .modal-accept-area { margin: 0 2rem 1.5rem; }
-
-    .btn-accept {
-      width: 100%; border: none; border-radius: var(--radius-lg);
-      padding: 1.1rem 1.5rem;
-      font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center; gap: 12px;
-      transition: all 0.22s;
-    }
-    .btn-accept.adopt { background: var(--teal-light); color: var(--teal-deep); border: 2px solid rgba(29,158,117,0.25); }
-    .btn-accept.adopt:hover { background: var(--teal); color: #fff; border-color: var(--teal); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,158,117,0.28); }
-    .btn-accept.temp  { background: var(--amber-light); color: var(--amber-dark); border: 2px solid rgba(239,159,39,0.3); }
-    .btn-accept.temp:hover  { background: var(--amber); color: var(--text); border-color: var(--amber); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(239,159,39,0.3); }
-    .btn-accept.cad   { background: var(--coral-light); color: var(--coral); border: 2px solid rgba(216,90,48,0.25); }
-    .btn-accept.cad:hover   { background: var(--coral); color: #fff; border-color: var(--coral); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(216,90,48,0.28); }
-
-    .btn-accept .accept-icon {
-      width: 26px; height: 26px; border-radius: 50%;
-      border: 2px solid currentColor;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px; flex-shrink: 0;
-      transition: all 0.2s;
-    }
-
-    .modal-footer {
-      padding: 1rem 2rem 2rem;
-      display: flex; gap: 10px; justify-content: space-between; align-items: center;
-      border-top: 1px solid var(--border); margin-top: 0;
-    }
-    .btn-cancel { background: transparent; border: 1.5px solid var(--border-md); color: var(--text-muted); padding: 10px 22px; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
-    .btn-cancel:hover { border-color: var(--coral); color: var(--coral); }
-
-    .btn-ir-forms {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      border: none; border-radius: 50px;
-      padding: 12px 26px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
-      cursor: pointer; transition: all 0.22s; flex: 1;
-      text-decoration: none;
-    }
-    .btn-ir-forms.adopt { background: var(--teal); color: #fff; }
-    .btn-ir-forms.adopt:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(29,158,117,0.28); }
-    .btn-ir-forms.temp  { background: var(--amber); color: var(--text); }
-    .btn-ir-forms.temp:hover  { background: var(--amber-dark); color: #fff; transform: translateY(-1px); }
-    .btn-ir-forms.cad   { background: var(--coral); color: #fff; }
-    .btn-ir-forms.cad:hover   { background: #993C1D; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(216,90,48,0.28); }
-    .btn-ir-forms:disabled, .btn-ir-forms[aria-disabled="true"] { opacity: 0.38; cursor: not-allowed; transform: none; box-shadow: none; pointer-events: none; }
-
-    .modal-must-read {
-      font-size: 12px; color: var(--text-muted); text-align: center;
-      padding: 0.5rem 2rem 1rem; font-weight: 300;
-    }
-
-    /* CRIADORA */
-    .criadora-section { padding: 6rem 0; background: var(--bg); }
-    .criadora-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center; }
-    .criadora-photo-col { display: flex; justify-content: center; }
-    .criadora-frame { position: relative; width: 300px; }
-    .criadora-circle { width: 300px; height: 300px; border-radius: 50% 50% 50% 38%; background: var(--teal-light); border: 3px solid var(--teal-mid); overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .criadora-ph { display: flex; flex-direction: column; align-items: center; gap: .4rem; color: var(--teal-dark); }
-    .criadora-ph .ph-icon { font-size: 4.5rem; }
-    .criadora-ph p { font-size: 11px; opacity: .6; text-align: center; max-width: 120px; }
-    .criadora-badge { position: absolute; background: var(--bg-card); border: 1px solid var(--border-md); border-radius: var(--radius-md); padding: .65rem .9rem; box-shadow: var(--shadow-md); font-size: 12px; font-weight: 500; display: flex; align-items: center; gap: 7px; }
-    .criadora-badge.b1 { bottom: 1.5rem; right: -1.25rem; }
-    .criadora-badge.b2 { top: 1.5rem; left: -1.25rem; }
-    .criadora-badge .bl { display: block; font-size: 10px; color: var(--text-muted); font-weight: 400; margin-top: 1px; }
-    .criadora-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3.5vw, 2.6rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
-    .criadora-text h2 .hl { color: var(--teal); }
-    .criadora-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem; }
-    .criadora-chip { background: var(--bg-warm); border: 1px solid var(--border-md); border-radius: 30px; padding: 5px 13px; font-size: 12px; color: var(--text-muted); }
-    .criadora-chip.teal { background: var(--teal-light); color: var(--teal-dark); border-color: rgba(29,158,117,.2); }
-    .criadora-quote { border-left: 3px solid var(--teal); padding: 1.1rem 1.4rem; background: var(--teal-light); border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 1.4rem; }
-    .criadora-quote p { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; line-height: 1.6; color: var(--teal-deep); }
-    .criadora-text .bio { font-size: .97rem; color: var(--text-muted); line-height: 1.85; font-weight: 300; margin-bottom: 1rem; }
-    .criadora-social { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 1.75rem; }
-    .criadora-social a { display: inline-flex; align-items: center; gap: 7px; border: 1.5px solid var(--border-md); border-radius: 30px; padding: 8px 16px; font-size: 13px; font-weight: 500; text-decoration: none; color: var(--text); background: var(--bg-card); transition: all .22s; }
-    .criadora-social a:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
-    .criadora-more { display: inline-flex; align-items: center; gap: 8px; margin-top: 1.5rem; font-size: 14px; color: var(--teal); font-weight: 500; text-decoration: none; transition: gap .2s; }
-    .criadora-more:hover { gap: 12px; }
-
-    /* STRIP */
-    .hero-animais-strip { background: var(--bg-warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.4rem 0; overflow: hidden; }
-    .strip-inner { display: flex; align-items: center; gap: 1.25rem; animation: stripScroll 28s linear infinite; width: max-content; }
-    @keyframes stripScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .strip-item { display: flex; align-items: center; gap: 9px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: .6rem 1.1rem; white-space: nowrap; flex-shrink: 0; }
-    .strip-item .si-emoji { font-size: 1.5rem; }
-    .strip-item .si-name { font-size: 13px; font-weight: 500; color: var(--text); }
-    .strip-item .si-info { font-size: 11px; color: var(--text-muted); }
-
-    /* CTA */
-    .cta-section { background: var(--teal-deep); color: #fff; text-align: center; padding: 7rem 2rem; }
-    .cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; line-height: 1.12; max-width: 680px; margin: 0 auto 1.25rem; }
-    .cta-section p { font-size: 1.05rem; opacity: 0.7; max-width: 460px; margin: 0 auto 2.75rem; font-weight: 300; }
-
-    /* FOOTER */
-    footer { background: var(--text); color: rgba(255,255,255,0.55); padding: 3.5rem 2rem; }
-    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-    .footer-brand .logo { color: #fff; font-size: 20px; margin-bottom: 0.75rem; }
-    .footer-brand p { font-size: 13px; line-height: 1.7; max-width: 280px; }
-    .footer-links h4 { color: #fff; font-size: 13px; font-weight: 500; margin-bottom: 1rem; letter-spacing: 0.5px; }
-    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .footer-links ul a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
-    .footer-links ul a:hover { color: var(--amber); }
-    .footer-bottom { max-width: 1100px; margin: 2rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 12px; }
-    .footer-bottom a { color: var(--amber); text-decoration: none; }
-
-    /* ANIMAÇÕES */
-    @keyframes fadeUp   { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes scrollPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.9; } }
-    @keyframes dotPulse { 0%, 100% { transform: rotate(-45deg) scale(1); } 50% { transform: rotate(-45deg) scale(1.15); } }
-
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* RESPONSIVO */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 66px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; gap: 1.25rem; z-index: 199; animation: fadeDown 0.2s ease; }
-      .hero { min-height: 80vh; padding: 5rem 1.5rem 4rem; }
-      .stat-item { padding: 1.4rem 1.5rem; }
-      .hero-ctas { flex-direction: column; align-items: center; }
-      .hero-ctas .btn { width: 100%; justify-content: center; }
-      .footer-inner { flex-direction: column; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .criadora-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-      .criadora-photo-col { order: -1; }
-      .criadora-frame { width: 240px; }
-      .criadora-circle { width: 240px; height: 240px; }
-      .criadora-badge.b1 { right: 0; }
-      .criadora-badge.b2 { left: 0; }
-      .action-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Cabinet+Grotesk:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- ======================== MODAL DE TERMOS ======================== -->
-  <!--
-    INSTRUÇÕES: substitua os valores das constantes no JS no final do arquivo:
-      FORMS_ADOTAR  — link do Google Forms para adoção
-      FORMS_TEMP    — link do Google Forms para lar temporário
-      FORMS_CADASTRAR — link do Google Forms para cadastrar animal
-  -->
+  <!-- MODAL -->
   <div class="modal-overlay" id="termoModal" role="dialog" aria-modal="true" aria-labelledby="termoModalTitle">
     <div class="modal-box">
-
       <div class="modal-header">
         <div class="modal-header-text">
-          <h3 id="termoModalTitle">📋 Termo de Compromisso</h3>
+          <h3 id="termoModalTitle">Termo de Compromisso</h3>
           <p id="termoModalSubtitle">Leia com atenção antes de prosseguir</p>
         </div>
         <button class="modal-close" onclick="fecharModal()" aria-label="Fechar">✕</button>
       </div>
 
-      <!-- Badge dinâmico do tipo -->
       <div class="modal-action-badge adopt" id="modalActionBadge">
         <div class="modal-action-badge-icon" id="modalActionIcon">🏠</div>
         <div class="modal-action-badge-text">
           <h4 id="modalActionTitle">Adoção Responsável</h4>
-          <p  id="modalActionDesc">Compromisso permanente com o animal</p>
+          <p id="modalActionDesc">Compromisso permanente com o animal</p>
         </div>
       </div>
 
-      <!-- Contrato Adoção -->
       <div class="modal-contract" id="contractAdopt">
         <h5>Termo de Adoção Responsável</h5>
         <ol>
@@ -473,12 +41,11 @@
           <li><strong>Acompanhamento:</strong> Aceito uma visita de acompanhamento opcional nos primeiros 30 dias.</li>
           <li><strong>Veracidade:</strong> Confirmo que todas as informações fornecidas no formulário são verdadeiras.</li>
         </ol>
-        <div class="disclaimer">
+        <div class="disclaimer green">
           <p><strong>ℹ️ Sobre o papel do PatasDF:</strong> Somos uma plataforma de intermediação gratuita. Após o contato estabelecido via WhatsApp, <strong>o PatasDF não se responsabiliza pelo processo de adoção, entrega, saúde ou qualquer acordo firmado entre as partes.</strong></p>
         </div>
       </div>
 
-      <!-- Contrato Lar Temporário -->
       <div class="modal-contract" id="contractTemp" style="display:none;">
         <h5>Termo de Lar Temporário</h5>
         <ol>
@@ -494,22 +61,20 @@
         </div>
       </div>
 
-      <!-- Contrato Cadastrar Animal -->
       <div class="modal-contract" id="contractCad" style="display:none;">
         <h5>Termo de Publicação de Animal</h5>
         <ol>
           <li><strong>Publicação pública:</strong> Ao cadastrar, autorizo que as informações do animal (nome, fotos, descrição, cidade e WhatsApp) sejam exibidas publicamente no PatasDF.</li>
           <li><strong>Responsabilidade:</strong> O PatasDF é uma plataforma gratuita de intermediação. <strong>Após o primeiro contato via WhatsApp, o PatasDF não se responsabiliza</strong> por acordos, entrega, saúde do animal ou qualquer resultado da adoção.</li>
-          <li><strong>Veracidade:</strong> Confirmo que todas as informações fornecidas são verdadeiras. Informações falsas que prejudiquem o animal ou o adotante são de minha exclusiva responsabilidade.</li>
+          <li><strong>Veracidade:</strong> Confirmo que todas as informações fornecidas são verdadeiras.</li>
           <li><strong>Bem-estar:</strong> Comprometo-me a continuar zelando pelo bem-estar do animal até que ele seja efetivamente entregue a um adotante responsável.</li>
           <li><strong>Notificações:</strong> Autorizo o PatasDF a encaminhar meu contato a pessoas com perfil compatível que demonstrarem interesse em adotar este animal.</li>
         </ol>
-        <div class="disclaimer coral">
-          <p><strong>ℹ️ Dados no formulário externo:</strong> As informações serão coletadas via Google Forms. O PatasDF não armazena seus dados diretamente — eles ficam protegidos na sua conta Google associada ao formulário.</p>
+        <div class="disclaimer rust">
+          <p><strong>ℹ️ Dados no formulário externo:</strong> As informações serão coletadas via Google Forms. O PatasDF não armazena seus dados diretamente.</p>
         </div>
       </div>
 
-      <!-- Aceite -->
       <div class="modal-accept-area">
         <button class="btn-accept adopt" id="btnAceite" onclick="toggleAceite()">
           <div class="accept-icon" id="aceiteIcon">○</div>
@@ -521,23 +86,24 @@
 
       <div class="modal-footer">
         <button class="btn-cancel" onclick="fecharModal()">Cancelar</button>
-        <a  class="btn-ir-forms adopt" id="btnIrForms"
-            href="#" target="_blank" rel="noopener"
-            aria-disabled="true"
-            onclick="return validarAceiteEIr(event)">
+        <a class="btn-ir-forms adopt" id="btnIrForms"
+           href="#" target="_blank" rel="noopener"
+           aria-disabled="true"
+           onclick="return validarAceiteEIr(event)">
           📋 Ir para o formulário →
         </a>
       </div>
-
     </div>
   </div>
-  <!-- ======================== / MODAL ======================== -->
 
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container">
-      <a href="#" class="logo">🐾 PatasDF</a>
-      <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <a href="#" class="logo">
+        <div class="logo-paw">🐾</div>
+        PatasDF
+      </a>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
       <ul class="nav-links" id="navLinks">
@@ -545,6 +111,7 @@
         <li><a href="#animais">Animais</a></li>
         <li><a href="#mapa">Mapa</a></li>
         <li><a href="#sobre-criadora">Sobre</a></li>
+        <li><a href="#parte-projeto">Comunidade</a></li>
         <li><a href="#quero-ajudar" class="nav-cta">Quero participar</a></li>
       </ul>
     </div>
@@ -552,40 +119,64 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-glow"></div>
-    <span class="hero-paw">🐾</span>
-    <span class="hero-paw">🐾</span>
-    <span class="hero-paw">🐾</span>
-    <span class="hero-paw">🐾</span>
-    <div class="hero-badge">🐾 Projeto comunitário — Distrito Federal</div>
-    <h1>Cada animal merece<br>uma <span class="hl">família</span></h1>
-    <p class="hero-sub">Plataforma gratuita que conecta animais abandonados do DF com pessoas que querem adotar. Simples, rápido e feito com amor pela comunidade.</p>
-    <div class="hero-ctas">
-      <a href="#cadastrar" class="btn btn-primary">🐶 Cadastrar animal</a>
-      <a href="#animais" class="btn btn-secondary">Ver animais disponíveis →</a>
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-3"></div>
+
+    <span class="hero-deco" style="top:12%;left:4%;transform:rotate(-15deg)">🐾</span>
+    <span class="hero-deco" style="top:72%;left:6%;transform:rotate(20deg);font-size:1.4rem">🐾</span>
+    <span class="hero-deco" style="top:18%;right:5%;transform:rotate(35deg);font-size:1.8rem">🐾</span>
+    <span class="hero-deco" style="top:65%;right:4%;transform:rotate(-8deg);font-size:1.2rem">🐾</span>
+    <span class="hero-deco" style="top:85%;left:35%;transform:rotate(10deg);font-size:1rem">🐾</span>
+
+    <div class="hero-inner">
+      <div class="hero-badge">🐾 Projeto comunitário — Distrito Federal</div>
+      <h1>
+        Cada animal merece<br>
+        uma <span class="underline-word"><em>família</em></span>
+      </h1>
+      <p class="hero-sub">Plataforma gratuita que conecta animais abandonados do DF com pessoas que querem adotar. Simples, rápido e feito com amor.</p>
+      <div class="hero-ctas">
+        <a href="#cadastrar" class="btn btn-sage">🐶 Cadastrar animal</a>
+        <a href="#animais" class="btn btn-outline">Ver animais disponíveis →</a>
+      </div>
     </div>
-    <div class="hero-scroll">
-      <span>role para ver</span>
-      <div class="scroll-line"></div>
+
+    <div class="hero-scroll-hint">
+      <span>rolar</span>
+      <div class="scroll-track"></div>
     </div>
   </section>
 
   <!-- STRIP -->
-  <div class="hero-animais-strip" id="animais-strip">
+  <div class="strip" id="animais-strip">
     <div class="strip-inner" id="stripInner">
       <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Bolinha</div><div class="si-info">Cachorro · Asa Sul</div></div></div>
+      <div class="strip-sep">·</div>
       <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mimi</div><div class="si-info">Gato · Taguatinga</div></div></div>
+      <div class="strip-sep">·</div>
       <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Thor</div><div class="si-info">Cachorro · Ceilândia</div></div></div>
+      <div class="strip-sep">·</div>
       <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mingau</div><div class="si-info">Gato · Guará</div></div></div>
+      <div class="strip-sep">·</div>
       <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Pipoca</div><div class="si-info">Cachorro · Sobradinho</div></div></div>
+      <div class="strip-sep">·</div>
       <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Nala</div><div class="si-info">Gato · Samambaia</div></div></div>
+      <div class="strip-sep">·</div>
       <div class="strip-item"><span class="si-emoji">🐾</span><div><div class="si-name">Novos animais todo dia</div><div class="si-info">Cadastre o seu também →</div></div></div>
+      <div class="strip-sep">·</div>
       <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Bolinha</div><div class="si-info">Cachorro · Asa Sul</div></div></div>
+      <div class="strip-sep">·</div>
       <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mimi</div><div class="si-info">Gato · Taguatinga</div></div></div>
+      <div class="strip-sep">·</div>
       <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Thor</div><div class="si-info">Cachorro · Ceilândia</div></div></div>
+      <div class="strip-sep">·</div>
       <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mingau</div><div class="si-info">Gato · Guará</div></div></div>
+      <div class="strip-sep">·</div>
       <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Pipoca</div><div class="si-info">Cachorro · Sobradinho</div></div></div>
+      <div class="strip-sep">·</div>
       <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Nala</div><div class="si-info">Gato · Samambaia</div></div></div>
+      <div class="strip-sep">·</div>
       <div class="strip-item"><span class="si-emoji">🐾</span><div><div class="si-name">Novos animais todo dia</div><div class="si-info">Cadastre o seu também →</div></div></div>
     </div>
   </div>
@@ -598,29 +189,53 @@
     <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Sem limite de cadastros</div></div>
   </div>
 
-  <!-- COMO FUNCIONA -->
-  <section class="section-pad" id="como-funciona">
+  <!-- HOW IT WORKS -->
+  <section class="section-pad how-section" id="como-funciona">
     <div class="container">
-      <span class="section-label reveal">Como funciona</span>
-      <h2 class="section-title reveal">Do abandono ao lar em 5 passos</h2>
-      <p class="section-sub reveal">Sem burocracia, sem custo. Qualquer pessoa pode ajudar um animal a encontrar uma nova família.</p>
-      <div class="steps-grid">
-        <div class="step-card reveal"><div class="step-num">01</div><h3>Encontrei um animal</h3><p>Você encontrou um animal abandonado nas ruas do DF e quer ajudar a encontrar um lar.</p></div>
-        <div class="step-card reveal"><div class="step-num">02</div><h3>Acesso o site</h3><p>Abre o PatasDF em qualquer celular, sem precisar criar conta ou instalar nada.</p></div>
-        <div class="step-card reveal"><div class="step-num">03</div><h3>Aceito os termos</h3><p>Lê o termo de compromisso e confirma o aceite. Simples e transparente.</p></div>
-        <div class="step-card reveal"><div class="step-num">04</div><h3>Preencho o formulário</h3><p>Você é direcionado ao Google Forms. Leva menos de 2 minutos.</p></div>
-        <div class="step-card reveal"><div class="step-num">05</div><h3>Família encontrada!</h3><p>O animal aparece no site e quem quer adotar entra em contato diretamente.</p></div>
+      <span class="label reveal">Como funciona</span>
+      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Do abandono ao lar em<br><em style="color:var(--sage)">5 passos simples</em></h2>
+      <p class="lead reveal" style="max-width:500px;">Sem burocracia, sem custo. Qualquer pessoa pode ajudar um animal a encontrar uma nova família.</p>
+      <div class="steps-grid reveal">
+        <div class="step-card">
+          <div class="step-num-big">01</div>
+          <h3>Encontrei um animal</h3>
+          <p>Você encontrou um animal abandonado nas ruas do DF e quer ajudar a encontrar um lar.</p>
+          <div class="step-connector">→</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num-big">02</div>
+          <h3>Acesso o site</h3>
+          <p>Abre o PatasDF em qualquer celular, sem precisar criar conta ou instalar nada.</p>
+          <div class="step-connector">→</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num-big">03</div>
+          <h3>Aceito os termos</h3>
+          <p>Lê o termo de compromisso e confirma o aceite. Simples e transparente.</p>
+          <div class="step-connector">→</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num-big">04</div>
+          <h3>Preencho o formulário</h3>
+          <p>Você é direcionado ao Google Forms. Leva menos de 2 minutos.</p>
+          <div class="step-connector">→</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num-big">05</div>
+          <h3>Família encontrada!</h3>
+          <p>O animal aparece no site e quem quer adotar entra em contato diretamente.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ANIMAIS -->
-  <section class="animals-section" id="animais">
+  <!-- ANIMALS -->
+  <section class="animals-section section-pad" id="animais">
     <div class="container">
       <div class="animals-header">
         <div>
-          <span class="section-label reveal">Animais disponíveis</span>
-          <h2 class="section-title reveal">Esperando por você no DF</h2>
+          <span class="label reveal">Animais disponíveis</span>
+          <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);">Esperando por você<br>no DF</h2>
         </div>
         <div class="filter-pills reveal">
           <button class="filter-pill active" onclick="filterAnimals('todos', this)">Todos</button>
@@ -628,134 +243,151 @@
           <button class="filter-pill" onclick="filterAnimals('gato', this)">🐱 Gatos</button>
         </div>
       </div>
-      <div id="animaisLoading" style="text-align:center; padding:3rem; color:var(--text-muted);">
-        <div style="font-size:2.5rem; margin-bottom:0.75rem;">🐾</div>
+
+      <div id="animaisLoading">
+        <div style="font-size:2.5rem;margin-bottom:.75rem;">🐾</div>
         <p>Carregando animais disponíveis...</p>
       </div>
       <div class="animals-grid" id="animalsGrid" style="display:none;"></div>
       <div class="empty-state" id="emptyState"><p style="font-size:2rem;margin-bottom:.5rem;">🔍</p><p>Nenhum animal encontrado com esse filtro.</p></div>
-      <div id="animaisErro" style="display:none; text-align:center; padding:3rem;">
+      <div id="animaisErro">
         <p style="font-size:2rem;margin-bottom:.5rem;">😔</p>
-        <p style="color:var(--text-muted);">Não foi possível carregar os animais agora.</p>
-        <button onclick="carregarAnimais()" style="margin-top:1rem;border:1.5px solid var(--border-md);background:transparent;border-radius:24px;padding:8px 20px;cursor:pointer;font-family:inherit;font-size:14px;">Tentar novamente</button>
+        <p style="color:var(--bark-soft);">Não foi possível carregar os animais agora.</p>
+        <button onclick="carregarAnimais()" style="margin-top:1rem;border:1.5px solid var(--border-md);background:transparent;border-radius:24px;padding:8px 20px;cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;">Tentar novamente</button>
       </div>
-      <div id="verMaisArea" style="display:none;text-align:center;margin-top:2.5rem;">
-        <a href="animais.html" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--teal);border:1.5px solid var(--teal);border-radius:50px;padding:13px 32px;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;text-decoration:none;transition:all .22s;" onmouseover="this.style.background='var(--teal)';this.style.color='#fff';" onmouseout="this.style.background='transparent';this.style.color='var(--teal)';">Ver todos os animais →</a>
+
+      <!-- VER MAIS ANIMAIS -->
+      <div id="verMaisArea">
+        <a href="animais.html" class="btn-ver-mais">
+          Ver todos os animais disponíveis →
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- MAPA -->
-  <section class="map-section" id="mapa">
+  <!-- MAP -->
+  <section class="map-section section-pad" id="mapa">
     <div class="container">
-      <span class="section-label reveal">Mapa de adoção</span>
-      <h2 class="section-title reveal">Onde estão os animais</h2>
-      <p class="section-sub reveal">Cada marcador é um animal esperando por um lar no DF. Integrado com Google My Maps — gratuito e sem servidor.</p>
+      <span class="label reveal">Mapa de adoção</span>
+      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Onde estão<br>os animais</h2>
+      <p class="lead reveal" style="max-width:480px;">Cada marcador é um animal esperando por um lar no DF. Integrado com Google My Maps — gratuito e sem servidor.</p>
       <div class="map-wrapper reveal">
         <div class="map-placeholder">
-          <div class="map-dot" data-e="🐶" style="left:28%;top:35%;"></div>
-          <div class="map-dot" data-e="🐱" style="left:58%;top:50%;"></div>
-          <div class="map-dot" data-e="🐶" style="left:72%;top:22%;"></div>
-          <div class="map-dot" data-e="🐱" style="left:38%;top:65%;"></div>
-          <div style="font-size:3rem;position:relative;z-index:1;">🗺️</div>
-          <h3>Mapa do Distrito Federal</h3>
-          <p>Aqui será exibido o Google My Maps com todos os animais disponíveis para adoção em tempo real.</p>
-          <a href="https://mymaps.google.com" target="_blank" rel="noopener" class="btn btn-primary">Criar mapa no Google My Maps →</a>
+          <div class="map-grid"></div>
+          <div class="map-dot d1" data-e="🐶"></div>
+          <div class="map-dot d2" data-e="🐱"></div>
+          <div class="map-dot d3" data-e="🐶"></div>
+          <div class="map-dot d4" data-e="🐱"></div>
+          <div class="map-placeholder-content">
+            <div style="font-size:3.5rem;margin-bottom:1rem;">🗺️</div>
+            <h3>Mapa do Distrito Federal</h3>
+            <p>Aqui será exibido o Google My Maps com todos os animais disponíveis para adoção em tempo real.</p>
+            <a href="https://mymaps.google.com" target="_blank" rel="noopener" class="btn btn-sage" style="margin-top:1.5rem;">Criar mapa no Google My Maps →</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ======================== SEÇÃO DE AÇÃO ======================== -->
-  <section class="action-section" id="quero-ajudar">
+  <!-- ACTION -->
+  <section class="action-section section-pad" id="quero-ajudar">
     <div class="container">
-      <span class="section-label reveal">Quero participar</span>
-      <h2 class="section-title reveal">Como você quer<br>fazer a diferença?</h2>
-      <p class="section-sub reveal">Escolha uma das opções abaixo. Você vai ler os termos de compromisso e depois será direcionado ao formulário do Google para preencher seus dados com segurança.</p>
+      <span class="label reveal">Quero participar</span>
+      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3.2rem);margin-bottom:1rem;">Como você quer<br>fazer a <em style="color:var(--sage)">diferença?</em></h2>
+      <p class="lead reveal" style="max-width:520px;">Escolha uma das opções abaixo. Você vai ler os termos de compromisso e depois será direcionado ao formulário do Google.</p>
 
       <div class="action-grid">
-
-        <!-- CARD ADOTAR -->
-        <div class="action-card card-adopt reveal">
-          <div class="action-card-icon">🏠</div>
+        <div class="action-card reveal">
+          <div class="action-card-accent accent-sage"></div>
+          <div class="action-card-icon-wrap icon-sage">🏠</div>
           <div class="action-card-title">Quero adotar</div>
           <p class="action-card-desc">Registre seu interesse em adotar um animal do DF. Preencha seu perfil e te indicaremos o melhor match — ou escolha um animal específico que você já viu.</p>
           <ul class="action-checklist">
-            <li><div class="action-check teal">✓</div> Adoção 100% gratuita</li>
-            <li><div class="action-check teal">✓</div> Compromisso permanente com o animal</li>
-            <li><div class="action-check teal">✓</div> Você escolhe quem adota</li>
+            <li><div class="check-dot sage">✓</div> Adoção 100% gratuita</li>
+            <li><div class="check-dot sage">✓</div> Compromisso permanente com o animal</li>
+            <li><div class="check-dot sage">✓</div> Você escolhe quem adota</li>
           </ul>
-          <button class="btn-action-adopt" onclick="abrirModal('adopt')">
-            🏠 Quero adotar — ler termos e preencher formulário
-          </button>
+          <button class="btn-card-sage" onclick="abrirModal('adopt')">🏠 Quero adotar — ler termos e preencher formulário</button>
           <p class="action-note">Após aceitar os termos, você será levado ao Google Forms</p>
         </div>
 
-        <!-- CARD LAR TEMPORÁRIO -->
-        <div class="action-card card-temp reveal">
-          <div class="action-card-icon">⏳</div>
+        <div class="action-card reveal">
+          <div class="action-card-accent accent-gold"></div>
+          <div class="action-card-icon-wrap icon-gold">⏳</div>
           <div class="action-card-title">Quero ser lar temporário</div>
           <p class="action-card-desc">Acolha um animal por algumas semanas enquanto ele não encontra um lar definitivo. Não precisa adotar — só cuidar com carinho por um tempo.</p>
           <ul class="action-checklist">
-            <li><div class="action-check amber">✓</div> Duração média de 2 a 8 semanas</li>
-            <li><div class="action-check amber">✓</div> Ajuda a divulgar para adoção</li>
-            <li><div class="action-check amber">✓</div> Salva vidas sem compromisso eterno</li>
+            <li><div class="check-dot gold">✓</div> Duração média de 2 a 8 semanas</li>
+            <li><div class="check-dot gold">✓</div> Ajuda a divulgar para adoção</li>
+            <li><div class="check-dot gold">✓</div> Salva vidas sem compromisso eterno</li>
           </ul>
-          <button class="btn-action-temp" onclick="abrirModal('temp')">
-            ⏳ Ser lar temporário — ler termos e preencher formulário
-          </button>
+          <button class="btn-card-gold" onclick="abrirModal('temp')">⏳ Ser lar temporário — ler termos e preencher formulário</button>
           <p class="action-note">Após aceitar os termos, você será levado ao Google Forms</p>
         </div>
 
-        <!-- CARD CADASTRAR ANIMAL -->
-        <div class="action-card card-cad reveal" id="cadastrar">
-          <div class="action-card-icon">🐾</div>
+        <div class="action-card reveal" id="cadastrar">
+          <div class="action-card-accent accent-rust"></div>
+          <div class="action-card-icon-wrap icon-rust">🐾</div>
           <div class="action-card-title">Cadastrar animal para adoção</div>
           <p class="action-card-desc">Encontrou um animal abandonado ou precisa colocar seu pet para adoção? Cadastre aqui. O animal entra no site e no mapa do DF imediatamente.</p>
           <ul class="action-checklist">
-            <li><div class="action-check coral">✓</div> Sem criar conta, 100% gratuito</li>
-            <li><div class="action-check coral">✓</div> Animal aparece no mapa do DF</li>
-            <li><div class="action-check coral">✓</div> Você controla quem adota</li>
+            <li><div class="check-dot rust">✓</div> Sem criar conta, 100% gratuito</li>
+            <li><div class="check-dot rust">✓</div> Animal aparece no mapa do DF</li>
+            <li><div class="check-dot rust">✓</div> Você controla quem adota</li>
           </ul>
-          <button class="btn-action-cad" onclick="abrirModal('cad')">
-            📋 Cadastrar animal — ler termos e preencher formulário
-          </button>
+          <button class="btn-card-rust" onclick="abrirModal('cad')">📋 Cadastrar animal — ler termos e preencher formulário</button>
           <p class="action-note">Após aceitar os termos, você será levado ao Google Forms</p>
         </div>
 
+        <div class="action-card reveal" id="match-pet">
+          <div class="action-card-accent accent-teal"></div>
+          <div class="action-card-icon-wrap icon-teal">💡</div>
+          <div class="action-card-title">Ainda não escolhi um pet</div>
+          <p class="action-card-desc">Quer adotar ou ser lar temporário, mas ainda não encontrou o animal ideal? Preencha suas preferências e vamos sugerir animais que combinam com você.</p>
+          <ul class="action-checklist">
+            <li><div class="check-dot teal">✓</div> Informe suas preferências</li>
+            <li><div class="check-dot teal">✓</div> Sistema encontra possíveis matches</li>
+            <li><div class="check-dot teal">✓</div> Você recebe sugestões por email</li>
+          </ul>
+          <button class="btn-card-teal" onclick="window.open('LINK_DO_GOOGLE_FORMS')">🐾 Encontrar meu match</button>
+          <p class="action-note">Leva menos de 2 minutos para preencher</p>
+        </div>
       </div>
 
-      <!-- Info sobre segurança de dados -->
-      <div style="margin-top:2.5rem; background:var(--bg-warm); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.5rem 2rem; display:flex; align-items:flex-start; gap:1rem; max-width:680px;">
-        <span style="font-size:1.5rem; flex-shrink:0;">🔒</span>
+      <div class="data-note reveal">
+        <div class="data-note-icon">🔒</div>
         <div>
-          <strong style="font-size:14px; display:block; margin-bottom:4px;">Seus dados ficam protegidos</strong>
-          <p style="font-size:13px; color:var(--text-muted); line-height:1.7; font-weight:300;">Os formulários são hospedados no Google Forms. O PatasDF não armazena suas informações diretamente — os dados ficam na infraestrutura segura do Google, associados ao formulário criado pela Clarice. Nenhum dado é vendido ou compartilhado com terceiros.</p>
+          <strong>Seus dados ficam protegidos</strong>
+          <p>Os formulários são hospedados no Google Forms. O PatasDF não armazena suas informações diretamente — os dados ficam na infraestrutura segura do Google, associados ao formulário criado pela Clarice. Nenhum dado é vendido ou compartilhado com terceiros.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SOBRE A CRIADORA -->
-  <section class="criadora-section" id="sobre-criadora">
+  <!-- CRIADORA -->
+  <section class="criadora-section section-pad" id="sobre-criadora">
     <div class="container">
       <div class="criadora-layout">
         <div class="criadora-photo-col reveal">
           <div class="criadora-frame">
             <div class="criadora-circle">
-              <img src="fotos/clarice.jpg" alt="Clarice Nunes" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+              <img src="fotos/clarice.jpg" alt="Clarice Nunes" style="width:100%;height:100%;object-fit:cover;object-position:center top;" onerror="this.style.display='none';this.parentElement.querySelector('.criadora-ph').style.display='flex';">
+              <div class="criadora-ph" style="display:none;">
+                <span class="ph-icon">👩‍💻</span>
+                <p>Foto da Clarice</p>
+              </div>
             </div>
             <div class="criadora-badge b2"><span>🎓</span><div><strong>CEUB · Eng. de Software</strong><span class="bl">2º semestre</span></div></div>
-            <div class="criadora-badge b1"><span>🐾</span><div><strong>Criadora do PatasDF</strong><span class="bl">em memória do Bolt & Max</span></div></div>
+            <div class="criadora-badge b1"><span>🐾</span><div><strong>Criadora do PatasDF</strong><span class="bl">em memória do Bolt &amp; Max</span></div></div>
           </div>
         </div>
         <div class="criadora-text">
-          <span class="section-label reveal">Quem está por trás</span>
-          <h2 class="reveal">Olá, eu sou a<br><span class="hl">Clarice Nunes</span></h2>
+          <span class="label reveal">Quem está por trás</span>
+          <h2 class="reveal">Olá, eu sou a<br><em>Clarice Nunes</em></h2>
           <div class="criadora-chips reveal">
-            <span class="criadora-chip teal">🏫 CEUB · Brasília</span>
-            <span class="criadora-chip teal">💻 Engenharia de Software</span>
-            <span class="criadora-chip">🤝 Voluntariado</span>
+            <span class="chip sage">🏫 CEUB · Brasília</span>
+            <span class="chip sage">💻 Engenharia de Software</span>
+            <span class="chip">🤝 Voluntariado</span>
           </div>
           <div class="criadora-quote reveal">
             <p>"Queria usar a tecnologia para gerar algum impacto social. Vejo muitos animais precisando de um lar e muitas pessoas querendo adotar — então pensei em criar algo simples que pudesse conectar essas duas coisas."</p>
@@ -773,21 +405,54 @@
     </div>
   </section>
 
-  <!-- CTA FINAL -->
+  <!-- COMMUNITY -->
+  <section class="section-pad community-section" id="parte-projeto">
+    <div class="container">
+      <span class="label reveal">Quero fazer parte do projeto</span>
+      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Como posso<br><em style="color:var(--sage)">ajudar?</em></h2>
+      <p class="lead reveal" style="max-width:480px;">Formas de colaborar com o projeto sem custo. Qualquer pessoa pode ajudar um animal!</p>
+      <div class="community-grid">
+        <div class="community-card reveal">
+          <div class="community-card-num">🌐</div>
+          <h3>Compartilhe nas redes</h3>
+          <p>Caso você tenha gostado do projeto ou queira compartilhar algum animal, sinta-se à vontade para compartilhar e aumentar nosso alcance.</p>
+          <button class="btn-card-sage" onclick="copiarLink()">🔗 Copiar link do site</button>
+        </div>
+        <div class="community-card reveal">
+          <div class="community-card-num">💡</div>
+          <h3>Quer fazer parte do projeto?</h3>
+          <p>Caso tenha alguma ideia para melhorar cada vez mais nosso projeto, sinta-se à vontade e mande uma mensagem para a criadora do projeto.</p>
+          <button class="btn-card-sage" onclick="location.href='#sobre-criadora'">💡 Enviar ideia</button>
+        </div>
+        <div class="community-card reveal">
+          <div class="community-card-num">🤝</div>
+          <h3>Parcerias com ONGs</h3>
+          <p>Estamos abertos para parcerias com ONGs que possam ajudar nossos animais! Entre em contato através do email da criadora.</p>
+          <button class="btn-card-sage" onclick="window.location.href='mailto:euclaricenunes@gmail.com'">✉️ Enviar email</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
   <div class="cta-section">
-    <h2>Um clique pode salvar uma vida</h2>
-    <p>Leva menos de 2 minutos. Leia os termos e preencha o formulário. Só amor e comunidade.</p>
-    <button class="btn btn-amber" onclick="abrirModal('cad')">🐾 Cadastrar animal agora</button>
+    <div class="cta-blob cta-blob-1"></div>
+    <div class="cta-blob cta-blob-2"></div>
+    <div class="cta-inner">
+      <h2>Um clique pode salvar<br><em>uma vida</em></h2>
+      <p>Leva menos de 2 minutos. Leia os termos e preencha o formulário. Só amor e comunidade.</p>
+      <button class="btn btn-gold" onclick="abrirModal('cad')">🐾 Cadastrar animal agora</button>
+    </div>
   </div>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="#" class="logo">🐾 PatasDF</a>
+        <a href="#" class="logo"><div class="logo-paw">🐾</div> PatasDF</a>
         <p>Plataforma gratuita e comunitária para conectar animais abandonados do Distrito Federal com famílias amorosas.</p>
       </div>
-      <div class="footer-links">
+      <div class="footer-col">
         <h4>Navegação</h4>
         <ul>
           <li><a href="#como-funciona">Como funciona</a></li>
@@ -796,7 +461,7 @@
           <li><a href="#quero-ajudar">Quero participar</a></li>
         </ul>
       </div>
-      <div class="footer-links">
+      <div class="footer-col">
         <h4>Projeto</h4>
         <ul>
           <li><a href="sobre.html">Sobre a criadora</a></li>
@@ -812,202 +477,93 @@
     </div>
   </footer>
 
-  <!-- ======================== JAVASCRIPT ======================== -->
   <script>
-    /* ============================================================
-       ⚠️ CONFIGURE AQUI OS LINKS DOS SEUS GOOGLE FORMS
-       Substitua os # pelos links reais dos seus formulários:
-    ============================================================ */
-    const FORMS_ADOTAR     = '#'; // Ex: 'https://forms.gle/XXXXXXX'
-    const FORMS_TEMP       = '#'; // Ex: 'https://forms.gle/YYYYYYY'
-    const FORMS_CADASTRAR  = '#'; // Ex: 'https://forms.gle/ZZZZZZZ'
+    const FORMS_ADOTAR    = 'https://docs.google.com/forms/d/e/1FAIpQLScGuYB4lGLAHtPXiqRCsTGYEUVy2knjHjuaDSGeY3001iznSg/viewform';
+    const FORMS_TEMP      = '#';
+    const FORMS_CADASTRAR = 'https://docs.google.com/forms/d/e/1FAIpQLSfVtvmKmRZkJ4EKshaa1Mha_jvoZO_nPvsCs4ggCvdLu0L7cg/viewform';
+    const ANIMALS_URL     = 'https://raw.githubusercontent.com/SEU_USUARIO/patasdf/main/animais.json';
 
-    const ANIMALS_URL = 'https://raw.githubusercontent.com/SEU_USUARIO/patasdf/main/animais.json';
-
-    /* ============================================================
-       ESTADO DO MODAL
-    ============================================================ */
-    let _modalTipo    = null; // 'adopt' | 'temp' | 'cad'
-    let _aceiteFeito  = false;
+    let _modalTipo = null, _aceiteFeito = false;
 
     const MODAL_CONFIG = {
-      adopt: {
-        badgeClass:   'adopt',
-        icon:         '🏠',
-        title:        'Adoção Responsável',
-        desc:         'Compromisso permanente com o animal',
-        modalTitle:   '📋 Termo de Adoção Responsável',
-        modalSub:     'Leia com atenção antes de ir ao formulário',
-        btnLabel:     '🏠 Ir para o formulário de adoção →',
-        btnClass:     'adopt',
-        aceiteLabel:  'Li e aceito o Termo de Adoção Responsável',
-        formsUrl:     () => FORMS_ADOTAR,
-        contract:     'contractAdopt',
-      },
-      temp: {
-        badgeClass:   'temp',
-        icon:         '⏳',
-        title:        'Lar Temporário',
-        desc:         'Acolhimento temporário com compromisso',
-        modalTitle:   '📋 Termo de Lar Temporário',
-        modalSub:     'Leia com atenção antes de ir ao formulário',
-        btnLabel:     '⏳ Ir para o formulário de lar temporário →',
-        btnClass:     'temp',
-        aceiteLabel:  'Li e aceito o Termo de Lar Temporário',
-        formsUrl:     () => FORMS_TEMP,
-        contract:     'contractTemp',
-      },
-      cad: {
-        badgeClass:   'cad',
-        icon:         '🐾',
-        title:        'Cadastrar Animal',
-        desc:         'Publicação pública com autorização',
-        modalTitle:   '📋 Termo de Publicação de Animal',
-        modalSub:     'Leia com atenção antes de ir ao formulário',
-        btnLabel:     '📋 Ir para o formulário de cadastro →',
-        btnClass:     'cad',
-        aceiteLabel:  'Li e aceito o Termo de Publicação',
-        formsUrl:     () => FORMS_CADASTRAR,
-        contract:     'contractCad',
-      },
+      adopt: { badgeClass:'adopt', icon:'🏠', title:'Adoção Responsável', desc:'Compromisso permanente com o animal', modalTitle:'Termo de Adoção Responsável', modalSub:'Leia com atenção antes de ir ao formulário', btnLabel:'🏠 Ir para o formulário de adoção →', btnClass:'adopt', aceiteLabel:'Li e aceito o Termo de Adoção Responsável', formsUrl:()=>FORMS_ADOTAR, contract:'contractAdopt' },
+      temp:  { badgeClass:'temp',  icon:'⏳', title:'Lar Temporário',     desc:'Acolhimento temporário com compromisso', modalTitle:'Termo de Lar Temporário', modalSub:'Leia com atenção antes de ir ao formulário', btnLabel:'⏳ Ir para o formulário de lar temporário →', btnClass:'temp', aceiteLabel:'Li e aceito o Termo de Lar Temporário', formsUrl:()=>FORMS_TEMP, contract:'contractTemp' },
+      cad:   { badgeClass:'cad',   icon:'🐾', title:'Cadastrar Animal',   desc:'Publicação pública com autorização', modalTitle:'Termo de Publicação de Animal', modalSub:'Leia com atenção antes de ir ao formulário', btnLabel:'📋 Ir para o formulário de cadastro →', btnClass:'cad', aceiteLabel:'Li e aceito o Termo de Publicação', formsUrl:()=>FORMS_CADASTRAR, contract:'contractCad' },
     };
 
-    /* ============================================================
-       ABRIR MODAL
-    ============================================================ */
     function abrirModal(tipo) {
-      _modalTipo   = tipo;
-      _aceiteFeito = false;
-
+      _modalTipo = tipo; _aceiteFeito = false;
       const cfg = MODAL_CONFIG[tipo];
-
-      // Badge
       const badge = document.getElementById('modalActionBadge');
       badge.className = `modal-action-badge ${cfg.badgeClass}`;
       document.getElementById('modalActionIcon').textContent  = cfg.icon;
       document.getElementById('modalActionTitle').textContent = cfg.title;
       document.getElementById('modalActionDesc').textContent  = cfg.desc;
-
-      // Título
       document.getElementById('termoModalTitle').textContent   = cfg.modalTitle;
       document.getElementById('termoModalSubtitle').textContent = cfg.modalSub;
-
-      // Contratos — mostra só o correto
       ['contractAdopt','contractTemp','contractCad'].forEach(id => {
         document.getElementById(id).style.display = (id === cfg.contract) ? '' : 'none';
       });
-
-      // Botão de aceite
       const btnAceite = document.getElementById('btnAceite');
       btnAceite.className = `btn-accept ${cfg.badgeClass}`;
       document.getElementById('aceiteIcon').textContent  = '○';
       document.getElementById('aceiteLabel').textContent = cfg.aceiteLabel;
-
-      // Botão ir forms
       const btnForms = document.getElementById('btnIrForms');
       btnForms.className = `btn-ir-forms ${cfg.btnClass}`;
       btnForms.textContent = cfg.btnLabel;
-      btnForms.setAttribute('aria-disabled', 'true');
+      btnForms.setAttribute('aria-disabled','true');
       btnForms.href = cfg.formsUrl();
-
-      // Mensagem
+      btnForms.setAttribute('target','_blank');
+      btnForms.setAttribute('rel','noopener');
       document.getElementById('mustReadMsg').style.display = '';
-
-      // Abre overlay
       document.getElementById('termoModal').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
 
-    /* ============================================================
-       FECHAR MODAL
-    ============================================================ */
     function fecharModal() {
       document.getElementById('termoModal').classList.remove('open');
       document.body.style.overflow = '';
-      _aceiteFeito = false;
-      _modalTipo   = null;
+      _aceiteFeito = false; _modalTipo = null;
     }
 
-    // Fecha clicando fora
-    document.getElementById('termoModal').addEventListener('click', function(e) {
-      if (e.target === this) fecharModal();
-    });
-    // Fecha com ESC
+    document.getElementById('termoModal').addEventListener('click', function(e) { if (e.target === this) fecharModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
 
-    /* ============================================================
-       TOGGLE ACEITE
-    ============================================================ */
     function toggleAceite() {
       _aceiteFeito = !_aceiteFeito;
-      const icon   = document.getElementById('aceiteIcon');
-      const btnA   = document.getElementById('btnAceite');
-      const btnF   = document.getElementById('btnIrForms');
-      const msg    = document.getElementById('mustReadMsg');
-
-      if (_aceiteFeito) {
-        icon.textContent = '✓';
-        // estado "confirmado" — escurece o fundo do botão
-        btnA.style.filter = 'brightness(0.88)';
-        btnA.style.cursor = 'default';
-        btnF.removeAttribute('aria-disabled');
-        msg.style.display = 'none';
-      } else {
-        icon.textContent = '○';
-        btnA.style.filter = '';
-        btnA.style.cursor = '';
-        btnF.setAttribute('aria-disabled', 'true');
-        msg.style.display = '';
-      }
+      const icon = document.getElementById('aceiteIcon');
+      const btnF = document.getElementById('btnIrForms');
+      const msg  = document.getElementById('mustReadMsg');
+      if (_aceiteFeito) { icon.textContent = '✓'; btnF.removeAttribute('aria-disabled'); msg.style.display = 'none'; }
+      else { icon.textContent = '○'; btnF.setAttribute('aria-disabled','true'); msg.style.display = ''; }
     }
 
-    /* ============================================================
-       VALIDAR ACEITE AO CLICAR NO BOTÃO "IR PARA FORMULÁRIO"
-    ============================================================ */
     function validarAceiteEIr(e) {
       if (!_aceiteFeito) {
         e.preventDefault();
-        // Pisca o botão de aceite para chamar atenção
         const btn = document.getElementById('btnAceite');
-        btn.style.outline = '3px solid var(--coral)';
+        btn.style.outline = '3px solid var(--rust)';
         setTimeout(() => btn.style.outline = '', 900);
         document.getElementById('mustReadMsg').textContent = '⚠️ Você precisa aceitar os termos para continuar';
         return false;
       }
-      // aceite feito — o link abre normalmente (target="_blank")
-      // pequeno delay para a aba abrir antes de fechar o modal
       setTimeout(fecharModal, 300);
       return true;
     }
 
-    /* ============================================================
-       MENU MOBILE
-    ============================================================ */
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('open');
-    }
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
     document.querySelectorAll('#navLinks a').forEach(link => {
       link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
     });
 
-    /* ============================================================
-       REVEAL ON SCROLL
-    ============================================================ */
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 60);
-          revealObserver.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 70); revealObserver.unobserve(entry.target); }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    /* ============================================================
-       FILTRO DE ANIMAIS
-    ============================================================ */
-    let ANIMALS     = [];
-    let filtroAtual = 'todos';
+    let ANIMALS = [], filtroAtual = 'todos';
 
     function filterAnimals(tipo, btn) {
       document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
@@ -1016,28 +572,15 @@
       renderizarCards(tipo);
     }
 
-    /* ============================================================
-       CONTATO WHATSAPP
-    ============================================================ */
-    function entrarContato(nome, contato) {
-      if (contato && !contato.includes('xxxx')) {
-        const num = contato.replace(/\D/g, '');
-        const msg = encodeURIComponent(`Olá! Vi o(a) ${nome} no PatasDF e tenho interesse em adotar. Podemos conversar?`);
-        window.open(`https://wa.me/55${num}?text=${msg}`, '_blank');
-      } else {
-        alert(`💚 Entre em contato com o responsável pelo número exibido no card do(a) ${nome}.`);
-      }
+    function copiarLink() {
+      navigator.clipboard.writeText(window.location.origin).then(() => alert("Link do site copiado!"));
     }
 
-    /* Botão "Quero adotar" dos cards → abre modal de adoção */
     function irAdotarDoCard(id) {
       try { sessionStorage.setItem('patasdf_adotar_id', id); } catch(e) {}
       abrirModal('adopt');
     }
 
-    /* ============================================================
-       DADOS EMBUTIDOS + CARREGAR ANIMAIS
-    ============================================================ */
     const ANIMAIS_EMBUTIDOS = [
       { id:'ex1', nome:'Bolinha', tipo:'cachorro', idade:'~2 anos',  porte:'Médio',   cidade:'Asa Sul',    descricao:'Muito carinhoso, brinca com crianças e já é castrado. Encontrado abandonado na quadra 308 Sul.',   contato:'(61) 98888-1111' },
       { id:'ex2', nome:'Mimi',    tipo:'gato',     idade:'~8 meses', porte:'Pequeno', cidade:'Taguatinga', descricao:'Gatinha dócil, vacinada e sociável com outros gatos. Adora dormir no colo.',                      contato:'(61) 97777-2222' },
@@ -1051,53 +594,41 @@
       const loading = document.getElementById('animaisLoading');
       const grid    = document.getElementById('animalsGrid');
       const erro    = document.getElementById('animaisErro');
-
-      loading.style.display = 'block';
-      grid.style.display    = 'none';
-      erro.style.display    = 'none';
-
-      let carregouExterno = false;
+      loading.style.display = 'block'; grid.style.display = 'none'; erro.style.display = 'none';
+      let ok = false;
       try {
         const resp = await fetch(ANIMALS_URL + '?t=' + Date.now());
         if (resp.ok) {
           const dados = await resp.json();
-          const disponiveis = dados.filter(a => !a.status || a.status === 'disponivel');
-          if (disponiveis.length > 0) { ANIMALS = disponiveis; carregouExterno = true; }
+          const disp = dados.filter(a => !a.status || a.status === 'disponivel');
+          if (disp.length > 0) { ANIMALS = disp; ok = true; }
         }
-      } catch(e) { /* usa embutidos */ }
-
-      if (!carregouExterno) ANIMALS = ANIMAIS_EMBUTIDOS;
-
-      loading.style.display = 'none';
-      grid.style.display    = '';
+      } catch(e) {}
+      if (!ok) ANIMALS = ANIMAIS_EMBUTIDOS;
+      loading.style.display = 'none'; grid.style.display = '';
       renderizarCards(filtroAtual);
-      if (ANIMALS.length > 0) document.getElementById('verMaisArea').style.display = '';
     }
 
     function renderizarCards(filtro) {
-      const grid       = document.getElementById('animalsGrid');
+      const grid = document.getElementById('animalsGrid');
       const emptyState = document.getElementById('emptyState');
       const lista = filtro === 'todos' ? ANIMALS : ANIMALS.filter(a => a.tipo === filtro);
-
       if (lista.length === 0) { grid.innerHTML = ''; emptyState.style.display = 'block'; return; }
       emptyState.style.display = 'none';
-
-      const bgMap    = { cachorro: '#FFF3E0', gato: '#F3E5F5' };
-      const emojiMap = { cachorro: '🐶', gato: '🐱' };
-
+      const bgMap    = { cachorro:'#FFF3E8', gato:'#F0ECF9' };
+      const emojiMap = { cachorro:'🐶', gato:'🐱' };
       grid.innerHTML = lista.map(a => {
-        const bg    = bgMap[a.tipo]    || '#F5F5F5';
+        const bg    = bgMap[a.tipo]    || '#F5F3EE';
         const emoji = emojiMap[a.tipo] || '🐾';
         const tipo  = a.tipo ? (a.tipo.charAt(0).toUpperCase() + a.tipo.slice(1)) : 'Animal';
-        const nomeS = (a.nome    || '').replace(/'/g, "\\'");
-        const contS = (a.contato || '').replace(/'/g, "\\'");
-        const idS   = (a.id      || '').replace(/'/g, "\\'");
+        const idS   = (a.id || '').replace(/'/g,"\\'");
         return `
-        <div class="animal-card" data-tipo="${a.tipo || ''}">
+        <div class="animal-card" data-tipo="${a.tipo||''}">
           <div class="animal-img" style="background:${bg};">
-            ${emoji}
-            <div class="animal-tag">${tipo}</div>
-            <div class="animal-status">Disponível</div>
+            <div class="animal-img-bg">${emoji}</div>
+            <div class="animal-emoji" style="font-size:5.5rem;">${emoji}</div>
+            <div class="animal-badge">${tipo}</div>
+            <div class="animal-status-badge">Disponível</div>
           </div>
           <div class="animal-body">
             <div class="animal-name">${a.nome || 'Sem nome'}</div>
@@ -1107,15 +638,7 @@
               ${a.porte  ? `<span class="pill">${a.porte}</span>`  : ''}
             </div>
             <p class="animal-desc">${a.descricao || ''}</p>
-            <div class="card-action-area">
-              <button class="btn-adotar-main" onclick="irAdotarDoCard('${idS}')">
-                🏠 Quero adotar este animal
-              </button>
-              <button class="btn-wpp-secondary" onclick="entrarContato('${nomeS}','${contS}')">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.119 1.532 5.849L.057 23.617a.75.75 0 00.921.921l5.767-1.475A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.713 9.713 0 01-4.964-1.362l-.355-.211-3.683.942.96-3.598-.232-.372A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
-                Falar direto no WhatsApp
-              </button>
-            </div>
+            <button class="btn-adotar-main" onclick="irAdotarDoCard('${idS}')">🏠 Quero adotar este animal</button>
           </div>
         </div>`;
       }).join('');
@@ -1123,37 +646,31 @@
 
     carregarAnimais();
 
-    /* Strip */
     async function carregarStrip() {
       try {
         const r = await fetch(ANIMALS_URL + '?t=' + Date.now());
         if (!r.ok) return;
         const dados = await r.json();
-        const disponiveis = dados.filter(a => !a.status || a.status === 'disponivel');
-        if (!disponiveis.length) return;
-        const emojiMap = { cachorro: '🐶', gato: '🐱' };
-        const items = disponiveis.map(a => `
+        const disp = dados.filter(a => !a.status || a.status === 'disponivel');
+        if (!disp.length) return;
+        const emojiMap = { cachorro:'🐶', gato:'🐱' };
+        const items = disp.map(a => `
           <div class="strip-item">
             <span class="si-emoji">${emojiMap[a.tipo]||'🐾'}</span>
             <div><div class="si-name">${a.nome||'Animal'}</div><div class="si-info">${[a.tipo,a.cidade].filter(Boolean).join(' · ')}</div></div>
-          </div>`).join('');
-        const extra = `<div class="strip-item"><span class="si-emoji">🐾</span><div><div class="si-name">Novos animais todo dia</div><div class="si-info">Cadastre o seu também →</div></div></div>`;
-        document.getElementById('stripInner').innerHTML = items + extra + items + extra;
-      } catch { /* mantém fallback */ }
+          </div><div class="strip-sep">·</div>`).join('');
+        document.getElementById('stripInner').innerHTML = items + items;
+      } catch {}
     }
     carregarStrip();
 
-    /* Detecta ?adotar=1 vindo da página animais.html e abre o modal de adoção */
     (function() {
       const params = new URLSearchParams(window.location.search);
       if (params.get('adotar') === '1') {
-        // Aguarda o DOM estar pronto e os dados carregados
         setTimeout(() => abrirModal('adopt'), 400);
-        // Limpa o parâmetro da URL sem recarregar
         history.replaceState(null, '', window.location.pathname + '#quero-ajudar');
       }
     })();
   </script>
-
 </body>
 </html>

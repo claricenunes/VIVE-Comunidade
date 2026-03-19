@@ -5,181 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Animais disponíveis — PatasDF</title>
   <meta name="description" content="Veja todos os animais disponíveis para adoção no Distrito Federal. Cachorros e gatos esperando por uma família." />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --teal:        #1D9E75;
-      --teal-dark:   #0F6E56;
-      --teal-deep:   #085041;
-      --teal-light:  #E1F5EE;
-      --teal-mid:    #9FE1CB;
-      --amber:       #EF9F27;
-      --amber-dark:  #BA7517;
-      --amber-light: #FAEEDA;
-      --coral:       #D85A30;
-      --coral-light: #FAECE7;
-      --text:        #2C2C2A;
-      --text-muted:  #888780;
-      --text-light:  #B4B2A9;
-      --bg:          #FFFDF8;
-      --bg-warm:     #FBF7F0;
-      --bg-card:     #FFFFFF;
-      --border:      rgba(0,0,0,0.08);
-      --border-md:   rgba(0,0,0,0.13);
-      --radius-lg:   20px;
-      --radius-xl:   28px;
-      --shadow-lg:   0 16px 56px rgba(0,0,0,0.10);
-    }
-
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-
-    /* NAVBAR */
-    .navbar { position: sticky; top: 0; z-index: 200; background: rgba(255,253,248,0.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); height: 66px; display: flex; align-items: center; }
-    .navbar .container { width: 100%; display: flex; align-items: center; justify-content: space-between; }
-    .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--teal-dark); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
-    .nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--teal); }
-    .nav-active { color: var(--teal) !important; font-weight: 500; }
-    .nav-cta { background: var(--teal); color: #fff !important; padding: 8px 20px; border-radius: 24px; font-size: 14px; font-weight: 500; transition: background 0.2s, transform 0.15s !important; }
-    .nav-cta:hover { background: var(--teal-dark) !important; color: #fff !important; transform: scale(1.03); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
-
-    /* PAGE HEADER */
-    .page-header { background: var(--teal-deep); color: #fff; padding: 4rem 2rem 3.5rem; position: relative; overflow: hidden; }
-    .page-header::before { content: '🐾'; position: absolute; font-size: 18rem; opacity: 0.04; right: -2rem; top: -3rem; pointer-events: none; }
-    .breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
-    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
-    .breadcrumb a:hover { color: var(--amber); }
-    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.1; margin-bottom: 0.75rem; }
-    .page-header h1 .hl { color: var(--amber); }
-    .page-header p { font-size: 1rem; opacity: 0.65; font-weight: 300; max-width: 480px; }
-    .page-header-meta { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
-    .meta-chip { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 30px; padding: 5px 14px; font-size: 13px; color: rgba(255,255,255,0.8); }
-
-    /* TOOLBAR */
-    .toolbar { background: var(--bg-card); border-bottom: 1px solid var(--border); padding: 1rem 0; position: sticky; top: 66px; z-index: 100; }
-    .toolbar .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-    .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
-    .filter-pill { background: var(--bg-warm); border: 1px solid var(--border-md); border-radius: 30px; padding: 7px 18px; font-size: 13px; color: var(--text-muted); cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; font-weight: 500; }
-    .filter-pill:hover { border-color: var(--teal); color: var(--teal); }
-    .filter-pill.active { background: var(--teal); color: #fff; border-color: var(--teal); }
-    .toolbar-right { display: flex; align-items: center; gap: 10px; }
-    .search-box { display: flex; align-items: center; gap: 8px; background: var(--bg-warm); border: 1px solid var(--border-md); border-radius: 30px; padding: 7px 16px; transition: all 0.2s; }
-    .search-box:focus-within { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(29,158,117,0.1); }
-    .search-box input { border: none; background: transparent; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text); outline: none; width: 160px; }
-    .search-box input::placeholder { color: var(--text-light); }
-    .count-badge { font-size: 13px; color: var(--text-muted); font-weight: 300; white-space: nowrap; }
-    .count-badge strong { color: var(--teal); font-weight: 600; }
-
-    /* GRID */
-    .animals-section { padding: 3rem 0 6rem; }
-    .animals-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
-
-    /* CARD */
-    .animal-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: transform 0.22s, box-shadow 0.22s; display: flex; flex-direction: column; }
-    .animal-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-    .animal-img { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; font-size: 5.5rem; position: relative; overflow: hidden; flex-shrink: 0; }
-    .animal-tag { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.94); border: 1px solid var(--border); border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 500; color: var(--text); }
-    .animal-status { position: absolute; top: 12px; left: 12px; background: var(--teal); color: #fff; border-radius: 20px; padding: 4px 12px; font-size: 11px; font-weight: 500; }
-    .animal-body { padding: 1.35rem; flex: 1; display: flex; flex-direction: column; }
-    .animal-name { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
-    .animal-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
-    .pill { background: var(--bg-warm); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 12px; color: var(--text-muted); }
-    .animal-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; flex: 1; margin-bottom: 1rem; }
-
-    /* Botões dos cards — idênticos ao index */
-    .card-action-area { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
-
-    .btn-adotar-main {
-      display: flex; align-items: center; justify-content: center; gap: 7px;
-      background: var(--teal); color: #fff; border: none; border-radius: 50px;
-      padding: 11px 18px; font-size: 13px; font-family: 'DM Sans', sans-serif;
-      font-weight: 600; cursor: pointer; text-decoration: none;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s; width: 100%;
-    }
-    .btn-adotar-main:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(29,158,117,0.28); }
-
-    .btn-wpp-secondary {
-      display: flex; align-items: center; justify-content: center; gap: 7px;
-      background: transparent; color: #25D366; border: 1.5px solid #25D366;
-      border-radius: 50px; padding: 9px 18px; font-size: 13px;
-      font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer;
-      transition: all 0.2s; width: 100%;
-    }
-    .btn-wpp-secondary:hover { background: #25D366; color: #fff; transform: translateY(-1px); }
-
-    /* EMPTY */
-    .empty-state { grid-column: 1/-1; text-align: center; padding: 5rem 2rem; color: var(--text-muted); }
-    .empty-state .empty-icon { font-size: 3.5rem; margin-bottom: 1rem; }
-    .empty-state h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--text); margin-bottom: 0.5rem; }
-    .empty-state p { font-size: 14px; font-weight: 300; }
-
-    /* CTA BANNER */
-    .cta-banner { background: var(--teal-deep); border-radius: var(--radius-xl); padding: 2.5rem 3rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-bottom: 3rem; }
-    .cta-banner-text h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; margin-bottom: 0.4rem; }
-    .cta-banner-text p { font-size: 14px; color: rgba(255,255,255,0.6); font-weight: 300; }
-    .btn-banner { background: var(--amber); color: var(--text); border: none; border-radius: 50px; padding: 12px 28px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.22s; white-space: nowrap; flex-shrink: 0; }
-    .btn-banner:hover { background: #FAC775; transform: translateY(-2px); }
-
-    /* FOOTER */
-    footer { background: var(--text); color: rgba(255,255,255,0.55); padding: 3rem 2rem; }
-    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-    .footer-brand .logo { color: #fff; font-size: 20px; }
-    .footer-copy { font-size: 12px; text-align: right; line-height: 1.8; }
-    .footer-copy a { color: var(--amber); text-decoration: none; }
-
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 66px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; gap: 1.25rem; z-index: 199; }
-      .toolbar .container { flex-direction: column; align-items: flex-start; }
-      .toolbar-right { width: 100%; justify-content: space-between; }
-      .search-box input { width: 120px; }
-      .cta-banner { flex-direction: column; text-align: center; padding: 2rem; }
-      .animals-grid { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; gap: 1rem; }
-      .footer-copy { text-align: left; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400&family=Cabinet+Grotesk:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- NAVBAR — espelho exato do index.html -->
+  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container">
-      <a href="index.html" class="logo">🐾 PatasDF</a>
+      <a href="index.html" class="logo">
+        <div class="logo-paw">🐾</div>
+        PatasDF
+      </a>
       <div class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html#como-funciona">Como funciona</a></li>
-        <li><a href="animais.html" class="nav-active">Animais</a></li>
+        <li><a href="animais.html" class="active">Animais</a></li>
         <li><a href="index.html#mapa">Mapa</a></li>
-        <li><a href="index.html#sobre-criadora">Sobre</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
         <li><a href="index.html#quero-ajudar" class="nav-cta">Quero participar</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- PAGE HEADER -->
+  <!-- CABEÇALHO -->
   <div class="page-header">
     <div class="container">
       <div class="breadcrumb">
         <a href="index.html">Início</a>
         <span>›</span>
-        <span style="color:rgba(255,255,255,0.75);">Animais disponíveis</span>
+        <span style="color:rgba(255,255,255,.75);">Animais disponíveis</span>
       </div>
       <h1>Animais esperando<br>por uma <span class="hl">família</span></h1>
       <p>Todos os animais abaixo estão disponíveis para adoção no Distrito Federal. Gratuito e sem burocracia.</p>
@@ -191,7 +50,7 @@
     </div>
   </div>
 
-  <!-- TOOLBAR -->
+  <!-- BARRA DE FILTROS -->
   <div class="toolbar">
     <div class="container">
       <div class="filter-pills">
@@ -209,7 +68,7 @@
     </div>
   </div>
 
-  <!-- CONTEÚDO -->
+  <!-- ANIMAIS -->
   <section class="animals-section">
     <div class="container">
 
@@ -222,7 +81,7 @@
       </div>
 
       <div class="animals-grid" id="animalsGrid">
-        <div style="grid-column:1/-1;text-align:center;padding:4rem;color:var(--text-muted);">
+        <div style="grid-column:1/-1;text-align:center;padding:4rem;color:var(--bark-soft);">
           <div style="font-size:2.5rem;margin-bottom:.75rem;">🐾</div>
           <p>Carregando animais...</p>
         </div>
@@ -234,21 +93,36 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <div class="footer-brand"><a href="index.html" class="logo">🐾 PatasDF</a></div>
-      <div class="footer-copy">
-        © 2025 PatasDF · Todos os direitos garantidos<br>
-        Feito com 🐾 por <a href="sobre.html">Clarice Nunes</a>
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><div class="logo-paw">🐾</div> PatasDF</a>
+        <p>Plataforma gratuita e comunitária para conectar animais abandonados do DF com famílias amorosas.</p>
       </div>
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="index.html#como-funciona">Como funciona</a></li>
+          <li><a href="animais.html">Animais disponíveis</a></li>
+          <li><a href="index.html#mapa">Mapa do DF</a></li>
+          <li><a href="index.html#quero-ajudar">Como ajudar</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Projeto</h4>
+        <ul>
+          <li><a href="sobre.html">Sobre a criadora</a></li>
+          <li><a href="https://github.com/claricenunes" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 PatasDF · Engenharia de Software · Todos os direitos garantidos</span>
+      <span>Feito com 🐾 por <a href="sobre.html">Clarice Nunes</a></span>
     </div>
   </footer>
 
   <script>
-    /* ============================================================
-       ⚠️ CONFIGURE O LINK DO GOOGLE FORMS DE ADOÇÃO
-       Mesmo valor do FORMS_ADOTAR no index.html
-    ============================================================ */
-    const FORMS_ADOTAR = '#'; // Ex: 'https://forms.gle/XXXXXXX'
-
     const ANIMALS_URL = 'animais.json';
 
     const ANIMAIS_EMBUTIDOS = [
@@ -260,26 +134,21 @@
       { id:'ex6', nome:'Nala',    tipo:'gato',     idade:'~6 meses', porte:'Pequeno', cidade:'Samambaia',  descricao:'Curiosa e cheia de energia. Filhote resgatada da rua, precisa de vacinas e muito amor.',         contato:'(61) 93333-6666' },
     ];
 
-    let ANIMALS     = [];
-    let filtroAtual = 'todos';
-    let buscaAtual  = '';
+    let ANIMALS = [], filtroAtual = 'todos', buscaAtual = '';
 
     async function carregar() {
-      let carregouExterno = false;
+      let ok = false;
       try {
         const resp = await fetch(ANIMALS_URL + '?t=' + Date.now());
         if (resp.ok) {
           const dados = await resp.json();
-          const disp  = dados.filter(a => !a.status || a.status === 'disponivel');
-          if (disp.length > 0) { ANIMALS = disp; carregouExterno = true; }
+          const disp = dados.filter(a => !a.status || a.status === 'disponivel');
+          if (disp.length > 0) { ANIMALS = disp; ok = true; }
         }
-      } catch (e) { /* usa embutidos */ }
-
-      if (!carregouExterno) ANIMALS = ANIMAIS_EMBUTIDOS;
-
+      } catch(e) {}
+      if (!ok) ANIMALS = ANIMAIS_EMBUTIDOS;
       document.getElementById('headerCount').textContent =
         `${ANIMALS.length} animal${ANIMALS.length !== 1 ? 'is' : ''} disponível${ANIMALS.length !== 1 ? 'is' : ''}`;
-
       renderizar();
     }
 
@@ -290,16 +159,12 @@
       renderizar();
     }
 
-    function buscar(val) {
-      buscaAtual = val.toLowerCase().trim();
-      renderizar();
-    }
+    function buscar(val) { buscaAtual = val.toLowerCase().trim(); renderizar(); }
 
     function getLista() {
       let l = filtroAtual === 'todos' ? ANIMALS : ANIMALS.filter(a => a.tipo === filtroAtual);
       if (buscaAtual) l = l.filter(a =>
-        (a.nome   || '').toLowerCase().includes(buscaAtual) ||
-        (a.cidade || '').toLowerCase().includes(buscaAtual)
+        (a.nome||'').toLowerCase().includes(buscaAtual) || (a.cidade||'').toLowerCase().includes(buscaAtual)
       );
       return l;
     }
@@ -307,10 +172,7 @@
     function renderizar() {
       const grid  = document.getElementById('animalsGrid');
       const lista = getLista();
-
-      document.getElementById('countBadge').innerHTML =
-        `<strong>${lista.length}</strong> animal${lista.length !== 1 ? 'is' : ''}`;
-
+      document.getElementById('countBadge').innerHTML = `<strong>${lista.length}</strong> animal${lista.length !== 1 ? 'is' : ''}`;
       if (lista.length === 0) {
         grid.innerHTML = `
           <div class="empty-state">
@@ -320,71 +182,44 @@
           </div>`;
         return;
       }
-
-      const bgMap    = { cachorro: '#FFF3E0', gato: '#F3E5F5' };
-      const emojiMap = { cachorro: '🐶', gato: '🐱' };
-
+      const bgMap    = { cachorro:'#FFF3E8', gato:'#F0ECF9' };
+      const emojiMap = { cachorro:'🐶', gato:'🐱' };
       grid.innerHTML = lista.map((a, i) => {
-        const bg    = bgMap[a.tipo]    || '#F5F5F5';
+        const bg    = bgMap[a.tipo]    || '#F5F3EE';
         const emoji = emojiMap[a.tipo] || '🐾';
         const tipo  = a.tipo ? (a.tipo[0].toUpperCase() + a.tipo.slice(1)) : 'Animal';
-        const nomeS = (a.nome    || '').replace(/'/g, "\\'");
-        const contS = (a.contato || '').replace(/'/g, "\\'");
-
         return `
-        <div class="animal-card" style="animation: fadeUp 0.4s ${i * 60}ms ease both;">
+        <div class="animal-card" style="animation:fadeUp .4s ${i * 60}ms ease both;">
           <div class="animal-img" style="background:${bg};">
-            ${emoji}
-            <div class="animal-tag">${tipo}</div>
-            <div class="animal-status">Disponível</div>
+            <div class="animal-img-bg">${emoji}</div>
+            <div class="animal-emoji" style="font-size:5.5rem;">${emoji}</div>
+            <div class="animal-badge">${tipo}</div>
+            <div class="animal-status-badge">Disponível</div>
           </div>
           <div class="animal-body">
             <div class="animal-name">${a.nome || 'Sem nome'}</div>
             <div class="animal-meta">
-              ${a.idade  ? `<span class="pill">${a.idade}</span>`     : ''}
-              ${a.cidade ? `<span class="pill">📍 ${a.cidade}</span>` : ''}
-              ${a.porte  ? `<span class="pill">${a.porte}</span>`     : ''}
+              ${a.idade  ? `<span class="pill">${a.idade}</span>`       : ''}
+              ${a.cidade ? `<span class="pill">📍 ${a.cidade}</span>`   : ''}
+              ${a.porte  ? `<span class="pill">${a.porte}</span>`       : ''}
             </div>
             <p class="animal-desc">${a.descricao || ''}</p>
             <div class="card-action-area">
-              <button class="btn-adotar-main" onclick="irParaAdotar()">
-                🏠 Quero adotar este animal
-              </button>
-              <button class="btn-wpp-secondary" onclick="abrirWhatsApp('${nomeS}','${contS}')">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.119 1.532 5.849L.057 23.617a.75.75 0 00.921.921l5.767-1.475A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.713 9.713 0 01-4.964-1.362l-.355-.211-3.683.942.96-3.598-.232-.372A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
-                Falar direto no WhatsApp
-              </button>
+              <button class="btn-adotar-main" onclick="irParaAdotar()">🏠 Quero adotar este animal</button>
             </div>
           </div>
         </div>`;
       }).join('');
     }
 
-    function abrirWhatsApp(nome, contato) {
-      if (contato && !contato.includes('xxxx')) {
-        const num = contato.replace(/\D/g, '');
-        const msg = encodeURIComponent(`Olá! Vi o(a) ${nome} no PatasDF e tenho interesse em adotar. Podemos conversar?`);
-        window.open(`https://wa.me/55${num}?text=${msg}`, '_blank');
-      } else {
-        alert(`💚 Entre em contato com o responsável pelo número exibido no card do(a) ${nome}.`);
-      }
-    }
+    function irParaAdotar() { window.location.href = 'index.html?adotar=1#quero-ajudar'; }
 
-    /* "Quero adotar este animal" — leva para o index com flag
-       para abrir o modal de termos de adoção automaticamente */
-    function irParaAdotar() {
-      window.location.href = 'index.html?adotar=1#quero-ajudar';
-    }
-
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('open');
-    }
-    document.querySelectorAll('#navLinks a').forEach(link => {
-      link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
-    });
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
+    document.querySelectorAll('#navLinks a').forEach(l =>
+      l.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+    );
 
     carregar();
   </script>
-
 </body>
 </html>
