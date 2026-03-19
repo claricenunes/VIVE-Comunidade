@@ -9,20 +9,12 @@
   <meta property="og:description" content="Conectamos animais abandonados do Distrito Federal com famílias amorosas. Grátis, simples e comunitário." />
   <meta property="og:type" content="website" />
 
-  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
 
   <style>
-    /* ===========================
-       RESET & VARIÁVEIS
-    =========================== */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --teal:        #1D9E75;
@@ -52,707 +44,119 @@
       --shadow-lg:   0 16px 56px rgba(0,0,0,0.10);
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section-label { font-size: 11px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem; display: block; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 700; color: var(--text); line-height: 1.12; margin-bottom: 1rem; }
+    .section-sub { font-size: 1rem; color: var(--text-muted); max-width: 520px; line-height: 1.75; font-weight: 300; }
 
-    /* ===========================
-       UTILITÁRIOS
-    =========================== */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+    .btn { display: inline-flex; align-items: center; gap: 8px; border: none; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; transition: all 0.22s ease; text-decoration: none; white-space: nowrap; }
+    .btn-primary { background: var(--teal); color: #fff; padding: 13px 28px; font-size: 15px; }
+    .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,158,117,0.28); }
+    .btn-secondary { background: transparent; color: var(--text); padding: 12px 28px; font-size: 15px; border: 1.5px solid var(--border-md); }
+    .btn-secondary:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+    .btn-amber { background: var(--amber); color: var(--text); padding: 14px 32px; font-size: 16px; font-weight: 600; }
+    .btn-amber:hover { background: #FAC775; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(239,159,39,0.35); }
 
-    .section-label {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 0.75rem;
-      display: block;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.9rem, 4vw, 2.9rem);
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.12;
-      margin-bottom: 1rem;
-    }
-
-    .section-sub {
-      font-size: 1rem;
-      color: var(--text-muted);
-      max-width: 520px;
-      line-height: 1.75;
-      font-weight: 300;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: none;
-      border-radius: 50px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.22s ease;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: var(--teal);
-      color: #fff;
-      padding: 13px 28px;
-      font-size: 15px;
-    }
-    .btn-primary:hover {
-      background: var(--teal-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(29,158,117,0.28);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--text);
-      padding: 12px 28px;
-      font-size: 15px;
-      border: 1.5px solid var(--border-md);
-    }
-    .btn-secondary:hover {
-      border-color: var(--teal);
-      color: var(--teal);
-      transform: translateY(-2px);
-    }
-
-    .btn-amber {
-      background: var(--amber);
-      color: var(--text);
-      padding: 14px 32px;
-      font-size: 16px;
-      font-weight: 600;
-    }
-    .btn-amber:hover {
-      background: #FAC775;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(239,159,39,0.35);
-    }
-
-    /* ===========================
-       NAVBAR
-    =========================== */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 200;
-      background: rgba(255,253,248,0.92);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-      height: 66px;
-      display: flex;
-      align-items: center;
-    }
-
-    .navbar .container {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--teal-dark);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 14px;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    /* NAVBAR */
+    .navbar { position: sticky; top: 0; z-index: 200; background: rgba(255,253,248,0.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); height: 66px; display: flex; align-items: center; }
+    .navbar .container { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--teal-dark); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--teal); }
+    .nav-cta { background: var(--teal); color: #fff !important; padding: 8px 20px; border-radius: 24px; font-size: 14px; font-weight: 500; transition: background 0.2s, transform 0.15s !important; }
+    .nav-cta:hover { background: var(--teal-dark) !important; color: #fff !important; transform: scale(1.03); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
 
-    .nav-cta {
-      background: var(--teal);
-      color: #fff !important;
-      padding: 8px 20px;
-      border-radius: 24px;
-      font-size: 14px;
-      font-weight: 500;
-      transition: background 0.2s, transform 0.15s !important;
-    }
-    .nav-cta:hover {
-      background: var(--teal-dark) !important;
-      color: #fff !important;
-      transform: scale(1.03);
-    }
-
-    /* Hamburger (mobile) */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-
-    /* ===========================
-       HERO
-    =========================== */
-    .hero {
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 6rem 2rem 5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-glow {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(ellipse 55% 45% at 15% 85%, rgba(29,158,117,0.12) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 55% at 85% 15%, rgba(239,159,39,0.12) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(29,158,117,0.04) 0%, transparent 60%);
-    }
-
-    /* Patas decorativas de fundo */
-    .hero-paw {
-      position: absolute;
-      font-size: 8rem;
-      opacity: 0.04;
-      pointer-events: none;
-      user-select: none;
-    }
+    /* HERO */
+    .hero { min-height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem 5rem; position: relative; overflow: hidden; }
+    .hero-glow { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 55% 45% at 15% 85%, rgba(29,158,117,0.12) 0%, transparent 65%), radial-gradient(ellipse 50% 55% at 85% 15%, rgba(239,159,39,0.12) 0%, transparent 65%), radial-gradient(ellipse 40% 40% at 50% 50%, rgba(29,158,117,0.04) 0%, transparent 60%); }
+    .hero-paw { position: absolute; font-size: 8rem; opacity: 0.04; pointer-events: none; user-select: none; }
     .hero-paw:nth-child(1) { top: 8%;  left: 3%;  transform: rotate(-20deg); font-size: 6rem; }
     .hero-paw:nth-child(2) { top: 70%; left: 5%;  transform: rotate(15deg);  font-size: 5rem; }
     .hero-paw:nth-child(3) { top: 15%; right: 5%; transform: rotate(30deg);  font-size: 7rem; }
     .hero-paw:nth-child(4) { top: 60%; right: 3%; transform: rotate(-10deg); font-size: 5rem; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--amber-light); color: var(--amber-dark); border: 1px solid rgba(250,199,117,0.5); border-radius: 30px; padding: 6px 18px; font-size: 13px; font-weight: 500; margin-bottom: 2rem; position: relative; z-index: 1; animation: fadeDown 0.7s ease both; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; line-height: 1.03; color: var(--text); letter-spacing: -1.5px; max-width: 860px; position: relative; z-index: 1; animation: fadeUp 0.7s 0.15s ease both; }
+    .hero h1 .hl { color: var(--teal); position: relative; display: inline-block; }
+    .hero h1 .hl::after { content: ''; position: absolute; bottom: 4px; left: 0; right: 0; height: 7px; background: var(--amber); border-radius: 4px; opacity: 0.4; z-index: -1; }
+    .hero-sub { font-size: 1.15rem; color: var(--text-muted); max-width: 520px; margin: 1.75rem auto 0; font-weight: 300; line-height: 1.75; position: relative; z-index: 1; animation: fadeUp 0.7s 0.28s ease both; }
+    .hero-ctas { display: flex; gap: 1rem; margin-top: 2.75rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; animation: fadeUp 0.7s 0.4s ease both; }
+    .hero-scroll { display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--text-light); font-size: 12px; z-index: 1; margin-top: 3rem; animation: fadeUp 1s 0.8s ease both; }
+    .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--text-light), transparent); animation: scrollPulse 2s ease-in-out infinite; }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--amber-light);
-      color: var(--amber-dark);
-      border: 1px solid rgba(250,199,117,0.5);
-      border-radius: 30px;
-      padding: 6px 18px;
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 2rem;
-      position: relative;
-      z-index: 1;
-      animation: fadeDown 0.7s ease both;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 900;
-      line-height: 1.03;
-      color: var(--text);
-      letter-spacing: -1.5px;
-      max-width: 860px;
-      position: relative;
-      z-index: 1;
-      animation: fadeUp 0.7s 0.15s ease both;
-    }
-
-    .hero h1 .hl {
-      color: var(--teal);
-      position: relative;
-      display: inline-block;
-    }
-    .hero h1 .hl::after {
-      content: '';
-      position: absolute;
-      bottom: 4px; left: 0; right: 0;
-      height: 7px;
-      background: var(--amber);
-      border-radius: 4px;
-      opacity: 0.4;
-      z-index: -1;
-    }
-
-    .hero-sub {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      max-width: 520px;
-      margin: 1.75rem auto 0;
-      font-weight: 300;
-      line-height: 1.75;
-      position: relative;
-      z-index: 1;
-      animation: fadeUp 0.7s 0.28s ease both;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2.75rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 1;
-      animation: fadeUp 0.7s 0.4s ease both;
-    }
-
-    .hero-scroll {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      color: var(--text-light);
-      font-size: 12px;
-      z-index: 1;
-      margin-top: 3rem;
-      animation: fadeUp 1s 0.8s ease both;
-    }
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--text-light), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-
-    /* ===========================
-       STATS BAR
-    =========================== */
-    .stats-bar {
-      background: var(--teal-deep);
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .stat-item {
-      padding: 1.75rem 3.5rem;
-      text-align: center;
-      border-right: 1px solid rgba(255,255,255,0.1);
-      flex: 1;
-      min-width: 140px;
-    }
+    /* STATS */
+    .stats-bar { background: var(--teal-deep); display: flex; justify-content: center; flex-wrap: wrap; }
+    .stat-item { padding: 1.75rem 3.5rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); flex: 1; min-width: 140px; }
     .stat-item:last-child { border-right: none; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--amber); line-height: 1; }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; }
 
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: var(--amber);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 13px;
-      color: rgba(255,255,255,0.6);
-      margin-top: 4px;
-    }
-
-    /* ===========================
-       COMO FUNCIONA
-    =========================== */
-    .section-pad {
-      padding: 6rem 0;
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 1.25rem;
-      margin-top: 3.5rem;
-    }
-
-    .step-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 2rem 1.75rem;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.22s, box-shadow 0.22s;
-    }
-    .step-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--teal), var(--teal-mid));
-      opacity: 0;
-      transition: opacity 0.22s;
-    }
-    .step-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-    }
+    /* STEPS */
+    .section-pad { padding: 6rem 0; }
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.25rem; margin-top: 3.5rem; }
+    .step-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem 1.75rem; position: relative; overflow: hidden; transition: transform 0.22s, box-shadow 0.22s; }
+    .step-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--teal), var(--teal-mid)); opacity: 0; transition: opacity 0.22s; }
+    .step-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
     .step-card:hover::before { opacity: 1; }
+    .step-num { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; color: var(--teal-light); line-height: 1; margin-bottom: 1.25rem; }
+    .step-card h3 { font-size: 16px; font-weight: 500; margin-bottom: 0.5rem; }
+    .step-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
 
-    .step-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      font-weight: 900;
-      color: var(--teal-light);
-      line-height: 1;
-      margin-bottom: 1.25rem;
-    }
+    /* ANIMALS */
+    .animals-section { background: var(--bg-warm); padding: 6rem 0; }
+    .animals-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-pill { background: var(--bg-card); border: 1px solid var(--border-md); border-radius: 30px; padding: 6px 16px; font-size: 13px; color: var(--text-muted); cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+    .filter-pill:hover, .filter-pill.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .animals-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+    .animal-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: transform 0.22s, box-shadow 0.22s; }
+    .animal-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .animal-img { width: 100%; height: 210px; display: flex; align-items: center; justify-content: center; font-size: 5.5rem; position: relative; overflow: hidden; }
+    .animal-tag { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.94); border: 1px solid var(--border); border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 500; color: var(--text); }
+    .animal-status { position: absolute; top: 12px; left: 12px; background: var(--teal); color: #fff; border-radius: 20px; padding: 4px 12px; font-size: 11px; font-weight: 500; }
+    .animal-body { padding: 1.35rem; }
+    .animal-name { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .animal-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+    .pill { background: var(--bg-warm); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 12px; color: var(--text-muted); }
+    .animal-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; margin-bottom: 1rem; }
+    .animal-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .contact-info { font-size: 13px; color: var(--teal); font-weight: 500; }
+    .btn-adotar { background: var(--teal); color: #fff; border: none; border-radius: 20px; padding: 7px 18px; font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer; font-weight: 500; transition: background 0.2s, transform 0.15s; }
+    .btn-adotar:hover { background: var(--teal-dark); transform: scale(1.04); }
+    .empty-state { text-align: center; padding: 3rem; color: var(--text-muted); display: none; }
 
-    .step-card h3 {
-      font-size: 16px;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      color: var(--text);
-    }
-
-    .step-card p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.65;
-      font-weight: 300;
-    }
-
-    /* ===========================
-       ANIMAIS
-    =========================== */
-    .animals-section {
-      background: var(--bg-warm);
-      padding: 6rem 0;
-    }
-
-    .animals-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 3rem;
-    }
-
-    .filter-pills {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .filter-pill {
-      background: var(--bg-card);
-      border: 1px solid var(--border-md);
-      border-radius: 30px;
-      padding: 6px 16px;
-      font-size: 13px;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.2s;
-      font-family: 'DM Sans', sans-serif;
-    }
-    .filter-pill:hover,
-    .filter-pill.active {
-      background: var(--teal);
-      color: #fff;
-      border-color: var(--teal);
-    }
-
-    .animals-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .animal-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: transform 0.22s, box-shadow 0.22s;
-    }
-    .animal-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .animal-img {
-      width: 100%;
-      height: 210px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 5.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .animal-tag {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(255,255,255,0.94);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 4px 12px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    .animal-status {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: var(--teal);
-      color: #fff;
-      border-radius: 20px;
-      padding: 4px 12px;
-      font-size: 11px;
-      font-weight: 500;
-    }
-
-    .animal-body {
-      padding: 1.35rem;
-    }
-
-    .animal-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-
-    .animal-meta {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-
-    .pill {
-      background: var(--bg-warm);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 3px 10px;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .animal-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.65;
-      font-weight: 300;
-      margin-bottom: 1rem;
-    }
-
-    .animal-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .contact-info {
-      font-size: 13px;
-      color: var(--teal);
-      font-weight: 500;
-    }
-
-    .btn-adotar {
-      background: var(--teal);
-      color: #fff;
-      border: none;
-      border-radius: 20px;
-      padding: 7px 18px;
-      font-size: 13px;
-      font-family: 'DM Sans', sans-serif;
-      cursor: pointer;
-      font-weight: 500;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .btn-adotar:hover {
-      background: var(--teal-dark);
-      transform: scale(1.04);
-    }
-
-    .empty-state {
-      text-align: center;
-      padding: 3rem;
-      color: var(--text-muted);
-      display: none;
-    }
-
-    /* ===========================
-       MAPA
-    =========================== */
+    /* MAP */
     .map-section { padding: 6rem 0; }
-
-    .map-wrapper {
-      margin-top: 3rem;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--bg-warm);
-    }
-
-    /* Substitua o src pelo link do seu Google My Maps */
-    .map-wrapper iframe {
-      width: 100%;
-      height: 480px;
-      border: none;
-      display: block;
-    }
-
-    .map-placeholder {
-      height: 480px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      text-align: center;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Pontos animados no placeholder */
-    .map-dot {
-      position: absolute;
-      width: 38px;
-      height: 38px;
-      background: var(--teal);
-      border-radius: 50% 50% 50% 0;
-      transform: rotate(-45deg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 16px rgba(29,158,117,0.4);
-      animation: dotPulse 2.5s ease-in-out infinite;
-    }
-    .map-dot::after {
-      content: attr(data-e);
-      transform: rotate(45deg);
-      font-size: 15px;
-    }
+    .map-wrapper { margin-top: 3rem; border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--border); background: var(--bg-warm); }
+    .map-wrapper iframe { width: 100%; height: 480px; border: none; display: block; }
+    .map-placeholder { height: 480px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; text-align: center; padding: 2rem; position: relative; overflow: hidden; }
+    .map-dot { position: absolute; width: 38px; height: 38px; background: var(--teal); border-radius: 50% 50% 50% 0; transform: rotate(-45deg); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(29,158,117,0.4); animation: dotPulse 2.5s ease-in-out infinite; }
+    .map-dot::after { content: attr(data-e); transform: rotate(45deg); font-size: 15px; }
     .map-dot:nth-child(2) { left: 25%; top: 30%; animation-delay: 0.5s; }
     .map-dot:nth-child(3) { left: 60%; top: 45%; background: var(--amber); animation-delay: 1s; }
     .map-dot:nth-child(4) { left: 75%; top: 20%; background: var(--coral); animation-delay: 1.5s; }
     .map-dot:nth-child(5) { left: 40%; top: 65%; animation-delay: 0.8s; }
+    .map-placeholder h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; position: relative; z-index: 1; }
+    .map-placeholder p { font-size: 14px; color: var(--text-muted); max-width: 420px; position: relative; z-index: 1; font-weight: 300; }
+    .map-placeholder .btn { position: relative; z-index: 1; margin-top: 0.5rem; }
 
-    .map-placeholder h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-    .map-placeholder p {
-      font-size: 14px;
-      color: var(--text-muted);
-      max-width: 420px;
-      position: relative;
-      z-index: 1;
-      font-weight: 300;
-    }
-    .map-placeholder .btn {
-      position: relative;
-      z-index: 1;
-      margin-top: 0.5rem;
-    }
-
-    /* ===========================
-       COMO AJUDAR
-    =========================== */
-    .help-section {
-      background: var(--bg-warm);
-      padding: 6rem 0;
-    }
-
-    .help-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.25rem;
-      margin-top: 3.5rem;
-    }
-
-    .help-card {
-      border-radius: var(--radius-lg);
-      padding: 2.25rem 2rem;
-      border: 1px solid transparent;
-      transition: transform 0.22s, box-shadow 0.22s;
-    }
-    .help-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-sm);
-    }
-
+    /* HELP */
+    .help-section { background: var(--bg-warm); padding: 6rem 0; }
+    .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 3.5rem; }
+    .help-card { border-radius: var(--radius-lg); padding: 2.25rem 2rem; border: 1px solid transparent; transition: transform 0.22s, box-shadow 0.22s; }
+    .help-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-sm); }
     .help-card.adoptar { background: var(--teal-light); border-color: rgba(159,225,203,0.4); }
     .help-card.temporario { background: var(--amber-light); border-color: rgba(250,199,117,0.4); }
     .help-card.divulgar { background: var(--coral-light); border-color: rgba(245,196,179,0.4); }
-
-    .help-icon {
-      font-size: 2.8rem;
-      margin-bottom: 1.25rem;
-      display: block;
-    }
-
-    .help-card h3 {
-      font-size: 1.15rem;
-      font-weight: 500;
-      margin-bottom: 0.6rem;
-    }
-
-    .help-card p {
-      font-size: 14px;
-      line-height: 1.7;
-      opacity: 0.75;
-      font-weight: 300;
-    }
-
-    .help-card .btn {
-      margin-top: 1.5rem;
-      font-size: 13px;
-      padding: 8px 18px;
-    }
+    .help-icon { font-size: 2.8rem; margin-bottom: 1.25rem; display: block; }
+    .help-card h3 { font-size: 1.15rem; font-weight: 500; margin-bottom: 0.6rem; }
+    .help-card p { font-size: 14px; line-height: 1.7; opacity: 0.75; font-weight: 300; }
+    .help-card .btn { margin-top: 1.5rem; font-size: 13px; padding: 8px 18px; }
     .help-card.adoptar .btn { background: var(--teal); color: #fff; }
     .help-card.adoptar .btn:hover { background: var(--teal-dark); }
     .help-card.temporario .btn { background: var(--amber); color: var(--text); }
@@ -760,738 +164,594 @@
     .help-card.divulgar .btn { background: var(--coral); color: #fff; }
     .help-card.divulgar .btn:hover { background: #993C1D; }
 
-    /* ===========================
-       FORMULÁRIO / CADASTRO
-    =========================== */
+    /* FORM */
     .form-section { padding: 6rem 0; }
+    .form-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+    .form-info h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1rem; }
+    .form-info p { font-size: 14px; color: var(--text-muted); line-height: 1.75; font-weight: 300; margin-bottom: 1.5rem; }
+    .form-checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .form-checklist li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-muted); }
+    .check-icon { width: 22px; height: 22px; background: var(--teal-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+    .form-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 2.5rem; box-shadow: var(--shadow-sm); }
+    .form-card h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 1.75rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+    .form-group { margin-bottom: 1.15rem; }
+    .form-group label { display: block; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; border: 1px solid var(--border-md); border-radius: var(--radius-sm); padding: 10px 14px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); background: var(--bg); transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(29,158,117,0.12); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-note { font-size: 12px; color: var(--text-muted); margin-top: 0.75rem; text-align: center; font-weight: 300; }
+    .form-success { display: none; text-align: center; padding: 2rem; }
+    .form-success .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .form-success h4 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .form-success p { font-size: 14px; color: var(--text-muted); font-weight: 300; }
 
-    .form-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      margin-top: 3rem;
-    }
-
-    .form-info h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    .form-info p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.75;
-      font-weight: 300;
-      margin-bottom: 1.5rem;
-    }
-
-    .form-checklist {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .form-checklist li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-    .check-icon {
-      width: 22px;
-      height: 22px;
-      background: var(--teal-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      flex-shrink: 0;
-    }
-
-    .form-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .form-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 1.75rem;
-      padding-bottom: 1.25rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .form-group {
-      margin-bottom: 1.15rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      border: 1px solid var(--border-md);
-      border-radius: var(--radius-sm);
-      padding: 10px 14px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      color: var(--text);
-      background: var(--bg);
-      transition: border-color 0.2s, box-shadow 0.2s;
-      outline: none;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--teal);
-      box-shadow: 0 0 0 3px rgba(29,158,117,0.12);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 90px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .form-note {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 0.75rem;
-      text-align: center;
-      font-weight: 300;
-    }
-
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 2rem;
-    }
-    .form-success .success-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    .form-success h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-    }
-    .form-success p {
-      font-size: 14px;
-      color: var(--text-muted);
-      font-weight: 300;
-    }
-
-    /* ===========================
-       FORMULÁRIOS ADOÇÃO / LAR TEMP
-    =========================== */
-    .interest-section {
-      background: var(--bg-warm);
-      padding: 6rem 0;
-    }
-
-    .interest-tabs {
-      display: flex;
-      gap: 0;
-      margin-top: 3rem;
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-      overflow: hidden;
-      border: 1px solid var(--border-md);
-      border-bottom: none;
-    }
-
-    .interest-tab {
-      flex: 1;
-      padding: 1.1rem 1.5rem;
-      background: var(--bg-card);
-      border: none;
-      cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      transition: all 0.22s;
-      border-right: 1px solid var(--border-md);
-      position: relative;
-    }
+    /* INTEREST TABS */
+    .interest-section { background: var(--bg-warm); padding: 6rem 0; }
+    .interest-tabs { display: flex; gap: 0; margin-top: 3rem; border-radius: var(--radius-lg) var(--radius-lg) 0 0; overflow: hidden; border: 1px solid var(--border-md); border-bottom: none; }
+    .interest-tab { flex: 1; padding: 1.1rem 1.5rem; background: var(--bg-card); border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.22s; border-right: 1px solid var(--border-md); position: relative; }
     .interest-tab:last-child { border-right: none; }
-    .interest-tab::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: transparent;
-      transition: background 0.22s;
-    }
-    .interest-tab.active {
-      color: var(--text);
-      background: var(--bg);
-    }
+    .interest-tab::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: transparent; transition: background 0.22s; }
+    .interest-tab.active { color: var(--text); background: var(--bg); }
     .interest-tab.active.tab-adopt::after { background: var(--teal); }
     .interest-tab.active.tab-temp::after  { background: var(--amber); }
-
-    .interest-tab .tab-icon {
-      font-size: 1.3rem;
-    }
-    .interest-tab .tab-badge {
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-weight: 500;
-    }
+    .interest-tab .tab-icon { font-size: 1.3rem; }
+    .interest-tab .tab-badge { font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 500; }
     .tab-adopt .tab-badge { background: var(--teal-light); color: var(--teal-dark); }
     .tab-temp  .tab-badge { background: var(--amber-light); color: var(--amber-dark); }
-
-    .interest-panels {
-      border: 1px solid var(--border-md);
-      border-radius: 0 0 var(--radius-xl) var(--radius-xl);
-      background: var(--bg);
-      padding: 2.5rem;
-    }
-
+    .interest-panels { border: 1px solid var(--border-md); border-radius: 0 0 var(--radius-xl) var(--radius-xl); background: var(--bg); padding: 2.5rem; }
     .interest-panel { display: none; }
     .interest-panel.active { display: block; }
-
-    .interest-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .interest-info h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-    }
-    .interest-info p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.75;
-      font-weight: 300;
-      margin-bottom: 1.5rem;
-    }
-
-    .info-highlight {
-      border-radius: var(--radius-md);
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1.25rem;
-    }
+    .interest-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
+    .interest-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .interest-info p { font-size: 14px; color: var(--text-muted); line-height: 1.75; font-weight: 300; margin-bottom: 1.5rem; }
+    .info-highlight { border-radius: var(--radius-md); padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }
     .info-highlight.teal { background: var(--teal-light); border-left: 3px solid var(--teal); }
     .info-highlight.amber { background: var(--amber-light); border-left: 3px solid var(--amber); }
-
-    .info-highlight p {
-      font-size: 13px;
-      margin: 0;
-      color: var(--text);
-      opacity: 0.9;
-    }
-
-    .checkbox-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .checkbox-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--text-muted);
-      cursor: pointer;
-    }
-    .checkbox-item input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
-      accent-color: var(--teal);
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    .radio-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .radio-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--text-muted);
-      cursor: pointer;
-    }
-    .radio-item input[type="radio"] {
-      width: 16px;
-      height: 16px;
-      accent-color: var(--teal);
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .radio-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
+    .info-highlight p { font-size: 13px; margin: 0; color: var(--text); opacity: 0.9; }
+    .checkbox-group { display: flex; flex-direction: column; gap: 8px; }
+    .checkbox-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-muted); cursor: pointer; }
+    .checkbox-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--teal); cursor: pointer; flex-shrink: 0; }
+    .radio-group { display: flex; flex-direction: column; gap: 10px; }
+    .radio-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-muted); cursor: pointer; }
+    .radio-item input[type="radio"] { width: 16px; height: 16px; accent-color: var(--teal); cursor: pointer; flex-shrink: 0; }
+    .radio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .btn-adopt  { background: var(--teal); color: #fff; }
     .btn-adopt:hover  { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,158,117,0.25); }
     .btn-amber-form { background: var(--amber); color: var(--text); font-weight: 600; }
     .btn-amber-form:hover { background: var(--amber-dark); color: #fff; transform: translateY(-2px); }
 
-    @media (max-width: 768px) {
-      .interest-layout { grid-template-columns: 1fr; gap: 2rem; }
-      .interest-tab { font-size: 13px; padding: 1rem; }
-      .interest-panels { padding: 1.5rem; }
-      .radio-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ===========================
-       SELETOR DE ANIMAL (adoção/lar temp)
-    =========================== */
-    .animal-choice-toggle {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 8px;
-    }
-
-    .choice-btn {
-      border: 1.5px solid var(--border-md);
-      border-radius: var(--radius-md);
-      padding: 14px 12px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s;
-      background: var(--bg);
-      font-family: 'DM Sans', sans-serif;
-    }
+    /* ANIMAL SELECT */
+    .animal-choice-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+    .choice-btn { border: 1.5px solid var(--border-md); border-radius: var(--radius-md); padding: 14px 12px; text-align: center; cursor: pointer; transition: all 0.2s; background: var(--bg); font-family: 'DM Sans', sans-serif; }
     .choice-btn:hover { border-color: var(--teal); }
-    .choice-btn.selected-adopt {
-      border-color: var(--teal);
-      background: var(--teal-light);
-    }
-    .choice-btn.selected-temp {
-      border-color: var(--amber);
-      background: var(--amber-light);
-    }
+    .choice-btn.selected-adopt { border-color: var(--teal); background: var(--teal-light); }
+    .choice-btn.selected-temp { border-color: var(--amber); background: var(--amber-light); }
     .choice-btn .choice-icon { font-size: 1.6rem; display: block; margin-bottom: 5px; }
     .choice-btn .choice-label { font-size: 13px; font-weight: 500; color: var(--text); }
     .choice-btn .choice-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
-
-    .animal-list-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .animal-select-card {
-      border: 1.5px solid var(--border-md);
-      border-radius: var(--radius-md);
-      padding: 10px 12px;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--bg);
-    }
+    .animal-list-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+    .animal-select-card { border: 1.5px solid var(--border-md); border-radius: var(--radius-md); padding: 10px 12px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 10px; background: var(--bg); }
     .animal-select-card:hover { border-color: var(--teal); }
-    .animal-select-card.selected {
-      border-color: var(--teal);
-      background: var(--teal-light);
-    }
-    .animal-select-card.selected-temp {
-      border-color: var(--amber);
-      background: var(--amber-light);
-    }
-    .animal-select-card input[type="radio"],
-    .animal-select-card input[type="checkbox"] {
-      accent-color: var(--teal);
-      width: 15px; height: 15px;
-      flex-shrink: 0;
-    }
+    .animal-select-card.selected { border-color: var(--teal); background: var(--teal-light); }
+    .animal-select-card.selected-temp { border-color: var(--amber); background: var(--amber-light); }
+    .animal-select-card input[type="radio"], .animal-select-card input[type="checkbox"] { accent-color: var(--teal); width: 15px; height: 15px; flex-shrink: 0; }
     .animal-card-mini { flex: 1; }
     .animal-card-mini .mini-name { font-size: 13px; font-weight: 500; color: var(--text); }
     .animal-card-mini .mini-info { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
     .animal-card-mini .mini-emoji { font-size: 1.4rem; }
+    .collapsible-section { overflow: hidden; max-height: 0; transition: max-height 0.4s ease, opacity 0.3s ease; opacity: 0; }
+    .collapsible-section.open { max-height: 1200px; opacity: 1; }
 
-    .collapsible-section {
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.4s ease, opacity 0.3s ease;
-      opacity: 0;
-    }
-    .collapsible-section.open {
-      max-height: 800px;
-      opacity: 1;
-    }
-
-    /* ===========================
-       SOBRE A CRIADORA (inline)
-    =========================== */
-    .criadora-section {
-      padding: 6rem 0;
-      background: var(--bg);
-    }
-
-    .criadora-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .criadora-photo-col {
-      display: flex;
-      justify-content: center;
-    }
-
-    .criadora-frame {
-      position: relative;
-      width: 300px;
-    }
-
-    .criadora-circle {
-      width: 300px; height: 300px;
-      border-radius: 50% 50% 50% 38%;
-      background: var(--teal-light);
-      border: 3px solid var(--teal-mid);
-      overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-    }
-
-    .criadora-ph {
-      display: flex; flex-direction: column;
-      align-items: center; gap: .4rem;
-      color: var(--teal-dark);
-    }
+    /* CRIADORA */
+    .criadora-section { padding: 6rem 0; background: var(--bg); }
+    .criadora-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center; }
+    .criadora-photo-col { display: flex; justify-content: center; }
+    .criadora-frame { position: relative; width: 300px; }
+    .criadora-circle { width: 300px; height: 300px; border-radius: 50% 50% 50% 38%; background: var(--teal-light); border: 3px solid var(--teal-mid); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .criadora-ph { display: flex; flex-direction: column; align-items: center; gap: .4rem; color: var(--teal-dark); }
     .criadora-ph .ph-icon { font-size: 4.5rem; }
     .criadora-ph p { font-size: 11px; opacity: .6; text-align: center; max-width: 120px; }
-
-    .criadora-badge {
-      position: absolute;
-      background: var(--bg-card);
-      border: 1px solid var(--border-md);
-      border-radius: var(--radius-md);
-      padding: .65rem .9rem;
-      box-shadow: var(--shadow-md);
-      font-size: 12px; font-weight: 500;
-      display: flex; align-items: center; gap: 7px;
-    }
+    .criadora-badge { position: absolute; background: var(--bg-card); border: 1px solid var(--border-md); border-radius: var(--radius-md); padding: .65rem .9rem; box-shadow: var(--shadow-md); font-size: 12px; font-weight: 500; display: flex; align-items: center; gap: 7px; }
     .criadora-badge .bi { font-size: 1.2rem; }
     .criadora-badge.b1 { bottom: 1.5rem; right: -1.25rem; }
     .criadora-badge.b2 { top: 1.5rem; left: -1.25rem; }
     .criadora-badge .bl { display: block; font-size: 10px; color: var(--text-muted); font-weight: 400; margin-top: 1px; }
-
-    .criadora-text {}
-    .criadora-text h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
-      font-weight: 700; line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
+    .criadora-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3.5vw, 2.6rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
     .criadora-text h2 .hl { color: var(--teal); }
-
-    .criadora-chips {
-      display: flex; gap: 8px; flex-wrap: wrap;
-      margin-bottom: 1.5rem;
-    }
-    .criadora-chip {
-      background: var(--bg-warm); border: 1px solid var(--border-md);
-      border-radius: 30px; padding: 5px 13px;
-      font-size: 12px; color: var(--text-muted);
-    }
+    .criadora-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .criadora-chip { background: var(--bg-warm); border: 1px solid var(--border-md); border-radius: 30px; padding: 5px 13px; font-size: 12px; color: var(--text-muted); }
     .criadora-chip.teal { background: var(--teal-light); color: var(--teal-dark); border-color: rgba(29,158,117,.2); }
-
-    .criadora-quote {
-      border-left: 3px solid var(--teal);
-      padding: 1.1rem 1.4rem;
-      background: var(--teal-light);
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      margin-bottom: 1.4rem;
-    }
-    .criadora-quote p {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem; font-style: italic;
-      line-height: 1.6; color: var(--teal-deep);
-    }
-
-    .criadora-text .bio {
-      font-size: .97rem; color: var(--text-muted);
-      line-height: 1.85; font-weight: 300;
-      margin-bottom: 1rem;
-    }
-
-    .criadora-social {
-      display: flex; gap: 9px; flex-wrap: wrap;
-      margin-top: 1.75rem;
-    }
-    .criadora-social a {
-      display: inline-flex; align-items: center; gap: 7px;
-      border: 1.5px solid var(--border-md); border-radius: 30px;
-      padding: 8px 16px; font-size: 13px; font-weight: 500;
-      text-decoration: none; color: var(--text);
-      background: var(--bg-card); transition: all .22s;
-    }
+    .criadora-quote { border-left: 3px solid var(--teal); padding: 1.1rem 1.4rem; background: var(--teal-light); border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 1.4rem; }
+    .criadora-quote p { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; line-height: 1.6; color: var(--teal-deep); }
+    .criadora-text .bio { font-size: .97rem; color: var(--text-muted); line-height: 1.85; font-weight: 300; margin-bottom: 1rem; }
+    .criadora-social { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 1.75rem; }
+    .criadora-social a { display: inline-flex; align-items: center; gap: 7px; border: 1.5px solid var(--border-md); border-radius: 30px; padding: 8px 16px; font-size: 13px; font-weight: 500; text-decoration: none; color: var(--text); background: var(--bg-card); transition: all .22s; }
     .criadora-social a:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
-
-    .criadora-more {
-      display: inline-flex; align-items: center; gap: 8px;
-      margin-top: 1.5rem;
-      font-size: 14px; color: var(--teal); font-weight: 500;
-      text-decoration: none; transition: gap .2s;
-    }
+    .criadora-more { display: inline-flex; align-items: center; gap: 8px; margin-top: 1.5rem; font-size: 14px; color: var(--teal); font-weight: 500; text-decoration: none; transition: gap .2s; }
     .criadora-more:hover { gap: 12px; }
 
-    /* hero animals strip */
-    .hero-animais-strip {
-      background: var(--bg-warm);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 1.4rem 0;
-      overflow: hidden;
-    }
-    .strip-inner {
-      display: flex; align-items: center;
-      gap: 1.25rem;
-      animation: stripScroll 28s linear infinite;
-      width: max-content;
-    }
-    @keyframes stripScroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .strip-item {
-      display: flex; align-items: center; gap: 9px;
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); padding: .6rem 1.1rem;
-      white-space: nowrap; flex-shrink: 0;
-    }
+    /* STRIP */
+    .hero-animais-strip { background: var(--bg-warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.4rem 0; overflow: hidden; }
+    .strip-inner { display: flex; align-items: center; gap: 1.25rem; animation: stripScroll 28s linear infinite; width: max-content; }
+    @keyframes stripScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .strip-item { display: flex; align-items: center; gap: 9px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: .6rem 1.1rem; white-space: nowrap; flex-shrink: 0; }
     .strip-item .si-emoji { font-size: 1.5rem; }
     .strip-item .si-name { font-size: 13px; font-weight: 500; color: var(--text); }
     .strip-item .si-info { font-size: 11px; color: var(--text-muted); }
 
+    /* CTA */
+    .cta-section { background: var(--teal-deep); color: #fff; text-align: center; padding: 7rem 2rem; }
+    .cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; line-height: 1.12; max-width: 680px; margin: 0 auto 1.25rem; }
+    .cta-section p { font-size: 1.05rem; opacity: 0.7; max-width: 460px; margin: 0 auto 2.75rem; font-weight: 300; }
+
+    /* FOOTER */
+    footer { background: var(--text); color: rgba(255,255,255,0.55); padding: 3.5rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .footer-brand .logo { color: #fff; font-size: 20px; margin-bottom: 0.75rem; }
+    .footer-brand p { font-size: 13px; line-height: 1.7; max-width: 280px; }
+    .footer-links h4 { color: #fff; font-size: 13px; font-weight: 500; margin-bottom: 1rem; letter-spacing: 0.5px; }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-links ul a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .footer-links ul a:hover { color: var(--amber); }
+    .footer-bottom { max-width: 1100px; margin: 2rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 12px; }
+    .footer-bottom a { color: var(--amber); text-decoration: none; }
+
+    /* ============================================================
+       MODAL DE CONTRATO — NOVO
+    ============================================================ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-box {
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      max-width: 640px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.22);
+      transform: translateY(20px) scale(0.98);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    .modal-overlay.open .modal-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-header {
+      padding: 2rem 2rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      background: var(--bg-card);
+      z-index: 1;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+    .modal-header-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .modal-header-text p {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+    .modal-close {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--border-md);
+      background: var(--bg-warm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      transition: all 0.18s;
+      color: var(--text-muted);
+    }
+    .modal-close:hover { background: var(--teal-light); border-color: var(--teal); color: var(--teal); }
+
+    /* Preview do animal no modal */
+    .modal-animal-preview {
+      margin: 1.5rem 2rem;
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .modal-animal-emoji { font-size: 2.5rem; flex-shrink: 0; }
+    .modal-animal-info h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+    .modal-animal-info p  { font-size: 13px; color: var(--text-muted); font-weight: 300; }
+    .modal-animal-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+    .modal-badge { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 2px 9px; font-size: 11px; color: var(--text-muted); }
+
+    /* Texto do contrato */
+    .modal-contract {
+      margin: 0 2rem 1.5rem;
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      max-height: 260px;
+      overflow-y: auto;
+    }
+    .modal-contract h5 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .modal-contract ol {
+      padding-left: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .modal-contract ol li {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+    .modal-contract ol li strong { color: var(--text); font-weight: 500; }
+
+    /* Dados do interessado no modal */
+    .modal-requester {
+      margin: 0 2rem 1.5rem;
+    }
+    .modal-requester-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .modal-requester-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .modal-requester-item {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+    }
+    .modal-requester-item .mri-label { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; }
+    .modal-requester-item .mri-val   { font-size: 13px; font-weight: 500; color: var(--text); }
+
+    /* Botão de ciência — substitui o checkbox */
+    .modal-aware-section {
+      margin: 0 2rem 0;
+    }
+
+    /* Botão grande "Estou ciente" */
+    .btn-aware {
+      width: 100%;
+      border: none;
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.22s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-aware-adopt {
+      background: var(--teal-light);
+      color: var(--teal-deep);
+      border: 2px solid rgba(29,158,117,0.3);
+    }
+    .btn-aware-adopt:hover {
+      background: var(--teal);
+      color: #fff;
+      border-color: var(--teal);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(29,158,117,0.28);
+    }
+    .btn-aware-temp {
+      background: var(--amber-light);
+      color: var(--amber-dark);
+      border: 2px solid rgba(239,159,39,0.35);
+    }
+    .btn-aware-temp:hover {
+      background: var(--amber);
+      color: var(--text);
+      border-color: var(--amber);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(239,159,39,0.32);
+    }
+    /* estado ativo (após clicar) */
+    .btn-aware.aware-confirmed-adopt {
+      background: var(--teal);
+      color: #fff;
+      border-color: var(--teal);
+      cursor: default;
+      transform: none;
+      box-shadow: none;
+    }
+    .btn-aware.aware-confirmed-temp {
+      background: var(--amber);
+      color: var(--text);
+      border-color: var(--amber);
+      cursor: default;
+      transform: none;
+      box-shadow: none;
+    }
+    .btn-aware .aware-check {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 2px solid currentColor;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .btn-aware.aware-confirmed-adopt .aware-check,
+    .btn-aware.aware-confirmed-temp  .aware-check {
+      background: rgba(255,255,255,0.3);
+      border-color: transparent;
+    }
+    .btn-aware .aware-sub {
+      font-size: 11px;
+      font-weight: 400;
+      opacity: 0.7;
+      margin-top: 1px;
+      display: block;
+    }
+    .btn-aware .aware-label-wrap { text-align: left; }
+
+    /* Footer do modal */
+    .modal-footer {
+      padding: 1rem 2rem 2rem;
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      margin-top: 1.25rem;
+    }
+    .modal-footer .btn-cancel {
+      background: transparent;
+      border: 1.5px solid var(--border-md);
+      color: var(--text-muted);
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .modal-footer .btn-cancel:hover { border-color: var(--coral); color: var(--coral); }
+    .modal-footer .btn-confirm-adopt {
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      padding: 11px 26px;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex: 1;
+      justify-content: center;
+    }
+    .modal-footer .btn-confirm-adopt:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(29,158,117,0.28); }
+    .modal-footer .btn-confirm-adopt:disabled { opacity: 0.38; cursor: not-allowed; transform: none; box-shadow: none; }
+    .modal-footer .btn-confirm-temp {
+      background: var(--amber);
+      color: var(--text);
+      border: none;
+      padding: 11px 26px;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex: 1;
+      justify-content: center;
+    }
+    .modal-footer .btn-confirm-temp:hover { background: var(--amber-dark); color: #fff; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(239,159,39,0.3); }
+    .modal-footer .btn-confirm-temp:disabled { opacity: 0.38; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    /* Spinner no botão */
+    .btn-spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+    .btn-spinner.amber-spin {
+      border-color: rgba(44,44,42,0.25);
+      border-top-color: var(--text);
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ANIMAÇÕES */
+    @keyframes fadeUp   { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scrollPulse { 0%, 100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 0.9; transform: scaleY(1.2); } }
+    @keyframes dotPulse { 0%, 100% { transform: rotate(-45deg) scale(1); } 50% { transform: rotate(-45deg) scale(1.15); } }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVO */
     @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 66px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; gap: 1.25rem; z-index: 199; animation: fadeDown 0.2s ease; }
+      .hero { min-height: 80vh; padding: 5rem 1.5rem 4rem; }
+      .stat-item { padding: 1.4rem 1.5rem; }
+      .form-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .hero-ctas .btn { width: 100%; justify-content: center; }
+      .footer-inner { flex-direction: column; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .interest-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .interest-tab { font-size: 13px; padding: 1rem; }
+      .interest-panels { padding: 1.5rem; }
+      .radio-grid { grid-template-columns: 1fr; }
       .criadora-layout { grid-template-columns: 1fr; gap: 2.5rem; }
       .criadora-photo-col { order: -1; }
       .criadora-frame { width: 240px; }
       .criadora-circle { width: 240px; height: 240px; }
       .criadora-badge.b1 { right: 0; }
       .criadora-badge.b2 { left: 0; }
-    }
-
-    /* ===========================
-       CTA SECTION
-    =========================== */
-    .cta-section {
-      background: var(--teal-deep);
-      color: #fff;
-      text-align: center;
-      padding: 7rem 2rem;
-    }
-
-    .cta-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 700;
-      line-height: 1.12;
-      max-width: 680px;
-      margin: 0 auto 1.25rem;
-    }
-
-    .cta-section p {
-      font-size: 1.05rem;
-      opacity: 0.7;
-      max-width: 460px;
-      margin: 0 auto 2.75rem;
-      font-weight: 300;
-    }
-
-    /* ===========================
-       FOOTER
-    =========================== */
-    footer {
-      background: var(--text);
-      color: rgba(255,255,255,0.55);
-      padding: 3.5rem 2rem;
-    }
-
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-brand .logo {
-      color: #fff;
-      font-size: 20px;
-      margin-bottom: 0.75rem;
-    }
-
-    .footer-brand p {
-      font-size: 13px;
-      line-height: 1.7;
-      max-width: 280px;
-    }
-
-    .footer-links h4 {
-      color: #fff;
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 1rem;
-      letter-spacing: 0.5px;
-    }
-
-    .footer-links ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .footer-links ul a {
-      font-size: 13px;
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links ul a:hover { color: var(--amber); }
-
-    .footer-bottom {
-      max-width: 1100px;
-      margin: 2rem auto 0;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      font-size: 12px;
-    }
-
-    .footer-bottom a {
-      color: var(--amber);
-      text-decoration: none;
-    }
-
-    /* ===========================
-       ANIMAÇÕES
-    =========================== */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.4; transform: scaleY(1); }
-      50%       { opacity: 0.9; transform: scaleY(1.2); }
-    }
-
-    @keyframes dotPulse {
-      0%, 100% { transform: rotate(-45deg) scale(1); }
-      50%       { transform: rotate(-45deg) scale(1.15); }
-    }
-
-    /* Reveal on scroll */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ===========================
-       RESPONSIVO
-    =========================== */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-
-      .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 66px; left: 0; right: 0;
-        background: var(--bg);
-        border-bottom: 1px solid var(--border);
-        padding: 1.5rem 2rem;
-        gap: 1.25rem;
-        z-index: 199;
-        animation: fadeDown 0.2s ease;
-      }
-
-      .hero { min-height: 80vh; padding: 5rem 1.5rem 4rem; }
-
-      .stat-item { padding: 1.4rem 1.5rem; }
-
-      .form-layout {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-
-      .form-row { grid-template-columns: 1fr; }
-
-      .hero-ctas { flex-direction: column; align-items: center; }
-      .hero-ctas .btn { width: 100%; justify-content: center; }
-
-      .footer-inner { flex-direction: column; }
-      .footer-bottom { flex-direction: column; text-align: center; }
+      .modal-requester-grid { grid-template-columns: 1fr; }
+      .modal-animal-preview { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ========================
-       NAVBAR
-  ======================== -->
+  <!-- ======================== MODAL DE CONTRATO ======================== -->
+  <div class="modal-overlay" id="contratoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+
+      <div class="modal-header">
+        <div class="modal-header-text">
+          <h3 id="modalTitle">📋 Termo de Compromisso</h3>
+          <p id="modalSubtitle">Leia com atenção antes de confirmar</p>
+        </div>
+        <button class="modal-close" onclick="fecharModal()" aria-label="Fechar">✕</button>
+      </div>
+
+      <!-- Preview do animal -->
+      <div class="modal-animal-preview" id="modalAnimalPreview">
+        <div class="modal-animal-emoji" id="modalAnimalEmoji">🐾</div>
+        <div class="modal-animal-info">
+          <h4 id="modalAnimalNome">—</h4>
+          <p  id="modalAnimalDesc">—</p>
+          <div class="modal-animal-badges" id="modalAnimalBadges"></div>
+        </div>
+      </div>
+
+      <!-- Texto do contrato (adoção) -->
+      <div class="modal-contract" id="modalContractAdopt">
+        <h5>Termo de Adoção Responsável</h5>
+        <ol>
+          <li><strong>Compromisso com o bem-estar:</strong> Comprometo-me a oferecer ao animal adotado alimentação adequada, água fresca, abrigo seguro e cuidados veterinários sempre que necessário.</li>
+          <li><strong>Não abandono:</strong> Comprometo-me a NÃO abandonar o animal em qualquer circunstância. Em caso de impossibilidade de continuação, buscarei novo lar responsável com apoio do PatasDF.</li>
+          <li><strong>Vacinação:</strong> Comprometo-me a manter as vacinas em dia.</li>
+          <li><strong>Ambiente seguro:</strong> Garantirei que o animal terá espaço adequado, sem acesso a situações de risco como rua sem supervisão, maus-tratos ou negligência.</li>
+          <li><strong>Acompanhamento:</strong> Aceito uma visita de acompanhamento opcional nos primeiros 30 dias após a adoção, caso o responsável pelo animal solicite.</li>
+          <li><strong>Veracidade das informações:</strong> Confirmo que todas as informações fornecidas neste formulário são verdadeiras e que estou em condições de receber o animal.</li>
+        </ol>
+        <div style="margin-top:1rem;padding:0.9rem 1rem;background:rgba(29,158,117,0.08);border-radius:8px;border-left:3px solid var(--teal);">
+          <p style="font-size:12px;color:var(--text-muted);line-height:1.6;font-weight:300;">
+            <strong style="color:var(--text);font-weight:500;">ℹ️ Sobre o papel do PatasDF:</strong> O PatasDF é uma plataforma de intermediação gratuita. Após o contato entre adotante e responsável pelo animal ser estabelecido via WhatsApp, <strong style="font-weight:500;">o PatasDF não se responsabiliza pelo processo de adoção, entrega, saúde ou qualquer acordo firmado entre as partes.</strong> Nossa função é facilitar a conexão — a responsabilidade pelo processo é inteiramente dos envolvidos.
+          </p>
+        </div>
+      </div>
+
+      <!-- Texto do contrato (lar temporário) -->
+      <div class="modal-contract" id="modalContractTemp" style="display:none;">
+        <h5>Termo de Lar Temporário</h5>
+        <ol>
+          <li><strong>Período de acolhimento:</strong> Comprometo-me a acolher o animal pelo período combinado, com possibilidade de extensão mediante acordo com o responsável pelo PatasDF.</li>
+          <li><strong>Cuidados básicos:</strong> Oferecerei ao animal alimentação adequada, água fresca, higiene e acompanhamento veterinário de urgência se necessário.</li>
+          <li><strong>Divulgação ativa:</strong> Comprometerei a divulgar o animal nas minhas redes sociais e círculo de contatos para facilitar a adoção definitiva.</li>
+          <li><strong>Comunicação:</strong> Manterei contato regular com o responsável pelo animal e avisarei com antecedência caso não consiga mais manter o lar temporário.</li>
+          <li><strong>Devolução segura:</strong> Em caso de necessidade de encerramento antecipado, devolverei o animal de forma segura e planejada, nunca o abandonando.</li>
+          <li><strong>Veracidade:</strong> Confirmo que todas as informações fornecidas são verdadeiras e que tenho condições de receber o animal temporariamente.</li>
+        </ol>
+      </div>
+
+      <!-- Dados do interessado -->
+      <div class="modal-requester">
+        <div class="modal-requester-title">Seus dados</div>
+        <div class="modal-requester-grid" id="modalRequesterGrid">
+          <!-- preenchido via JS -->
+        </div>
+      </div>
+
+      <!-- Botão de ciência -->
+      <div class="modal-aware-section" id="modalAwareSection">
+        <button class="btn-aware btn-aware-adopt" id="btnAware" onclick="toggleAware()">
+          <div class="aware-check" id="awareCheckIcon">○</div>
+          <div class="aware-label-wrap">
+            <span id="awareMainLabel">Estou ciente de que a adoção é permanente</span>
+            <span class="aware-sub" id="awareSubLabel">Li os termos acima e assumo este compromisso</span>
+          </div>
+        </button>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="fecharModal()">Cancelar</button>
+        <button class="btn-confirm-adopt" id="btnConfirmarAdocao" disabled onclick="confirmarAdocao()">
+          <span class="btn-spinner" id="spinnerAdocao"></span>
+          🏠 Confirmar adoção
+        </button>
+        <button class="btn-confirm-temp" id="btnConfirmarTemp" style="display:none;" disabled onclick="confirmarTemp()">
+          <span class="btn-spinner amber-spin" id="spinnerTemp"></span>
+          ⏳ Confirmar lar temporário
+        </button>
+      </div>
+
+    </div>
+  </div>
+  <!-- ======================== / MODAL ======================== -->
+
+  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container">
       <a href="#" class="logo">🐾 PatasDF</a>
-
-      <!-- Mobile hamburger -->
       <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
         <span></span><span></span><span></span>
       </div>
-
       <ul class="nav-links" id="navLinks">
         <li><a href="#como-funciona">Como funciona</a></li>
         <li><a href="animais.html">Animais</a></li>
@@ -1503,43 +763,29 @@
     </div>
   </nav>
 
-  <!-- ========================
-       HERO
-  ======================== -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-glow"></div>
-    <!-- Patas decorativas -->
     <span class="hero-paw">🐾</span>
     <span class="hero-paw">🐾</span>
     <span class="hero-paw">🐾</span>
     <span class="hero-paw">🐾</span>
-
     <div class="hero-badge">🐾 Projeto comunitário — Distrito Federal</div>
-
     <h1>Cada animal merece<br>uma <span class="hl">família</span></h1>
-
-    <p class="hero-sub">
-      Plataforma gratuita que conecta animais abandonados do DF com pessoas que querem adotar.
-      Simples, rápido e feito com amor pela comunidade.
-    </p>
-
+    <p class="hero-sub">Plataforma gratuita que conecta animais abandonados do DF com pessoas que querem adotar. Simples, rápido e feito com amor pela comunidade.</p>
     <div class="hero-ctas">
       <a href="#cadastrar" class="btn btn-primary">🐶 Cadastrar animal</a>
       <a href="#animais" class="btn btn-secondary">Ver animais disponíveis →</a>
     </div>
-
     <div class="hero-scroll">
       <span>role para ver</span>
       <div class="scroll-line"></div>
     </div>
   </section>
 
-  <!-- ========================
-       STRIP DE ANIMAIS
-  ======================== -->
+  <!-- STRIP -->
   <div class="hero-animais-strip" id="animais-strip">
     <div class="strip-inner" id="stripInner">
-      <!-- preenchido pelo JS com os animais do JSON -->
       <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Bolinha</div><div class="si-info">Cachorro · Asa Sul</div></div></div>
       <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mimi</div><div class="si-info">Gato · Taguatinga</div></div></div>
       <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Thor</div><div class="si-info">Cachorro · Ceilândia</div></div></div>
@@ -1547,7 +793,6 @@
       <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Pipoca</div><div class="si-info">Cachorro · Sobradinho</div></div></div>
       <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Nala</div><div class="si-info">Gato · Samambaia</div></div></div>
       <div class="strip-item"><span class="si-emoji">🐾</span><div><div class="si-name">Novos animais todo dia</div><div class="si-info">Cadastre o seu também →</div></div></div>
-      <!-- duplicado para loop infinito -->
       <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Bolinha</div><div class="si-info">Cachorro · Asa Sul</div></div></div>
       <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mimi</div><div class="si-info">Gato · Taguatinga</div></div></div>
       <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Thor</div><div class="si-info">Cachorro · Ceilândia</div></div></div>
@@ -1558,70 +803,31 @@
     </div>
   </div>
 
-  <!-- ========================
-       STATS BAR
-  ======================== -->
+  <!-- STATS -->
   <div class="stats-bar">
-    <div class="stat-item">
-      <div class="stat-num">100%</div>
-      <div class="stat-label">Gratuito</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">DF</div>
-      <div class="stat-label">Distrito Federal</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">24h</div>
-      <div class="stat-label">Sempre disponível</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">∞</div>
-      <div class="stat-label">Sem limite de cadastros</div>
-    </div>
+    <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Gratuito</div></div>
+    <div class="stat-item"><div class="stat-num">DF</div><div class="stat-label">Distrito Federal</div></div>
+    <div class="stat-item"><div class="stat-num">24h</div><div class="stat-label">Sempre disponível</div></div>
+    <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Sem limite de cadastros</div></div>
   </div>
 
-  <!-- ========================
-       COMO FUNCIONA
-  ======================== -->
+  <!-- COMO FUNCIONA -->
   <section class="section-pad" id="como-funciona">
     <div class="container">
       <span class="section-label reveal">Como funciona</span>
       <h2 class="section-title reveal">Do abandono ao lar em 5 passos</h2>
       <p class="section-sub reveal">Sem burocracia, sem custo. Qualquer pessoa pode ajudar um animal a encontrar uma nova família.</p>
-
       <div class="steps-grid">
-        <div class="step-card reveal">
-          <div class="step-num">01</div>
-          <h3>Encontrei um animal</h3>
-          <p>Você encontrou um animal abandonado nas ruas do DF e quer ajudar a encontrar um lar.</p>
-        </div>
-        <div class="step-card reveal">
-          <div class="step-num">02</div>
-          <h3>Acesso o site</h3>
-          <p>Abre o PatasDF em qualquer celular, sem precisar criar conta ou instalar nada.</p>
-        </div>
-        <div class="step-card reveal">
-          <div class="step-num">03</div>
-          <h3>Preencho o formulário</h3>
-          <p>Nome, tipo, idade, foto e contato. Todo o cadastro leva menos de 2 minutos.</p>
-        </div>
-        <div class="step-card reveal">
-          <div class="step-num">04</div>
-          <h3>Animal entra no mapa</h3>
-          <p>Os dados vão direto para a plataforma e o animal aparece visível no mapa do DF.</p>
-        </div>
-        <div class="step-card reveal">
-          <div class="step-num">05</div>
-          <h3>Família encontrada!</h3>
-          <p>Quem quer adotar vê o animal, entra em contato com o responsável e a história muda.</p>
-        </div>
+        <div class="step-card reveal"><div class="step-num">01</div><h3>Encontrei um animal</h3><p>Você encontrou um animal abandonado nas ruas do DF e quer ajudar a encontrar um lar.</p></div>
+        <div class="step-card reveal"><div class="step-num">02</div><h3>Acesso o site</h3><p>Abre o PatasDF em qualquer celular, sem precisar criar conta ou instalar nada.</p></div>
+        <div class="step-card reveal"><div class="step-num">03</div><h3>Preencho o formulário</h3><p>Nome, tipo, idade, foto e contato. Todo o cadastro leva menos de 2 minutos.</p></div>
+        <div class="step-card reveal"><div class="step-num">04</div><h3>Animal entra no mapa</h3><p>Os dados vão direto para a plataforma e o animal aparece visível no mapa do DF.</p></div>
+        <div class="step-card reveal"><div class="step-num">05</div><h3>Família encontrada!</h3><p>Quem quer adotar vê o animal, entra em contato com o responsável e a história muda.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ========================
-       ANIMAIS DISPONÍVEIS
-  ======================== -->
+  <!-- ANIMAIS -->
   <section class="animals-section" id="animais">
     <div class="container">
       <div class="animals-header">
@@ -1635,89 +841,50 @@
           <button class="filter-pill" onclick="filterAnimals('gato', this)">🐱 Gatos</button>
         </div>
       </div>
-
-      <!-- Carregando -->
       <div id="animaisLoading" style="text-align:center; padding:3rem; color:var(--text-muted); grid-column:1/-1;">
         <div style="font-size:2.5rem; margin-bottom:0.75rem;">🐾</div>
         <p>Carregando animais disponíveis...</p>
       </div>
-
       <div class="animals-grid" id="animalsGrid" style="display:none;"></div>
-
-      <div class="empty-state" id="emptyState">
-        <p style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</p>
-        <p>Nenhum animal encontrado com esse filtro.</p>
-      </div>
-
+      <div class="empty-state" id="emptyState"><p style="font-size:2rem;margin-bottom:.5rem;">🔍</p><p>Nenhum animal encontrado com esse filtro.</p></div>
       <div id="animaisErro" style="display:none; text-align:center; padding:3rem;">
-        <p style="font-size:2rem; margin-bottom:0.5rem;">😔</p>
+        <p style="font-size:2rem;margin-bottom:.5rem;">😔</p>
         <p style="color:var(--text-muted);">Não foi possível carregar os animais agora.</p>
-        <button onclick="carregarAnimais()" style="margin-top:1rem; border:1.5px solid var(--border-md); background:transparent; border-radius:24px; padding:8px 20px; cursor:pointer; font-family:inherit; font-size:14px;">Tentar novamente</button>
+        <button onclick="carregarAnimais()" style="margin-top:1rem;border:1.5px solid var(--border-md);background:transparent;border-radius:24px;padding:8px 20px;cursor:pointer;font-family:inherit;font-size:14px;">Tentar novamente</button>
       </div>
-
-      <div id="verMaisArea" style="display:none; text-align:center; margin-top:2.5rem;">
-        <a href="animais.html" style="display:inline-flex; align-items:center; gap:8px; background:transparent; color:var(--teal); border:1.5px solid var(--teal); border-radius:50px; padding:13px 32px; font-size:15px; font-weight:500; font-family:'DM Sans',sans-serif; text-decoration:none; transition:all .22s;">
-          Ver todos os animais →
-        </a>
+      <div id="verMaisArea" style="display:none;text-align:center;margin-top:2.5rem;">
+        <a href="animais.html" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--teal);border:1.5px solid var(--teal);border-radius:50px;padding:13px 32px;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;text-decoration:none;transition:all .22s;">Ver todos os animais →</a>
       </div>
-
     </div>
   </section>
 
-  <!-- ========================
-       MAPA
-  ======================== -->
+  <!-- MAPA -->
   <section class="map-section" id="mapa">
     <div class="container">
       <span class="section-label reveal">Mapa de adoção</span>
       <h2 class="section-title reveal">Onde estão os animais</h2>
-      <p class="section-sub reveal">
-        Cada marcador é um animal esperando por um lar no DF.
-        Integrado com Google My Maps — gratuito e sem servidor.
-      </p>
-
+      <p class="section-sub reveal">Cada marcador é um animal esperando por um lar no DF. Integrado com Google My Maps — gratuito e sem servidor.</p>
       <div class="map-wrapper reveal">
-
-        <!--
-          ✅ COMO ATIVAR O MAPA:
-          1. Acesse mymaps.google.com e crie um mapa com os dados dos animais
-          2. Clique em "Compartilhar" → "Incorporar no site"
-          3. Copie o link src do iframe gerado
-          4. Substitua o bloco .map-placeholder abaixo por:
-             <iframe src="SEU_LINK_AQUI" allowfullscreen></iframe>
-        -->
-
         <div class="map-placeholder">
-          <div class="map-dot" data-e="🐶" style="left:28%; top:35%;"></div>
-          <div class="map-dot" data-e="🐱" style="left:58%; top:50%;"></div>
-          <div class="map-dot" data-e="🐶" style="left:72%; top:22%;"></div>
-          <div class="map-dot" data-e="🐱" style="left:38%; top:65%;"></div>
-
-          <div style="font-size: 3rem; position: relative; z-index:1;">🗺️</div>
+          <div class="map-dot" data-e="🐶" style="left:28%;top:35%;"></div>
+          <div class="map-dot" data-e="🐱" style="left:58%;top:50%;"></div>
+          <div class="map-dot" data-e="🐶" style="left:72%;top:22%;"></div>
+          <div class="map-dot" data-e="🐱" style="left:38%;top:65%;"></div>
+          <div style="font-size:3rem;position:relative;z-index:1;">🗺️</div>
           <h3>Mapa do Distrito Federal</h3>
-          <p>
-            Aqui será exibido o Google My Maps com todos os animais disponíveis para adoção em tempo real.
-            <br><br>
-            <strong>Para configurar:</strong> crie um mapa no Google My Maps e cole o link do iframe acima no código.
-          </p>
-          <a href="https://mymaps.google.com" target="_blank" rel="noopener" class="btn btn-primary">
-            Criar mapa no Google My Maps →
-          </a>
+          <p>Aqui será exibido o Google My Maps com todos os animais disponíveis para adoção em tempo real.<br><br><strong>Para configurar:</strong> crie um mapa no Google My Maps e cole o link do iframe acima no código.</p>
+          <a href="https://mymaps.google.com" target="_blank" rel="noopener" class="btn btn-primary">Criar mapa no Google My Maps →</a>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ========================
-       COMO AJUDAR
-  ======================== -->
+  <!-- COMO AJUDAR -->
   <section class="help-section" id="ajudar">
     <div class="container">
       <span class="section-label reveal">Como ajudar</span>
       <h2 class="section-title reveal">Existem muitas formas<br>de fazer a diferença</h2>
       <p class="section-sub reveal">Você não precisa adotar para salvar uma vida. Cada pequena ação conta.</p>
-
       <div class="help-grid">
         <div class="help-card adoptar reveal">
           <span class="help-icon">🏠</span>
@@ -1725,14 +892,12 @@
           <p>Abra sua casa para um animal que precisa de amor. A adoção responsável transforma duas vidas: a sua e a dele.</p>
           <a href="#quero-ajudar" class="btn" onclick="openTab('adopt')">Quero adotar</a>
         </div>
-
         <div class="help-card temporario reveal">
           <span class="help-icon">⏳</span>
           <h3>Ser lar temporário</h3>
           <p>Não pode adotar definitivamente? Cuide de um animal por um tempo enquanto ele não encontra um lar permanente.</p>
           <a href="#quero-ajudar" class="btn" onclick="openTab('temp')">Quero ser lar temporário</a>
         </div>
-
         <div class="help-card divulgar reveal">
           <span class="help-icon">📣</span>
           <h3>Divulgar</h3>
@@ -1743,92 +908,52 @@
     </div>
   </section>
 
-  <!-- ========================
-       SOBRE A CRIADORA
-  ======================== -->
+  <!-- SOBRE A CRIADORA -->
   <section class="criadora-section" id="sobre-criadora">
     <div class="container">
       <div class="criadora-layout">
-
-        <!-- FOTO -->
         <div class="criadora-photo-col reveal">
           <div class="criadora-frame">
             <div class="criadora-circle">
               <img src="fotos/clarice.jpg" alt="Clarice Nunes" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
             </div>
-
-            <div class="criadora-badge b2">
-              <span class="bi">🎓</span>
-              <div>
-                <strong>CEUB · Eng. de Software</strong>
-                <span class="bl">2º semestre</span>
-              </div>
-            </div>
-
-            <div class="criadora-badge b1">
-              <span class="bi">🐾</span>
-              <div>
-                <strong>Criadora do PatasDF</strong>
-                <span class="bl">em memória do Bolt & Max</span>
-              </div>
-            </div>
+            <div class="criadora-badge b2"><span class="bi">🎓</span><div><strong>CEUB · Eng. de Software</strong><span class="bl">2º semestre</span></div></div>
+            <div class="criadora-badge b1"><span class="bi">🐾</span><div><strong>Criadora do PatasDF</strong><span class="bl">em memória do Bolt & Max</span></div></div>
           </div>
         </div>
-
-        <!-- TEXTO -->
         <div class="criadora-text">
           <span class="section-label reveal">Quem está por trás</span>
           <h2 class="reveal">Olá, eu sou a<br><span class="hl">Clarice Nunes</span></h2>
-
           <div class="criadora-chips reveal">
             <span class="criadora-chip teal">🏫 CEUB · Brasília</span>
             <span class="criadora-chip teal">💻 Engenharia de Software</span>
             <span class="criadora-chip">🤝 Voluntariado</span>
           </div>
-
           <div class="criadora-quote reveal">
             <p>"Queria usar a tecnologia para gerar algum impacto social. Vejo muitos animais precisando de um lar e muitas pessoas querendo adotar — então pensei em criar algo simples que pudesse conectar essas duas coisas."</p>
           </div>
-
-          <p class="bio reveal">
-            Sempre gostei muito de animais. Tive o Bolt, um vira-lata adotado cheio de energia, e a Max, que me acompanhou durante o meu intercâmbio. A partida recente da Max me tocou e me deu coragem de transformar a dor em ação.
-          </p>
-          <p class="bio reveal">
-            O PatasDF nasceu da vontade de contribuir com a comunidade mesmo com a rotina corrida — juntando tecnologia com uma causa que me move de verdade.
-          </p>
-
+          <p class="bio reveal">Sempre gostei muito de animais. Tive o Bolt, um vira-lata adotado cheio de energia, e a Max, que me acompanhou durante o meu intercâmbio. A partida recente da Max me tocou e me deu coragem de transformar a dor em ação.</p>
+          <p class="bio reveal">O PatasDF nasceu da vontade de contribuir com a comunidade mesmo com a rotina corrida — juntando tecnologia com uma causa que me move de verdade.</p>
           <div class="criadora-social reveal">
             <a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener">📸 Instagram</a>
             <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener">💼 LinkedIn</a>
             <a href="https://github.com/claricenunes" target="_blank" rel="noopener">🐙 GitHub</a>
           </div>
-
-          <a href="sobre.html" class="criadora-more reveal">
-            Conheça minha história completa →
-          </a>
+          <a href="sobre.html" class="criadora-more reveal">Conheça minha história completa →</a>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ========================
-       CADASTRO DE ANIMAL
-  ======================== -->
+  <!-- CADASTRO DE ANIMAL -->
   <section class="form-section" id="cadastrar">
     <div class="container">
       <span class="section-label reveal">Cadastrar animal</span>
       <h2 class="section-title reveal">Encontrou um animal?<br>Registre agora</h2>
-
       <div class="form-layout">
-
-        <!-- Info lateral -->
         <div class="form-info reveal">
           <h3>Por que cadastrar?</h3>
-          <p>
-            Ao cadastrar um animal, ele fica visível para centenas de pessoas do DF que estão procurando adotar.
-            Quanto mais informações você fornecer, mais rápido ele encontra um lar.
-          </p>
+          <p>Ao cadastrar um animal, ele fica visível para centenas de pessoas do DF que estão procurando adotar. Quanto mais informações você fornecer, mais rápido ele encontra um lar.</p>
           <ul class="form-checklist">
             <li><div class="check-icon">✓</div> 100% gratuito</li>
             <li><div class="check-icon">✓</div> Sem criar conta</li>
@@ -1837,17 +962,13 @@
             <li><div class="check-icon">✓</div> Você controla o contato com interessados</li>
           </ul>
         </div>
-
-        <!-- Formulário -->
         <div class="form-card reveal">
           <h3>🐾 Cadastrar animal para adoção</h3>
-
           <div id="formContent">
             <div class="form-group">
               <label for="animalNome">Nome do animal *</label>
               <input type="text" id="animalNome" placeholder="Ex: Bolinha, Mimi, Thor..." required />
             </div>
-
             <div class="form-row">
               <div class="form-group">
                 <label for="animalTipo">Tipo *</label>
@@ -1869,7 +990,6 @@
                 </select>
               </div>
             </div>
-
             <div class="form-row">
               <div class="form-group">
                 <label for="animalPorte">Porte *</label>
@@ -1885,92 +1005,76 @@
                 <input type="text" id="animalCidade" placeholder="Ex: Asa Sul, Taguatinga..." required />
               </div>
             </div>
-
             <div class="form-group">
               <label for="animalDesc">Descrição *</label>
               <textarea id="animalDesc" placeholder="Descreva o animal: comportamento, saúde, onde foi encontrado, se é castrado/vacinado..." required></textarea>
             </div>
-
             <div class="form-group">
               <label for="animalContato">Seu contato (WhatsApp) *</label>
               <input type="tel" id="animalContato" placeholder="(61) 9xxxx-xxxx" required />
             </div>
-
             <div class="form-group">
               <label for="animalFoto">Link da foto *</label>
               <input type="url" id="animalFoto" placeholder="Cole aqui o link da foto (Google Drive, Imgur, etc.)" />
             </div>
+            <!-- Termo de isenção para quem cadastra -->
+            <div id="termoCadastroBox" style="background:var(--bg-warm);border:1px solid var(--border-md);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:1rem;">
+              <p style="font-size:12px;font-weight:600;color:var(--text);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.6rem;">📋 Importante — leia antes de cadastrar</p>
+              <p style="font-size:12px;color:var(--text-muted);line-height:1.7;font-weight:300;">
+                O <strong style="font-weight:500;color:var(--text);">PatasDF</strong> é uma plataforma gratuita de intermediação. Ao cadastrar um animal, você autoriza a divulgação pública das informações fornecidas para facilitar a adoção.
+                <br><br>
+                Interessados em adotar <strong style="font-weight:500;color:var(--text);">entrarão em contato com você diretamente pelo WhatsApp</strong> informado. A partir desse contato, <strong style="font-weight:500;color:var(--text);">o PatasDF não se responsabiliza</strong> por qualquer acordo, entrega, saúde do animal ou resultado da adoção — nossa função é apenas facilitar a conexão entre as partes.
+              </p>
+              <div style="display:flex;align-items:flex-start;gap:9px;margin-top:.85rem;">
+                <input type="checkbox" id="termoCadastroCheck" style="width:16px;height:16px;accent-color:var(--teal);flex-shrink:0;margin-top:2px;cursor:pointer;" onchange="toggleBtnCadastrar()">
+                <label for="termoCadastroCheck" style="font-size:12px;color:var(--text);line-height:1.6;cursor:pointer;">
+                  Li e entendi o aviso acima. Concordo em divulgar as informações do animal publicamente.
+                </label>
+              </div>
+            </div>
 
-            <button class="btn btn-primary" style="width:100%; justify-content:center; padding: 13px;" onclick="submitForm()">
+            <button class="btn btn-primary" id="btnCadastrar" style="width:100%;justify-content:center;padding:13px;opacity:0.4;pointer-events:none;" onclick="submitForm()">
+              <span class="btn-spinner" id="spinnerCadastro"></span>
               🐾 Cadastrar animal
             </button>
-
-            <p class="form-note">
-              Ao cadastrar, você concorda que as informações serão compartilhadas
-              publicamente para facilitar a adoção.
-            </p>
+            <p class="form-note">As informações serão compartilhadas publicamente para facilitar a adoção.</p>
           </div>
-
-          <!-- Sucesso -->
           <div class="form-success" id="formSuccess">
             <div class="success-icon">🎉</div>
             <h4>Animal cadastrado com sucesso!</h4>
-            <p>
-              Em breve ele aparecerá no mapa e na lista de animais disponíveis.
-              Obrigado por ajudar a mudar uma vida!
-            </p>
-            <button class="btn btn-primary" style="margin: 1.5rem auto 0;" onclick="resetForm()">
-              Cadastrar outro animal
-            </button>
+            <p>Em breve ele aparecerá no mapa e na lista de animais disponíveis. Obrigado por ajudar a mudar uma vida!</p>
+            <button class="btn btn-primary" style="margin:1.5rem auto 0;" onclick="resetForm()">Cadastrar outro animal</button>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ========================
-       FORMULÁRIOS: ADOTAR / LAR TEMP
-  ======================== -->
+  <!-- FORMULÁRIOS ADOTAR / LAR TEMP -->
   <section class="interest-section" id="quero-ajudar">
     <div class="container">
       <span class="section-label reveal">Quero ajudar</span>
       <h2 class="section-title reveal">Você quer adotar ou ser<br>lar temporário?</h2>
       <p class="section-sub reveal">Preencha o formulário abaixo e entraremos em contato com animais compatíveis com o seu perfil.</p>
 
-      <!-- Abas -->
       <div class="interest-tabs reveal">
         <button class="interest-tab tab-adopt active" id="tabAdopt" onclick="openTab('adopt')">
-          <span class="tab-icon">🏠</span>
-          Quero adotar
-          <span class="tab-badge">Permanente</span>
+          <span class="tab-icon">🏠</span> Quero adotar <span class="tab-badge">Permanente</span>
         </button>
         <button class="interest-tab tab-temp" id="tabTemp" onclick="openTab('temp')">
-          <span class="tab-icon">⏳</span>
-          Quero ser lar temporário
-          <span class="tab-badge">Temporário</span>
+          <span class="tab-icon">⏳</span> Quero ser lar temporário <span class="tab-badge">Temporário</span>
         </button>
       </div>
 
-      <!-- Painéis -->
       <div class="interest-panels reveal">
 
-        <!-- ===== PAINEL: ADOÇÃO ===== -->
+        <!-- PAINEL ADOÇÃO -->
         <div class="interest-panel active" id="panelAdopt">
           <div class="interest-layout">
-
-            <!-- Info lateral -->
             <div class="interest-info">
               <h3>Adoção responsável começa aqui</h3>
-              <p>
-                Ao preencher este formulário, você entra para nossa lista de adotantes interessados.
-                Quando um animal compatível com o seu perfil for cadastrado, entraremos em contato.
-              </p>
-
-              <div class="info-highlight teal">
-                <p>🐾 A adoção no PatasDF é sempre <strong>gratuita</strong>. Adote seu novo melhor amigo!</p>
-              </div>
-
+              <p>Ao preencher este formulário, você entra para nossa lista de adotantes interessados. Quando um animal compatível com o seu perfil for cadastrado, entraremos em contato.</p>
+              <div class="info-highlight teal"><p>🐾 A adoção no PatasDF é sempre <strong>gratuita</strong>. Adote seu novo melhor amigo!</p></div>
               <p>O que esperamos de um adotante responsável:</p>
               <ul class="form-checklist">
                 <li><div class="check-icon" style="background:var(--teal-light);">✓</div> Oferecer ambiente seguro e amoroso</li>
@@ -1979,43 +1083,22 @@
                 <li><div class="check-icon" style="background:var(--teal-light);">✓</div> Permitir visita de acompanhamento (opcional)</li>
               </ul>
             </div>
-
-            <!-- Formulário adoção -->
             <div>
               <div id="adoptFormContent">
-
-                <!-- STEP 1: Escolha o animal ou aceite qualquer um -->
                 <div class="form-group">
                   <label>Você tem um animal em mente? *</label>
                   <div class="animal-choice-toggle">
-                    <div class="choice-btn" id="adoptChoiceSpecific" onclick="setAdoptChoice('specific')">
-                      <span class="choice-icon">🔍</span>
-                      <div class="choice-label">Escolher um animal</div>
-                      <div class="choice-sub">Vi um animal específico</div>
-                    </div>
-                    <div class="choice-btn" id="adoptChoiceAny" onclick="setAdoptChoice('any')">
-                      <span class="choice-icon">🐾</span>
-                      <div class="choice-label">Aceito qualquer um</div>
-                      <div class="choice-sub">Me indiquem o melhor match</div>
-                    </div>
+                    <div class="choice-btn" id="adoptChoiceSpecific" onclick="setAdoptChoice('specific')"><span class="choice-icon">🔍</span><div class="choice-label">Escolher um animal</div><div class="choice-sub">Vi um animal específico</div></div>
+                    <div class="choice-btn" id="adoptChoiceAny" onclick="setAdoptChoice('any')"><span class="choice-icon">🐾</span><div class="choice-label">Aceito qualquer um</div><div class="choice-sub">Me indiquem o melhor match</div></div>
                   </div>
                 </div>
-
-                <!-- Seção: escolher animal específico -->
                 <div class="collapsible-section" id="adoptSpecificSection">
                   <div class="form-group" style="margin-top:4px;">
                     <label>Selecione o animal que você quer adotar *</label>
-                    <div class="animal-list-grid" id="adoptAnimalList">
-                      <!-- Preenchido via JS com os animais disponíveis -->
-                    </div>
-                    <p style="font-size:12px; color:var(--text-muted); margin-top:8px;">
-                      Não encontrou o que procura? Veja todos os animais na seção
-                      <a href="#animais" style="color:var(--teal);">Animais disponíveis</a>.
-                    </p>
+                    <div class="animal-list-grid" id="adoptAnimalList"></div>
+                    <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">Não encontrou? Veja todos na seção <a href="#animais" style="color:var(--teal);">Animais disponíveis</a>.</p>
                   </div>
                 </div>
-
-                <!-- Seção: preferências quando aceita qualquer animal -->
                 <div class="collapsible-section" id="adoptAnySection">
                   <div class="form-group" style="margin-top:4px;">
                     <label>Qual tipo de animal você prefere?</label>
@@ -2036,42 +1119,22 @@
                     </div>
                   </div>
                 </div>
-
-                <!-- Campos comuns (aparecem após escolha) -->
                 <div class="collapsible-section" id="adoptCommonFields">
                   <div class="form-group" style="margin-top:4px;">
                     <label for="adoptNome">Seu nome completo *</label>
                     <input type="text" id="adoptNome" placeholder="Ex: Maria da Silva" />
                   </div>
-
                   <div class="form-row">
-                    <div class="form-group">
-                      <label for="adoptContato">WhatsApp *</label>
-                      <input type="tel" id="adoptContato" placeholder="(61) 9xxxx-xxxx" />
-                    </div>
-                    <div class="form-group">
-                      <label for="adoptEmail">E-mail</label>
-                      <input type="email" id="adoptEmail" placeholder="seu@email.com" />
-                    </div>
+                    <div class="form-group"><label for="adoptContato">WhatsApp *</label><input type="tel" id="adoptContato" placeholder="(61) 9xxxx-xxxx" /></div>
+                    <div class="form-group"><label for="adoptEmail">E-mail</label><input type="email" id="adoptEmail" placeholder="seu@email.com" /></div>
                   </div>
-
                   <div class="form-row">
-                    <div class="form-group">
-                      <label for="adoptCidade">Cidade/Bairro *</label>
-                      <input type="text" id="adoptCidade" placeholder="Ex: Asa Norte, Gama..." />
-                    </div>
+                    <div class="form-group"><label for="adoptCidade">Cidade/Bairro *</label><input type="text" id="adoptCidade" placeholder="Ex: Asa Norte, Gama..." /></div>
                     <div class="form-group">
                       <label for="adoptIdade">Sua faixa etária</label>
-                      <select id="adoptIdade">
-                        <option value="">Selecione...</option>
-                        <option>18–25 anos</option>
-                        <option>26–35 anos</option>
-                        <option>36–50 anos</option>
-                        <option>50+ anos</option>
-                      </select>
+                      <select id="adoptIdade"><option value="">Selecione...</option><option>18–25 anos</option><option>26–35 anos</option><option>36–50 anos</option><option>50+ anos</option></select>
                     </div>
                   </div>
-
                   <div class="form-group">
                     <label>Sua situação de moradia *</label>
                     <div class="radio-group" style="margin-top:6px;">
@@ -2081,7 +1144,6 @@
                       <label class="radio-item"><input type="radio" name="adoptMoradia" value="outro"> Outro</label>
                     </div>
                   </div>
-
                   <div class="form-group">
                     <label>Sua casa já tem outros animais?</label>
                     <div class="checkbox-group" style="margin-top:6px;">
@@ -2090,7 +1152,6 @@
                       <label class="checkbox-item"><input type="checkbox"> Nenhum animal ainda</label>
                     </div>
                   </div>
-
                   <div class="form-group">
                     <label>Há crianças em casa?</label>
                     <div class="radio-group" style="margin-top:6px;">
@@ -2098,102 +1159,58 @@
                       <label class="radio-item"><input type="radio" name="adoptCriancas" value="nao"> Não</label>
                     </div>
                   </div>
-
                   <div class="form-group">
                     <label for="adoptMotivo">Por que você quer adotar? *</label>
                     <textarea id="adoptMotivo" placeholder="Conte um pouco sobre sua motivação, sua rotina e como será a vida do animal com você..."></textarea>
                   </div>
-
-                  <button class="btn btn-adopt" style="width:100%; justify-content:center; padding:13px; border-radius:50px;" onclick="submitAdopt()">
+                  <button class="btn btn-adopt" style="width:100%;justify-content:center;padding:13px;border-radius:50px;border:none;font-size:15px;cursor:pointer;" onclick="submitAdopt()">
                     🏠 Enviar interesse em adotar
                   </button>
-
-                  <p class="form-note">
-                    Suas informações serão usadas apenas para encontrar o animal mais compatível com você.
-                  </p>
+                  <p class="form-note">Suas informações serão usadas apenas para encontrar o animal mais compatível com você.</p>
                 </div>
-
               </div>
-
-              <!-- Sucesso adoção -->
               <div class="form-success" id="adoptSuccess">
                 <div class="success-icon">🥰</div>
                 <h4>Interesse registrado!</h4>
-                <p>
-                  Muito obrigado! Quando um animal compatível com o seu perfil for cadastrado,
-                  entraremos em contato pelo WhatsApp informado. Você está salvando uma vida!
-                </p>
-                <button class="btn btn-adopt" style="margin: 1.5rem auto 0; border-radius:50px; padding:10px 24px;" onclick="resetAdopt()">
-                  Registrar outro interesse
-                </button>
+                <p>Muito obrigado! Quando um animal compatível for cadastrado, entraremos em contato pelo WhatsApp. Você está salvando uma vida!</p>
+                <button class="btn btn-adopt" style="margin:1.5rem auto 0;border-radius:50px;padding:10px 24px;border:none;cursor:pointer;" onclick="resetAdopt()">Registrar outro interesse</button>
               </div>
             </div>
-
           </div>
-        </div><!-- /panelAdopt -->
+        </div>
 
-        <!-- ===== PAINEL: LAR TEMPORÁRIO ===== -->
+        <!-- PAINEL LAR TEMPORÁRIO -->
         <div class="interest-panel" id="panelTemp">
           <div class="interest-layout">
-
-            <!-- Info lateral -->
             <div class="interest-info">
               <h3>Lar temporário salva vidas</h3>
-              <p>
-                O lar temporário é fundamental para animais que precisam de cuidados enquanto aguardam adoção.
-                Você não precisa adotar definitivamente — apenas acolher por um tempo.
-              </p>
-
-              <div class="info-highlight amber">
-                <p>⏳ A duração média do lar temporário no DF é de <strong>2 a 8 semanas</strong>.</p>
-              </div>
-
+              <p>O lar temporário é fundamental para animais que precisam de cuidados enquanto aguardam adoção. Você não precisa adotar definitivamente — apenas acolher por um tempo.</p>
+              <div class="info-highlight amber"><p>⏳ A duração média do lar temporário no DF é de <strong>2 a 8 semanas</strong>.</p></div>
               <p>O que o lar temporário envolve:</p>
               <ul class="form-checklist">
                 <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Alimentação e cuidados básicos</li>
-                <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Acompanhamento veterinário (apoio da ONG)</li>
+                <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Acompanhamento veterinário caso necessário</li>
                 <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Ajudar a divulgar o animal para adoção</li>
-                <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Suporte da rede PatasDF durante todo o período</li>
+                <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Muito cuidado & carinho</li>
               </ul>
             </div>
-
-            <!-- Formulário lar temporário -->
             <div>
               <div id="tempFormContent">
-
-                <!-- STEP 1: Escolha um animal específico ou aceita qualquer um -->
                 <div class="form-group">
                   <label>Você tem um animal em mente? *</label>
                   <div class="animal-choice-toggle">
-                    <div class="choice-btn" id="tempChoiceSpecific" onclick="setTempChoice('specific')">
-                      <span class="choice-icon">🔍</span>
-                      <div class="choice-label">Escolher um animal</div>
-                      <div class="choice-sub">Vi um animal específico</div>
-                    </div>
-                    <div class="choice-btn" id="tempChoiceAny" onclick="setTempChoice('any')">
-                      <span class="choice-icon">🐾</span>
-                      <div class="choice-label">Aceito qualquer um</div>
-                      <div class="choice-sub">Me indiquem quem precisa</div>
-                    </div>
+                    <div class="choice-btn" id="tempChoiceSpecific" onclick="setTempChoice('specific')"><span class="choice-icon">🔍</span><div class="choice-label">Escolher um animal</div><div class="choice-sub">Vi um animal específico</div></div>
+                    <div class="choice-btn" id="tempChoiceAny" onclick="setTempChoice('any')"><span class="choice-icon">🐾</span><div class="choice-label">Aceito qualquer um</div><div class="choice-sub">Me indiquem quem precisa</div></div>
                   </div>
                 </div>
-
-                <!-- Seção: escolher animal específico (lar temp) -->
                 <div class="collapsible-section" id="tempSpecificSection">
                   <div class="form-group" style="margin-top:4px;">
                     <label>Selecione o(s) animal(is) que você pode acolher *</label>
-                    <p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">Pode selecionar mais de um.</p>
-                    <div class="animal-list-grid" id="tempAnimalList">
-                      <!-- Preenchido via JS -->
-                    </div>
-                    <p style="font-size:12px; color:var(--text-muted); margin-top:8px;">
-                      Veja mais animais na seção
-                      <a href="#animais" style="color:var(--amber);">Animais disponíveis</a>.
-                    </p>
+                    <p style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">Pode selecionar mais de um.</p>
+                    <div class="animal-list-grid" id="tempAnimalList"></div>
+                    <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">Veja mais na seção <a href="#animais" style="color:var(--amber);">Animais disponíveis</a>.</p>
                   </div>
                 </div>
-
-                <!-- Seção: preferências quando aceita qualquer animal (lar temp) -->
                 <div class="collapsible-section" id="tempAnySection">
                   <div class="form-group" style="margin-top:4px;">
                     <label>Quais tipos de animais você pode acolher? *</label>
@@ -2214,42 +1231,22 @@
                     </div>
                   </div>
                 </div>
-
-                <!-- Campos comuns lar temporário -->
                 <div class="collapsible-section" id="tempCommonFields">
                   <div class="form-group" style="margin-top:4px;">
                     <label for="tempNome">Seu nome completo *</label>
                     <input type="text" id="tempNome" placeholder="Ex: João Souza" />
                   </div>
-
                   <div class="form-row">
-                    <div class="form-group">
-                      <label for="tempContato">WhatsApp *</label>
-                      <input type="tel" id="tempContato" placeholder="(61) 9xxxx-xxxx" />
-                    </div>
-                    <div class="form-group">
-                      <label for="tempEmail">E-mail</label>
-                      <input type="email" id="tempEmail" placeholder="seu@email.com" />
-                    </div>
+                    <div class="form-group"><label for="tempContato">WhatsApp *</label><input type="tel" id="tempContato" placeholder="(61) 9xxxx-xxxx" /></div>
+                    <div class="form-group"><label for="tempEmail">E-mail</label><input type="email" id="tempEmail" placeholder="seu@email.com" /></div>
                   </div>
-
                   <div class="form-row">
-                    <div class="form-group">
-                      <label for="tempCidade">Cidade/Bairro *</label>
-                      <input type="text" id="tempCidade" placeholder="Ex: Brasília, Taguatinga..." />
-                    </div>
+                    <div class="form-group"><label for="tempCidade">Cidade/Bairro *</label><input type="text" id="tempCidade" placeholder="Ex: Brasília, Taguatinga..." /></div>
                     <div class="form-group">
                       <label for="tempDisponibilidade">Disponibilidade *</label>
-                      <select id="tempDisponibilidade">
-                        <option value="">Selecione...</option>
-                        <option>Imediata</option>
-                        <option>Em até 2 semanas</option>
-                        <option>Em até 1 mês</option>
-                        <option>Depende do caso</option>
-                      </select>
+                      <select id="tempDisponibilidade"><option value="">Selecione...</option><option>Imediata</option><option>Em até 2 semanas</option><option>Em até 1 mês</option><option>Depende do caso</option></select>
                     </div>
                   </div>
-
                   <div class="form-group">
                     <label>Por quanto tempo pode acolher? *</label>
                     <div class="radio-group" style="margin-top:6px;">
@@ -2259,7 +1256,6 @@
                       <label class="radio-item"><input type="radio" name="tempDuracao" value="indefinido"> Até ser adotado (sem prazo)</label>
                     </div>
                   </div>
-
                   <div class="form-group">
                     <label>Sua situação de moradia *</label>
                     <div class="radio-group" style="margin-top:6px;">
@@ -2268,7 +1264,6 @@
                       <label class="radio-item"><input type="radio" name="tempMoradia" value="apto"> Apartamento</label>
                     </div>
                   </div>
-
                   <div class="form-group">
                     <label>Há outros animais em casa?</label>
                     <div class="checkbox-group" style="margin-top:6px;">
@@ -2277,7 +1272,6 @@
                       <label class="checkbox-item"><input type="checkbox"> Nenhum</label>
                     </div>
                   </div>
-
                   <div class="form-group">
                     <label>Já foi lar temporário antes?</label>
                     <div class="radio-group" style="margin-top:6px;">
@@ -2285,65 +1279,44 @@
                       <label class="radio-item"><input type="radio" name="tempExp" value="nao"> Não, mas estou disposto(a) a aprender</label>
                     </div>
                   </div>
-
                   <div class="form-group">
                     <label for="tempObs">Informações adicionais</label>
                     <textarea id="tempObs" placeholder="Conte sobre sua rotina, restrições ou qualquer informação que ajude a encontrar o match certo..."></textarea>
                   </div>
-
-                  <button class="btn btn-amber-form" style="width:100%; justify-content:center; padding:13px; border-radius:50px;" onclick="submitTemp()">
+                  <button class="btn btn-amber-form" style="width:100%;justify-content:center;padding:13px;border-radius:50px;border:none;font-size:15px;cursor:pointer;" onclick="submitTemp()">
                     ⏳ Quero ser lar temporário
                   </button>
-
-                  <p class="form-note">
-                    Entraremos em contato assim que houver um animal que combine com seu perfil.
-                  </p>
+                  <p class="form-note">Entraremos em contato assim que houver um animal que combine com seu perfil.</p>
                 </div>
-
               </div>
-
-              <!-- Sucesso lar temporário -->
               <div class="form-success" id="tempSuccess">
                 <div class="success-icon">🌟</div>
                 <h4>Incrível! Você é um herói!</h4>
-                <p>
-                  Seu cadastro de lar temporário foi registrado com sucesso.
-                  Entraremos em contato quando houver um animal compatível esperando por um lar como o seu.
-                </p>
-                <button class="btn btn-amber-form" style="margin: 1.5rem auto 0; border-radius:50px; padding:10px 24px;" onclick="resetTemp()">
-                  Atualizar meu cadastro
-                </button>
+                <p>Seu cadastro de lar temporário foi registrado com sucesso. Entraremos em contato quando houver um animal compatível esperando por um lar como o seu.</p>
+                <button class="btn btn-amber-form" style="margin:1.5rem auto 0;border-radius:50px;padding:10px 24px;border:none;cursor:pointer;" onclick="resetTemp()">Atualizar meu cadastro</button>
               </div>
             </div>
-
           </div>
-        </div><!-- /panelTemp -->
+        </div>
 
-      </div><!-- /interest-panels -->
+      </div>
     </div>
   </section>
 
-  <!-- ========================
-       CTA FINAL
-  ======================== -->
+  <!-- CTA FINAL -->
   <div class="cta-section">
     <h2>Um formulário pode salvar uma vida</h2>
     <p>Leva menos de 2 minutos. Sem cadastro, sem custo. Só amor e comunidade.</p>
     <a href="#cadastrar" class="btn btn-amber">🐾 Cadastrar animal agora</a>
   </div>
 
-  <!-- ========================
-       FOOTER
-  ======================== -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
         <a href="#" class="logo">🐾 PatasDF</a>
-        <p>
-          Plataforma gratuita e comunitária para conectar animais abandonados do Distrito Federal com famílias amorosas.
-        </p>
+        <p>Plataforma gratuita e comunitária para conectar animais abandonados do Distrito Federal com famílias amorosas.</p>
       </div>
-
       <div class="footer-links">
         <h4>Navegação</h4>
         <ul>
@@ -2354,7 +1327,6 @@
           <li><a href="#cadastrar">Cadastrar animal</a></li>
         </ul>
       </div>
-
       <div class="footer-links">
         <h4>Projeto</h4>
         <ul>
@@ -2365,45 +1337,60 @@
         </ul>
       </div>
     </div>
-
     <div class="footer-bottom">
-      <span>© 2025 PatasDF · Projeto de extensão · CEUB · Engenharia de Software</span>
+      <span>© 2025 PatasDF · Engenharia de Software</span>
       <span>Feito com 🐾 por <a href="sobre.html">Clarice Nunes</a></span>
     </div>
   </footer>
 
-  <!-- ========================
-       JAVASCRIPT
-  ======================== -->
+  <!-- ======================== JAVASCRIPT ======================== -->
   <script>
-    /* ---------- Menu mobile ---------- */
+    /* ============================================================
+       CONFIGURAÇÕES — SUBSTITUA COM SUAS URLs REAIS
+    ============================================================ */
+    const SCRIPT_URL   = 'https://script.google.com/macros/s/AKfycbxVU70gQezUICo29HL3c44In6U3AhAHLvo6DOX1onuBkQXdG-JIP17ucuvauq_LxxC-/exec';
+    const ANIMALS_URL  = 'animais.json';
+    // Após publicar no GitHub Pages:
+    // const ANIMALS_URL = 'https://raw.githubusercontent.com/SEU_USUARIO/patasdf/main/animais.json';
+
+    /* ============================================================
+       ESTADO GLOBAL
+    ============================================================ */
+    let ANIMALS     = [];
+    let filtroAtual = 'todos';
+    let adoptChoice = null;
+    let tempChoice  = null;
+
+    // Dados pendentes para o modal
+    let _pendingAdoptData = null;
+    let _pendingTempData  = null;
+
+    /* ============================================================
+       MENU MOBILE
+    ============================================================ */
     function toggleMenu() {
-      const nav = document.getElementById('navLinks');
-      nav.classList.toggle('open');
+      document.getElementById('navLinks').classList.toggle('open');
     }
-    // Fecha ao clicar num link
     document.querySelectorAll('#navLinks a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.getElementById('navLinks').classList.remove('open');
-      });
+      link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
     });
 
-    /* ---------- Reveal on scroll ---------- */
-    const observer = new IntersectionObserver((entries) => {
+    /* ============================================================
+       REVEAL ON SCROLL
+    ============================================================ */
+    const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-          // Stagger suave para elementos em sequência
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, i * 60);
-          observer.unobserve(entry.target);
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          revealObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    /* ---------- Filtro de animais ---------- */
+    /* ============================================================
+       FILTRO DE ANIMAIS
+    ============================================================ */
     function filterAnimals(tipo, btn) {
       document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
@@ -2411,7 +1398,9 @@
       renderizarCards(tipo);
     }
 
-    /* ---------- Botão quero adotar ---------- */
+    /* ============================================================
+       BOTÃO QUERO ADOTAR (cards de animal)
+    ============================================================ */
     function entrarContato(nome, contato) {
       if (contato && contato !== '(61) 9xxxx-xxxx') {
         const num = contato.replace(/\D/g, '');
@@ -2422,58 +1411,19 @@
       }
     }
 
+    /* ============================================================
+       CARREGAR ANIMAIS DO JSON
+    ============================================================ */
+    // Dados embutidos — sempre disponíveis, sem depender de fetch ou servidor
+    const ANIMAIS_EMBUTIDOS = [
+      { id:'ex1',    nome:'Bolinha',    tipo:'cachorro', idade:'~2 anos',  porte:'Médio',   cidade:'Asa Sul',     descricao:'Muito carinhoso, brinca com crianças e já é castrado. Encontrado abandonado na quadra 308 Sul.',    contato:'(61) 98888-1111' },
+      { id:'ex2',    nome:'Mimi',       tipo:'gato',     idade:'~8 meses', porte:'Pequeno', cidade:'Taguatinga',  descricao:'Gatinha dócil, vacinada e sociável com outros gatos. Adora dormir no colo.',                       contato:'(61) 97777-2222' },
+      { id:'ex3',    nome:'Thor',       tipo:'cachorro', idade:'~4 anos',  porte:'Grande',  cidade:'Ceilândia',   descricao:'Cão tranquilo e protetor, gosta de caminhadas longas. Ótimo com crianças.',                       contato:'(61) 96666-3333' },
+      { id:'ex4',    nome:'Mingau',     tipo:'gato',     idade:'~3 anos',  porte:'Médio',   cidade:'Guará',       descricao:'Independente mas carinhoso. Castrado e vacinado em dia. Vive bem em apartamento.',                contato:'(61) 95555-4444' },
+      { id:'ex5',    nome:'Pipoca',     tipo:'cachorro', idade:'~1 ano',   porte:'Pequeno', cidade:'Sobradinho',  descricao:'Brincalhona e energética. Adora crianças e outros cães. Ainda precisa ser castrada.',             contato:'(61) 94444-5555' },
+      { id:'ex6',    nome:'Nala',       tipo:'gato',     idade:'~6 meses', porte:'Pequeno', cidade:'Samambaia',   descricao:'Curiosa e cheia de energia. Filhote resgatada da rua, precisa de vacinas e muito amor.',          contato:'(61) 93333-6666' },
+    ];
 
-    /* ---------- Formulário de cadastro ---------- */function submitForm() {
-  const nome    = document.getElementById('animalNome').value.trim();
-  const tipo    = document.getElementById('animalTipo').value;
-  const idade   = document.getElementById('animalIdade').value;
-  const porte   = document.getElementById('animalPorte').value;
-  const cidade  = document.getElementById('animalCidade').value.trim();
-  const desc    = document.getElementById('animalDesc').value.trim();
-  const contato = document.getElementById('animalContato').value.trim();
-  const fotoUrl = document.getElementById('animalFoto').value.trim();
-
-  if (!nome || !tipo || !idade || !cidade || !desc || !contato || !fotoUrl) {
-    alert('Por favor, preencha todos os campos obrigatórios (*).');
-    return;
-  }
-
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxVU70gQezUICo29HL3c44In6U3AhAHLvo6DOX1onuBkQXdG-JIP17ucuvauq_LxxC-/exec';
-
-  fetch(SCRIPT_URL, {
-    method: 'POST',
-    body: JSON.stringify({ nome, tipo, idade, porte, cidade, desc, contato, fotoUrl })
-  })
-  .then(() => {
-    document.getElementById('formContent').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
-  })
-  .catch(() => {
-    alert('Erro ao enviar. Tente novamente.');
-  });
-}
-    /* ---------- Abas: Adotar / Lar temporário ---------- */
-    function openTab(tab) {
-      const isAdopt = tab === 'adopt';
-      document.getElementById('tabAdopt').classList.toggle('active', isAdopt);
-      document.getElementById('tabTemp').classList.toggle('active', !isAdopt);
-      document.getElementById('panelAdopt').classList.toggle('active', isAdopt);
-      document.getElementById('panelTemp').classList.toggle('active', !isAdopt);
-    }
-
-    /* ==============================================
-       FONTE DE DADOS — animais.json do GitHub
-       ✅ SUBSTITUA PELA URL DO SEU animais.json:
-    =============================================== */
-    const ANIMALS_URL = 'animais.json';
-    // Exemplo após publicar no GitHub Pages:
-    // const ANIMALS_URL = 'https://raw.githubusercontent.com/SEU_USUARIO/patasdf/main/animais.json';
-
-    /* Estado global dos animais */
-    let ANIMALS = [];
-    let filtroAtual = 'todos';
-
-    /* ---------- Carrega animais do JSON ---------- */
     async function carregarAnimais() {
       const loading = document.getElementById('animaisLoading');
       const grid    = document.getElementById('animalsGrid');
@@ -2483,39 +1433,69 @@
       grid.style.display    = 'none';
       erro.style.display    = 'none';
 
+      // Tenta carregar do JSON externo (funciona em servidor/GitHub Pages)
+      let carregouExterno = false;
       try {
         const resp = await fetch(ANIMALS_URL + '?t=' + Date.now());
-        if (!resp.ok) throw new Error('HTTP ' + resp.status);
-        const dados = await resp.json();
-
-        // Só mostra disponíveis
-        ANIMALS = dados.filter(a => !a.status || a.status === 'disponivel');
-
-        loading.style.display = 'none';
-        grid.style.display    = '';
-        renderizarCards(filtroAtual);
-        if (ANIMALS.length > 0) document.getElementById('verMaisArea').style.display = '';
-
+        if (resp.ok) {
+          const dados = await resp.json();
+          const disponiveis = dados.filter(a => !a.status || a.status === 'disponivel');
+          if (disponiveis.length > 0) {
+            ANIMALS = disponiveis;
+            carregouExterno = true;
+          }
+        }
       } catch (e) {
-        console.warn('Não carregou animais.json, usando dados de exemplo.', e);
-        // Fallback: dados de exemplo enquanto o JSON não está configurado
-        ANIMALS = [
-          { id:'ex1', nome:'Bolinha',  tipo:'cachorro', idade:'~2 anos',  porte:'Médio',   cidade:'Asa Sul',    descricao:'Muito carinhoso, brinca com crianças e já é castrado.',      contato:'(61) 9xxxx-xxxx' },
-          { id:'ex2', nome:'Mimi',     tipo:'gato',     idade:'~8 meses', porte:'Pequeno', cidade:'Taguatinga', descricao:'Gatinha dócil, vacinada e sociável com outros gatos.',         contato:'(61) 9xxxx-xxxx' },
-          { id:'ex3', nome:'Thor',     tipo:'cachorro', idade:'~4 anos',  porte:'Grande',  cidade:'Ceilândia',  descricao:'Cão tranquilo, gosta de caminhadas longas.',                  contato:'(61) 9xxxx-xxxx' },
-          { id:'ex4', nome:'Mingau',   tipo:'gato',     idade:'~3 anos',  porte:'Médio',   cidade:'Guará',      descricao:'Independente mas carinhoso. Castrado e vacinado em dia.',     contato:'(61) 9xxxx-xxxx' },
-          { id:'ex5', nome:'Pipoca',   tipo:'cachorro', idade:'~1 ano',   porte:'Pequeno', cidade:'Sobradinho', descricao:'Brincalhona e energética. Adora crianças.',                   contato:'(61) 9xxxx-xxxx' },
-          { id:'ex6', nome:'Nala',     tipo:'gato',     idade:'~6 meses', porte:'Pequeno', cidade:'Samambaia',  descricao:'Curiosa e cheia de energia. Precisa de vacinas e amor.',      contato:'(61) 9xxxx-xxxx' },
-        ];
-        loading.style.display = 'none';
-        grid.style.display    = '';
-        renderizarCards(filtroAtual);
+        // silencioso — usa dados embutidos abaixo
       }
+
+      // Se não carregou do externo, usa os dados embutidos
+      if (!carregouExterno) {
+        ANIMALS = ANIMAIS_EMBUTIDOS;
+      }
+
+      loading.style.display = 'none';
+      grid.style.display    = '';
+      renderizarCards(filtroAtual);
+      if (ANIMALS.length > 0) document.getElementById('verMaisArea').style.display = '';
+
+      // Verifica se veio da página animais.html com um animal pré-selecionado
+      verificarPreSelecao();
     }
 
-    /* ---------- Renderiza os cards a partir do array ANIMALS ---------- */
+    /* ============================================================
+       PRÉ-SELECIONAR ANIMAL (vindo de animais.html)
+    ============================================================ */
+    function verificarPreSelecao() {
+      let id = null;
+      try { id = sessionStorage.getItem('patasdf_adotar_id'); } catch(e) {}
+      if (!id) return;
+
+      // Limpa para não repetir em reload
+      try { sessionStorage.removeItem('patasdf_adotar_id'); } catch(e) {}
+
+      // Abre a aba de adoção e escolhe "animal específico"
+      openTab('adopt');
+      setAdoptChoice('specific');
+
+      // Aguarda a lista renderizar (collapsible precisa de um tick)
+      setTimeout(() => {
+        const input = document.getElementById('input-adopt-' + id);
+        if (input) {
+          input.checked = true;
+          onAnimalChange('adopt', id, 'radio', input);
+        }
+        // Rola suavemente até o formulário
+        const el = document.getElementById('quero-ajudar');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+    }
+
+    /* ============================================================
+       RENDERIZAR CARDS
+    ============================================================ */
     function renderizarCards(filtro) {
-      const grid = document.getElementById('animalsGrid');
+      const grid       = document.getElementById('animalsGrid');
       const emptyState = document.getElementById('emptyState');
       const lista = filtro === 'todos' ? ANIMALS : ANIMALS.filter(a => a.tipo === filtro);
 
@@ -2533,6 +1513,8 @@
         const bg    = bgMap[a.tipo]    || '#F5F5F5';
         const emoji = emojiMap[a.tipo] || '🐾';
         const tipo  = a.tipo ? (a.tipo.charAt(0).toUpperCase() + a.tipo.slice(1)) : 'Animal';
+        const nomeS = (a.nome    || '').replace(/'/g, "\\'");
+        const contS = (a.contato || '').replace(/'/g, "\\'");
         return `
         <div class="animal-card" data-tipo="${a.tipo || ''}">
           <div class="animal-img" style="background:${bg};">
@@ -2550,17 +1532,18 @@
             <p class="animal-desc">${a.descricao || ''}</p>
             <div class="animal-footer">
               <span class="contact-info">📱 ${a.contato || ''}</span>
-              <button class="btn-adotar" onclick="entrarContato('${(a.nome||'').replace(/'/g,"\\'")}','${(a.contato||'').replace(/'/g,"\\'")}')">Quero adotar</button>
+              <button class="btn-adotar" onclick="entrarContato('${nomeS}','${contS}')">Quero adotar</button>
             </div>
           </div>
         </div>`;
       }).join('');
     }
 
-    /* Carrega ao iniciar a página */
     carregarAnimais();
 
-    /* ---------- Atualiza o strip de animais com dados reais ---------- */
+    /* ============================================================
+       STRIP DE ANIMAIS
+    ============================================================ */
     async function carregarStrip() {
       try {
         const r = await fetch(ANIMALS_URL + '?t=' + Date.now());
@@ -2572,19 +1555,17 @@
         const items = disponiveis.map(a => `
           <div class="strip-item">
             <span class="si-emoji">${emojiMap[a.tipo] || '🐾'}</span>
-            <div>
-              <div class="si-name">${a.nome || 'Animal'}</div>
-              <div class="si-info">${[a.tipo, a.cidade].filter(Boolean).join(' · ')}</div>
-            </div>
+            <div><div class="si-name">${a.nome || 'Animal'}</div><div class="si-info">${[a.tipo, a.cidade].filter(Boolean).join(' · ')}</div></div>
           </div>`).join('');
         const extra = `<div class="strip-item"><span class="si-emoji">🐾</span><div><div class="si-name">Novos animais todo dia</div><div class="si-info">Cadastre o seu também →</div></div></div>`;
-        const full = items + extra + items + extra;
-        document.getElementById('stripInner').innerHTML = full;
-      } catch { /* mantém o fallback estático */ }
+        document.getElementById('stripInner').innerHTML = items + extra + items + extra;
+      } catch { /* mantém fallback */ }
     }
     carregarStrip();
 
-    /* ---------- Renderiza lista de animais no formulário ---------- */
+    /* ============================================================
+       RENDERIZAR LISTA DE ANIMAIS NOS FORMULÁRIOS
+    ============================================================ */
     function renderAnimalList(containerId, mode) {
       const container = document.getElementById(containerId);
       const inputType = mode === 'adopt' ? 'radio' : 'checkbox';
@@ -2597,11 +1578,14 @@
       }
 
       container.innerHTML = ANIMALS.map(a => {
-        const emoji = emojiMap[a.tipo] || '🐾';
-        const info  = [a.tipo, a.idade, a.cidade].filter(Boolean).join(' · ');
+        const emoji   = emojiMap[a.tipo] || '🐾';
+        const info    = [a.tipo, a.idade, a.cidade].filter(Boolean).join(' · ');
+        const inputId = `input-${mode}-${a.id}`;
         return `
-        <label class="animal-select-card" id="card-${mode}-${a.id}" onclick="selectAnimalCard('${mode}','${a.id}','${inputType}')">
-          <input type="${inputType}" name="${inputName}" value="${a.id}" style="accent-color:${mode==='adopt'?'var(--teal)':'var(--amber)'};">
+        <label class="animal-select-card" id="card-${mode}-${a.id}" for="${inputId}">
+          <input type="${inputType}" id="${inputId}" name="${inputName}" value="${a.id}"
+            style="accent-color:${mode==='adopt'?'var(--teal)':'var(--amber)'};"
+            onchange="onAnimalChange('${mode}','${a.id}','${inputType}',this)">
           <div class="animal-card-mini">
             <div class="mini-emoji">${emoji}</div>
             <div class="mini-name">${a.nome}</div>
@@ -2611,56 +1595,124 @@
       }).join('');
     }
 
-    function selectAnimalCard(mode, id, type) {
+    function onAnimalChange(mode, id, type, inputEl) {
       const selectedClass = mode === 'adopt' ? 'selected' : 'selected-temp';
       if (type === 'radio') {
         document.querySelectorAll(`[id^="card-${mode}-"]`).forEach(c => c.classList.remove(selectedClass));
-        document.getElementById(`card-${mode}-${id}`).classList.add(selectedClass);
+        if (inputEl.checked) document.getElementById(`card-${mode}-${id}`).classList.add(selectedClass);
       } else {
-        const card = document.getElementById(`card-${mode}-${id}`);
-        card.classList.toggle(selectedClass);
+        document.getElementById(`card-${mode}-${id}`).classList.toggle(selectedClass, inputEl.checked);
       }
     }
 
-    /* ---------- Lógica de escolha adoção ---------- */
-    let adoptChoice = null;
+    /* ============================================================
+       ABAS ADOTAR / LAR TEMPORÁRIO
+    ============================================================ */
+    function openTab(tab) {
+      const isAdopt = tab === 'adopt';
+      document.getElementById('tabAdopt').classList.toggle('active', isAdopt);
+      document.getElementById('tabTemp').classList.toggle('active', !isAdopt);
+      document.getElementById('panelAdopt').classList.toggle('active', isAdopt);
+      document.getElementById('panelTemp').classList.toggle('active', !isAdopt);
+    }
 
+    /* ============================================================
+       LÓGICA DE ESCOLHA — ADOÇÃO
+    ============================================================ */
     function setAdoptChoice(choice) {
       adoptChoice = choice;
-      const selClass = 'selected-adopt';
-
-      document.getElementById('adoptChoiceSpecific').classList.toggle(selClass, choice === 'specific');
-      document.getElementById('adoptChoiceAny').classList.toggle(selClass, choice === 'any');
-
+      document.getElementById('adoptChoiceSpecific').classList.toggle('selected-adopt', choice === 'specific');
+      document.getElementById('adoptChoiceAny').classList.toggle('selected-adopt', choice === 'any');
       document.getElementById('adoptSpecificSection').classList.toggle('open', choice === 'specific');
       document.getElementById('adoptAnySection').classList.toggle('open', choice === 'any');
       document.getElementById('adoptCommonFields').classList.add('open');
-
-      if (choice === 'specific') {
-        renderAnimalList('adoptAnimalList', 'adopt');
-      }
+      if (choice === 'specific') renderAnimalList('adoptAnimalList', 'adopt');
     }
 
-    /* ---------- Lógica de escolha lar temporário ---------- */
-    let tempChoice = null;
-
+    /* ============================================================
+       LÓGICA DE ESCOLHA — LAR TEMPORÁRIO
+    ============================================================ */
     function setTempChoice(choice) {
       tempChoice = choice;
-      const selClass = 'selected-temp';
-
-      document.getElementById('tempChoiceSpecific').classList.toggle(selClass, choice === 'specific');
-      document.getElementById('tempChoiceAny').classList.toggle(selClass, choice === 'any');
-
+      document.getElementById('tempChoiceSpecific').classList.toggle('selected-temp', choice === 'specific');
+      document.getElementById('tempChoiceAny').classList.toggle('selected-temp', choice === 'any');
       document.getElementById('tempSpecificSection').classList.toggle('open', choice === 'specific');
       document.getElementById('tempAnySection').classList.toggle('open', choice === 'any');
       document.getElementById('tempCommonFields').classList.add('open');
+      if (choice === 'specific') renderAnimalList('tempAnimalList', 'temp');
+    }
 
-      if (choice === 'specific') {
-        renderAnimalList('tempAnimalList', 'temp');
+    /* ============================================================
+       FORMULÁRIO DE CADASTRO DE ANIMAL → Apps Script
+    ============================================================ */
+    async function submitForm() {
+      const nome    = document.getElementById('animalNome').value.trim();
+      const tipo    = document.getElementById('animalTipo').value;
+      const idade   = document.getElementById('animalIdade').value;
+      const porte   = document.getElementById('animalPorte').value;
+      const cidade  = document.getElementById('animalCidade').value.trim();
+      const desc    = document.getElementById('animalDesc').value.trim();
+      const contato = document.getElementById('animalContato').value.trim();
+      const fotoUrl = document.getElementById('animalFoto').value.trim();
+
+      if (!nome || !tipo || !idade || !cidade || !desc || !contato || !fotoUrl) {
+        alert('Por favor, preencha todos os campos obrigatórios (*).');
+        return;
+      }
+
+      const btn     = document.getElementById('btnCadastrar');
+      const spinner = document.getElementById('spinnerCadastro');
+      btn.disabled  = true;
+      spinner.style.display = 'inline-block';
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',          // Apps Script não retorna CORS headers
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ acao: 'cadastrarAnimal', nome, tipo, idade, porte, cidade, desc, contato, fotoUrl })
+        });
+        document.getElementById('formContent').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } catch (e) {
+        console.error(e);
+        alert('Erro ao enviar. Verifique sua conexão e tente novamente.');
+      } finally {
+        btn.disabled = false;
+        spinner.style.display = 'none';
       }
     }
 
-    /* ---------- Formulário de adoção ---------- */
+    function resetForm() {
+      document.getElementById('formContent').style.display = '';
+      document.getElementById('formSuccess').style.display = 'none';
+      ['animalNome','animalCidade','animalDesc','animalContato','animalFoto'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+      document.getElementById('animalTipo').value  = '';
+      document.getElementById('animalIdade').value = '';
+      document.getElementById('animalPorte').value = '';
+      // reseta o checkbox do termo
+      const chk = document.getElementById('termoCadastroCheck');
+      if (chk) { chk.checked = false; toggleBtnCadastrar(); }
+    }
+
+    function toggleBtnCadastrar() {
+      const chk = document.getElementById('termoCadastroCheck');
+      const btn = document.getElementById('btnCadastrar');
+      if (!chk || !btn) return;
+      if (chk.checked) {
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
+      } else {
+        btn.style.opacity = '0.4';
+        btn.style.pointerEvents = 'none';
+      }
+    }
+
+    /* ============================================================
+       SUBMIT ADOÇÃO → abre modal de contrato
+    ============================================================ */
     function submitAdopt() {
       const nome    = document.getElementById('adoptNome').value.trim();
       const contato = document.getElementById('adoptContato').value.trim();
@@ -2668,37 +1720,41 @@
       const motivo  = document.getElementById('adoptMotivo').value.trim();
       const moradia = document.querySelector('input[name="adoptMoradia"]:checked');
 
-      if (!adoptChoice) { alert('Por favor, indique se você quer um animal específico ou aceita qualquer um.'); return; }
+      if (!adoptChoice) {
+        alert('Por favor, indique se você quer um animal específico ou aceita qualquer um.');
+        return;
+      }
       if (!nome || !contato || !cidade || !motivo || !moradia) {
         alert('Por favor, preencha todos os campos obrigatórios (*).');
         return;
       }
       if (adoptChoice === 'specific' && !document.querySelector('input[name="adoptAnimalChoice"]:checked')) {
-        alert('Por favor, selecione o animal que você deseja adotar.'); return;
+        alert('Por favor, selecione o animal que você deseja adotar.');
+        return;
       }
 
-      document.getElementById('adoptFormContent').style.display = 'none';
-      document.getElementById('adoptSuccess').style.display = 'block';
+      // Coleta animal selecionado (se específico)
+      let animalSelecionado = null;
+      if (adoptChoice === 'specific') {
+        const checkedId = document.querySelector('input[name="adoptAnimalChoice"]:checked')?.value;
+        animalSelecionado = ANIMALS.find(a => a.id === checkedId) || null;
+      }
+
+      // Preferências (se aceita qualquer)
+      const tipoPref  = document.querySelector('input[name="adoptTipoPref"]:checked')?.value  || '';
+      const portePref = document.querySelector('input[name="adoptPorte"]:checked')?.value     || '';
+      const email     = document.getElementById('adoptEmail').value.trim();
+      const idadeFx   = document.getElementById('adoptIdade').value;
+
+      _pendingAdoptData = { nome, contato, email, cidade, idadeFx, moradia: moradia.value, motivo, adoptChoice, animalSelecionado, tipoPref, portePref };
+
+      atualizarPreviewModal('adopt', animalSelecionado, { nome, contato, cidade, moradia: moradia.value });
+      abrirModal('adopt');
     }
 
-    function resetAdopt() {
-      adoptChoice = null;
-      document.getElementById('adoptFormContent').style.display = '';
-      document.getElementById('adoptSuccess').style.display = 'none';
-      ['adoptChoiceSpecific','adoptChoiceAny'].forEach(id => {
-        document.getElementById(id).classList.remove('selected-adopt');
-      });
-      ['adoptSpecificSection','adoptAnySection','adoptCommonFields'].forEach(id => {
-        document.getElementById(id).classList.remove('open');
-      });
-      ['adoptNome','adoptContato','adoptEmail','adoptCidade','adoptMotivo'].forEach(id => {
-        document.getElementById(id).value = '';
-      });
-      document.querySelectorAll('#panelAdopt input[type="radio"], #panelAdopt input[type="checkbox"]')
-        .forEach(el => { el.checked = false; });
-    }
-
-    /* ---------- Formulário lar temporário ---------- */
+    /* ============================================================
+       SUBMIT LAR TEMPORÁRIO → abre modal de contrato
+    ============================================================ */
     function submitTemp() {
       const nome    = document.getElementById('tempNome').value.trim();
       const contato = document.getElementById('tempContato').value.trim();
@@ -2707,7 +1763,10 @@
       const duracao = document.querySelector('input[name="tempDuracao"]:checked');
       const moradia = document.querySelector('input[name="tempMoradia"]:checked');
 
-      if (!tempChoice) { alert('Por favor, indique se você tem um animal em mente ou aceita qualquer um.'); return; }
+      if (!tempChoice) {
+        alert('Por favor, indique se você tem um animal em mente ou aceita qualquer um.');
+        return;
+      }
       if (!nome || !contato || !cidade || !disp || !duracao || !moradia) {
         alert('Por favor, preencha todos os campos obrigatórios (*).');
         return;
@@ -2716,31 +1775,274 @@
         const checked = document.querySelectorAll('input[name="tempAnimalChoice"]:checked');
         if (checked.length === 0) { alert('Por favor, selecione pelo menos um animal.'); return; }
       } else {
-        const tipoOk = document.getElementById('tempCachorro').checked || document.getElementById('tempGato').checked
-                    || document.getElementById('tempFilhote').checked || document.getElementById('tempIdoso').checked;
+        const tipoOk = ['tempCachorro','tempGato','tempFilhote','tempIdoso'].some(id => document.getElementById(id).checked);
         if (!tipoOk) { alert('Por favor, selecione pelo menos um tipo de animal que você pode acolher.'); return; }
       }
 
-      document.getElementById('tempFormContent').style.display = 'none';
-      document.getElementById('tempSuccess').style.display = 'block';
+      // Animais selecionados (se específico)
+      let animaisSelecionados = [];
+      if (tempChoice === 'specific') {
+        const checkedIds = Array.from(document.querySelectorAll('input[name="tempAnimalChoice"]:checked')).map(el => el.value);
+        animaisSelecionados = ANIMALS.filter(a => checkedIds.includes(a.id));
+      }
+
+      const email = document.getElementById('tempEmail').value.trim();
+      const obs   = document.getElementById('tempObs').value.trim();
+
+      _pendingTempData = { nome, contato, email, cidade, disp, duracao: duracao.value, moradia: moradia.value, obs, tempChoice, animaisSelecionados };
+
+      // Para o preview do modal, usa o primeiro animal selecionado (ou null)
+      const primeiroAnimal = animaisSelecionados[0] || null;
+      atualizarPreviewModal('temp', primeiroAnimal, { nome, contato, cidade, moradia: moradia.value }, animaisSelecionados.length);
+      abrirModal('temp');
+    }
+
+    /* ============================================================
+       MODAL — FUNÇÕES DE CONTROLE
+    ============================================================ */
+
+    /**
+     * atualizarPreviewModal — preenche o conteúdo do modal antes de abrir
+     * @param {string} tipo    - 'adopt' ou 'temp'
+     * @param {object} animal  - objeto do animal (ou null)
+     * @param {object} pessoa  - { nome, contato, cidade, moradia }
+     * @param {number} qtd     - quantidade de animais (lar temp com múltiplos)
+     */
+    function atualizarPreviewModal(tipo, animal, pessoa, qtd) {
+      const emojiMap = { cachorro: '🐶', gato: '🐱' };
+
+      // Título e subtítulo do modal
+      if (tipo === 'adopt') {
+        document.getElementById('modalTitle').textContent    = '📋 Termo de Adoção Responsável';
+        document.getElementById('modalSubtitle').textContent = 'Leia com atenção antes de confirmar a adoção';
+      } else {
+        document.getElementById('modalTitle').textContent    = '📋 Termo de Lar Temporário';
+        document.getElementById('modalSubtitle').textContent = 'Leia com atenção antes de confirmar o acolhimento';
+      }
+
+      // Preview do animal
+      if (animal) {
+        document.getElementById('modalAnimalEmoji').textContent = emojiMap[animal.tipo] || '🐾';
+        document.getElementById('modalAnimalNome').textContent  = animal.nome;
+        document.getElementById('modalAnimalDesc').textContent  = animal.descricao || '';
+        const badges = [animal.tipo, animal.idade, animal.cidade, animal.porte].filter(Boolean);
+        document.getElementById('modalAnimalBadges').innerHTML  = badges.map(b => `<span class="modal-badge">${b}</span>`).join('');
+      } else {
+        // "Aceito qualquer um" ou lar temp sem específico
+        document.getElementById('modalAnimalEmoji').textContent = '🐾';
+        document.getElementById('modalAnimalNome').textContent  = tipo === 'adopt'
+          ? 'Match a definir'
+          : (qtd > 1 ? `${qtd} animais selecionados` : 'Match a definir');
+        document.getElementById('modalAnimalDesc').textContent  = tipo === 'adopt'
+          ? 'Você será notificado quando um animal compatível for cadastrado.'
+          : 'Você será contatado quando um animal precisar de lar temporário.';
+        document.getElementById('modalAnimalBadges').innerHTML  = '';
+      }
+
+      // Contratos (mostra o correto)
+      document.getElementById('modalContractAdopt').style.display = tipo === 'adopt' ? '' : 'none';
+      document.getElementById('modalContractTemp').style.display  = tipo === 'temp'  ? '' : 'none';
+
+      // Dados do interessado
+      const moradiaLabel = {
+        casa_quintal: 'Casa com quintal',
+        casa_sem:     'Casa sem quintal',
+        apto:         'Apartamento',
+        outro:        'Outro'
+      };
+      document.getElementById('modalRequesterGrid').innerHTML = `
+        <div class="modal-requester-item"><div class="mri-label">Nome</div><div class="mri-val">${pessoa.nome}</div></div>
+        <div class="modal-requester-item"><div class="mri-label">WhatsApp</div><div class="mri-val">${pessoa.contato}</div></div>
+        <div class="modal-requester-item"><div class="mri-label">Cidade/Bairro</div><div class="mri-val">${pessoa.cidade}</div></div>
+        <div class="modal-requester-item"><div class="mri-label">Moradia</div><div class="mri-val">${moradiaLabel[pessoa.moradia] || pessoa.moradia}</div></div>
+      `;
+
+      // Reset do botão "Estou ciente"
+      _awareConfirmed = false;
+      const btn = document.getElementById('btnAware');
+      btn.classList.remove('aware-confirmed-adopt', 'aware-confirmed-temp');
+      btn.className = `btn-aware ${tipo === 'adopt' ? 'btn-aware-adopt' : 'btn-aware-temp'}`;
+      document.getElementById('awareCheckIcon').textContent = '○';
+      document.getElementById('awareMainLabel').textContent = tipo === 'adopt'
+        ? 'Estou ciente de que a adoção é permanente'
+        : 'Estou ciente de que assumo o compromisso de lar temporário';
+      document.getElementById('awareSubLabel').textContent = 'Li os termos acima e assumo este compromisso';
+
+      // Botões do footer
+      document.getElementById('btnConfirmarAdocao').style.display = tipo === 'adopt' ? '' : 'none';
+      document.getElementById('btnConfirmarTemp').style.display   = tipo === 'temp'  ? '' : 'none';
+      document.getElementById('btnConfirmarAdocao').disabled = true;
+      document.getElementById('btnConfirmarTemp').disabled   = true;
+    }
+
+    function abrirModal(tipo) {
+      const overlay = document.getElementById('contratoModal');
+      overlay.dataset.tipo = tipo;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function fecharModal() {
+      const overlay = document.getElementById('contratoModal');
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      // Reset do botão aware
+      _awareConfirmed = false;
+      const btn = document.getElementById('btnAware');
+      btn.className = 'btn-aware btn-aware-adopt';
+      document.getElementById('awareCheckIcon').textContent = '○';
+      document.getElementById('awareMainLabel').textContent = 'Estou ciente de que a adoção é permanente';
+      document.getElementById('awareSubLabel').textContent  = 'Li os termos acima e assumo este compromisso';
+      document.getElementById('btnConfirmarAdocao').disabled = true;
+      document.getElementById('btnConfirmarTemp').disabled   = true;
+    }
+
+    // Fecha ao clicar fora do box
+    document.getElementById('contratoModal').addEventListener('click', function(e) {
+      if (e.target === this) fecharModal();
+    });
+
+    // Fecha com ESC
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') fecharModal();
+    });
+
+    /* ============================================================
+       BOTÃO "ESTOU CIENTE"
+    ============================================================ */
+    let _awareConfirmed = false;
+
+    function toggleAware() {
+      _awareConfirmed = !_awareConfirmed;
+      const btn  = document.getElementById('btnAware');
+      const icon = document.getElementById('awareCheckIcon');
+      const tipo = document.getElementById('contratoModal').dataset.tipo;
+
+      if (_awareConfirmed) {
+        btn.classList.remove('btn-aware-adopt', 'btn-aware-temp');
+        btn.classList.add(tipo === 'adopt' ? 'aware-confirmed-adopt' : 'aware-confirmed-temp');
+        icon.textContent = '✓';
+        document.getElementById('awareMainLabel').textContent = tipo === 'adopt'
+          ? 'Ciente — adoção é permanente ✓'
+          : 'Ciente — assumo o compromisso de lar temporário ✓';
+        document.getElementById('awareSubLabel').textContent = 'Pode confirmar o envio abaixo';
+      } else {
+        btn.classList.remove('aware-confirmed-adopt', 'aware-confirmed-temp');
+        btn.classList.add(tipo === 'adopt' ? 'btn-aware-adopt' : 'btn-aware-temp');
+        icon.textContent = '○';
+        document.getElementById('awareMainLabel').textContent = tipo === 'adopt'
+          ? 'Estou ciente de que a adoção é permanente'
+          : 'Estou ciente de que assumo o compromisso de lar temporário';
+        document.getElementById('awareSubLabel').textContent = 'Li os termos acima e assumo este compromisso';
+      }
+
+      document.getElementById('btnConfirmarAdocao').disabled = !_awareConfirmed;
+      document.getElementById('btnConfirmarTemp').disabled   = !_awareConfirmed;
+    }
+
+    /* ============================================================
+       CONFIRMAR ADOÇÃO → envia ao Apps Script
+    ============================================================ */
+    async function confirmarAdocao() {
+      if (!_pendingAdoptData) return;
+
+      const btnConfirmar = document.getElementById('btnConfirmarAdocao');
+      const spinner      = document.getElementById('spinnerAdocao');
+      btnConfirmar.disabled        = true;
+      spinner.style.display        = 'inline-block';
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            acao: 'interesseAdocao',
+            ..._pendingAdoptData,
+            animalId:   _pendingAdoptData.animalSelecionado?.id   || '',
+            animalNome: _pendingAdoptData.animalSelecionado?.nome || 'match a definir',
+            timestamp:  new Date().toISOString()
+          })
+        });
+
+        fecharModal();
+        document.getElementById('adoptFormContent').style.display = 'none';
+        document.getElementById('adoptSuccess').style.display     = 'block';
+        _pendingAdoptData = null;
+
+      } catch (e) {
+        console.error(e);
+        alert('Erro ao enviar. Verifique sua conexão e tente novamente.');
+        btnConfirmar.disabled = false;
+      } finally {
+        spinner.style.display = 'none';
+      }
+    }
+
+    /* ============================================================
+       CONFIRMAR LAR TEMPORÁRIO → envia ao Apps Script
+    ============================================================ */
+    async function confirmarTemp() {
+      if (!_pendingTempData) return;
+
+      const btnConfirmar = document.getElementById('btnConfirmarTemp');
+      const spinner      = document.getElementById('spinnerTemp');
+      btnConfirmar.disabled = true;
+      spinner.style.display = 'inline-block';
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            acao: 'larTemporario',
+            ..._pendingTempData,
+            animaisIds:   _pendingTempData.animaisSelecionados.map(a => a.id).join(', ')   || '',
+            animaisNomes: _pendingTempData.animaisSelecionados.map(a => a.nome).join(', ') || 'match a definir',
+            timestamp:    new Date().toISOString()
+          })
+        });
+
+        fecharModal();
+        document.getElementById('tempFormContent').style.display = 'none';
+        document.getElementById('tempSuccess').style.display     = 'block';
+        _pendingTempData = null;
+
+      } catch (e) {
+        console.error(e);
+        alert('Erro ao enviar. Verifique sua conexão e tente novamente.');
+        btnConfirmar.disabled = false;
+      } finally {
+        spinner.style.display = 'none';
+      }
+    }
+
+    /* ============================================================
+       RESET FORMULÁRIOS
+    ============================================================ */
+    function resetAdopt() {
+      adoptChoice = null;
+      _pendingAdoptData = null;
+      document.getElementById('adoptFormContent').style.display = '';
+      document.getElementById('adoptSuccess').style.display     = 'none';
+      ['adoptChoiceSpecific','adoptChoiceAny'].forEach(id => document.getElementById(id).classList.remove('selected-adopt'));
+      ['adoptSpecificSection','adoptAnySection','adoptCommonFields'].forEach(id => document.getElementById(id).classList.remove('open'));
+      ['adoptNome','adoptContato','adoptEmail','adoptCidade','adoptMotivo'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('adoptIdade').value = '';
+      document.querySelectorAll('#panelAdopt input[type="radio"], #panelAdopt input[type="checkbox"]').forEach(el => { el.checked = false; });
     }
 
     function resetTemp() {
       tempChoice = null;
+      _pendingTempData = null;
       document.getElementById('tempFormContent').style.display = '';
-      document.getElementById('tempSuccess').style.display = 'none';
-      ['tempChoiceSpecific','tempChoiceAny'].forEach(id => {
-        document.getElementById(id).classList.remove('selected-temp');
-      });
-      ['tempSpecificSection','tempAnySection','tempCommonFields'].forEach(id => {
-        document.getElementById(id).classList.remove('open');
-      });
-      ['tempNome','tempContato','tempEmail','tempCidade','tempObs'].forEach(id => {
-        document.getElementById(id).value = '';
-      });
+      document.getElementById('tempSuccess').style.display     = 'none';
+      ['tempChoiceSpecific','tempChoiceAny'].forEach(id => document.getElementById(id).classList.remove('selected-temp'));
+      ['tempSpecificSection','tempAnySection','tempCommonFields'].forEach(id => document.getElementById(id).classList.remove('open'));
+      ['tempNome','tempContato','tempEmail','tempCidade','tempObs'].forEach(id => document.getElementById(id).value = '');
       document.getElementById('tempDisponibilidade').value = '';
-      document.querySelectorAll('#panelTemp input[type="radio"], #panelTemp input[type="checkbox"]')
-        .forEach(el => { el.checked = false; });
+      document.querySelectorAll('#panelTemp input[type="radio"], #panelTemp input[type="checkbox"]').forEach(el => { el.checked = false; });
     }
   </script>
 
