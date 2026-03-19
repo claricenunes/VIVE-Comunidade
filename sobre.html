@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sobre a criadora — AdotaDF</title>
-  <meta name="description" content="Conheça Clarice Nunes, estudante de Engenharia de Software no CEUB e criadora do AdotaDF, plataforma de adoção de animais do Distrito Federal." />
+  <title>Sobre a criadora — PatasDF</title>
+  <meta name="description" content="Conheça Clarice Nunes, estudante de Engenharia de Software no CEUB e criadora do PatasDF, plataforma de adoção de animais do Distrito Federal." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
@@ -80,8 +80,7 @@
     }
     .profile-hero::before {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background:
         radial-gradient(ellipse 50% 60% at 90% 50%, rgba(29,158,117,.08) 0%, transparent 65%),
         radial-gradient(ellipse 40% 50% at 10% 80%, rgba(239,159,39,.07) 0%, transparent 60%);
@@ -95,7 +94,7 @@
       position: relative; z-index: 1;
     }
 
-    /* Foto / avatar */
+    /* Foto */
     .photo-wrapper {
       display: flex;
       justify-content: center;
@@ -117,13 +116,8 @@
     .photo-circle img {
       width: 100%; height: 100%;
       object-fit: cover;
+      object-position: center top;
     }
-    .photo-placeholder {
-      display: flex; flex-direction: column; align-items: center;
-      gap: .5rem; color: var(--teal-dark);
-    }
-    .photo-placeholder .ph-icon { font-size: 5rem; }
-    .photo-placeholder p { font-size: 12px; opacity: .6; text-align: center; max-width: 140px; }
 
     /* Badges flutuantes */
     .badge-float {
@@ -153,8 +147,7 @@
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.4rem, 5vw, 3.8rem);
       font-weight: 900; line-height: 1.06;
-      letter-spacing: -1px;
-      margin-bottom: 1.5rem;
+      letter-spacing: -1px; margin-bottom: 1.5rem;
     }
     .profile-text h1 .name-teal { color: var(--teal); }
     .profile-text .tagline {
@@ -163,7 +156,7 @@
       max-width: 480px; margin-bottom: 2rem;
     }
 
-    /* Chips de info */
+    /* Chips */
     .info-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 2.5rem; }
     .chip {
       background: var(--bg-warm); border: 1px solid var(--border-md);
@@ -189,22 +182,14 @@
     .social-btn.instagram:hover { border-color: #E1306C; color: #E1306C; }
 
     /* ===== DIVISOR ===== */
-    .divider {
-      height: 1px; background: var(--border);
-      max-width: 1100px; margin: 0 auto;
-    }
+    .divider { height: 1px; background: var(--border); max-width: 1100px; margin: 0 auto; }
 
-    /* ===== SEÇÕES DE CONTEÚDO ===== */
+    /* ===== SEÇÕES ===== */
     .content-section { padding: 5rem 0; }
     .content-section.alt { background: var(--bg-warm); padding: 5rem 2rem; }
     .content-section.alt .container { max-width: 1100px; margin: 0 auto; }
 
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     .two-col.reverse { direction: rtl; }
     .two-col.reverse > * { direction: ltr; }
 
@@ -216,13 +201,9 @@
     .section-heading {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 700; line-height: 1.12;
-      margin-bottom: 1.5rem;
+      font-weight: 700; line-height: 1.12; margin-bottom: 1.5rem;
     }
-    .body-text {
-      font-size: 1rem; color: var(--text-muted);
-      line-height: 1.85; font-weight: 300;
-    }
+    .body-text { font-size: 1rem; color: var(--text-muted); line-height: 1.85; font-weight: 300; }
     .body-text + .body-text { margin-top: 1rem; }
 
     /* Pullquote */
@@ -241,8 +222,7 @@
     .pullquote cite {
       display: block; margin-top: .75rem;
       font-size: 12px; color: var(--teal-dark);
-      font-style: normal; font-weight: 500;
-      letter-spacing: .5px;
+      font-style: normal; font-weight: 500; letter-spacing: .5px;
     }
 
     /* Pet cards */
@@ -259,80 +239,40 @@
       background: var(--bg-warm); border-radius: var(--radius-md);
       padding: .75rem; flex-shrink: 0;
     }
-    .pet-info h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem; font-weight: 700; margin-bottom: .3rem;
-    }
-    .pet-info .pet-meta {
-      font-size: 12px; color: var(--text-light);
-      font-weight: 500; letter-spacing: .5px;
-      text-transform: uppercase; margin-bottom: .6rem;
-    }
+    .pet-info h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: .3rem; }
+    .pet-info .pet-meta { font-size: 12px; color: var(--text-light); font-weight: 500; letter-spacing: .5px; text-transform: uppercase; margin-bottom: .6rem; }
     .pet-info p { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
     .pet-card.memorial { border-color: rgba(29,158,117,.25); background: var(--teal-light); }
     .pet-card.memorial .pet-info h4 { color: var(--teal-deep); }
     .pet-card.memorial .pet-meta { color: var(--teal-dark); }
 
-    /* Timeline do projeto */
+    /* Timeline */
     .timeline { position: relative; padding-left: 2rem; }
-    .timeline::before {
-      content: '';
-      position: absolute; left: 7px; top: 8px; bottom: 0;
-      width: 1.5px; background: var(--teal-mid);
-    }
+    .timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 0; width: 1.5px; background: var(--teal-mid); }
     .tl-item { position: relative; padding-bottom: 2rem; }
     .tl-item:last-child { padding-bottom: 0; }
-    .tl-dot {
-      position: absolute; left: -1.55rem; top: 6px;
-      width: 14px; height: 14px; border-radius: 50%;
-      background: var(--teal); border: 2.5px solid var(--bg);
-      box-shadow: 0 0 0 2px var(--teal-mid);
-    }
+    .tl-dot { position: absolute; left: -1.55rem; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--teal); border: 2.5px solid var(--bg); box-shadow: 0 0 0 2px var(--teal-mid); }
     .tl-item h4 { font-size: 15px; font-weight: 500; margin-bottom: .3rem; }
     .tl-item p { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
-    .tl-label {
-      font-size: 11px; font-weight: 500; letter-spacing: 1px;
-      text-transform: uppercase; color: var(--teal);
-      margin-bottom: .4rem; display: block;
-    }
+    .tl-label { font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--teal); margin-bottom: .4rem; display: block; }
 
     /* Skills */
-    .skills-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: .75rem; margin-top: 1.5rem;
-    }
-    .skill-chip {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius-md); padding: .75rem 1rem;
-      font-size: 13px; font-weight: 500; text-align: center;
-      transition: border-color .2s, background .2s;
-    }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .75rem; margin-top: 1.5rem; }
+    .skill-chip { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: .75rem 1rem; font-size: 13px; font-weight: 500; text-align: center; transition: border-color .2s, background .2s; }
     .skill-chip:hover { border-color: var(--teal); background: var(--teal-light); }
 
-    /* ===== CTA CONTATO ===== */
-    .contact-cta {
-      background: var(--teal-deep); color: #fff;
-      text-align: center; padding: 6rem 2rem;
-    }
-    .contact-cta h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 700; margin-bottom: 1rem;
-    }
+    /* CTA */
+    .contact-cta { background: var(--teal-deep); color: #fff; text-align: center; padding: 6rem 2rem; }
+    .contact-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; margin-bottom: 1rem; }
     .contact-cta p { opacity: .7; max-width: 480px; margin: 0 auto 2.5rem; font-weight: 300; }
     .contact-cta-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-    .btn-contact {
-      display: inline-flex; align-items: center; gap: 8px;
-      border-radius: 50px; padding: 13px 28px; font-size: 15px; font-weight: 500;
-      text-decoration: none; font-family: 'DM Sans', sans-serif;
-      transition: all .22s; cursor: pointer; border: none;
-    }
+    .btn-contact { display: inline-flex; align-items: center; gap: 8px; border-radius: 50px; padding: 13px 28px; font-size: 15px; font-weight: 500; text-decoration: none; font-family: 'DM Sans', sans-serif; transition: all .22s; cursor: pointer; border: none; }
     .btn-contact.primary { background: var(--amber); color: var(--text); }
     .btn-contact.primary:hover { background: #FAC775; transform: translateY(-2px); }
     .btn-contact.ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.4); }
     .btn-contact.ghost:hover { border-color: #fff; transform: translateY(-2px); }
 
-    /* ===== FOOTER ===== */
+    /* Footer */
     footer { background: #2C2C2A; color: rgba(255,255,255,.55); padding: 3rem 2rem; }
     .footer-inner { max-width:1100px; margin:0 auto; display:flex; align-items:flex-start; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
     .footer-brand .logo { color:#fff; font-size:20px; margin-bottom:.75rem; }
@@ -344,20 +284,15 @@
     .footer-bottom { max-width:1100px; margin:2rem auto 0; padding-top:2rem; border-top:1px solid rgba(255,255,255,.08); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-size:12px; }
     .footer-bottom a { color:var(--amber); text-decoration:none; }
 
-    /* ===== REVEAL ===== */
+    /* Reveal */
     .reveal { opacity:0; transform:translateY(22px); transition:opacity .65s ease, transform .65s ease; }
     .reveal.visible { opacity:1; transform:translateY(0); }
 
-    /* ===== RESPONSIVE ===== */
+    /* Responsive */
     @media (max-width: 768px) {
       .nav-links { display:none; }
       .hamburger { display:flex; }
-      .nav-links.open {
-        display:flex; flex-direction:column;
-        position:absolute; top:66px; left:0; right:0;
-        background:var(--bg); border-bottom:1px solid var(--border);
-        padding:1.5rem 2rem; gap:1.25rem; z-index:199;
-      }
+      .nav-links.open { display:flex; flex-direction:column; position:absolute; top:66px; left:0; right:0; background:var(--bg); border-bottom:1px solid var(--border); padding:1.5rem 2rem; gap:1.25rem; z-index:199; }
       .profile-layout { grid-template-columns:1fr; gap:2rem; }
       .photo-wrapper { order:-1; padding-bottom:1rem; }
       .photo-frame { width:260px; }
@@ -377,7 +312,7 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container">
-      <a href="index.html" class="logo">🐾 AdotaDF</a>
+      <a href="index.html" class="logo">🐾 PatasDF</a>
       <div class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
@@ -400,19 +335,9 @@
         <div class="photo-wrapper reveal">
           <div class="photo-frame">
             <div class="photo-circle">
-              <!--
-                ✅ Para adicionar sua foto:
-                Substitua o bloco .photo-placeholder por:
-                <img src="foto.jpg" alt="Clarice Nunes" />
-                Coloque a foto no mesmo repositório do site.
-              -->
-              <div class="photo-placeholder">
-                <span class="ph-icon">🧑‍💻</span>
-                <p>Sua foto aqui</p>
-              </div>
+              <img src="fotos/clarice.jpg" alt="Clarice Nunes" />
             </div>
 
-            <!-- Badge CEUB -->
             <div class="badge-float badge-ceub">
               <span class="bf-icon">🎓</span>
               <div>
@@ -421,12 +346,11 @@
               </div>
             </div>
 
-            <!-- Badge Bolt -->
             <div class="badge-float badge-bolt">
-              <span class="bf-icon">🐶</span>
+              <span class="bf-icon">🐾</span>
               <div>
-                <strong>Criadora do AdotaDF</strong>
-                <span class="label">em memória do Bolt e da Max</span>
+                <strong>Criadora do PatasDF</strong>
+                <span class="label">em memória do Bolt & Max</span>
               </div>
             </div>
           </div>
@@ -448,7 +372,7 @@
           <div class="info-chips reveal">
             <span class="chip teal">📍 Brasília, DF</span>
             <span class="chip teal">💻 Engenharia de Software</span>
-            <span class="chip amber">🐾 Criadora do AdotaDF</span>
+            <span class="chip amber">🐾 Criadora do PatasDF</span>
             <span class="chip">🤝 Voluntariado</span>
           </div>
 
@@ -477,10 +401,10 @@
       <div class="two-col">
         <div>
           <span class="section-eyebrow reveal">A motivação</span>
-          <h2 class="section-heading reveal">Por que criei o AdotaDF</h2>
+          <h2 class="section-heading reveal">Por que criei o PatasDF</h2>
 
           <div class="pullquote reveal">
-            <p>"Criei o AdotaDF porque sempre gostei muito de animais e queria usar a tecnologia para gerar algum impacto social."</p>
+            <p>"Criei o PatasDF porque sempre gostei muito de animais e queria usar a tecnologia para gerar algum impacto social."</p>
             <cite>— Clarice Nunes</cite>
           </div>
 
@@ -492,7 +416,7 @@
           <p class="body-text reveal">
             Então pensei em criar algo simples que pudesse conectar essas duas coisas — sem
             burocracia, sem custo, e que qualquer pessoa pudesse usar pelo celular.
-            O AdotaDF nasceu dessa ideia.
+            O PatasDF nasceu dessa ideia.
           </p>
         </div>
 
@@ -511,13 +435,13 @@
               <div class="tl-dot"></div>
               <span class="tl-label">A virada</span>
               <h4>A perda da Max</h4>
-              <p>A partida recente da minha cachorra Max me tocou mesmo com a distância e me motivou ainda mais a criar algo que honrasse o amor que ela e o Bolt, que faleceu a dois anos, me ensinaram.</p>
+              <p>A partida recente da minha cachorra Max me tocou mesmo com a distância e me motivou ainda mais a criar algo que honrasse o amor que ela e o Bolt me ensinaram.</p>
             </div>
             <div class="tl-item">
               <div class="tl-dot"></div>
               <span class="tl-label">A solução</span>
               <h4>Tecnologia + impacto social</h4>
-              <p>Juntei meus conhecimentos em Engenharia de Software com a causa que me move. O AdotaDF nasceu como projeto pessoal com objetivo de mudar a realidade de muitos animais.</p>
+              <p>Juntei meus conhecimentos em Engenharia de Software com a causa que me move. O PatasDF nasceu como projeto pessoal com objetivo de mudar a realidade de muitos animais.</p>
             </div>
             <div class="tl-item">
               <div class="tl-dot"></div>
@@ -543,8 +467,10 @@
       <div class="two-col reveal">
         <div class="pet-cards">
 
-          <div class="pet-card">
-            <div class="pet-emoji">🐶</div>
+          <div class="pet-card memorial">
+            <div class="pet-emoji" style="padding:0; overflow:hidden; width:80px; height:80px; border-radius:var(--radius-md); flex-shrink:0;">
+              <img src="fotos/bolt.jpg" alt="Bolt" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
+            </div>
             <div class="pet-info">
               <p class="pet-meta">Vira-lata · Médio porte · In memoriam 🌿</p>
               <h4>Bolt</h4>
@@ -556,7 +482,9 @@
           </div>
 
           <div class="pet-card memorial">
-            <div class="pet-emoji">🐕</div>
+            <div class="pet-emoji" style="padding:0; overflow:hidden; width:80px; height:80px; border-radius:var(--radius-md); flex-shrink:0;">
+              <img src="fotos/max.jpg" alt="Max" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
+            </div>
             <div class="pet-info">
               <p class="pet-meta">Vira-lata · Médio porte · In memoriam 🌿</p>
               <h4>Max</h4>
@@ -577,15 +505,16 @@
             no pedigree — e que foram tudo.
           </p>
           <p class="body-text" style="margin-top:1rem;">
-            Quando a Bolt partiu fazia poucos meses que estava fora do Brasil e foi quando Max sentiu minha dor. 
-            Era como se a Max soubesse o que acontecer e agora com sua partida surge também uma vontade grande de
-            fazer algo. Não deixar que a dor ficasse parada. O AdotaDF é uma forma de honrar os dois — e de ajudar
-            outros animais a encontrarem famílias que os amem tanto quanto eu amei os meus.
+            Quando o Bolt partiu fazia poucos meses que estava fora do Brasil e foi quando a Max
+            sentiu minha dor. Era como se ela soubesse o que aconteceu. E agora com sua partida surge
+            também uma vontade grande de fazer algo. Não deixar que a dor ficasse parada. O PatasDF é
+            uma forma de honrar os dois — e de ajudar outros animais a encontrarem famílias que os amem
+            tanto quanto eu amei os meus.
           </p>
 
           <div style="margin-top:2rem; padding:1.5rem; background:var(--amber-light); border-radius:var(--radius-lg); border:1px solid rgba(239,159,39,.2);">
             <p style="font-size:14px; color:var(--amber-dark); font-weight:500; margin-bottom:.5rem;">
-              🌿 Em memória do Bolt & da Max
+              🌿 Em memória do Bolt &amp; da Max
             </p>
             <p style="font-size:13px; color:var(--text-muted); font-weight:300; line-height:1.7;">
               "Obrigada por me ensinar que amor de cachorro é incondicional. Vocês viraram um projeto que pode ajudar muitos animais."
@@ -596,7 +525,7 @@
     </div>
   </section>
 
-  <!-- SOBRE O PROJETO DE EXTENSÃO -->
+  <!-- SOBRE O PROJETO -->
   <section class="content-section">
     <div class="container">
       <div class="two-col reverse">
@@ -605,7 +534,7 @@
           <h2 class="section-heading reveal">Tecnologia a serviço da comunidade</h2>
 
           <p class="body-text reveal">
-            O AdotaDF é desenvolvido como projeto de pessoal durante o meu curso de
+            O PatasDF é desenvolvido como projeto pessoal durante o meu curso de
             <strong>Engenharia de Software no CEUB</strong>, conectando o aprendizado
             técnico da faculdade com um problema real da comunidade do Distrito Federal.
           </p>
@@ -632,10 +561,10 @@
 
         <div>
           <span class="section-eyebrow reveal">Tecnologias</span>
-          <h2 class="section-heading reveal" style="font-size:1.6rem;">O que aprendi construindo o AdotaDF</h2>
+          <h2 class="section-heading reveal" style="font-size:1.6rem;">O que aprendi construindo o PatasDF</h2>
 
           <div class="skills-grid reveal">
-            <div class="skill-chip">HTML & CSS</div>
+            <div class="skill-chip">HTML &amp; CSS</div>
             <div class="skill-chip">JavaScript</div>
             <div class="skill-chip">GitHub Pages</div>
             <div class="skill-chip">Google Forms</div>
@@ -662,10 +591,10 @@
     <h2>Vamos conversar?</h2>
     <p>
       Tem alguma sugestão para o projeto, quer colaborar ou quer dizer oi?
-      Entra em contato comigo!!
+      Entra em contato comigo!
     </p>
     <div class="contact-cta-links">
-      <a href="https://instagram.com/in/claricesnunes" target="_blank" rel="noopener" class="btn-contact primary">
+      <a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener" class="btn-contact primary">
         📸 Instagram
       </a>
       <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener" class="btn-contact primary">
@@ -675,7 +604,7 @@
         🐙 GitHub
       </a>
       <a href="index.html#cadastrar" class="btn-contact ghost">
-        🐾 Usar o AdotaDF
+        🐾 Usar o PatasDF
       </a>
     </div>
   </div>
@@ -684,7 +613,7 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="index.html" class="logo">🐾 AdotaDF</a>
+        <a href="index.html" class="logo">🐾 PatasDF</a>
         <p>Plataforma gratuita e comunitária para conectar animais abandonados do DF com famílias amorosas.</p>
       </div>
       <div class="footer-links">
@@ -707,13 +636,12 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 AdotaDF · Engenharia de Software</span>
+      <span>© 2025 PatasDF · Engenharia de Software</span>
       <span>Feito com 🐾 por Clarice Nunes</span>
     </div>
   </footer>
 
   <script>
-    /* Reveal on scroll */
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
@@ -724,7 +652,6 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    /* Nav mobile */
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('open');
     }

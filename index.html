@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AdotaDF — Rede de Adoção de Animais do Distrito Federal</title>
+  <title>PatasDF — Rede de Adoção de Animais do Distrito Federal</title>
   <meta name="description" content="Plataforma gratuita que conecta animais abandonados do DF com famílias que querem adotar. Cadastre animais, veja o mapa e encontre seu novo melhor amigo." />
-  <meta property="og:title" content="AdotaDF — Adoção de Animais no DF" />
+  <meta property="og:title" content="PatasDF — Adoção de Animais no DF" />
   <meta property="og:description" content="Conectamos animais abandonados do Distrito Federal com famílias amorosas. Grátis, simples e comunitário." />
   <meta property="og:type" content="website" />
 
@@ -64,6 +64,9 @@
       overflow-x: hidden;
     }
 
+    /* ===========================
+       UTILITÁRIOS
+    =========================== */
     .container {
       max-width: 1100px;
       margin: 0 auto;
@@ -149,7 +152,9 @@
       box-shadow: 0 8px 24px rgba(239,159,39,0.35);
     }
 
-    /* NAVBAR */
+    /* ===========================
+       NAVBAR
+    =========================== */
     .navbar {
       position: sticky;
       top: 0;
@@ -211,7 +216,7 @@
       transform: scale(1.03);
     }
 
-    /* Hamburger for mobile */
+    /* Hamburger (mobile) */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -228,7 +233,9 @@
       transition: all 0.3s;
     }
 
-    /* HERO*/
+    /* ===========================
+       HERO
+    =========================== */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -251,7 +258,7 @@
         radial-gradient(ellipse 40% 40% at 50% 50%, rgba(29,158,117,0.04) 0%, transparent 60%);
     }
 
-    /* Patas de fundo */
+    /* Patas decorativas de fundo */
     .hero-paw {
       position: absolute;
       font-size: 8rem;
@@ -334,10 +341,6 @@
     }
 
     .hero-scroll {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -345,6 +348,7 @@
       color: var(--text-light);
       font-size: 12px;
       z-index: 1;
+      margin-top: 3rem;
       animation: fadeUp 1s 0.8s ease both;
     }
     .scroll-line {
@@ -354,7 +358,9 @@
       animation: scrollPulse 2s ease-in-out infinite;
     }
 
-    /*  STATS BAR*/
+    /* ===========================
+       STATS BAR
+    =========================== */
     .stats-bar {
       background: var(--teal-deep);
       display: flex;
@@ -385,7 +391,9 @@
       margin-top: 4px;
     }
 
-    /* COMO FUNCIONA */
+    /* ===========================
+       COMO FUNCIONA
+    =========================== */
     .section-pad {
       padding: 6rem 0;
     }
@@ -444,7 +452,9 @@
       font-weight: 300;
     }
 
-    /* ANIMAIS */
+    /* ===========================
+       ANIMAIS
+    =========================== */
     .animals-section {
       background: var(--bg-warm);
       padding: 6rem 0;
@@ -611,7 +621,9 @@
       display: none;
     }
 
-    /* MAPA */
+    /* ===========================
+       MAPA
+    =========================== */
     .map-section { padding: 6rem 0; }
 
     .map-wrapper {
@@ -643,7 +655,7 @@
       overflow: hidden;
     }
 
-    /* Pontos no placeholder */
+    /* Pontos animados no placeholder */
     .map-dot {
       position: absolute;
       width: 38px;
@@ -687,7 +699,9 @@
       margin-top: 0.5rem;
     }
 
-    /* COMO AJUDAR */
+    /* ===========================
+       COMO AJUDAR
+    =========================== */
     .help-section {
       background: var(--bg-warm);
       padding: 6rem 0;
@@ -746,7 +760,9 @@
     .help-card.divulgar .btn { background: var(--coral); color: #fff; }
     .help-card.divulgar .btn:hover { background: #993C1D; }
 
-    /* FORM CADASTRO*/
+    /* ===========================
+       FORMULÁRIO / CADASTRO
+    =========================== */
     .form-section { padding: 6rem 0; }
 
     .form-layout {
@@ -885,7 +901,9 @@
       font-weight: 300;
     }
 
-    /* FORM ADOÇÃO / LAR TEMP*/
+    /* ===========================
+       FORMULÁRIOS ADOÇÃO / LAR TEMP
+    =========================== */
     .interest-section {
       background: var(--bg-warm);
       padding: 6rem 0;
@@ -1052,7 +1070,9 @@
       .radio-grid { grid-template-columns: 1fr; }
     }
 
-    /* SELETOR DE ANIMAL (adoção/lar temp)*/
+    /* ===========================
+       SELETOR DE ANIMAL (adoção/lar temp)
+    =========================== */
     .animal-choice-toggle {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1132,7 +1152,163 @@
       opacity: 1;
     }
 
-    /* CTA SECTION */
+    /* ===========================
+       SOBRE A CRIADORA (inline)
+    =========================== */
+    .criadora-section {
+      padding: 6rem 0;
+      background: var(--bg);
+    }
+
+    .criadora-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .criadora-photo-col {
+      display: flex;
+      justify-content: center;
+    }
+
+    .criadora-frame {
+      position: relative;
+      width: 300px;
+    }
+
+    .criadora-circle {
+      width: 300px; height: 300px;
+      border-radius: 50% 50% 50% 38%;
+      background: var(--teal-light);
+      border: 3px solid var(--teal-mid);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .criadora-ph {
+      display: flex; flex-direction: column;
+      align-items: center; gap: .4rem;
+      color: var(--teal-dark);
+    }
+    .criadora-ph .ph-icon { font-size: 4.5rem; }
+    .criadora-ph p { font-size: 11px; opacity: .6; text-align: center; max-width: 120px; }
+
+    .criadora-badge {
+      position: absolute;
+      background: var(--bg-card);
+      border: 1px solid var(--border-md);
+      border-radius: var(--radius-md);
+      padding: .65rem .9rem;
+      box-shadow: var(--shadow-md);
+      font-size: 12px; font-weight: 500;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .criadora-badge .bi { font-size: 1.2rem; }
+    .criadora-badge.b1 { bottom: 1.5rem; right: -1.25rem; }
+    .criadora-badge.b2 { top: 1.5rem; left: -1.25rem; }
+    .criadora-badge .bl { display: block; font-size: 10px; color: var(--text-muted); font-weight: 400; margin-top: 1px; }
+
+    .criadora-text {}
+    .criadora-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      font-weight: 700; line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .criadora-text h2 .hl { color: var(--teal); }
+
+    .criadora-chips {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .criadora-chip {
+      background: var(--bg-warm); border: 1px solid var(--border-md);
+      border-radius: 30px; padding: 5px 13px;
+      font-size: 12px; color: var(--text-muted);
+    }
+    .criadora-chip.teal { background: var(--teal-light); color: var(--teal-dark); border-color: rgba(29,158,117,.2); }
+
+    .criadora-quote {
+      border-left: 3px solid var(--teal);
+      padding: 1.1rem 1.4rem;
+      background: var(--teal-light);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-bottom: 1.4rem;
+    }
+    .criadora-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-style: italic;
+      line-height: 1.6; color: var(--teal-deep);
+    }
+
+    .criadora-text .bio {
+      font-size: .97rem; color: var(--text-muted);
+      line-height: 1.85; font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .criadora-social {
+      display: flex; gap: 9px; flex-wrap: wrap;
+      margin-top: 1.75rem;
+    }
+    .criadora-social a {
+      display: inline-flex; align-items: center; gap: 7px;
+      border: 1.5px solid var(--border-md); border-radius: 30px;
+      padding: 8px 16px; font-size: 13px; font-weight: 500;
+      text-decoration: none; color: var(--text);
+      background: var(--bg-card); transition: all .22s;
+    }
+    .criadora-social a:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+
+    .criadora-more {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 1.5rem;
+      font-size: 14px; color: var(--teal); font-weight: 500;
+      text-decoration: none; transition: gap .2s;
+    }
+    .criadora-more:hover { gap: 12px; }
+
+    /* hero animals strip */
+    .hero-animais-strip {
+      background: var(--bg-warm);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.4rem 0;
+      overflow: hidden;
+    }
+    .strip-inner {
+      display: flex; align-items: center;
+      gap: 1.25rem;
+      animation: stripScroll 28s linear infinite;
+      width: max-content;
+    }
+    @keyframes stripScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .strip-item {
+      display: flex; align-items: center; gap: 9px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: .6rem 1.1rem;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .strip-item .si-emoji { font-size: 1.5rem; }
+    .strip-item .si-name { font-size: 13px; font-weight: 500; color: var(--text); }
+    .strip-item .si-info { font-size: 11px; color: var(--text-muted); }
+
+    @media (max-width: 768px) {
+      .criadora-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .criadora-photo-col { order: -1; }
+      .criadora-frame { width: 240px; }
+      .criadora-circle { width: 240px; height: 240px; }
+      .criadora-badge.b1 { right: 0; }
+      .criadora-badge.b2 { left: 0; }
+    }
+
+    /* ===========================
+       CTA SECTION
+    =========================== */
     .cta-section {
       background: var(--teal-deep);
       color: #fff;
@@ -1157,7 +1333,9 @@
       font-weight: 300;
     }
 
-    /* FOOTER*/
+    /* ===========================
+       FOOTER
+    =========================== */
     footer {
       background: var(--text);
       color: rgba(255,255,255,0.55);
@@ -1227,7 +1405,9 @@
       text-decoration: none;
     }
 
-    /* ANIMAÇÕES*/
+    /* ===========================
+       ANIMAÇÕES
+    =========================== */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -1259,7 +1439,9 @@
       transform: translateY(0);
     }
 
-    /* RESPONSIVO*/
+    /* ===========================
+       RESPONSIVO
+    =========================== */
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -1298,10 +1480,12 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
+  <!-- ========================
+       NAVBAR
+  ======================== -->
   <nav class="navbar">
     <div class="container">
-      <a href="#" class="logo">🐾 AdotaDF</a>
+      <a href="#" class="logo">🐾 PatasDF</a>
 
       <!-- Mobile hamburger -->
       <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -1310,16 +1494,18 @@
 
       <ul class="nav-links" id="navLinks">
         <li><a href="#como-funciona">Como funciona</a></li>
-        <li><a href="#animais">Animais</a></li>
+        <li><a href="animais.html">Animais</a></li>
         <li><a href="#mapa">Mapa</a></li>
         <li><a href="#ajudar">Como ajudar</a></li>
-        <li><a href="#quero-ajudar">Adotar / Lar temp</a></li>
+        <li><a href="#sobre-criadora">Sobre</a></li>
         <li><a href="#cadastrar" class="nav-cta">Cadastrar animal</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- HERO-->
+  <!-- ========================
+       HERO
+  ======================== -->
   <section class="hero">
     <div class="hero-glow"></div>
     <!-- Patas decorativas -->
@@ -1348,7 +1534,33 @@
     </div>
   </section>
 
-  <!-- STATS BAR-->
+  <!-- ========================
+       STRIP DE ANIMAIS
+  ======================== -->
+  <div class="hero-animais-strip" id="animais-strip">
+    <div class="strip-inner" id="stripInner">
+      <!-- preenchido pelo JS com os animais do JSON -->
+      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Bolinha</div><div class="si-info">Cachorro · Asa Sul</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mimi</div><div class="si-info">Gato · Taguatinga</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Thor</div><div class="si-info">Cachorro · Ceilândia</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mingau</div><div class="si-info">Gato · Guará</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Pipoca</div><div class="si-info">Cachorro · Sobradinho</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Nala</div><div class="si-info">Gato · Samambaia</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🐾</span><div><div class="si-name">Novos animais todo dia</div><div class="si-info">Cadastre o seu também →</div></div></div>
+      <!-- duplicado para loop infinito -->
+      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Bolinha</div><div class="si-info">Cachorro · Asa Sul</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mimi</div><div class="si-info">Gato · Taguatinga</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Thor</div><div class="si-info">Cachorro · Ceilândia</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mingau</div><div class="si-info">Gato · Guará</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Pipoca</div><div class="si-info">Cachorro · Sobradinho</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Nala</div><div class="si-info">Gato · Samambaia</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🐾</span><div><div class="si-name">Novos animais todo dia</div><div class="si-info">Cadastre o seu também →</div></div></div>
+    </div>
+  </div>
+
+  <!-- ========================
+       STATS BAR
+  ======================== -->
   <div class="stats-bar">
     <div class="stat-item">
       <div class="stat-num">100%</div>
@@ -1368,7 +1580,9 @@
     </div>
   </div>
 
-  <!-- COMO FUNCIONA-->
+  <!-- ========================
+       COMO FUNCIONA
+  ======================== -->
   <section class="section-pad" id="como-funciona">
     <div class="container">
       <span class="section-label reveal">Como funciona</span>
@@ -1384,7 +1598,7 @@
         <div class="step-card reveal">
           <div class="step-num">02</div>
           <h3>Acesso o site</h3>
-          <p>Abre o AdotaDF em qualquer celular, sem precisar criar conta ou instalar nada.</p>
+          <p>Abre o PatasDF em qualquer celular, sem precisar criar conta ou instalar nada.</p>
         </div>
         <div class="step-card reveal">
           <div class="step-num">03</div>
@@ -1405,7 +1619,9 @@
     </div>
   </section>
 
-  <!-- ANIMAIS DISPONÍVEIS -->
+  <!-- ========================
+       ANIMAIS DISPONÍVEIS
+  ======================== -->
   <section class="animals-section" id="animais">
     <div class="container">
       <div class="animals-header">
@@ -1420,151 +1636,37 @@
         </div>
       </div>
 
-      <div class="animals-grid" id="animalsGrid">
+      <!-- Carregando -->
+      <div id="animaisLoading" style="text-align:center; padding:3rem; color:var(--text-muted); grid-column:1/-1;">
+        <div style="font-size:2.5rem; margin-bottom:0.75rem;">🐾</div>
+        <p>Carregando animais disponíveis...</p>
+      </div>
 
-        <!-- Animal 1 -->
-        <div class="animal-card reveal" data-tipo="cachorro">
-          <div class="animal-img" style="background: #FFF3E0;">
-            🐶
-            <div class="animal-tag">Cachorro</div>
-            <div class="animal-status">Disponível</div>
-          </div>
-          <div class="animal-body">
-            <div class="animal-name">Bolinha</div>
-            <div class="animal-meta">
-              <span class="pill">~2 anos</span>
-              <span class="pill">Asa Sul</span>
-              <span class="pill">Médio porte</span>
-            </div>
-            <p class="animal-desc">Muito carinhoso, brinca com crianças e já é castrado. Encontrado próximo à Quadra 904 Sul.</p>
-            <div class="animal-footer">
-              <span class="contact-info">📱 (61) 9xxxx-xxxx</span>
-              <button class="btn-adotar" onclick="entrarContato('Bolinha')">Quero adotar</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Animal 2 -->
-        <div class="animal-card reveal" data-tipo="gato">
-          <div class="animal-img" style="background: #F3E5F5;">
-            🐱
-            <div class="animal-tag">Gato</div>
-            <div class="animal-status">Disponível</div>
-          </div>
-          <div class="animal-body">
-            <div class="animal-name">Mimi</div>
-            <div class="animal-meta">
-              <span class="pill">~8 meses</span>
-              <span class="pill">Taguatinga</span>
-              <span class="pill">Filhote</span>
-            </div>
-            <p class="animal-desc">Gatinha dócil, vacinada e sociável. Se dá muito bem com outros gatos. Precisa de um lar amoroso.</p>
-            <div class="animal-footer">
-              <span class="contact-info">📱 (61) 9xxxx-xxxx</span>
-              <button class="btn-adotar" onclick="entrarContato('Mimi')">Quero adotar</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Animal 3 -->
-        <div class="animal-card reveal" data-tipo="cachorro">
-          <div class="animal-img" style="background: #E8F5E9;">
-            🐶
-            <div class="animal-tag">Cachorro</div>
-            <div class="animal-status">Disponível</div>
-          </div>
-          <div class="animal-body">
-            <div class="animal-name">Thor</div>
-            <div class="animal-meta">
-              <span class="pill">~4 anos</span>
-              <span class="pill">Ceilândia</span>
-              <span class="pill">Grande porte</span>
-            </div>
-            <p class="animal-desc">Cão tranquilo, gosta de caminhadas longas. Ideal para quem tem espaço. Está em lar temporário.</p>
-            <div class="animal-footer">
-              <span class="contact-info">📱 (61) 9xxxx-xxxx</span>
-              <button class="btn-adotar" onclick="entrarContato('Thor')">Quero adotar</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Animal 4 -->
-        <div class="animal-card reveal" data-tipo="gato">
-          <div class="animal-img" style="background: #E3F2FD;">
-            🐱
-            <div class="animal-tag">Gato</div>
-            <div class="animal-status">Disponível</div>
-          </div>
-          <div class="animal-body">
-            <div class="animal-name">Mingau</div>
-            <div class="animal-meta">
-              <span class="pill">~3 anos</span>
-              <span class="pill">Guará</span>
-              <span class="pill">Adulto</span>
-            </div>
-            <p class="animal-desc">Gato independente mas muito carinhoso com quem ganha confiança. Castrado e vacinado em dia.</p>
-            <div class="animal-footer">
-              <span class="contact-info">📱 (61) 9xxxx-xxxx</span>
-              <button class="btn-adotar" onclick="entrarContato('Mingau')">Quero adotar</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Animal 5 -->
-        <div class="animal-card reveal" data-tipo="cachorro">
-          <div class="animal-img" style="background: #FFF8E1;">
-            🐶
-            <div class="animal-tag">Cachorro</div>
-            <div class="animal-status">Disponível</div>
-          </div>
-          <div class="animal-body">
-            <div class="animal-name">Pipoca</div>
-            <div class="animal-meta">
-              <span class="pill">~1 ano</span>
-              <span class="pill">Sobradinho</span>
-              <span class="pill">Pequeno porte</span>
-            </div>
-            <p class="animal-desc">Filhote linda, muito brincalhona e energética. Adora crianças e se dá bem com outros animais.</p>
-            <div class="animal-footer">
-              <span class="contact-info">📱 (61) 9xxxx-xxxx</span>
-              <button class="btn-adotar" onclick="entrarContato('Pipoca')">Quero adotar</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Animal 6 -->
-        <div class="animal-card reveal" data-tipo="gato">
-          <div class="animal-img" style="background: #FCE4EC;">
-            🐱
-            <div class="animal-tag">Gato</div>
-            <div class="animal-status">Disponível</div>
-          </div>
-          <div class="animal-body">
-            <div class="animal-name">Nala</div>
-            <div class="animal-meta">
-              <span class="pill">~6 meses</span>
-              <span class="pill">Samambaia</span>
-              <span class="pill">Filhote</span>
-            </div>
-            <p class="animal-desc">Gatinha curiosa e cheia de energia. Vai se apaixonar por você. Precisa de vacinas e lar amoroso.</p>
-            <div class="animal-footer">
-              <span class="contact-info">📱 (61) 9xxxx-xxxx</span>
-              <button class="btn-adotar" onclick="entrarContato('Nala')">Quero adotar</button>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /animals-grid -->
+      <div class="animals-grid" id="animalsGrid" style="display:none;"></div>
 
       <div class="empty-state" id="emptyState">
         <p style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</p>
         <p>Nenhum animal encontrado com esse filtro.</p>
       </div>
 
+      <div id="animaisErro" style="display:none; text-align:center; padding:3rem;">
+        <p style="font-size:2rem; margin-bottom:0.5rem;">😔</p>
+        <p style="color:var(--text-muted);">Não foi possível carregar os animais agora.</p>
+        <button onclick="carregarAnimais()" style="margin-top:1rem; border:1.5px solid var(--border-md); background:transparent; border-radius:24px; padding:8px 20px; cursor:pointer; font-family:inherit; font-size:14px;">Tentar novamente</button>
+      </div>
+
+      <div id="verMaisArea" style="display:none; text-align:center; margin-top:2.5rem;">
+        <a href="animais.html" style="display:inline-flex; align-items:center; gap:8px; background:transparent; color:var(--teal); border:1.5px solid var(--teal); border-radius:50px; padding:13px 32px; font-size:15px; font-weight:500; font-family:'DM Sans',sans-serif; text-decoration:none; transition:all .22s;">
+          Ver todos os animais →
+        </a>
+      </div>
+
     </div>
   </section>
 
-  <!-- MAPA-->
+  <!-- ========================
+       MAPA
+  ======================== -->
   <section class="map-section" id="mapa">
     <div class="container">
       <span class="section-label reveal">Mapa de adoção</span>
@@ -1607,7 +1709,9 @@
     </div>
   </section>
 
-  <!-- COMO AJUDAR-->
+  <!-- ========================
+       COMO AJUDAR
+  ======================== -->
   <section class="help-section" id="ajudar">
     <div class="container">
       <span class="section-label reveal">Como ajudar</span>
@@ -1639,7 +1743,78 @@
     </div>
   </section>
 
-  <!-- CADASTRO DE ANIMAL-->
+  <!-- ========================
+       SOBRE A CRIADORA
+  ======================== -->
+  <section class="criadora-section" id="sobre-criadora">
+    <div class="container">
+      <div class="criadora-layout">
+
+        <!-- FOTO -->
+        <div class="criadora-photo-col reveal">
+          <div class="criadora-frame">
+            <div class="criadora-circle">
+              <img src="fotos/clarice.jpg" alt="Clarice Nunes" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+            </div>
+
+            <div class="criadora-badge b2">
+              <span class="bi">🎓</span>
+              <div>
+                <strong>CEUB · Eng. de Software</strong>
+                <span class="bl">2º semestre</span>
+              </div>
+            </div>
+
+            <div class="criadora-badge b1">
+              <span class="bi">🐾</span>
+              <div>
+                <strong>Criadora do PatasDF</strong>
+                <span class="bl">em memória do Bolt & Max</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TEXTO -->
+        <div class="criadora-text">
+          <span class="section-label reveal">Quem está por trás</span>
+          <h2 class="reveal">Olá, eu sou a<br><span class="hl">Clarice Nunes</span></h2>
+
+          <div class="criadora-chips reveal">
+            <span class="criadora-chip teal">🏫 CEUB · Brasília</span>
+            <span class="criadora-chip teal">💻 Engenharia de Software</span>
+            <span class="criadora-chip">🤝 Voluntariado</span>
+          </div>
+
+          <div class="criadora-quote reveal">
+            <p>"Queria usar a tecnologia para gerar algum impacto social. Vejo muitos animais precisando de um lar e muitas pessoas querendo adotar — então pensei em criar algo simples que pudesse conectar essas duas coisas."</p>
+          </div>
+
+          <p class="bio reveal">
+            Sempre gostei muito de animais. Tive o Bolt, um vira-lata adotado cheio de energia, e a Max, que me acompanhou durante o meu intercâmbio. A partida recente da Max me tocou e me deu coragem de transformar a dor em ação.
+          </p>
+          <p class="bio reveal">
+            O PatasDF nasceu da vontade de contribuir com a comunidade mesmo com a rotina corrida — juntando tecnologia com uma causa que me move de verdade.
+          </p>
+
+          <div class="criadora-social reveal">
+            <a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener">📸 Instagram</a>
+            <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener">💼 LinkedIn</a>
+            <a href="https://github.com/claricenunes" target="_blank" rel="noopener">🐙 GitHub</a>
+          </div>
+
+          <a href="sobre.html" class="criadora-more reveal">
+            Conheça minha história completa →
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       CADASTRO DE ANIMAL
+  ======================== -->
   <section class="form-section" id="cadastrar">
     <div class="container">
       <span class="section-label reveal">Cadastrar animal</span>
@@ -1754,7 +1929,9 @@
     </div>
   </section>
 
-  <!-- FORMULÁRIOS: ADOTAR / LAR TEMP-->
+  <!-- ========================
+       FORMULÁRIOS: ADOTAR / LAR TEMP
+  ======================== -->
   <section class="interest-section" id="quero-ajudar">
     <div class="container">
       <span class="section-label reveal">Quero ajudar</span>
@@ -1791,7 +1968,7 @@
               </p>
 
               <div class="info-highlight teal">
-                <p>🐾 A adoção no AdotaDF é sempre <strong>gratuita</strong>. Nunca pague por um animal!</p>
+                <p>🐾 A adoção no PatasDF é sempre <strong>gratuita</strong>. Nunca pague por um animal!</p>
               </div>
 
               <p>O que esperamos de um adotante responsável:</p>
@@ -1976,7 +2153,7 @@
                 <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Alimentação e cuidados básicos</li>
                 <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Acompanhamento veterinário (apoio da ONG)</li>
                 <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Ajudar a divulgar o animal para adoção</li>
-                <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Suporte da rede AdotaDF durante todo o período</li>
+                <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Suporte da rede PatasDF durante todo o período</li>
               </ul>
             </div>
 
@@ -2161,7 +2338,7 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="#" class="logo">🐾 AdotaDF</a>
+        <a href="#" class="logo">🐾 PatasDF</a>
         <p>
           Plataforma gratuita e comunitária para conectar animais abandonados do Distrito Federal com famílias amorosas.
         </p>
@@ -2171,7 +2348,7 @@
         <h4>Navegação</h4>
         <ul>
           <li><a href="#como-funciona">Como funciona</a></li>
-          <li><a href="#animais">Animais disponíveis</a></li>
+          <li><a href="animais.html">Animais disponíveis</a></li>
           <li><a href="#mapa">Mapa do DF</a></li>
           <li><a href="#ajudar">Como ajudar</a></li>
           <li><a href="#cadastrar">Cadastrar animal</a></li>
@@ -2181,17 +2358,17 @@
       <div class="footer-links">
         <h4>Projeto</h4>
         <ul>
-          <li><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Google Forms</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Planilha de dados</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Google My Maps</a></li>
+          <li><a href="sobre.html">Sobre a criadora</a></li>
+          <li><a href="https://github.com/claricenunes" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener">Instagram</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <span>© 2025 AdotaDF · Projeto de extensão universitária · Distrito Federal</span>
-      <span>Feito com 🐾 e código por estudantes de tecnologia</span>
+      <span>© 2025 PatasDF · Projeto de extensão · CEUB · Engenharia de Software</span>
+      <span>Feito com 🐾 por <a href="sobre.html">Clarice Nunes</a></span>
     </div>
   </footer>
 
@@ -2228,77 +2405,53 @@
 
     /* ---------- Filtro de animais ---------- */
     function filterAnimals(tipo, btn) {
-      // Atualiza botão ativo
       document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
-
-      const cards = document.querySelectorAll('.animal-card');
-      let visible = 0;
-
-      cards.forEach(card => {
-        if (tipo === 'todos' || card.dataset.tipo === tipo) {
-          card.style.display = '';
-          visible++;
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      document.getElementById('emptyState').style.display = visible === 0 ? 'block' : 'none';
+      filtroAtual = tipo;
+      renderizarCards(tipo);
     }
 
     /* ---------- Botão quero adotar ---------- */
-    function entrarContato(nome) {
-      const msg = encodeURIComponent(`Olá! Vi o animal "${nome}" no AdotaDF e tenho interesse em adotar. Podemos conversar?`);
-      // Substitua pelo número do responsável ou abra o WhatsApp
-      // window.open('https://wa.me/5561900000000?text=' + msg, '_blank');
-      alert(`💚 Ótimo! Entre em contato com o responsável pelo número exibido no card do(a) ${nome}.`);
-    }
-
-    /* ---------- Formulário de cadastro ---------- */
-    function submitForm() {
-      const nome    = document.getElementById('animalNome').value.trim();
-      const tipo    = document.getElementById('animalTipo').value;
-      const idade   = document.getElementById('animalIdade').value;
-      const cidade  = document.getElementById('animalCidade').value.trim();
-      const desc    = document.getElementById('animalDesc').value.trim();
-      const contato = document.getElementById('animalContato').value.trim();
-
-      if (!nome || !tipo || !idade || !cidade || !desc || !contato) {
-        alert('Por favor, preencha todos os campos obrigatórios (*).');
-        return;
+    function entrarContato(nome, contato) {
+      if (contato && contato !== '(61) 9xxxx-xxxx') {
+        const num = contato.replace(/\D/g, '');
+        const msg = encodeURIComponent(`Olá! Vi o(a) ${nome} no PatasDF e tenho interesse em adotar. Podemos conversar?`);
+        window.open(`https://wa.me/55${num}?text=${msg}`, '_blank');
+      } else {
+        alert(`💚 Entre em contato com o responsável pelo número exibido no card do(a) ${nome}.`);
       }
-
-      /*
-       * ✅ INTEGRAÇÃO COM GOOGLE FORMS:
-       * 1. Crie um Google Form com os mesmos campos
-       * 2. Inspecione o form e copie os "entry.XXXXXXXX" de cada campo
-       * 3. Substitua a linha abaixo com a URL do seu form:
-       *
-       * const FORM_URL = 'https://docs.google.com/forms/d/e/SEU_FORM_ID/formResponse';
-       * const params = new URLSearchParams({
-       *   'entry.111111': nome,
-       *   'entry.222222': tipo,
-       *   'entry.333333': idade,
-       *   'entry.444444': cidade,
-       *   'entry.555555': desc,
-       *   'entry.666666': contato,
-       * });
-       * fetch(FORM_URL + '?' + params, { method: 'POST', mode: 'no-cors' });
-       */
-
-      // Por enquanto: exibe mensagem de sucesso
-      document.getElementById('formContent').style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
     }
 
-    function resetForm() {
-      document.getElementById('formContent').style.display = '';
-      document.getElementById('formSuccess').style.display = 'none';
-      ['animalNome','animalTipo','animalIdade','animalPorte','animalCidade','animalDesc','animalContato','animalFoto']
-        .forEach(id => { document.getElementById(id).value = ''; });
-    }
 
+    /* ---------- Formulário de cadastro ---------- */function submitForm() {
+  const nome    = document.getElementById('animalNome').value.trim();
+  const tipo    = document.getElementById('animalTipo').value;
+  const idade   = document.getElementById('animalIdade').value;
+  const porte   = document.getElementById('animalPorte').value;
+  const cidade  = document.getElementById('animalCidade').value.trim();
+  const desc    = document.getElementById('animalDesc').value.trim();
+  const contato = document.getElementById('animalContato').value.trim();
+  const fotoUrl = document.getElementById('animalFoto').value.trim();
+
+  if (!nome || !tipo || !idade || !cidade || !desc || !contato) {
+    alert('Por favor, preencha todos os campos obrigatórios (*).');
+    return;
+  }
+
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxVU70gQezUICo29HL3c44In6U3AhAHLvo6DOX1onuBkQXdG-JIP17ucuvauq_LxxC-/exec';
+
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify({ nome, tipo, idade, porte, cidade, desc, contato, fotoUrl })
+  })
+  .then(() => {
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  })
+  .catch(() => {
+    alert('Erro ao enviar. Tente novamente.');
+  });
+}
     /* ---------- Abas: Adotar / Lar temporário ---------- */
     function openTab(tab) {
       const isAdopt = tab === 'adopt';
@@ -2308,33 +2461,154 @@
       document.getElementById('panelTemp').classList.toggle('active', !isAdopt);
     }
 
-    /* ---------- Dados dos animais disponíveis ---------- */
-    const ANIMALS = [
-      { id: 'bolinha', nome: 'Bolinha',  tipo: 'cachorro', info: 'Cachorro · ~2 anos · Asa Sul',   emoji: '🐶' },
-      { id: 'mimi',    nome: 'Mimi',     tipo: 'gato',     info: 'Gato · ~8 meses · Taguatinga',  emoji: '🐱' },
-      { id: 'thor',    nome: 'Thor',     tipo: 'cachorro', info: 'Cachorro · ~4 anos · Ceilândia', emoji: '🐶' },
-      { id: 'mingau',  nome: 'Mingau',   tipo: 'gato',     info: 'Gato · ~3 anos · Guará',         emoji: '🐱' },
-      { id: 'pipoca',  nome: 'Pipoca',   tipo: 'cachorro', info: 'Cachorro · ~1 ano · Sobradinho', emoji: '🐶' },
-      { id: 'nala',    nome: 'Nala',     tipo: 'gato',     info: 'Gato · ~6 meses · Samambaia',   emoji: '🐱' },
-    ];
+    /* ==============================================
+       FONTE DE DADOS — animais.json do GitHub
+       ✅ SUBSTITUA PELA URL DO SEU animais.json:
+    =============================================== */
+    const ANIMALS_URL = 'animais.json';
+    // Exemplo após publicar no GitHub Pages:
+    // const ANIMALS_URL = 'https://raw.githubusercontent.com/SEU_USUARIO/patasdf/main/animais.json';
+
+    /* Estado global dos animais */
+    let ANIMALS = [];
+    let filtroAtual = 'todos';
+
+    /* ---------- Carrega animais do JSON ---------- */
+    async function carregarAnimais() {
+      const loading = document.getElementById('animaisLoading');
+      const grid    = document.getElementById('animalsGrid');
+      const erro    = document.getElementById('animaisErro');
+
+      loading.style.display = 'block';
+      grid.style.display    = 'none';
+      erro.style.display    = 'none';
+
+      try {
+        const resp = await fetch(ANIMALS_URL + '?t=' + Date.now());
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        const dados = await resp.json();
+
+        // Só mostra disponíveis
+        ANIMALS = dados.filter(a => !a.status || a.status === 'disponivel');
+
+        loading.style.display = 'none';
+        grid.style.display    = '';
+        renderizarCards(filtroAtual);
+        if (ANIMALS.length > 0) document.getElementById('verMaisArea').style.display = '';
+
+      } catch (e) {
+        console.warn('Não carregou animais.json, usando dados de exemplo.', e);
+        // Fallback: dados de exemplo enquanto o JSON não está configurado
+        ANIMALS = [
+          { id:'ex1', nome:'Bolinha',  tipo:'cachorro', idade:'~2 anos',  porte:'Médio',   cidade:'Asa Sul',    descricao:'Muito carinhoso, brinca com crianças e já é castrado.',      contato:'(61) 9xxxx-xxxx' },
+          { id:'ex2', nome:'Mimi',     tipo:'gato',     idade:'~8 meses', porte:'Pequeno', cidade:'Taguatinga', descricao:'Gatinha dócil, vacinada e sociável com outros gatos.',         contato:'(61) 9xxxx-xxxx' },
+          { id:'ex3', nome:'Thor',     tipo:'cachorro', idade:'~4 anos',  porte:'Grande',  cidade:'Ceilândia',  descricao:'Cão tranquilo, gosta de caminhadas longas.',                  contato:'(61) 9xxxx-xxxx' },
+          { id:'ex4', nome:'Mingau',   tipo:'gato',     idade:'~3 anos',  porte:'Médio',   cidade:'Guará',      descricao:'Independente mas carinhoso. Castrado e vacinado em dia.',     contato:'(61) 9xxxx-xxxx' },
+          { id:'ex5', nome:'Pipoca',   tipo:'cachorro', idade:'~1 ano',   porte:'Pequeno', cidade:'Sobradinho', descricao:'Brincalhona e energética. Adora crianças.',                   contato:'(61) 9xxxx-xxxx' },
+          { id:'ex6', nome:'Nala',     tipo:'gato',     idade:'~6 meses', porte:'Pequeno', cidade:'Samambaia',  descricao:'Curiosa e cheia de energia. Precisa de vacinas e amor.',      contato:'(61) 9xxxx-xxxx' },
+        ];
+        loading.style.display = 'none';
+        grid.style.display    = '';
+        renderizarCards(filtroAtual);
+      }
+    }
+
+    /* ---------- Renderiza os cards a partir do array ANIMALS ---------- */
+    function renderizarCards(filtro) {
+      const grid = document.getElementById('animalsGrid');
+      const emptyState = document.getElementById('emptyState');
+      const lista = filtro === 'todos' ? ANIMALS : ANIMALS.filter(a => a.tipo === filtro);
+
+      if (lista.length === 0) {
+        grid.innerHTML = '';
+        emptyState.style.display = 'block';
+        return;
+      }
+      emptyState.style.display = 'none';
+
+      const bgMap    = { cachorro: '#FFF3E0', gato: '#F3E5F5' };
+      const emojiMap = { cachorro: '🐶', gato: '🐱' };
+
+      grid.innerHTML = lista.map(a => {
+        const bg    = bgMap[a.tipo]    || '#F5F5F5';
+        const emoji = emojiMap[a.tipo] || '🐾';
+        const tipo  = a.tipo ? (a.tipo.charAt(0).toUpperCase() + a.tipo.slice(1)) : 'Animal';
+        return `
+        <div class="animal-card" data-tipo="${a.tipo || ''}">
+          <div class="animal-img" style="background:${bg};">
+            ${emoji}
+            <div class="animal-tag">${tipo}</div>
+            <div class="animal-status">Disponível</div>
+          </div>
+          <div class="animal-body">
+            <div class="animal-name">${a.nome || 'Sem nome'}</div>
+            <div class="animal-meta">
+              ${a.idade  ? `<span class="pill">${a.idade}</span>`  : ''}
+              ${a.cidade ? `<span class="pill">${a.cidade}</span>` : ''}
+              ${a.porte  ? `<span class="pill">${a.porte}</span>`  : ''}
+            </div>
+            <p class="animal-desc">${a.descricao || ''}</p>
+            <div class="animal-footer">
+              <span class="contact-info">📱 ${a.contato || ''}</span>
+              <button class="btn-adotar" onclick="entrarContato('${(a.nome||'').replace(/'/g,"\\'")}','${(a.contato||'').replace(/'/g,"\\'")}')">Quero adotar</button>
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    /* Carrega ao iniciar a página */
+    carregarAnimais();
+
+    /* ---------- Atualiza o strip de animais com dados reais ---------- */
+    async function carregarStrip() {
+      try {
+        const r = await fetch(ANIMALS_URL + '?t=' + Date.now());
+        if (!r.ok) return;
+        const dados = await r.json();
+        const disponiveis = dados.filter(a => !a.status || a.status === 'disponivel');
+        if (disponiveis.length === 0) return;
+        const emojiMap = { cachorro: '🐶', gato: '🐱' };
+        const items = disponiveis.map(a => `
+          <div class="strip-item">
+            <span class="si-emoji">${emojiMap[a.tipo] || '🐾'}</span>
+            <div>
+              <div class="si-name">${a.nome || 'Animal'}</div>
+              <div class="si-info">${[a.tipo, a.cidade].filter(Boolean).join(' · ')}</div>
+            </div>
+          </div>`).join('');
+        const extra = `<div class="strip-item"><span class="si-emoji">🐾</span><div><div class="si-name">Novos animais todo dia</div><div class="si-info">Cadastre o seu também →</div></div></div>`;
+        const full = items + extra + items + extra;
+        document.getElementById('stripInner').innerHTML = full;
+      } catch { /* mantém o fallback estático */ }
+    }
+    carregarStrip();
 
     /* ---------- Renderiza lista de animais no formulário ---------- */
     function renderAnimalList(containerId, mode) {
       const container = document.getElementById(containerId);
       const inputType = mode === 'adopt' ? 'radio' : 'checkbox';
       const inputName = mode === 'adopt' ? 'adoptAnimalChoice' : 'tempAnimalChoice';
-      const selectedClass = mode === 'adopt' ? 'selected' : 'selected-temp';
+      const emojiMap  = { cachorro: '🐶', gato: '🐱' };
 
-      container.innerHTML = ANIMALS.map(a => `
+      if (ANIMALS.length === 0) {
+        container.innerHTML = '<p style="font-size:13px;color:var(--text-muted);">Nenhum animal disponível no momento.</p>';
+        return;
+      }
+
+      container.innerHTML = ANIMALS.map(a => {
+        const emoji = emojiMap[a.tipo] || '🐾';
+        const info  = [a.tipo, a.idade, a.cidade].filter(Boolean).join(' · ');
+        return `
         <label class="animal-select-card" id="card-${mode}-${a.id}" onclick="selectAnimalCard('${mode}','${a.id}','${inputType}')">
           <input type="${inputType}" name="${inputName}" value="${a.id}" style="accent-color:${mode==='adopt'?'var(--teal)':'var(--amber)'};">
           <div class="animal-card-mini">
-            <div class="mini-emoji">${a.emoji}</div>
+            <div class="mini-emoji">${emoji}</div>
             <div class="mini-name">${a.nome}</div>
-            <div class="mini-info">${a.info}</div>
+            <div class="mini-info">${info}</div>
           </div>
-        </label>
-      `).join('');
+        </label>`;
+      }).join('');
     }
 
     function selectAnimalCard(mode, id, type) {
