@@ -874,7 +874,7 @@
       document.querySelectorAll('.causa-card:not([style*="display: none"])').forEach(() => visibleCount++);
       if (tipo === 'todas') visibleCount = document.querySelectorAll('.causa-card').length;
 
-      document.getElementById('resultCount').innerHTML = `<strong>${tipo === 'todas' ? '20+' : visibleCount}</strong> áreas encontradas`;
+      document.getElementById('resultCount').innerHTML = `<strong>${tipo === 'todas' ? '10+' : visibleCount}</strong> áreas encontradas`;
 
       // Smooth scroll to first visible group
       if (tipo !== 'todas') {
