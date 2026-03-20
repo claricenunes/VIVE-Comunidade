@@ -3,116 +3,137 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PatasDF — Rede de Adoção de Animais do Distrito Federal</title>
-  <meta name="description" content="Plataforma gratuita que conecta animais abandonados do DF com famílias que querem adotar." />
+  <title>Give&Grow — Comunidade de Troca, Aprendizado e Voluntariado no DF</title>
+  <meta name="description" content="Comunidade gratuita que conecta pessoas que querem aprender, ensinar e fazer voluntariado no Distrito Federal." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Cabinet+Grotesk:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Cabinet+Grotesk:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+    /* ── Apenas estilos exclusivos do index.html ── */
+    /* Todo o resto vem do styles.css               */
+
+    /* Hero badge animação */
+    .hero h1 {
+      font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+    .hero-badge {
+      animation: badgePulse 3s ease-in-out infinite;
+      font-weight: 500;
+    }
+    .hero-badge::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--sage); animation: dotPulse 1.5s ease-in-out infinite;
+    }
+    @keyframes badgePulse { 0%,100%{box-shadow:0 0 0 0 rgba(90,122,92,0.15)} 50%{box-shadow:0 0 0 8px rgba(90,122,92,0)} }
+    @keyframes dotPulse   { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+    @keyframes floatDeco  { 0%,100%{transform:translateY(0) rotate(var(--r,0deg))} 50%{transform:translateY(-14px) rotate(var(--r,0deg))} }
+    .hero-deco { position: absolute; font-size: 2rem; opacity: 0.12; pointer-events: none; z-index: 0; animation: floatDeco 8s ease-in-out infinite; }
+
+    /* Navbar fixa (index usa fixed, sobre/patasdf usam sticky) */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; }
+
+    /* Causas */
+    .causes-section { background: var(--cream); }
+    .causes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 16px; }
+    .cause-card { background: white; border: 1px solid var(--border); border-radius: var(--r-xl); padding: 1.75rem 1.5rem; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
+    .cause-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--sage); transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
+    .cause-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(90,122,92,0.12); border-color: var(--sage-light); }
+    .cause-card:hover::before { transform: scaleX(1); }
+    .cause-icon { font-size: 1.8rem; margin-bottom: 1rem; width: 52px; height: 52px; background: var(--sage-pale); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; }
+    .cause-name { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .cause-desc { font-size: 14px; font-weight: 500; color: var(--bark-soft); line-height: 1.6; }
+    .cause-count { position: absolute; top: 14px; right: 14px; font-size: 11px; font-weight: 600; color: var(--sage); background: var(--sage-pale); padding: 3px 10px; border-radius: 30px; }
+
+    /* Eventos */
+    .events-section { background: white; }
+    .events-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .evento-card { background: var(--cream); border: 1px solid var(--border); border-radius: var(--r-xl); padding: 1.5rem; display: flex; gap: 1.25rem; align-items: flex-start; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; }
+    .evento-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(90,122,92,0.1); border-color: var(--sage-light); }
+    .ev-date { text-align: center; min-width: 48px; }
+    .ev-day { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 300; color: var(--sage); line-height: 1; }
+    .ev-month { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--bark-soft); margin-top: 2px; font-weight: 700; }
+    .ev-sep { width: 1px; background: var(--border-md); flex-shrink: 0; align-self: stretch; }
+    .ev-content { flex: 1; }
+    .ev-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 30px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .ev-online     { background: var(--sage-pale); color: var(--sage); }
+    .ev-presencial { background: var(--gold-warm); color: var(--gold); }
+    .ev-parceria   { background: var(--rust-light); color: var(--rust); }
+    .ev-name { font-size: 15px; font-weight: 700; color: var(--bark); margin-bottom: 4px; }
+    .ev-info { font-size: 13px; font-weight: 500; color: var(--bark-soft); }
+
+    /* PatasDF section */
+    .patas-section { background: var(--cream); }
+    .patas-highlight { background: var(--bark); border-radius: var(--r-xl); padding: 3.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; position: relative; overflow: hidden; }
+    .patas-highlight::before { content: '🐾'; position: absolute; font-size: 18rem; opacity: 0.04; right: -1rem; bottom: -3rem; pointer-events: none; line-height: 1; }
+    .patas-label-sm { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage-mid); margin-bottom: 1rem; }
+    .patas-title { font-family: 'Fraunces', serif; font-size: clamp(1.8rem,3.5vw,2.8rem); font-weight: 300; line-height: 1.15; color: white; margin-bottom: 1rem; }
+    .patas-title em { font-style: italic; color: var(--gold); }
+    .patas-desc { font-size: 15px; font-weight: 400; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 2rem; }
+    .patas-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem; }
+    .patas-chip { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); font-size: 12px; font-weight: 400; padding: 5px 14px; border-radius: 30px; }
+    .patas-cards { display: flex; flex-direction: column; gap: 12px; }
+    .patas-mini { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--r-md); padding: 1rem 1.25rem; display: flex; align-items: center; gap: 12px; transition: background 0.2s; }
+    .patas-mini:hover { background: rgba(255,255,255,0.12); }
+    .pm-icon { font-size: 1.4rem; width: 44px; height: 44px; background: rgba(255,255,255,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .pm-name { font-size: 14px; font-weight: 500; color: white; }
+    .pm-sub  { font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.5); margin-top: 1px; }
+    .pm-badge { margin-left: auto; background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); font-size: 11px; font-weight: 400; padding: 3px 10px; border-radius: 30px; white-space: nowrap; }
+
+    /* Criadora círculo */
+    .criadora-section { background: white; }
+    .criadora-frame { display: flex; flex-direction: column; align-items: center; }
+    .criadora-circle { width: 280px; height: 280px; border-radius: 50%; }
+
+    /* Calendar */
+    .calendar-wrap { margin-top: 2.5rem; border: 1px solid var(--border); border-radius: var(--r-xl); overflow: hidden; background: white; box-shadow: var(--shadow-sm); }
+    .calendar-bar { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; gap: 1rem; flex-wrap: wrap; border-bottom: 1px solid var(--border); }
+    .calendar-bar-left { display: flex; align-items: center; gap: 12px; }
+    .calendar-bar-icon { font-size: 1.5rem; width: 44px; height: 44px; background: var(--sage-pale); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .calendar-bar-title { font-size: 15px; font-weight: 500; color: var(--bark); }
+    .calendar-bar-sub   { font-size: 12px; font-weight: 400; color: var(--bark-soft); margin-top: 2px; }
+    .calendar-bar-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .cal-toggle-btn { background: var(--sage); color: white; border: none; border-radius: 30px; padding: 9px 20px; font-size: 13px; font-weight: 500; cursor: pointer; font-family: inherit; transition: background 0.2s; }
+    .cal-toggle-btn:hover { background: #3d6640; }
+    .cal-toggle-btn.open { background: var(--warm-white); color: var(--bark-soft); border: 1px solid var(--border-md); }
+    .cal-open-btn { background: transparent; color: var(--bark-soft); border: 1px solid var(--border-md); border-radius: 30px; padding: 9px 20px; font-size: 13px; font-weight: 400; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+    .cal-open-btn:hover { border-color: var(--sage); color: var(--sage); }
+    .calendar-embed { position: relative; }
+    .calendar-placeholder { position: absolute; inset: 0; background: var(--cream); display: flex; align-items: center; justify-content: center; padding: 2rem; }
+    .cal-placeholder-inner { text-align: center; max-width: 500px; }
+    .cal-placeholder-inner h3 { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 300; margin-bottom: 0.75rem; }
+    .cal-placeholder-inner p  { font-size: 14px; font-weight: 400; color: var(--bark-soft); line-height: 1.6; }
+
+    /* Responsivo extra index */
+    @media (max-width: 900px) {
+      .patas-highlight { grid-template-columns: 1fr; }
+      .events-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .causes-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-
-  <!-- MODAL -->
-  <div class="modal-overlay" id="termoModal" role="dialog" aria-modal="true" aria-labelledby="termoModalTitle">
-    <div class="modal-box">
-      <div class="modal-header">
-        <div class="modal-header-text">
-          <h3 id="termoModalTitle">Termo de Compromisso</h3>
-          <p id="termoModalSubtitle">Leia com atenção antes de prosseguir</p>
-        </div>
-        <button class="modal-close" onclick="fecharModal()" aria-label="Fechar">✕</button>
-      </div>
-
-      <div class="modal-action-badge adopt" id="modalActionBadge">
-        <div class="modal-action-badge-icon" id="modalActionIcon">🏠</div>
-        <div class="modal-action-badge-text">
-          <h4 id="modalActionTitle">Adoção Responsável</h4>
-          <p id="modalActionDesc">Compromisso permanente com o animal</p>
-        </div>
-      </div>
-
-      <div class="modal-contract" id="contractAdopt">
-        <h5>Termo de Adoção Responsável</h5>
-        <ol>
-          <li><strong>Compromisso com o bem-estar:</strong> Comprometo-me a oferecer ao animal adotado alimentação adequada, água fresca, abrigo seguro e cuidados veterinários sempre que necessário.</li>
-          <li><strong>Não abandono:</strong> Comprometo-me a NÃO abandonar o animal em qualquer circunstância. Em caso de impossibilidade, buscarei novo lar responsável com apoio do PatasDF.</li>
-          <li><strong>Vacinação:</strong> Comprometo-me a manter as vacinas em dia.</li>
-          <li><strong>Ambiente seguro:</strong> Garantirei que o animal terá espaço adequado, sem acesso a situações de risco.</li>
-          <li><strong>Acompanhamento:</strong> Aceito uma visita de acompanhamento opcional nos primeiros 30 dias.</li>
-          <li><strong>Veracidade:</strong> Confirmo que todas as informações fornecidas no formulário são verdadeiras.</li>
-        </ol>
-        <div class="disclaimer green">
-          <p><strong>ℹ️ Sobre o papel do PatasDF:</strong> Somos uma plataforma de intermediação gratuita. Após o contato estabelecido via WhatsApp, <strong>o PatasDF não se responsabiliza pelo processo de adoção, entrega, saúde ou qualquer acordo firmado entre as partes.</strong></p>
-        </div>
-      </div>
-
-      <div class="modal-contract" id="contractTemp" style="display:none;">
-        <h5>Termo de Lar Temporário</h5>
-        <ol>
-          <li><strong>Período de acolhimento:</strong> Comprometo-me a acolher o animal pelo período combinado, com possibilidade de extensão mediante acordo.</li>
-          <li><strong>Cuidados básicos:</strong> Oferecerei alimentação adequada, água fresca, higiene e acompanhamento veterinário de urgência.</li>
-          <li><strong>Divulgação ativa:</strong> Comprometerei a divulgar o animal nas redes sociais para facilitar a adoção definitiva.</li>
-          <li><strong>Comunicação:</strong> Manterei contato regular com o responsável e avisarei com antecedência caso não consiga mais manter o lar.</li>
-          <li><strong>Devolução segura:</strong> Em caso de encerramento antecipado, devolverei o animal de forma segura e planejada, nunca o abandonando.</li>
-          <li><strong>Veracidade:</strong> Confirmo que todas as informações fornecidas são verdadeiras.</li>
-        </ol>
-        <div class="disclaimer amber">
-          <p><strong>ℹ️ Sobre o papel do PatasDF:</strong> Somos uma plataforma de intermediação gratuita. A responsabilidade pelo processo de acolhimento é inteiramente dos envolvidos após o primeiro contato.</p>
-        </div>
-      </div>
-
-      <div class="modal-contract" id="contractCad" style="display:none;">
-        <h5>Termo de Publicação de Animal</h5>
-        <ol>
-          <li><strong>Publicação pública:</strong> Ao cadastrar, autorizo que as informações do animal (nome, fotos, descrição, cidade e WhatsApp) sejam exibidas publicamente no PatasDF.</li>
-          <li><strong>Responsabilidade:</strong> O PatasDF é uma plataforma gratuita de intermediação. <strong>Após o primeiro contato via WhatsApp, o PatasDF não se responsabiliza</strong> por acordos, entrega, saúde do animal ou qualquer resultado da adoção.</li>
-          <li><strong>Veracidade:</strong> Confirmo que todas as informações fornecidas são verdadeiras.</li>
-          <li><strong>Bem-estar:</strong> Comprometo-me a continuar zelando pelo bem-estar do animal até que ele seja efetivamente entregue a um adotante responsável.</li>
-          <li><strong>Notificações:</strong> Autorizo o PatasDF a encaminhar meu contato a pessoas com perfil compatível que demonstrarem interesse em adotar este animal.</li>
-        </ol>
-        <div class="disclaimer rust">
-          <p><strong>ℹ️ Dados no formulário externo:</strong> As informações serão coletadas via Google Forms. O PatasDF não armazena seus dados diretamente.</p>
-        </div>
-      </div>
-
-      <div class="modal-accept-area">
-        <button class="btn-accept adopt" id="btnAceite" onclick="toggleAceite()">
-          <div class="accept-icon" id="aceiteIcon">○</div>
-          <span id="aceiteLabel">Li e aceito os termos acima</span>
-        </button>
-      </div>
-
-      <p class="modal-must-read" id="mustReadMsg">⬆️ Leia os termos e clique em aceitar para continuar</p>
-
-      <div class="modal-footer">
-        <button class="btn-cancel" onclick="fecharModal()">Cancelar</button>
-        <a class="btn-ir-forms adopt" id="btnIrForms"
-           href="#" target="_blank" rel="noopener"
-           aria-disabled="true"
-           onclick="return validarAceiteEIr(event)">
-          📋 Ir para o formulário →
-        </a>
-      </div>
-    </div>
-  </div>
 
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container">
-      <a href="#" class="logo">
-        <div class="logo-paw">🐾</div>
-        PatasDF
-      </a>
+      <a href="#" class="logo"><h3>Give&amp;Grow</h3></a>
       <div class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#como-funciona">Como funciona</a></li>
-        <li><a href="#animais">Animais</a></li>
-        <li><a href="#mapa">Mapa</a></li>
+        <li><a href="#causas">Causas</a></li>
+        <li><a href="#eventos">Eventos</a></li>
+        <li><a href="#patasdf">PatasDF</a></li>
         <li><a href="#sobre-criadora">Sobre</a></li>
-        <li><a href="#parte-projeto">Comunidade</a></li>
-        <li><a href="#quero-ajudar" class="nav-cta">Quero participar</a></li>
+        <li><a href="#participar" class="nav-cta">Quero participar</a></li>
       </ul>
     </div>
   </nav>
@@ -122,26 +143,23 @@
     <div class="hero-blob hero-blob-1"></div>
     <div class="hero-blob hero-blob-2"></div>
     <div class="hero-blob hero-blob-3"></div>
-
-    <span class="hero-deco" style="top:12%;left:4%;transform:rotate(-15deg)">🐾</span>
-    <span class="hero-deco" style="top:72%;left:6%;transform:rotate(20deg);font-size:1.4rem">🐾</span>
-    <span class="hero-deco" style="top:18%;right:5%;transform:rotate(35deg);font-size:1.8rem">🐾</span>
-    <span class="hero-deco" style="top:65%;right:4%;transform:rotate(-8deg);font-size:1.2rem">🐾</span>
-    <span class="hero-deco" style="top:85%;left:35%;transform:rotate(10deg);font-size:1rem">🐾</span>
-
+    <span class="hero-deco" style="top:12%;left:4%;--r:-15deg">🌱</span>
+    <span class="hero-deco" style="top:72%;left:6%;--r:20deg;font-size:1.4rem">🤝</span>
+    <span class="hero-deco" style="top:18%;right:5%;--r:35deg;font-size:1.8rem">🐾</span>
+    <span class="hero-deco" style="top:65%;right:4%;--r:-8deg;font-size:1.2rem">💬</span>
+    <span class="hero-deco" style="top:85%;left:35%;--r:10deg;font-size:1rem">🎓</span>
     <div class="hero-inner">
-      <div class="hero-badge">🐾 Projeto comunitário — Distrito Federal</div>
+      <div class="hero-badge"> Comunidade aberta — Distrito Federal</div>
       <h1>
-        Cada animal merece<br>
-        uma <span class="underline-word"><em>família</em></span>
+        Conecte, aprenda e<br>
+        <span class="underline-word"><em>transforme junto</em></span>
       </h1>
-      <p class="hero-sub">Plataforma gratuita que conecta animais abandonados do DF com pessoas que querem adotar. Simples, rápido e feito com amor.</p>
+      <p class="hero-sub">Plataforma gratuita que conecta pessoas que querem aprender, ensinar e fazer voluntariado no DF. Simples, aberto e feito com propósito.</p>
       <div class="hero-ctas">
-        <a href="#cadastrar" class="btn btn-sage">🐶 Cadastrar animal</a>
-        <a href="#animais" class="btn btn-outline">Ver animais disponíveis →</a>
+        <a href="SEU_LINK_GOOGLE_FORMS_AQUI" target="_blank" rel="noopener" class="btn btn-sage"> Quero participar</a>
+        <a href="#causas" class="btn btn-outline">Ver causas e eventos →</a>
       </div>
     </div>
-
     <div class="hero-scroll-hint">
       <span>rolar</span>
       <div class="scroll-track"></div>
@@ -149,35 +167,36 @@
   </section>
 
   <!-- STRIP -->
-  <div class="strip" id="animais-strip">
+  <div class="strip">
     <div class="strip-inner" id="stripInner">
-      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Bolinha</div><div class="si-info">Cachorro · Asa Sul</div></div></div>
+      <div class="strip-item"><span class="si-emoji">💬</span><div><div class="si-name">Inglês online</div><div class="si-info">Todo sábado · 10h</div></div></div>
       <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mimi</div><div class="si-info">Gato · Taguatinga</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🐾</span><div><div class="si-name">PatasDF</div><div class="si-info">Adoção responsável no DF</div></div></div>
       <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Thor</div><div class="si-info">Cachorro · Ceilândia</div></div></div>
+      <div class="strip-item"><span class="si-emoji">👴</span><div><div class="si-name">Cyber para idosos</div><div class="si-info">Lar São Vicente · Asa Sul</div></div></div>
       <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mingau</div><div class="si-info">Gato · Guará</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🪡</span><div><div class="si-name">Crochê</div><div class="si-info">Parque da Cidade · Abr</div></div></div>
       <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Pipoca</div><div class="si-info">Cachorro · Sobradinho</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🌿</span><div><div class="si-name">Horta urbana</div><div class="si-info">Voluntários bem-vindos</div></div></div>
       <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Nala</div><div class="si-info">Gato · Samambaia</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🎓</span><div><div class="si-name">Mentoria profissional</div><div class="si-info">Online · Toda semana</div></div></div>
       <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐾</span><div><div class="si-name">Novos animais todo dia</div><div class="si-info">Cadastre o seu também →</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🤝</span><div><div class="si-name">ONGs parceiras</div><div class="si-info">Ações presenciais todo mês</div></div></div>
       <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Bolinha</div><div class="si-info">Cachorro · Asa Sul</div></div></div>
+      <div class="strip-item"><span class="si-emoji">💬</span><div><div class="si-name">Inglês online</div><div class="si-info">Todo sábado · 10h</div></div></div>
       <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mimi</div><div class="si-info">Gato · Taguatinga</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🐾</span><div><div class="si-name">PatasDF</div><div class="si-info">Adoção responsável no DF</div></div></div>
       <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Thor</div><div class="si-info">Cachorro · Ceilândia</div></div></div>
+      <div class="strip-item"><span class="si-emoji">👴</span><div><div class="si-name">Cyber para idosos</div><div class="si-info">Lar São Vicente · Asa Sul</div></div></div>
       <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mingau</div><div class="si-info">Gato · Guará</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🪡</span><div><div class="si-name">Crochê</div><div class="si-info">Parque da Cidade · Abr</div></div></div>
       <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Pipoca</div><div class="si-info">Cachorro · Sobradinho</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🌿</span><div><div class="si-name">Horta urbana</div><div class="si-info">Voluntários bem-vindos</div></div></div>
       <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Nala</div><div class="si-info">Gato · Samambaia</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🎓</span><div><div class="si-name">Mentoria profissional</div><div class="si-info">Online · Toda semana</div></div></div>
       <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐾</span><div><div class="si-name">Novos animais todo dia</div><div class="si-info">Cadastre o seu também →</div></div></div>
+      <div class="strip-item"><span class="si-emoji">🤝</span><div><div class="si-name">ONGs parceiras</div><div class="si-info">Ações presenciais todo mês</div></div></div>
+      <div class="strip-sep">·</div>
     </div>
   </div>
 
@@ -185,180 +204,306 @@
   <div class="stats-bar">
     <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Gratuito</div></div>
     <div class="stat-item"><div class="stat-num">DF</div><div class="stat-label">Distrito Federal</div></div>
-    <div class="stat-item"><div class="stat-num">24h</div><div class="stat-label">Sempre disponível</div></div>
-    <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Sem limite de cadastros</div></div>
+    <div class="stat-item"><div class="stat-num">12</div><div class="stat-label">Áreas de interesse</div></div>
+    <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Sem limite de pessoas</div></div>
   </div>
 
-  <!-- HOW IT WORKS -->
+  <!-- COMO FUNCIONA -->
+  <!-- COMO FUNCIONA -->
   <section class="section-pad how-section" id="como-funciona">
     <div class="container">
       <span class="label reveal">Como funciona</span>
-      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Do abandono ao lar em<br><em style="color:var(--sage)">5 passos simples</em></h2>
-      <p class="lead reveal" style="max-width:500px;">Sem burocracia, sem custo. Qualquer pessoa pode ajudar um animal a encontrar uma nova família.</p>
+      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Participar é<br><em style="color:var(--sage)">simples assim</em></h2>
+      <p class="lead reveal" style="max-width:500px;">Sem burocracia, sem custo. Qualquer pessoa pode dar, receber e crescer junto com a comunidade.</p>
       <div class="steps-grid reveal">
         <div class="step-card">
           <div class="step-num-big">01</div>
-          <h3>Encontrei um animal</h3>
-          <p>Você encontrou um animal abandonado nas ruas do DF e quer ajudar a encontrar um lar.</p>
+          <h3>Descubra as causas</h3>
+          <p>Explore as áreas disponíveis e veja onde você pode contribuir ou aprender.</p>
           <div class="step-connector">→</div>
         </div>
         <div class="step-card">
           <div class="step-num-big">02</div>
-          <h3>Acesso o site</h3>
-          <p>Abre o PatasDF em qualquer celular, sem precisar criar conta ou instalar nada.</p>
+          <h3>Preencha o formulário</h3>
+          <p>Conta o que você sabe, o que quer aprender e como prefere participar.</p>
           <div class="step-connector">→</div>
         </div>
         <div class="step-card">
           <div class="step-num-big">03</div>
-          <h3>Aceito os termos</h3>
-          <p>Lê o termo de compromisso e confirma o aceite. Simples e transparente.</p>
+          <h3>Receba os eventos</h3>
+          <p>A gente organiza e te avisa sobre os encontros que combinam com você.</p>
           <div class="step-connector">→</div>
         </div>
         <div class="step-card">
           <div class="step-num-big">04</div>
-          <h3>Preencho o formulário</h3>
-          <p>Você é direcionado ao Google Forms. Leva menos de 2 minutos.</p>
+          <h3>Apareça e conecte</h3>
+          <p>Online ou presencial — você aparece, troca e já faz parte da comunidade.</p>
           <div class="step-connector">→</div>
         </div>
         <div class="step-card">
           <div class="step-num-big">05</div>
-          <h3>Família encontrada!</h3>
-          <p>O animal aparece no site e quem quer adotar entra em contato diretamente.</p>
+          <h3>Impacto real!</h3>
+          <p>Cada encontro cria conexões, aprendizados e transforma o DF de dentro pra fora.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ANIMALS -->
-  <section class="animals-section section-pad" id="animais">
+  <!-- CAUSAS -->
+  <section class="section-pad causes-section" id="causas">
     <div class="container">
       <div class="animals-header">
         <div>
-          <span class="label reveal">Animais disponíveis</span>
-          <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);">Esperando por você<br>no DF</h2>
+          <span class="label reveal">Áreas de interesse</span>
+          <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);">O que move<br>você no DF?</h2>
         </div>
         <div class="filter-pills reveal">
-          <button class="filter-pill active" onclick="filterAnimals('todos', this)">Todos</button>
-          <button class="filter-pill" onclick="filterAnimals('cachorro', this)">🐶 Cachorros</button>
-          <button class="filter-pill" onclick="filterAnimals('gato', this)">🐱 Gatos</button>
+          <button class="filter-pill active" onclick="filtrarCausas('todas', this)">Todas</button>
+          <button class="filter-pill" onclick="filtrarCausas('aprender', this)">📚 Aprender</button>
+          <button class="filter-pill" onclick="filtrarCausas('voluntariado', this)">🤝 Voluntariado</button>
         </div>
       </div>
-
-      <div id="animaisLoading">
-        <div style="font-size:2.5rem;margin-bottom:.75rem;">🐾</div>
-        <p>Carregando animais disponíveis...</p>
-      </div>
-      <div class="animals-grid" id="animalsGrid" style="display:none;"></div>
-      <div class="empty-state" id="emptyState"><p style="font-size:2rem;margin-bottom:.5rem;">🔍</p><p>Nenhum animal encontrado com esse filtro.</p></div>
-      <div id="animaisErro">
-        <p style="font-size:2rem;margin-bottom:.5rem;">😔</p>
-        <p style="color:var(--bark-soft);">Não foi possível carregar os animais agora.</p>
-        <button onclick="carregarAnimais()" style="margin-top:1rem;border:1.5px solid var(--border-md);background:transparent;border-radius:24px;padding:8px 20px;cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;">Tentar novamente</button>
-      </div>
-
-      <!-- VER MAIS ANIMAIS -->
-      <div id="verMaisArea">
-        <a href="animais.html" class="btn-ver-mais">
-          Ver todos os animais disponíveis →
-        </a>
+      <div class="causes-grid" id="causasGrid">
+        <div class="cause-card reveal" data-tipo="voluntariado">
+          <div class="cause-count">8 pessoas</div>
+          <div class="cause-icon">🐾</div>
+          <div class="cause-name">Causa animal</div>
+          <div class="cause-desc">Ajude a reencontrar animais perdidos no DF e apoie ONGs da causa animal</div>
+        </div>
+        <div class="cause-card reveal" data-tipo="voluntariado">
+          <div class="cause-count">14 pessoas</div>
+          <div class="cause-icon">👴</div>
+          <div class="cause-name">Idosos</div>
+          <div class="cause-desc">Visitas, oficinas e inclusão digital em lares de idosos</div>
+        </div>
+        <div class="cause-card reveal" data-tipo="aprender">
+          <div class="cause-count">21 pessoas</div>
+          <div class="cause-icon">💬</div>
+          <div class="cause-name">Inglês</div>
+          <div class="cause-desc">Conversação online, todos os níveis, toda semana, sem custo</div>
+        </div>
+        <div class="cause-card reveal" data-tipo="aprender">
+          <div class="cause-count">11 pessoas</div>
+          <div class="cause-icon">💻</div>
+          <div class="cause-name">Tecnologia</div>
+          <div class="cause-desc">Cybersegurança, programação e inclusão digital básica</div>
+        </div>
+        <div class="cause-card reveal" data-tipo="aprender">
+          <div class="cause-count">9 pessoas</div>
+          <div class="cause-icon">🪡</div>
+          <div class="cause-name">Artesanato</div>
+          <div class="cause-desc">Crochê, bordado e costura — presencial e online, toda semana</div>
+        </div>
+        <div class="cause-card reveal" data-tipo="voluntariado">
+          <div class="cause-count">6 pessoas</div>
+          <div class="cause-icon">🎓</div>
+          <div class="cause-name">Educação</div>
+          <div class="cause-desc">Reforço escolar, orientação profissional e mentoria de carreira</div>
+        </div>
+        <div class="cause-card reveal" data-tipo="voluntariado">
+          <div class="cause-count">7 pessoas</div>
+          <div class="cause-icon">🌿</div>
+          <div class="cause-name">Meio ambiente</div>
+          <div class="cause-desc">Limpeza de áreas, hortas urbanas e conscientização ambiental</div>
+        </div>
+        <div class="cause-card reveal" data-tipo="aprender">
+          <div class="cause-count">5 pessoas</div>
+          <div class="cause-icon">🍳</div>
+          <div class="cause-name">Culinária</div>
+          <div class="cause-desc">Oficinas de cozinha, receitas saudáveis e troca de técnicas</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- MAP -->
-  <section class="map-section section-pad" id="mapa">
+  <!-- EVENTOS -->
+  <section class="section-pad events-section" id="eventos">
     <div class="container">
-      <span class="label reveal">Mapa de adoção</span>
-      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Onde estão<br>os animais</h2>
-      <p class="lead reveal" style="max-width:480px;">Cada marcador é um animal esperando por um lar no DF. Integrado com Google My Maps — gratuito e sem servidor.</p>
-      <div class="map-wrapper reveal">
-        <div class="map-placeholder">
-          <div class="map-grid"></div>
-          <div class="map-dot d1" data-e="🐶"></div>
-          <div class="map-dot d2" data-e="🐱"></div>
-          <div class="map-dot d3" data-e="🐶"></div>
-          <div class="map-dot d4" data-e="🐱"></div>
-          <div class="map-placeholder-content">
-            <div style="font-size:3.5rem;margin-bottom:1rem;">🗺️</div>
-            <h3>Mapa do Distrito Federal</h3>
-            <p>Aqui será exibido o Google My Maps com todos os animais disponíveis para adoção em tempo real.</p>
-            <a href="https://mymaps.google.com" target="_blank" rel="noopener" class="btn btn-sage" style="margin-top:1.5rem;">Criar mapa no Google My Maps →</a>
+      <span class="label reveal">Agenda</span>
+      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Próximos<br><em style="color:var(--sage)">encontros</em></h2>
+      <p class="lead reveal" style="max-width:500px;">Online toda semana · Presencial uma vez por mês · Parcerias mensais com ONGs do DF</p>
+      <div class="events-grid reveal">
+        <div class="evento-card">
+          <div class="ev-date"><div class="ev-day">22</div><div class="ev-month">Mar</div></div>
+          <div class="ev-sep"></div>
+          <div class="ev-content">
+            <span class="ev-badge ev-online">Online</span>
+            <div class="ev-name">Conversação em inglês — nível iniciante</div>
+            <div class="ev-info">Sáb · 10h · Google Meet · 12 vagas</div>
+          </div>
+        </div>
+        <div class="evento-card">
+          <div class="ev-date"><div class="ev-day">29</div><div class="ev-month">Mar</div></div>
+          <div class="ev-sep"></div>
+          <div class="ev-content">
+            <span class="ev-badge ev-parceria">Parceria ONG</span>
+            <div class="ev-name">Cyber para idosos — workshop especial</div>
+            <div class="ev-info">Sáb · 14h · Lar São Vicente · Asa Sul</div>
+          </div>
+        </div>
+        <div class="evento-card">
+          <div class="ev-date"><div class="ev-day">05</div><div class="ev-month">Abr</div></div>
+          <div class="ev-sep"></div>
+          <div class="ev-content">
+            <span class="ev-badge ev-presencial">Presencial</span>
+            <div class="ev-name">Oficina de crochê para iniciantes</div>
+            <div class="ev-info">Dom · 15h · Parque da Cidade · 20 vagas</div>
+          </div>
+        </div>
+        <div class="evento-card">
+          <div class="ev-date"><div class="ev-day">12</div><div class="ev-month">Abr</div></div>
+          <div class="ev-sep"></div>
+          <div class="ev-content">
+            <span class="ev-badge ev-parceria">Parceria ONG</span>
+            <div class="ev-name">Feira de adoção — ONG Patinhas do DF</div>
+            <div class="ev-info">Sáb · 9h às 13h · Sudoeste · 30 voluntários</div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ACTION -->
-  <section class="action-section section-pad" id="quero-ajudar">
-    <div class="container">
-      <span class="label reveal">Quero participar</span>
-      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3.2rem);margin-bottom:1rem;">Como você quer<br>fazer a <em style="color:var(--sage)">diferença?</em></h2>
-      <p class="lead reveal" style="max-width:520px;">Escolha uma das opções abaixo. Você vai ler os termos de compromisso e depois será direcionado ao formulário do Google.</p>
-
-      <div class="action-grid">
-        <div class="action-card reveal">
-          <div class="action-card-accent accent-sage"></div>
-          <div class="action-card-icon-wrap icon-sage">🏠</div>
-          <div class="action-card-title">Quero adotar</div>
-          <p class="action-card-desc">Registre seu interesse em adotar um animal do DF. Preencha seu perfil e te indicaremos o melhor match — ou escolha um animal específico que você já viu.</p>
-          <ul class="action-checklist">
-            <li><div class="check-dot sage">✓</div> Adoção 100% gratuita</li>
-            <li><div class="check-dot sage">✓</div> Compromisso permanente com o animal</li>
-            <li><div class="check-dot sage">✓</div> Você escolhe quem adota</li>
-          </ul>
-          <button class="btn-card-sage" onclick="abrirModal('adopt')">🏠 Quero adotar — ler termos e preencher formulário</button>
-          <p class="action-note">Após aceitar os termos, você será levado ao Google Forms</p>
+      <!-- GOOGLE CALENDAR -->
+      <div class="calendar-wrap reveal">
+        <div class="calendar-bar">
+          <div class="calendar-bar-left">
+            <div class="calendar-bar-icon">📅</div>
+            <div>
+              <div class="calendar-bar-title">Agenda completa do Give&amp;Grow</div>
+              <div class="calendar-bar-sub">Todos os eventos · Atualizado em tempo real</div>
+            </div>
+          </div>
+          <div class="calendar-bar-actions">
+            <button class="cal-toggle-btn" id="calToggleBtn" onclick="toggleCalendar()">Ver agenda completa ↓</button>
+            <a class="cal-open-btn" href="https://calendar.google.com/calendar/embed?src=f966a5aa6c3a2e6e953029df6875e0b035dfc5a0577ab1ee072df353fa7fc4fa%40group.calendar.google.com&ctz=America%2FSao_Paulo" target="_blank" rel="noopener">Abrir no Google →</a>
+          </div>
         </div>
-
-        <div class="action-card reveal">
-          <div class="action-card-accent accent-gold"></div>
-          <div class="action-card-icon-wrap icon-gold">⏳</div>
-          <div class="action-card-title">Quero ser lar temporário</div>
-          <p class="action-card-desc">Acolha um animal por algumas semanas enquanto ele não encontra um lar definitivo. Não precisa adotar — só cuidar com carinho por um tempo.</p>
-          <ul class="action-checklist">
-            <li><div class="check-dot gold">✓</div> Duração média de 2 a 8 semanas</li>
-            <li><div class="check-dot gold">✓</div> Ajuda a divulgar para adoção</li>
-            <li><div class="check-dot gold">✓</div> Salva vidas sem compromisso eterno</li>
-          </ul>
-          <button class="btn-card-gold" onclick="abrirModal('temp')">⏳ Ser lar temporário — ler termos e preencher formulário</button>
-          <p class="action-note">Após aceitar os termos, você será levado ao Google Forms</p>
-        </div>
-
-        <div class="action-card reveal" id="cadastrar">
-          <div class="action-card-accent accent-rust"></div>
-          <div class="action-card-icon-wrap icon-rust">🐾</div>
-          <div class="action-card-title">Cadastrar animal para adoção</div>
-          <p class="action-card-desc">Encontrou um animal abandonado ou precisa colocar seu pet para adoção? Cadastre aqui. O animal entra no site e no mapa do DF imediatamente.</p>
-          <ul class="action-checklist">
-            <li><div class="check-dot rust">✓</div> Sem criar conta, 100% gratuito</li>
-            <li><div class="check-dot rust">✓</div> Animal aparece no mapa do DF</li>
-            <li><div class="check-dot rust">✓</div> Você controla quem adota</li>
-          </ul>
-          <button class="btn-card-rust" onclick="abrirModal('cad')">📋 Cadastrar animal — ler termos e preencher formulário</button>
-          <p class="action-note">Após aceitar os termos, você será levado ao Google Forms</p>
-        </div>
-
-        <div class="action-card reveal" id="match-pet">
-          <div class="action-card-accent accent-teal"></div>
-          <div class="action-card-icon-wrap icon-teal">💡</div>
-          <div class="action-card-title">Ainda não escolhi um pet</div>
-          <p class="action-card-desc">Quer adotar ou ser lar temporário, mas ainda não encontrou o animal ideal? Preencha suas preferências e vamos sugerir animais que combinam com você.</p>
-          <ul class="action-checklist">
-            <li><div class="check-dot teal">✓</div> Informe suas preferências</li>
-            <li><div class="check-dot teal">✓</div> Sistema encontra possíveis matches</li>
-            <li><div class="check-dot teal">✓</div> Você recebe sugestões por email</li>
-          </ul>
-          <button class="btn-card-teal" onclick="window.open('LINK_DO_GOOGLE_FORMS')">🐾 Encontrar meu match</button>
-          <p class="action-note">Leva menos de 2 minutos para preencher</p>
+        <div class="calendar-embed" id="calendarEmbed" style="display:none;">
+          <iframe
+            src="https://calendar.google.com/calendar/embed?src=f966a5aa6c3a2e6e953029df6875e0b035dfc5a0577ab1ee072df353fa7fc4fa%40group.calendar.google.com&ctz=America%2FSao_Paulo"
+            style="border:0;width:100%;height:520px;"
+            frameborder="0" scrolling="no"
+            title="Agenda Give&Grow">
+          </iframe>
+          <div class="calendar-placeholder" id="calendarPlaceholder" style="display:none;">
+            <div class="cal-placeholder-inner">
+              <div style="font-size:3rem;margin-bottom:1rem;">📅</div>
+              <h3>Agenda do Give&amp;Grow</h3>
+              <p>Substitua <code>https://calendar.google.com/calendar/embed?src=f966a5aa6c3a2e6e953029df6875e0b035dfc5a0577ab1ee072df353fa7fc4fa%40group.calendar.google.com&ctz=America%2FSao_Paulo</code> pelo link de incorporação.<br><br>No Google Calendar: <strong>Configurações do calendário → Integrar calendário → copiar o link do iframe</strong>.</p>
+              <a href="https://calendar.google.com/calendar/embed?src=f966a5aa6c3a2e6e953029df6875e0b035dfc5a0577ab1ee072df353fa7fc4fa%40group.calendar.google.com&ctz=America%2FSao_Paulo" target="_blank" rel="noopener" class="btn btn-sage" style="margin-top:1.5rem;display:inline-flex;">Abrir no Google Calendar →</a>
+            </div>
+          </div>
         </div>
       </div>
 
+    </div>
+  </section>
+  <section class="section-pad action-section" id="participar">
+    <div class="container">
+      <span class="label reveal">Quero participar</span>
+      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3.2rem);margin-bottom:1rem;">Como você quer<br>fazer a <em style="color:var(--sage)">diferença?</em></h2>
+      <p class="lead reveal" style="max-width:520px;">Escolha como quer se envolver. Você vai ser direcionado ao formulário do Google — leva menos de 2 minutos.</p>
+      <div class="action-grid">
+        <div class="action-card reveal">
+          <div class="action-card-accent accent-sage"></div>
+          <div class="action-card-icon-wrap icon-sage">🎓</div>
+          <div class="action-card-title">Quero aprender</div>
+          <p class="action-card-desc">Indique o que quer aprender — inglês, tecnologia, artesanato, culinária. A gente organiza os grupos e te avisa dos eventos.</p>
+          <ul class="action-checklist">
+            <li><div class="check-dot sage">✓</div> Sem pré-requisito, qualquer nível</li>
+            <li><div class="check-dot sage">✓</div> Online ou presencial, você escolhe</li>
+            <li><div class="check-dot sage">✓</div> 100% gratuito, sem compromisso</li>
+          </ul>
+          <a href="SEU_LINK_GOOGLE_FORMS_AQUI" target="_blank" rel="noopener" class="btn-card-sage">🎓 Quero aprender — preencher formulário</a>
+          <p class="action-note">Após clicar, você será levado ao Google Forms</p>
+        </div>
+        <div class="action-card reveal">
+          <div class="action-card-accent accent-sage"></div>
+          <div class="action-card-icon-wrap icon-sage">🙌</div>
+          <div class="action-card-title">Quero ensinar</div>
+          <p class="action-card-desc">Tem uma habilidade — inglês, programação, crochê, culinária? Compartilhe com a comunidade. Você decide o quanto pode dar.</p>
+          <ul class="action-checklist">
+            <li><div class="check-dot sage">✓</div> Você define o tempo disponível</li>
+            <li><div class="check-dot sage">✓</div> Online ou presencial</li>
+            <li><div class="check-dot sage">✓</div> A comunidade cresce com você</li>
+          </ul>
+          <a href="SEU_LINK_GOOGLE_FORMS_AQUI" target="_blank" rel="noopener" class="btn-card-sage">🙌 Quero ensinar — preencher formulário</a>
+          <p class="action-note">Após clicar, você será levado ao Google Forms</p>
+        </div>
+        <div class="action-card reveal">
+          <div class="action-card-accent accent-sage"></div>
+          <div class="action-card-icon-wrap icon-sage">🤝</div>
+          <div class="action-card-title">Quero fazer voluntariado</div>
+          <p class="action-card-desc">Quer aparecer nas feiras de adoção, visitar lares de idosos ou ajudar em ações presenciais? A gente te encaminha para as causas mais próximas.</p>
+          <ul class="action-checklist">
+            <li><div class="check-dot sage">✓</div> Escolha a causa que te move</li>
+            <li><div class="check-dot sage">✓</div> Ações mensais no DF</li>
+            <li><div class="check-dot sage">✓</div> Em parceria com ONGs reais</li>
+          </ul>
+          <a href="SEU_LINK_GOOGLE_FORMS_AQUI" target="_blank" rel="noopener" class="btn-card-sage">🤝 Voluntariado — preencher formulário</a>
+          <p class="action-note">Após clicar, você será levado ao Google Forms</p>
+        </div>
+        <div class="action-card reveal">
+          <div class="action-card-accent accent-sage"></div>
+          <div class="action-card-icon-wrap icon-sage">💡</div>
+          <div class="action-card-title">Ainda não sei por onde começar</div>
+          <p class="action-card-desc">Quer fazer parte mas ainda não sabe como? Preencha suas preferências e a gente sugere os melhores eventos e causas para o seu perfil.</p>
+          <ul class="action-checklist">
+            <li><div class="check-dot sage">✓</div> Informe seus interesses gerais</li>
+            <li><div class="check-dot sage">✓</div> Receba sugestões personalizadas</li>
+            <li><div class="check-dot sage">✓</div> Sem pressão, no seu ritmo</li>
+          </ul>
+          <a href="SEU_LINK_GOOGLE_FORMS_AQUI" target="_blank" rel="noopener" class="btn-card-sage">💡 Descobrir por onde começar</a>
+          <p class="action-note">Leva menos de 2 minutos</p>
+        </div>
+      </div>
       <div class="data-note reveal">
         <div class="data-note-icon">🔒</div>
         <div>
           <strong>Seus dados ficam protegidos</strong>
-          <p>Os formulários são hospedados no Google Forms. O PatasDF não armazena suas informações diretamente — os dados ficam na infraestrutura segura do Google, associados ao formulário criado pela Clarice. Nenhum dado é vendido ou compartilhado com terceiros.</p>
+          <p>Os formulários são hospedados no Google Forms. O Give&amp;Grow não armazena suas informações diretamente — os dados ficam na infraestrutura segura do Google. Nenhum dado é vendido ou compartilhado com terceiros.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATAS DF -->
+  <section class="section-pad patas-section" id="patasdf">
+    <div class="container">
+      <span class="label reveal">Uma causa dentro da comunidade</span>
+      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:2.5rem;">O PatasDF faz<br><em style="color:var(--sage)">parte disso</em></h2>
+      <div class="patas-highlight reveal">
+        <div>
+          <div class="patas-label-sm">Uma causa dentro da comunidade</div>
+          <h2 class="patas-title">PatasDF — <em>reencontrando animais perdidos no DF</em></h2>
+          <p class="patas-desc">O PatasDF ajuda a reencontrar animais perdidos no Distrito Federal e reúne indicações de ONGs para quem quer apoiar a causa animal. No futuro, vai crescer para incluir ações voluntárias presenciais. Sem burocracia, sem custo.</p>
+          <div class="patas-chips">
+            <span class="patas-chip">😢 Perdi meu animal</span>
+            <span class="patas-chip">🐾 Encontrei um animal</span>
+            <span class="patas-chip">🏥 ONGs para apoiar</span>
+            <span class="patas-chip">🗺️ Mapa do DF</span>
+          </div>
+          <a href="patasdf.html" class="btn btn-gold">🐾 Acessar o PatasDF →</a>
+        </div>
+        <div class="patas-cards">
+          <div class="patas-mini">
+            <div class="pm-icon">🐶</div>
+            <div><div class="pm-name">Bolinha — Perdido</div><div class="pm-sub">Cachorro · Asa Sul · desde 18/03</div></div>
+            <span class="pm-badge">😢 Perdido</span>
+          </div>
+          <div class="patas-mini">
+            <div class="pm-icon">🐱</div>
+            <div><div class="pm-name">Mimi — Encontrada</div><div class="pm-sub">Gato · Taguatinga · aguardando dono</div></div>
+            <span class="pm-badge">🐾 Encontrado</span>
+          </div>
+          <div class="patas-mini">
+            <div class="pm-icon">🏥</div>
+            <div><div class="pm-name">ONGs para apoiar</div><div class="pm-sub">6 organizações do DF mapeadas</div></div>
+            <span class="pm-badge">Ver lista</span>
+          </div>
+          <div class="patas-mini" style="background:rgba(201,151,74,0.12);border-color:rgba(201,151,74,0.25);">
+            <div class="pm-icon">🐾</div>
+            <div><div class="pm-name">Acessar o PatasDF</div><div class="pm-sub">Perdidos, encontrados e ONGs</div></div>
+            <a href="patasdf.html" style="margin-left:auto;background:var(--gold);color:white;font-size:11px;font-weight:700;padding:5px 13px;border-radius:100px;text-decoration:none;white-space:nowrap;">Entrar →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -368,18 +513,13 @@
   <section class="criadora-section section-pad" id="sobre-criadora">
     <div class="container">
       <div class="criadora-layout">
-        <div class="criadora-photo-col reveal">
-          <div class="criadora-frame">
-            <div class="criadora-circle">
-              <img src="fotos/clarice.jpg" alt="Clarice Nunes" style="width:100%;height:100%;object-fit:cover;object-position:center top;" onerror="this.style.display='none';this.parentElement.querySelector('.criadora-ph').style.display='flex';">
-              <div class="criadora-ph" style="display:none;">
-                <span class="ph-icon">👩‍💻</span>
-                <p>Foto da Clarice</p>
-              </div>
-            </div>
-            <div class="criadora-badge b2"><span>🎓</span><div><strong>CEUB · Eng. de Software</strong><span class="bl">2º semestre</span></div></div>
-            <div class="criadora-badge b1"><span>🐾</span><div><strong>Criadora do PatasDF</strong><span class="bl">em memória do Bolt &amp; Max</span></div></div>
+        <div class="criadora-frame reveal">
+          <div class="criadora-circle">
+            <img src="fotos/clarice2.jpg" alt="Clarice Nunes" onerror="this.style.display='none';this.parentElement.querySelector('.criadora-ph').style.display='flex';">
+            <div class="criadora-ph" style="display:none;"><span class="ph-icon">👩‍💻</span><p>Foto da Clarice</p></div>
           </div>
+          <div class="criadora-badge b2"><span>🎓</span><div><strong>CEUB · Eng. de Software</strong><span class="bl">2º semestre</span></div></div>
+          <div class="criadora-badge b1"><span>🌱</span><div><strong>Criadora do Give&amp;Grow</strong><span class="bl">e do PatasDF</span></div></div>
         </div>
         <div class="criadora-text">
           <span class="label reveal">Quem está por trás</span>
@@ -390,16 +530,16 @@
             <span class="chip">🤝 Voluntariado</span>
           </div>
           <div class="criadora-quote reveal">
-            <p>"Queria usar a tecnologia para gerar algum impacto social. Vejo muitos animais precisando de um lar e muitas pessoas querendo adotar — então pensei em criar algo simples que pudesse conectar essas duas coisas."</p>
+            <p>"Queria usar a tecnologia para gerar impacto social de verdade. Vejo gente querendo ajudar, mas sem saber como. Vejo gente querendo aprender, mas sem acesso. Então decidi criar um lugar que conecta essas duas partes."</p>
           </div>
-          <p class="bio reveal">Sempre gostei muito de animais. Tive o Bolt, um vira-lata adotado cheio de energia, e a Max, que me acompanhou durante o meu intercâmbio. A partida recente da Max me tocou e me deu coragem de transformar a dor em ação.</p>
-          <p class="bio reveal">O PatasDF nasceu da vontade de contribuir com a comunidade mesmo com a rotina corrida — juntando tecnologia com uma causa que me move de verdade.</p>
+          <p class="bio reveal">Sempre gostei muito de animais e de comunidade. O PatasDF nasceu da partida da minha cachorra Max — e foi crescendo até virar algo maior: uma rede de pessoas que querem transformar o DF de dentro pra fora.</p>
+          <p class="bio reveal">O Give&amp;Grow é a evolução natural disso. Não é só sobre adoção — é sobre conexão humana, troca de saberes e ação coletiva. Feito com a rotina corrida de quem ainda está na faculdade e acredita que tecnologia pode mudar o mundo.</p>
           <div class="criadora-social reveal">
             <a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener">📸 Instagram</a>
             <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener">💼 LinkedIn</a>
             <a href="https://github.com/claricenunes" target="_blank" rel="noopener">🐙 GitHub</a>
           </div>
-          <a href="sobre.html" class="criadora-more reveal">Conheça minha história completa →</a>
+          <a href="sobre.html" class="btn btn-sage reveal" style="margin-top:1.5rem;display:inline-flex;">✨ Conheça mais sobre a minha história →</a>
         </div>
       </div>
     </div>
@@ -410,24 +550,24 @@
     <div class="container">
       <span class="label reveal">Quero fazer parte do projeto</span>
       <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Como posso<br><em style="color:var(--sage)">ajudar?</em></h2>
-      <p class="lead reveal" style="max-width:480px;">Formas de colaborar com o projeto sem custo. Qualquer pessoa pode ajudar um animal!</p>
+      <p class="lead reveal" style="max-width:480px;">Formas de colaborar com o projeto sem custo. Qualquer pessoa pode ajudar a comunidade a crescer!</p>
       <div class="community-grid">
         <div class="community-card reveal">
           <div class="community-card-num">🌐</div>
           <h3>Compartilhe nas redes</h3>
-          <p>Caso você tenha gostado do projeto ou queira compartilhar algum animal, sinta-se à vontade para compartilhar e aumentar nosso alcance.</p>
+          <p>Gostou do projeto? Compartilhe com quem também quer aprender, ensinar ou fazer voluntariado no DF.</p>
           <button class="btn-card-sage" onclick="copiarLink()">🔗 Copiar link do site</button>
         </div>
         <div class="community-card reveal">
           <div class="community-card-num">💡</div>
-          <h3>Quer fazer parte do projeto?</h3>
-          <p>Caso tenha alguma ideia para melhorar cada vez mais nosso projeto, sinta-se à vontade e mande uma mensagem para a criadora do projeto.</p>
+          <h3>Tem uma ideia?</h3>
+          <p>Quer sugerir uma causa, um evento ou uma melhoria para o projeto? A criadora está sempre aberta para ouvir.</p>
           <button class="btn-card-sage" onclick="location.href='#sobre-criadora'">💡 Enviar ideia</button>
         </div>
         <div class="community-card reveal">
           <div class="community-card-num">🤝</div>
           <h3>Parcerias com ONGs</h3>
-          <p>Estamos abertos para parcerias com ONGs que possam ajudar nossos animais! Entre em contato através do email da criadora.</p>
+          <p>Representa uma ONG ou organização que quer se conectar com voluntários do DF? Entre em contato.</p>
           <button class="btn-card-sage" onclick="window.location.href='mailto:euclaricenunes@gmail.com'">✉️ Enviar email</button>
         </div>
       </div>
@@ -439,9 +579,12 @@
     <div class="cta-blob cta-blob-1"></div>
     <div class="cta-blob cta-blob-2"></div>
     <div class="cta-inner">
-      <h2>Um clique pode salvar<br><em>uma vida</em></h2>
-      <p>Leva menos de 2 minutos. Leia os termos e preencha o formulário. Só amor e comunidade.</p>
-      <button class="btn btn-gold" onclick="abrirModal('cad')">🐾 Cadastrar animal agora</button>
+      <h2>Um passo pequeno,<br><em>um impacto real</em></h2>
+      <p>Leva menos de 2 minutos. Você escolhe o quanto quer se envolver.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="SEU_LINK_GOOGLE_FORMS_AQUI" target="_blank" rel="noopener" class="btn btn-gold">🌱 Quero participar agora</a>
+        <a href="patasdf.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:white;">🐾 Ver o PatasDF →</a>
+      </div>
     </div>
   </div>
 
@@ -449,228 +592,75 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="#" class="logo"><div class="logo-paw">🐾</div> PatasDF</a>
-        <p>Plataforma gratuita e comunitária para conectar animais abandonados do Distrito Federal com famílias amorosas.</p>
+        <a href="#" class="logo"><h3>Give&amp;Grow</h3></a>
+        <p>Comunidade gratuita de troca, aprendizado e voluntariado no Distrito Federal. Feita por e para pessoas que querem fazer a diferença.</p>
       </div>
       <div class="footer-col">
-        <h4>Navegação</h4>
+        <h4>Comunidade</h4>
         <ul>
           <li><a href="#como-funciona">Como funciona</a></li>
-          <li><a href="#animais">Animais disponíveis</a></li>
-          <li><a href="#mapa">Mapa do DF</a></li>
-          <li><a href="#quero-ajudar">Quero participar</a></li>
+            <li><a href="#causas">Causas</a></li>
+          <li><a href="#eventos">Eventos</a></li>
+          <li><a href="#participar">Participar</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Projeto</h4>
+        <h4>Projetos</h4>
         <ul>
-          <li><a href="sobre.html">Sobre a criadora</a></li>
+          <li><a href="patasdf.html">PatasDF</a></li>
+          <li><a href="#sobre-criadora">Sobre a Clarice</a></li>
           <li><a href="https://github.com/claricenunes" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="mailto:euclaricenunes@gmail.com">Contato</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 PatasDF · Engenharia de Software · Todos os direitos garantidos</span>
-      <span>Feito com 🐾 por <a href="sobre.html">Clarice Nunes</a></span>
+      <span>© 2025 Give&amp;Grow · Engenharia de Software · CEUB · Brasília</span>
+      <span>Feito com 🌱 por <a href="#sobre-criadora">Clarice Nunes</a></span>
     </div>
   </footer>
 
   <script>
-    const FORMS_ADOTAR    = 'https://docs.google.com/forms/d/e/1FAIpQLScGuYB4lGLAHtPXiqRCsTGYEUVy2knjHjuaDSGeY3001iznSg/viewform';
-    const FORMS_TEMP      = '#';
-    const FORMS_CADASTRAR = 'https://docs.google.com/forms/d/e/1FAIpQLSfVtvmKmRZkJ4EKshaa1Mha_jvoZO_nPvsCs4ggCvdLu0L7cg/viewform';
-    const ANIMALS_URL     = 'https://raw.githubusercontent.com/SEU_USUARIO/patasdf/main/animais.json';
-
-    let _modalTipo = null, _aceiteFeito = false;
-
-    const MODAL_CONFIG = {
-      adopt: { badgeClass:'adopt', icon:'🏠', title:'Adoção Responsável', desc:'Compromisso permanente com o animal', modalTitle:'Termo de Adoção Responsável', modalSub:'Leia com atenção antes de ir ao formulário', btnLabel:'🏠 Ir para o formulário de adoção →', btnClass:'adopt', aceiteLabel:'Li e aceito o Termo de Adoção Responsável', formsUrl:()=>FORMS_ADOTAR, contract:'contractAdopt' },
-      temp:  { badgeClass:'temp',  icon:'⏳', title:'Lar Temporário',     desc:'Acolhimento temporário com compromisso', modalTitle:'Termo de Lar Temporário', modalSub:'Leia com atenção antes de ir ao formulário', btnLabel:'⏳ Ir para o formulário de lar temporário →', btnClass:'temp', aceiteLabel:'Li e aceito o Termo de Lar Temporário', formsUrl:()=>FORMS_TEMP, contract:'contractTemp' },
-      cad:   { badgeClass:'cad',   icon:'🐾', title:'Cadastrar Animal',   desc:'Publicação pública com autorização', modalTitle:'Termo de Publicação de Animal', modalSub:'Leia com atenção antes de ir ao formulário', btnLabel:'📋 Ir para o formulário de cadastro →', btnClass:'cad', aceiteLabel:'Li e aceito o Termo de Publicação', formsUrl:()=>FORMS_CADASTRAR, contract:'contractCad' },
-    };
-
-    function abrirModal(tipo) {
-      _modalTipo = tipo; _aceiteFeito = false;
-      const cfg = MODAL_CONFIG[tipo];
-      const badge = document.getElementById('modalActionBadge');
-      badge.className = `modal-action-badge ${cfg.badgeClass}`;
-      document.getElementById('modalActionIcon').textContent  = cfg.icon;
-      document.getElementById('modalActionTitle').textContent = cfg.title;
-      document.getElementById('modalActionDesc').textContent  = cfg.desc;
-      document.getElementById('termoModalTitle').textContent   = cfg.modalTitle;
-      document.getElementById('termoModalSubtitle').textContent = cfg.modalSub;
-      ['contractAdopt','contractTemp','contractCad'].forEach(id => {
-        document.getElementById(id).style.display = (id === cfg.contract) ? '' : 'none';
-      });
-      const btnAceite = document.getElementById('btnAceite');
-      btnAceite.className = `btn-accept ${cfg.badgeClass}`;
-      document.getElementById('aceiteIcon').textContent  = '○';
-      document.getElementById('aceiteLabel').textContent = cfg.aceiteLabel;
-      const btnForms = document.getElementById('btnIrForms');
-      btnForms.className = `btn-ir-forms ${cfg.btnClass}`;
-      btnForms.textContent = cfg.btnLabel;
-      btnForms.setAttribute('aria-disabled','true');
-      btnForms.href = cfg.formsUrl();
-      btnForms.setAttribute('target','_blank');
-      btnForms.setAttribute('rel','noopener');
-      document.getElementById('mustReadMsg').style.display = '';
-      document.getElementById('termoModal').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function fecharModal() {
-      document.getElementById('termoModal').classList.remove('open');
-      document.body.style.overflow = '';
-      _aceiteFeito = false; _modalTipo = null;
-    }
-
-    document.getElementById('termoModal').addEventListener('click', function(e) { if (e.target === this) fecharModal(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
-
-    function toggleAceite() {
-      _aceiteFeito = !_aceiteFeito;
-      const icon = document.getElementById('aceiteIcon');
-      const btnF = document.getElementById('btnIrForms');
-      const msg  = document.getElementById('mustReadMsg');
-      if (_aceiteFeito) { icon.textContent = '✓'; btnF.removeAttribute('aria-disabled'); msg.style.display = 'none'; }
-      else { icon.textContent = '○'; btnF.setAttribute('aria-disabled','true'); msg.style.display = ''; }
-    }
-
-    function validarAceiteEIr(e) {
-      if (!_aceiteFeito) {
-        e.preventDefault();
-        const btn = document.getElementById('btnAceite');
-        btn.style.outline = '3px solid var(--rust)';
-        setTimeout(() => btn.style.outline = '', 900);
-        document.getElementById('mustReadMsg').textContent = '⚠️ Você precisa aceitar os termos para continuar';
-        return false;
-      }
-      setTimeout(fecharModal, 300);
-      return true;
-    }
-
     function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
     document.querySelectorAll('#navLinks a').forEach(link => {
       link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
     });
 
+    function toggleCalendar() {
+      const embed  = document.getElementById('calendarEmbed');
+      const btn    = document.getElementById('calToggleBtn');
+      const isOpen = embed.style.display !== 'none';
+      embed.style.display = isOpen ? 'none' : 'block';
+      btn.textContent = isOpen ? 'Ver agenda completa ↓' : 'Fechar agenda ↑';
+      btn.classList.toggle('open', !isOpen);
+      if (!isOpen) {
+        const ph = document.getElementById('calendarPlaceholder');
+        const iframe = embed.querySelector('iframe');
+        if (iframe && !iframe.src.includes('SEU_LINK')) ph.style.display = 'none';
+      }
+    }
+
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
-        if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 70); revealObserver.unobserve(entry.target); }
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 70);
+          revealObserver.unobserve(entry.target);
+        }
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    let ANIMALS = [], filtroAtual = 'todos';
-
-    function filterAnimals(tipo, btn) {
+    function filtrarCausas(tipo, btn) {
       document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
-      filtroAtual = tipo;
-      renderizarCards(tipo);
+      document.querySelectorAll('.cause-card').forEach(card => {
+        card.style.display = (tipo === 'todas' || card.dataset.tipo === tipo) ? '' : 'none';
+      });
     }
 
     function copiarLink() {
-      navigator.clipboard.writeText(window.location.origin).then(() => alert("Link do site copiado!"));
+      navigator.clipboard.writeText(window.location.origin).then(() => alert('Link copiado!'));
     }
-
-    function irAdotarDoCard(id) {
-      try { sessionStorage.setItem('patasdf_adotar_id', id); } catch(e) {}
-      abrirModal('adopt');
-    }
-
-    const ANIMAIS_EMBUTIDOS = [
-      { id:'ex1', nome:'Bolinha', tipo:'cachorro', idade:'~2 anos',  porte:'Médio',   cidade:'Asa Sul',    descricao:'Muito carinhoso, brinca com crianças e já é castrado. Encontrado abandonado na quadra 308 Sul.',   contato:'(61) 98888-1111' },
-      { id:'ex2', nome:'Mimi',    tipo:'gato',     idade:'~8 meses', porte:'Pequeno', cidade:'Taguatinga', descricao:'Gatinha dócil, vacinada e sociável com outros gatos. Adora dormir no colo.',                      contato:'(61) 97777-2222' },
-      { id:'ex3', nome:'Thor',    tipo:'cachorro', idade:'~4 anos',  porte:'Grande',  cidade:'Ceilândia',  descricao:'Cão tranquilo e protetor, gosta de caminhadas longas. Ótimo com crianças.',                      contato:'(61) 96666-3333' },
-      { id:'ex4', nome:'Mingau',  tipo:'gato',     idade:'~3 anos',  porte:'Médio',   cidade:'Guará',      descricao:'Independente mas carinhoso. Castrado e vacinado em dia. Vive bem em apartamento.',               contato:'(61) 95555-4444' },
-      { id:'ex5', nome:'Pipoca',  tipo:'cachorro', idade:'~1 ano',   porte:'Pequeno', cidade:'Sobradinho', descricao:'Brincalhona e energética. Adora crianças e outros cães. Ainda precisa ser castrada.',            contato:'(61) 94444-5555' },
-      { id:'ex6', nome:'Nala',    tipo:'gato',     idade:'~6 meses', porte:'Pequeno', cidade:'Samambaia',  descricao:'Curiosa e cheia de energia. Filhote resgatada da rua, precisa de vacinas e muito amor.',         contato:'(61) 93333-6666' },
-    ];
-
-    async function carregarAnimais() {
-      const loading = document.getElementById('animaisLoading');
-      const grid    = document.getElementById('animalsGrid');
-      const erro    = document.getElementById('animaisErro');
-      loading.style.display = 'block'; grid.style.display = 'none'; erro.style.display = 'none';
-      let ok = false;
-      try {
-        const resp = await fetch(ANIMALS_URL + '?t=' + Date.now());
-        if (resp.ok) {
-          const dados = await resp.json();
-          const disp = dados.filter(a => !a.status || a.status === 'disponivel');
-          if (disp.length > 0) { ANIMALS = disp; ok = true; }
-        }
-      } catch(e) {}
-      if (!ok) ANIMALS = ANIMAIS_EMBUTIDOS;
-      loading.style.display = 'none'; grid.style.display = '';
-      renderizarCards(filtroAtual);
-    }
-
-    function renderizarCards(filtro) {
-      const grid = document.getElementById('animalsGrid');
-      const emptyState = document.getElementById('emptyState');
-      const lista = filtro === 'todos' ? ANIMALS : ANIMALS.filter(a => a.tipo === filtro);
-      if (lista.length === 0) { grid.innerHTML = ''; emptyState.style.display = 'block'; return; }
-      emptyState.style.display = 'none';
-      const bgMap    = { cachorro:'#FFF3E8', gato:'#F0ECF9' };
-      const emojiMap = { cachorro:'🐶', gato:'🐱' };
-      grid.innerHTML = lista.map(a => {
-        const bg    = bgMap[a.tipo]    || '#F5F3EE';
-        const emoji = emojiMap[a.tipo] || '🐾';
-        const tipo  = a.tipo ? (a.tipo.charAt(0).toUpperCase() + a.tipo.slice(1)) : 'Animal';
-        const idS   = (a.id || '').replace(/'/g,"\\'");
-        return `
-        <div class="animal-card" data-tipo="${a.tipo||''}">
-          <div class="animal-img" style="background:${bg};">
-            <div class="animal-img-bg">${emoji}</div>
-            <div class="animal-emoji" style="font-size:5.5rem;">${emoji}</div>
-            <div class="animal-badge">${tipo}</div>
-            <div class="animal-status-badge">Disponível</div>
-          </div>
-          <div class="animal-body">
-            <div class="animal-name">${a.nome || 'Sem nome'}</div>
-            <div class="animal-meta">
-              ${a.idade  ? `<span class="pill">${a.idade}</span>`  : ''}
-              ${a.cidade ? `<span class="pill">${a.cidade}</span>` : ''}
-              ${a.porte  ? `<span class="pill">${a.porte}</span>`  : ''}
-            </div>
-            <p class="animal-desc">${a.descricao || ''}</p>
-            <button class="btn-adotar-main" onclick="irAdotarDoCard('${idS}')">🏠 Quero adotar este animal</button>
-          </div>
-        </div>`;
-      }).join('');
-    }
-
-    carregarAnimais();
-
-    async function carregarStrip() {
-      try {
-        const r = await fetch(ANIMALS_URL + '?t=' + Date.now());
-        if (!r.ok) return;
-        const dados = await r.json();
-        const disp = dados.filter(a => !a.status || a.status === 'disponivel');
-        if (!disp.length) return;
-        const emojiMap = { cachorro:'🐶', gato:'🐱' };
-        const items = disp.map(a => `
-          <div class="strip-item">
-            <span class="si-emoji">${emojiMap[a.tipo]||'🐾'}</span>
-            <div><div class="si-name">${a.nome||'Animal'}</div><div class="si-info">${[a.tipo,a.cidade].filter(Boolean).join(' · ')}</div></div>
-          </div><div class="strip-sep">·</div>`).join('');
-        document.getElementById('stripInner').innerHTML = items + items;
-      } catch {}
-    }
-    carregarStrip();
-
-    (function() {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get('adotar') === '1') {
-        setTimeout(() => abrirModal('adopt'), 400);
-        history.replaceState(null, '', window.location.pathname + '#quero-ajudar');
-      }
-    })();
   </script>
 </body>
 </html>
