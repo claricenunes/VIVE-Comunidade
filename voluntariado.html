@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voluntariado — Give&Grow</title>
+  <meta name="description" content="Ficamos felizes com seu interesse em voluntariado! Ainda estamos crescendo — cadastre seu interesse e vamos te avisar quando tiver ações disponíveis." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0e1a0f; --ink-soft: #2d3d2e;
+      --sage: #4a7c59; --sage-mid: #6a9e7a;
+      --sage-light: #a8cba8; --sage-pale: #e8f2e8;
+      --cream: #f5f0e8; --gold: #c4922a;
+      --gold-light: #f0d898; --gold-pale: #faf3e0;
+      --rust: #b85c38; --white: #fdfcf8;
+      --border: rgba(14,26,15,0.1); --border-dark: rgba(14,26,15,0.18);
+      --shadow: 0 2px 20px rgba(14,26,15,0.08);
+      --shadow-lg: 0 12px 60px rgba(14,26,15,0.14);
+      --r-md: 16px; --r-lg: 24px; --r-xl: 32px;
+    }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); overflow-x: hidden; }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 68px; display: flex; align-items: center;
+      background: rgba(253,252,248,0.92); backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+    .navbar.scrolled { box-shadow: 0 2px 24px rgba(14,26,15,0.08); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; color: var(--ink); text-decoration: none; }
+    .logo em { color: var(--sage); font-style: italic; }
+    .nav-back { display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 500; text-decoration: none; border: 1.5px solid var(--border-dark); color: var(--ink-soft); transition: all 0.2s; }
+    .nav-back:hover { border-color: var(--sage); color: var(--sage); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 120px 2rem 80px; position: relative; overflow: hidden;
+      background: var(--cream);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+      opacity: 0.45;
+    }
+    .orb-1 { position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(74,124,89,0.13) 0%, transparent 70%); top: -120px; right: -100px; animation: orbFloat 12s ease-in-out infinite; pointer-events: none; }
+    .orb-2 { position: absolute; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(196,146,42,0.09) 0%, transparent 70%); bottom: -80px; left: -60px; animation: orbFloat 16s ease-in-out infinite reverse; pointer-events: none; }
+    @keyframes orbFloat { 0%,100%{transform:translate(0,0)} 50%{transform:translate(18px,-24px)} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes dotPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+    @keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
+
+    .hero-inner { position: relative; z-index: 1; max-width: 720px; text-align: center; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: white; border: 1px solid var(--border-dark);
+      border-radius: 100px; padding: 6px 16px 6px 8px;
+      font-size: 12px; font-weight: 600; color: var(--sage);
+      margin-bottom: 2rem; box-shadow: var(--shadow);
+      animation: fadeUp 0.5s ease both;
+    }
+    .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sage); animation: dotPulse 2s ease-in-out infinite; }
+
+    .hero-emoji {
+      font-size: 5rem; display: block; margin-bottom: 1.5rem;
+      animation: fadeUp 0.5s 0.05s ease both, heartbeat 3s ease-in-out infinite;
+      line-height: 1;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900; line-height: 1.0; letter-spacing: -2px;
+      color: var(--ink); margin-bottom: 1.5rem;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+    h1 em { font-style: italic; color: var(--sage); }
+
+    .hero-desc {
+      font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--ink-soft);
+      max-width: 560px; margin: 0 auto 1rem;
+      animation: fadeUp 0.5s 0.15s ease both;
+    }
+    .hero-desc-2 {
+      font-size: 15px; font-weight: 300; line-height: 1.8; color: var(--ink-soft);
+      max-width: 500px; margin: 0 auto 3rem;
+      animation: fadeUp 0.5s 0.2s ease both;
+    }
+    .hero-ctas {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+      animation: fadeUp 0.5s 0.25s ease both;
+    }
+
+    /* STATUS BADGE */
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold-pale); border: 1.5px solid rgba(196,146,42,0.25);
+      border-radius: var(--r-lg); padding: 14px 20px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.5s 0.08s ease both;
+    }
+    .status-badge-icon { font-size: 1.4rem; }
+    .status-badge-text strong { font-size: 14px; font-weight: 600; color: var(--ink); display: block; }
+    .status-badge-text span { font-size: 12px; font-weight: 300; color: var(--ink-soft); }
+
+    /* BUTTONS */
+    .btn-primary { background: var(--ink); color: var(--white); padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; box-shadow: 0 4px 20px rgba(14,26,15,0.18); display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { background: var(--sage); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(74,124,89,0.28); }
+    .btn-secondary { background: var(--white); color: var(--ink); padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 500; text-decoration: none; border: 1.5px solid var(--border-dark); transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-secondary:hover { border-color: var(--sage); color: var(--sage); transform: translateY(-1px); }
+    .btn-sage { background: var(--sage); color: white; padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 20px rgba(74,124,89,0.22); }
+    .btn-sage:hover { background: #3a6647; transform: translateY(-2px); }
+
+    /* CARDS SECTION */
+    .cards-section { padding: 80px 2rem; background: var(--white); }
+    .cards-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); background: var(--sage-pale); padding: 4px 12px; border-radius: 100px; margin-bottom: 1.25rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; letter-spacing: -1px; line-height: 1.05; margin-bottom: 1rem; }
+    .section-title em { font-style: italic; color: var(--sage); }
+    .section-desc { font-size: 16px; font-weight: 300; color: var(--ink-soft); line-height: 1.8; max-width: 520px; margin-bottom: 3rem; }
+
+    .three-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card {
+      background: var(--cream); border: 1.5px solid var(--border);
+      border-radius: var(--r-xl); padding: 2rem 1.75rem;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s, border-color 0.3s;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s;
+    }
+    .card.visible { opacity: 1; transform: translateY(0); }
+    .card:hover { transform: translateY(-5px) !important; box-shadow: var(--shadow-lg); border-color: var(--sage-light); }
+    .card-icon { font-size: 1.8rem; display: block; margin-bottom: 1rem; }
+    .card-title { font-size: 17px; font-weight: 600; margin-bottom: 0.5rem; }
+    .card-desc { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.75; margin-bottom: 1.5rem; }
+    .card-btn { background: var(--ink); color: white; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; }
+    .card-btn:hover { background: var(--sage); transform: translateY(-1px); }
+    .card-btn.outline { background: transparent; color: var(--ink-soft); border: 1.5px solid var(--border-dark); }
+    .card-btn.outline:hover { border-color: var(--sage); color: var(--sage); background: transparent; transform: translateY(-1px); }
+
+    /* ONG SECTION */
+    .ong-section { padding: 0 2rem 80px; }
+    .ong-inner { max-width: 1100px; margin: 0 auto; }
+    .ong-card {
+      background: var(--ink); border-radius: var(--r-xl);
+      padding: 3.5rem; display: grid; grid-template-columns: 1fr auto;
+      gap: 3rem; align-items: center; position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .ong-card.visible { opacity: 1; transform: translateY(0); }
+    .ong-card::before { content: '🏢'; position: absolute; font-size: 18rem; opacity: 0.04; right: -2rem; bottom: -3rem; pointer-events: none; line-height: 1; }
+    .ong-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); padding: 4px 12px; border-radius: 100px; display: inline-block; margin-bottom: 1.25rem; }
+    .ong-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.5px; color: white; margin-bottom: 1rem; }
+    .ong-title em { font-style: italic; color: var(--gold-light); }
+    .ong-desc { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.8; max-width: 500px; }
+    .ong-cta-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; flex-shrink: 0; }
+    .btn-email {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: white;
+      padding: 15px 28px; border-radius: 100px;
+      font-size: 15px; font-weight: 600; text-decoration: none;
+      transition: all 0.2s; white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(196,146,42,0.3);
+    }
+    .btn-email:hover { background: #a87824; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(196,146,42,0.4); }
+    .ong-note { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.35); text-align: center; }
+
+    /* SHARE TOAST */
+    .toast {
+      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: var(--ink); color: white; padding: 12px 24px; border-radius: 100px;
+      font-size: 14px; font-weight: 500; box-shadow: var(--shadow-lg);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+      z-index: 9999; display: flex; align-items: center; gap: 8px; pointer-events: none;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* FOOTER */
+    footer { background: var(--ink); padding: 50px 2rem 0; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; letter-spacing: -0.5px; display: inline-block; margin-bottom: 1rem; }
+    .footer-logo em { color: var(--sage-light); font-style: italic; }
+    .footer-brand p { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.38); line-height: 1.8; max-width: 280px; }
+    .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 1.25rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.48); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--sage-light); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; font-size: 12px; color: rgba(255,255,255,0.28); font-weight: 300; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-bottom a { color: rgba(255,255,255,0.38); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--sage-light); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .three-cards { grid-template-columns: 1fr; }
+      .ong-card { grid-template-columns: 1fr; gap: 2rem; }
+      .ong-cta-wrap { width: 100%; }
+      .btn-email { width: 100%; justify-content: center; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 600px) {
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">✅ Link copiado! Compartilhe com seus amigos</div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Give<em>&</em>Grow</a>
+      <a href="index.html" class="nav-back">← Voltar ao início</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="orb-1"></div>
+    <div class="orb-2"></div>
+    <div class="hero-inner">
+
+      <div class="hero-badge">
+        <div class="badge-dot"></div>
+        Give&Grow · Voluntariado
+      </div>
+
+      <span class="hero-emoji">🤝</span>
+
+      <h1>Que alegria ter<br>você por <em>aqui!</em></h1>
+
+      <div class="status-badge">
+        <span class="status-badge-icon">🌱</span>
+        <div class="status-badge-text">
+          <strong>Ainda estamos crescendo</strong>
+          <span>Parcerias com ONGs e ações presenciais em construção</span>
+        </div>
+      </div>
+
+      <p class="hero-desc">
+        Ficamos muito felizes com o seu interesse em fazer voluntariado! A comunidade Give&Grow ainda está dando seus primeiros passos — precisamos de mais pessoas e mais parcerias com ONGs para organizar ações presenciais no DF.
+      </p>
+      <p class="hero-desc-2">
+        Mas sua vontade de ajudar já é o começo. Cadastre seu interesse agora e você será um dos primeiros a saber quando tiver ações disponíveis.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="SEU_LINK_GOOGLE_FORMS_VOLUNTARIADO" target="_blank" rel="noopener" class="btn-primary">🤝 Cadastrar meu interesse</a>
+        <button class="btn-secondary" onclick="compartilhar()">🔗 Compartilhar o site</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CARDS -->
+  <section class="cards-section">
+    <div class="cards-inner">
+      <span class="section-label reveal-card">Enquanto isso...</span>
+      <h2 class="section-title reveal-card">Como você pode<br><em>ajudar agora</em></h2>
+      <p class="section-desc reveal-card">Mesmo sem ações presenciais ainda, tem muitas formas de contribuir com a comunidade Give&Grow hoje.</p>
+
+      <div class="three-cards">
+        <div class="card reveal-card">
+          <span class="card-icon">📋</span>
+          <div class="card-title">Cadastre seu interesse</div>
+          <p class="card-desc">Preencha o formulário de voluntariado para a gente entender quais causas te movem e avisar quando tiver ações disponíveis no DF.</p>
+          <a href="SEU_LINK_GOOGLE_FORMS_VOLUNTARIADO" target="_blank" rel="noopener" class="card-btn">📋 Preencher formulário →</a>
+        </div>
+        <div class="card reveal-card">
+          <span class="card-icon">🌐</span>
+          <div class="card-title">Divulgue para mais pessoas</div>
+          <p class="card-desc">Quanto mais pessoas conhecerem o Give&Grow, mais rápido a gente consegue parcerias e organizar ações de voluntariado no DF.</p>
+          <button class="card-btn" onclick="compartilhar()">🔗 Compartilhar o site</button>
+        </div>
+        <div class="card reveal-card">
+          <span class="card-icon">📚</span>
+          <div class="card-title">Explore outras formas de ajudar</div>
+          <p class="card-desc">Enquanto o voluntariado presencial cresce, você pode aprender, ensinar e contribuir com a comunidade de outras formas agora.</p>
+          <a href="index.html#participar" class="card-btn outline">Ver todas as formas →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONG SECTION -->
+  <section class="ong-section">
+    <div class="ong-inner">
+      <div class="ong-card reveal-card">
+        <div>
+          <span class="ong-tag">Para organizações</span>
+          <h2 class="ong-title">Você é uma ONG e quer<br><em>receber voluntários?</em></h2>
+          <p class="ong-desc">
+            Estamos construindo uma rede de parcerias com organizações do Distrito Federal para conectar voluntários dispostos a agir com causas reais que precisam de ajuda. Se a sua ONG está buscando voluntários, entra em contato — adoraria conversar e incluir vocês na nossa rede.
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:1.75rem;">
+            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">🐾 Causa animal</span>
+            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">👴 Idosos</span>
+            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">🌿 Meio ambiente</span>
+            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">🎓 Educação</span>
+            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">+ outras</span>
+          </div>
+        </div>
+        <div class="ong-cta-wrap">
+          <a href="mailto:euclaricenunes@gmail.com?subject=Parceria%20de%20voluntariado%20—%20Give%26Grow&body=Olá%2C%20Clarice!%0A%0ASomos%20a%20[nome%20da%20ONG]%20e%20gostaríamos%20de%20nos%20tornar%20parceiros%20do%20Give%26Grow%20para%20receber%20voluntários.%0A%0A..." class="btn-email">
+            ✉️ Entrar em contato
+          </a>
+          <p class="ong-note">euclaricenunes@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">Give<em>&</em>Grow</a>
+        <p>Comunidade gratuita de troca, aprendizado e voluntariado no Distrito Federal. Feita por e para pessoas que querem fazer a diferença.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Comunidade</h4>
+        <ul>
+          <li><a href="index.html#como-funciona">Como funciona</a></li>
+          <li><a href="index.html#causas">Causas</a></li>
+          <li><a href="index.html#eventos">Eventos</a></li>
+          <li><a href="index.html#participar">Participar</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Projetos</h4>
+        <ul>
+          <li><a href="patasdf.html">PatasDF</a></li>
+          <li><a href="sobre.html">Sobre a Clarice</a></li>
+          <li><a href="https://github.com/claricenunes" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="mailto:euclaricenunes@gmail.com">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Give&Grow · Engenharia de Software · CEUB · Brasília</span>
+      <span>Feito com 🌱 por <a href="sobre.html">Clarice Nunes</a></span>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Reveal cards on scroll
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          ro.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal-card').forEach(el => ro.observe(el));
+
+    // Share / copy link
+    function compartilhar() {
+      const url = window.location.origin + '/index.html';
+      if (navigator.share) {
+        navigator.share({
+          title: 'Give&Grow — Comunidade gratuita de voluntariado no DF',
+          text: 'Conheça o Give&Grow, plataforma gratuita que conecta pessoas que querem aprender, ensinar e fazer voluntariado no DF!',
+          url: url
+        }).catch(() => copiarFallback(url));
+      } else {
+        copiarFallback(url);
+      }
+    }
+
+    function copiarFallback(url) {
+      navigator.clipboard.writeText(url).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3200);
+      }).catch(() => {
+        alert('Link: ' + url);
+      });
+    }
+  </script>
+</body>
+</html>

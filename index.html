@@ -509,12 +509,14 @@
       font-size: 10px; color: var(--sage); flex-shrink: 0; font-weight: 700;
     }
     .part-btn {
-      display: block; text-align: center;
+      display: block; text-align: center; width: 100%;
       background: var(--ink); color: white;
       padding: 13px 20px; border-radius: 100px;
       font-size: 14px; font-weight: 600;
-      text-decoration: none;
+      text-decoration: none; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
       transition: background 0.2s, transform 0.15s;
+      box-sizing: border-box;
     }
     .part-btn:hover { background: var(--sage); transform: translateY(-1px); }
     .part-note {
@@ -1016,6 +1018,11 @@
           <div class="causa-desc">Oficinas de cozinha, receitas saudáveis e troca de técnicas</div>
         </div>
       </div>
+      <div style="text-align:center;margin-top:2.5rem;" class="reveal">
+        <a href="causas.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:white;padding:14px 32px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.2s;box-shadow:0 4px 20px rgba(14,26,15,0.16);" onmouseover="this.style.background='var(--sage)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--ink)';this.style.transform='translateY(0)'">
+          Ver todas as áreas de interesse →
+        </a>
+      </div>
     </div>
   </section>
 
@@ -1104,7 +1111,7 @@
             <li><div class="check-icon">✓</div> Online ou presencial, você escolhe</li>
             <li><div class="check-icon">✓</div> 100% gratuito, sem compromisso</li>
           </ul>
-          <a href="#" class="part-btn">🎓 Quero aprender — formulário</a>
+          <button onclick="abrirModal('aprender')" class="part-btn">🎓 Quero aprender — formulário</button>
           <p class="part-note">Você será levado ao Google Forms</p>
         </div>
         <div class="part-card reveal">
@@ -1118,7 +1125,7 @@
             <li><div class="check-icon">✓</div> Online ou presencial</li>
             <li><div class="check-icon">✓</div> A comunidade cresce com você</li>
           </ul>
-          <a href="#" class="part-btn">🙌 Quero ensinar — formulário</a>
+          <button onclick="abrirModal('ensinar')" class="part-btn">🙌 Quero ensinar — formulário</button>
           <p class="part-note">Você será levado ao Google Forms</p>
         </div>
         <div class="part-card reveal">
@@ -1132,22 +1139,22 @@
             <li><div class="check-icon">✓</div> Ações mensais no DF</li>
             <li><div class="check-icon">✓</div> Em parceria com ONGs reais</li>
           </ul>
-          <a href="#" class="part-btn">🤝 Voluntariado — formulário</a>
-          <p class="part-note">Você será levado ao Google Forms</p>
+          <a href="voluntariado.html" class="part-btn">🤝 Quero fazer voluntariado →</a>
+          <p class="part-note">Saiba mais sobre como participar</p>
         </div>
         <div class="part-card reveal">
           <div class="part-card-top">
             <div class="part-icon">💡</div>
             <div class="part-title">Ainda não sei por onde começar</div>
           </div>
-          <div class="part-desc">Preencha suas preferências e a gente sugere os melhores eventos e causas para o seu perfil.</div>
+          <div class="part-desc">Explore todas as causas e áreas da comunidade e encontre o que te move.</div>
           <ul class="part-checks">
-            <li><div class="check-icon">✓</div> Informe seus interesses gerais</li>
-            <li><div class="check-icon">✓</div> Receba sugestões personalizadas</li>
+            <li><div class="check-icon">✓</div> 20+ áreas de interesse</li>
+            <li><div class="check-icon">✓</div> Aprender, ensinar e voluntariado</li>
             <li><div class="check-icon">✓</div> Sem pressão, no seu ritmo</li>
           </ul>
-          <a href="#" class="part-btn">💡 Descobrir por onde começar</a>
-          <p class="part-note">Leva menos de 2 minutos</p>
+          <a href="causas.html" class="part-btn">💡 Explorar todas as áreas →</a>
+          <p class="part-note">Veja o que a comunidade oferece</p>
         </div>
       </div>
       <div class="data-note reveal">
@@ -1223,7 +1230,7 @@
           <span class="label reveal">Quem está por trás</span>
           <h2 class="reveal">Olá, eu sou<br><em>Clarice Nunes</em></h2>
           <div class="criadora-chips reveal">
-            <span class="chip chip-sage">🏫 CEUB · Brasília</span>
+            <span class="chip chip-sage">🏫 Brasília</span>
             <span class="chip chip-sage">💻 Engenharia de Software</span>
             <span class="chip">🤝 Voluntariado</span>
           </div>
@@ -1366,6 +1373,89 @@
     function copiarLink() {
       navigator.clipboard.writeText(window.location.href).then(() => alert('Link copiado! 🌱'));
     }
+    // ── MODAL REDIRECIONAMENTO ──
+    const MODAL_CONFIG = {
+      aprender: {
+        icon: '🎓', iconBg: 'var(--sage-pale)',
+        title: 'Quero aprender',
+        sub: 'Antes de ir para o Google Forms',
+        infoText: 'Estamos te redirecionando para o nosso Google Forms. Lá você vai nos contar seus interesses e como prefere aprender. Com essas informações conseguimos criar atividades novas e te enviar os eventos que podem te agradar.',
+        items: ['Quais áreas te interessam (inglês, tecnologia, artesanato...)', 'Sua disponibilidade de horário', 'Se prefere online, presencial ou os dois', 'Seu nível atual na área escolhida'],
+        btnBg: 'var(--sage)', btnText: 'Entendi — ir para o formulário',
+        url: 'SEU_LINK_GOOGLE_FORMS_APRENDER'
+      },
+      ensinar: {
+        icon: '🙌', iconBg: 'var(--sage-pale)',
+        title: 'Quero ensinar',
+        sub: 'Antes de ir para o Google Forms',
+        infoText: 'Estamos te redirecionando para o nosso Google Forms. Você vai nos contar qual habilidade tem para compartilhar e como prefere ensinar. Assim conseguimos organizar grupos, criar atividades e conectar você com as pessoas certas na comunidade.',
+        items: ['Qual habilidade ou conhecimento você quer compartilhar', 'Quantas horas por semana pode dedicar', 'Se prefere ensinar online, presencial ou os dois', 'Para qual público se sente mais a vontade'],
+        btnBg: 'var(--ink)', btnText: 'Entendi — ir para o formulário',
+        url: 'SEU_LINK_GOOGLE_FORMS_ENSINAR'
+      }
+    };
+
+    function abrirModal(tipo) {
+      const c = MODAL_CONFIG[tipo];
+      document.getElementById('m-icon').style.background = c.iconBg;
+      document.getElementById('m-icon').textContent = c.icon;
+      document.getElementById('m-title').textContent = c.title;
+      document.getElementById('m-sub').textContent = c.sub;
+      document.getElementById('m-infotext').textContent = c.infoText;
+      document.getElementById('m-items').innerHTML = c.items.map(it =>
+        '<div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--ink-soft);font-weight:400;"><div style="width:20px;height:20px;border-radius:50%;background:var(--sage-pale);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--sage);flex-shrink:0;font-weight:700;margin-top:1px;">&#10003;</div>' + it + '</div>'
+      ).join('');
+      const btn = document.getElementById('m-btn');
+      btn.style.background = c.btnBg;
+      btn.textContent = c.btnText;
+      btn.href = c.url;
+      const ov = document.getElementById('m-overlay');
+      const bx = document.getElementById('m-box');
+      ov.style.opacity = '1'; ov.style.pointerEvents = 'all';
+      bx.style.transform = 'translateY(0) scale(1)';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function fecharModal() {
+      const ov = document.getElementById('m-overlay');
+      const bx = document.getElementById('m-box');
+      ov.style.opacity = '0'; ov.style.pointerEvents = 'none';
+      bx.style.transform = 'translateY(24px) scale(0.97)';
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
   </script>
+  <div id="m-overlay" onclick="if(event.target===this)fecharModal()" style="position:fixed;inset:0;z-index:9000;background:rgba(14,26,15,0.55);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.25s ease;">
+    <div id="m-box" style="background:var(--white);border-radius:var(--r-xl);max-width:520px;width:100%;box-shadow:0 32px 96px rgba(14,26,15,0.22);transform:translateY(24px) scale(0.97);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);overflow:hidden;">
+      <div style="padding:1.75rem 2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div id="m-icon" style="width:50px;height:50px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;"></div>
+          <div>
+            <div id="m-title" style="font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--ink);letter-spacing:-0.5px;"></div>
+            <div id="m-sub" style="font-size:12px;font-weight:300;color:var(--ink-soft);margin-top:3px;"></div>
+          </div>
+        </div>
+        <button onclick="fecharModal()" style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border-dark);background:transparent;cursor:pointer;font-size:15px;color:var(--ink-soft);transition:all 0.2s;flex-shrink:0;">x</button>
+      </div>
+      <div style="padding:1.75rem 2rem;">
+        <div style="background:var(--sage-pale);border:1.5px solid rgba(74,124,89,0.2);border-radius:var(--r-md);padding:1.25rem 1.5rem;margin-bottom:1.5rem;">
+          <p id="m-infotext" style="font-size:14px;font-weight:400;line-height:1.75;color:var(--ink-soft);"></p>
+        </div>
+        <div style="margin-bottom:1.5rem;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);opacity:0.6;margin-bottom:10px;">O que voce vai preencher</div>
+          <div id="m-items" style="display:flex;flex-direction:column;gap:9px;"></div>
+        </div>
+        <div style="background:var(--cream);border:1px solid var(--border);border-radius:var(--r-md);padding:1rem 1.25rem;display:flex;gap:10px;align-items:flex-start;margin-bottom:1.75rem;">
+          <span style="flex-shrink:0;">🔒</span>
+          <p style="font-size:12px;font-weight:300;color:var(--ink-soft);line-height:1.65;">Seus dados ficam no <strong style="font-weight:500;">Google Forms</strong> e são usados só para organizar eventos e atividades que combinam com você. Nenhum dado é vendido ou compartilhado com terceiros.</p>
+        </div>
+        <div style="display:flex;gap:10px;">
+          <button onclick="fecharModal()" style="flex:1;padding:13px;border-radius:100px;border:1.5px solid var(--border-dark);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--ink-soft);cursor:pointer;">Voltar</button>
+          <a id="m-btn" href="#" target="_blank" rel="noopener" onclick="setTimeout(fecharModal,200)" style="flex:2;padding:13px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:white;text-decoration:none;text-align:center;display:flex;align-items:center;justify-content:center;"></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

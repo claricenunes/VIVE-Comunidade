@@ -70,8 +70,8 @@
         </h1>
         <p style="font-size:17px;font-weight:300;line-height:1.75;color:var(--ink-soft);max-width:440px;margin:1.5rem 0 2.5rem;animation:fadeUp 0.6s 0.2s ease both;">Plataforma gratuita para reencontrar animais perdidos no DF. Cadastre seu pet desaparecido ou informe que encontrou um animal.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp 0.6s 0.3s ease both;">
-          <a href="#ajudar" class="btn-sage">😢 Perdi meu animal</a>
-          <a href="#ajudar" class="btn-secondary">🐾 Encontrei um animal</a>
+          <button onclick="abrirModalPatas('perdido')" class="btn-sage" style="border:none;cursor:pointer;font-family:'DM Sans',sans-serif;">😢 Perdi meu animal</button>
+          <button onclick="abrirModalPatas('encontrado')" class="btn-secondary" style="border:1.5px solid var(--border-dark);cursor:pointer;font-family:'DM Sans',sans-serif;">🐾 Encontrei um animal</button>
         </div>
       </div>
       <div style="position:relative;height:420px;">
@@ -140,7 +140,7 @@
             <li><div class="check-dot sage">✓</div> Visível para toda a comunidade</li>
             <li><div class="check-dot sage">✓</div> Contato direto com quem avistar</li>
           </ul>
-          <a href="#" class="btn-card btn-card-sage">😢 Cadastrar animal perdido →</a>
+          <button onclick="abrirModalPatas('perdido')" class="btn-card btn-card-sage">😢 Cadastrar animal perdido →</button>
           <p class="action-note">Você será levado ao Google Forms</p>
         </div>
         <div class="action-card reveal">
@@ -153,7 +153,7 @@
             <li><div class="check-dot gold">✓</div> Aparece na listagem de encontrados</li>
             <li><div class="check-dot gold">✓</div> Dono entra em contato direto</li>
           </ul>
-          <a href="#" class="btn-card btn-card-gold">🐾 Cadastrar animal encontrado →</a>
+          <button onclick="abrirModalPatas('encontrado')" class="btn-card btn-card-gold">🐾 Cadastrar animal encontrado →</button>
           <p class="action-note">Você será levado ao Google Forms</p>
         </div>
       </div>
@@ -223,7 +223,7 @@
     <div class="container">
       <span class="label reveal">Conheça e apoie</span>
       <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">ONGs que fazem<br><em style="color:var(--sage)">a diferença</em></h2>
-      <p class="lead reveal" style="max-width:520px;">Organizações do DF que cuidam dos animais. Conheça, apoie e compartilhe.</p>
+      <p class="lead reveal" style="max-width:520px;">Organizações (ilustrativas) do DF que cuidam dos animais. Conheça, apoie e compartilhe.</p>
       <div class="ongs-grid">
         <div class="ong-card verde reveal">
           <span class="ong-icon">🐾</span>
@@ -473,6 +473,120 @@
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
     carregarAnimais();
+
+    // ── MODAL PATAS ──
+    const PATAS_CONFIG = {
+      perdido: {
+        cor: 'var(--sage)', corPale: 'var(--sage-pale)',
+        icon: '😢', title: 'Perdi meu animal',
+        intro: 'Sentimos muito pelo sumiço do seu pet. Antes de ir para o formulário, pedimos que leia as informações abaixo.',
+        termos: [
+          'Veracidade das informações: ao cadastrar o animal, você declara que todas as informações fornecidas (descrição, local, foto, contato) são verídicas e atualizadas.',
+          'Autorização de contato: você autoriza que membros da comunidade PatasDF entrem em contato com você caso alguém aviste ou encontre o seu animal.',
+          'Publicação pública: as informações e foto do animal serão exibidas publicamente na plataforma para aumentar as chances de reencontro.',
+          'Atualização: caso o animal seja encontrado, pedimos que você nos avise para retirarmos o cadastro da listagem.'
+        ],
+        btnBg: 'var(--sage)', btnText: '😢 Li e aceito — ir para o formulário',
+        url: 'SEU_LINK_GOOGLE_FORMS_PERDI'
+      },
+      encontrado: {
+        cor: 'var(--gold)', corPale: 'var(--gold-pale)',
+        icon: '🐾', title: 'Encontrei um animal',
+        intro: 'Obrigada por querer ajudar! Antes de ir para o formulário, pedimos que leia as informações abaixo.',
+        termos: [
+          'Veracidade das informações: ao cadastrar o animal encontrado, você declara que as informações fornecidas (descrição, local, foto, contato) são verídicas.',
+          'Autorização de contato: você autoriza que o dono do animal e membros da comunidade PatasDF entrem em contato com você sobre o animal encontrado.',
+          'Publicação pública: as informações e foto do animal serão exibidas publicamente para facilitar o reencontro com o dono.',
+          'Bem-estar do animal: pedimos que o animal seja mantido em segurança enquanto aguarda o dono, sempre que possível.'
+        ],
+        btnBg: 'var(--gold)', btnText: '🐾 Li e aceito — ir para o formulário',
+        url: 'SEU_LINK_GOOGLE_FORMS_ENCONTREI'
+      }
+    };
+
+    function abrirModalPatas(tipo) {
+      const c = PATAS_CONFIG[tipo];
+      document.getElementById('pm-icon').style.background = c.corPale;
+      document.getElementById('pm-icon').textContent = c.icon;
+      document.getElementById('pm-title').textContent = c.title;
+      document.getElementById('pm-intro').textContent = c.intro;
+      document.getElementById('pm-termos').innerHTML = c.termos.map((t, i) =>
+        `<div style="display:flex;gap:12px;align-items:flex-start;">
+          <div style="width:22px;height:22px;border-radius:50%;background:${c.corPale};color:${c.cor};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;">${i+1}</div>
+          <p style="font-size:13px;font-weight:400;line-height:1.7;color:var(--ink-soft);">${t}</p>
+        </div>`
+      ).join('');
+      document.getElementById('pm-checkbox').checked = false;
+      document.getElementById('pm-btn').style.background = c.btnBg;
+      document.getElementById('pm-btn').textContent = c.btnText;
+      document.getElementById('pm-btn').href = c.url;
+      atualizarBtnPatas();
+      const ov = document.getElementById('pm-overlay');
+      const bx = document.getElementById('pm-box');
+      ov.style.opacity = '1'; ov.style.pointerEvents = 'all';
+      bx.style.transform = 'translateY(0) scale(1)';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function fecharModalPatas() {
+      const ov = document.getElementById('pm-overlay');
+      const bx = document.getElementById('pm-box');
+      ov.style.opacity = '0'; ov.style.pointerEvents = 'none';
+      bx.style.transform = 'translateY(24px) scale(0.97)';
+      document.body.style.overflow = '';
+    }
+
+    function atualizarBtnPatas() {
+      const checked = document.getElementById('pm-checkbox').checked;
+      const btn = document.getElementById('pm-btn');
+      btn.style.opacity = checked ? '1' : '0.45';
+      btn.style.pointerEvents = checked ? 'all' : 'none';
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModalPatas(); });
   </script>
+
+  <!-- MODAL PATAS -->
+  <div id="pm-overlay" onclick="if(event.target===this)fecharModalPatas()" style="position:fixed;inset:0;z-index:9000;background:rgba(14,26,15,0.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.25s ease;">
+    <div id="pm-box" style="background:var(--white);border-radius:var(--r-xl);max-width:560px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 32px 96px rgba(14,26,15,0.25);transform:translateY(24px) scale(0.97);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);">
+      <!-- Header -->
+      <div style="padding:1.75rem 2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;top:0;background:var(--white);z-index:1;border-radius:var(--r-xl) var(--r-xl) 0 0;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div id="pm-icon" style="width:48px;height:48px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;"></div>
+          <div>
+            <div id="pm-title" style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--ink);letter-spacing:-0.5px;"></div>
+            <div style="font-size:12px;font-weight:300;color:var(--ink-soft);margin-top:2px;">PatasDF · Termo de cadastro</div>
+          </div>
+        </div>
+        <button onclick="fecharModalPatas()" style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border-dark);background:transparent;cursor:pointer;font-size:15px;color:var(--ink-soft);transition:all 0.2s;flex-shrink:0;">✕</button>
+      </div>
+      <!-- Body -->
+      <div style="padding:1.75rem 2rem;">
+        <!-- Intro -->
+        <p id="pm-intro" style="font-size:14px;font-weight:400;color:var(--ink-soft);line-height:1.75;margin-bottom:1.5rem;"></p>
+        <!-- Termos -->
+        <div style="background:var(--cream);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:1.5rem;margin-bottom:1.5rem;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);opacity:0.6;margin-bottom:1rem;">Termos e condições de uso</div>
+          <div id="pm-termos" style="display:flex;flex-direction:column;gap:14px;"></div>
+        </div>
+        <!-- Privacidade -->
+        <div style="background:var(--sage-pale);border:1.5px solid rgba(74,124,89,0.2);border-radius:var(--r-md);padding:1rem 1.25rem;display:flex;gap:10px;align-items:flex-start;margin-bottom:1.5rem;">
+          <span style="font-size:1rem;flex-shrink:0;">🔒</span>
+          <p style="font-size:12px;font-weight:300;color:var(--ink-soft);line-height:1.65;">Seus dados ficam no <strong style="font-weight:500;">Google Forms</strong>. O PatasDF não armazena informações diretamente. Os dados são usados exclusivamente para facilitar o reencontro de animais perdidos.</p>
+        </div>
+        <!-- Checkbox aceite -->
+        <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;margin-bottom:1.75rem;padding:1rem 1.25rem;background:var(--white);border:1.5px solid var(--border-dark);border-radius:var(--r-md);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--sage)'" onmouseout="this.style.borderColor='var(--border-dark)'">
+          <input type="checkbox" id="pm-checkbox" onchange="atualizarBtnPatas()" style="width:18px;height:18px;flex-shrink:0;margin-top:1px;accent-color:var(--sage);cursor:pointer;">
+          <span style="font-size:13px;font-weight:500;color:var(--ink);line-height:1.6;">Li e estou de acordo com os termos acima, confirmo que as informações são verídicas e autorizo o contato por membros da comunidade PatasDF.</span>
+        </label>
+        <!-- Botões -->
+        <div style="display:flex;gap:10px;">
+          <button onclick="fecharModalPatas()" style="flex:1;padding:13px;border-radius:100px;border:1.5px solid var(--border-dark);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--ink-soft);cursor:pointer;transition:all 0.2s;">Voltar</button>
+          <a id="pm-btn" href="#" target="_blank" rel="noopener" onclick="setTimeout(fecharModalPatas,200)" style="flex:2;padding:13px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:white;text-decoration:none;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.2s;opacity:0.45;pointer-events:none;"></a>
+        </div>
+        <p style="text-align:center;font-size:11px;font-weight:300;color:var(--ink-soft);margin-top:10px;opacity:0.7;">Aceite os termos acima para continuar</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
