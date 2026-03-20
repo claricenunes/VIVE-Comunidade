@@ -10,6 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <style>
+
+    /* Modal scroll lock — iOS fix */
+    body.modal-open { overflow: hidden; position: fixed; width: 100%; }
     .nav-back-gg {
       background: var(--sage-pale) !important;
       color: var(--sage) !important;
@@ -554,13 +557,13 @@
       document.getElementById('pm-checkbox').checked = false;
       document.getElementById('pm-btn').style.background = c.btnBg;
       document.getElementById('pm-btn').textContent = c.btnText;
-      document.getElementById('pm-btn').href = c.url;
+      document.getElementById('pm-btn').dataset.url = c.url;
       atualizarBtnPatas();
       const ov = document.getElementById('pm-overlay');
       const bx = document.getElementById('pm-box');
       ov.style.opacity = '1'; ov.style.pointerEvents = 'all';
       bx.style.transform = 'translateY(0) scale(1)';
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('modal-open'); document.body.dataset.scrollY = window.scrollY;
     }
 
     function fecharModalPatas() {
@@ -568,22 +571,31 @@
       const bx = document.getElementById('pm-box');
       ov.style.opacity = '0'; ov.style.pointerEvents = 'none';
       bx.style.transform = 'translateY(24px) scale(0.97)';
-      document.body.style.overflow = '';
+      const sy = document.body.dataset.scrollY || 0; document.body.classList.remove('modal-open'); window.scrollTo(0, parseInt(sy));
     }
 
     function atualizarBtnPatas() {
       const checked = document.getElementById('pm-checkbox').checked;
       const btn = document.getElementById('pm-btn');
       btn.style.opacity = checked ? '1' : '0.45';
-      btn.style.pointerEvents = checked ? 'all' : 'none';
+      btn.style.pointerEvents = checked ? 'auto' : 'none';
+    }
+
+    function abrirFormularioPatas() {
+      const btn = document.getElementById('pm-btn');
+      const url = btn.dataset.url;
+      if (url && url !== '#') {
+        fecharModalPatas();
+        setTimeout(() => { window.open(url, '_blank', 'noopener,noreferrer'); }, 150);
+      }
     }
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModalPatas(); });
   </script>
 
   <!-- MODAL PATAS -->
-  <div id="pm-overlay" onclick="if(event.target===this)fecharModalPatas()" style="position:fixed;inset:0;z-index:9000;background:rgba(14,26,15,0.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.25s ease;">
-    <div id="pm-box" style="background:var(--white);border-radius:var(--r-xl);max-width:560px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 32px 96px rgba(14,26,15,0.25);transform:translateY(24px) scale(0.97);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);">
+  <div id="pm-overlay" onclick="if(event.target===this)fecharModalPatas()" style="position:fixed;inset:0;z-index:9000;background:rgba(14,26,15,0.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.25s ease;touch-action:none;">
+    <div id="pm-box" style="background:var(--white);border-radius:var(--r-xl);max-width:560px;width:100%;max-height:90dvh;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;box-shadow:0 32px 96px rgba(14,26,15,0.25);transform:translateY(24px) scale(0.97);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);">
       <!-- Header -->
       <div style="padding:1.75rem 2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;top:0;background:var(--white);z-index:1;border-radius:var(--r-xl) var(--r-xl) 0 0;">
         <div style="display:flex;align-items:center;gap:12px;">
@@ -617,7 +629,7 @@
         <!-- Botões -->
         <div style="display:flex;gap:10px;">
           <button onclick="fecharModalPatas()" style="flex:1;padding:13px;border-radius:100px;border:1.5px solid var(--border-dark);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--ink-soft);cursor:pointer;transition:all 0.2s;">Voltar</button>
-          <a id="pm-btn" href="#" target="_blank" rel="noopener" onclick="setTimeout(fecharModalPatas,200)" style="flex:2;padding:13px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:white;text-decoration:none;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.2s;opacity:0.45;pointer-events:none;"></a>
+          <button id="pm-btn" onclick="abrirFormularioPatas()" style="flex:2;padding:13px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:white;border:none;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.2s;opacity:0.45;pointer-events:none;"></button>
         </div>
         <p style="text-align:center;font-size:11px;font-weight:300;color:var(--ink-soft);margin-top:10px;opacity:0.7;">Aceite os termos acima para continuar</p>
       </div>
