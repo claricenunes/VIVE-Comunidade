@@ -192,35 +192,23 @@
     const URL_PERDI    = 'https://docs.google.com/forms/d/e/1FAIpQLSdwkBiDv1es0LKBWcML1goLfLYHsVaSYuPup9HgPXHWBcM21w/viewform';
     const URL_ENCONTREI = 'https://docs.google.com/forms/d/e/1FAIpQLSeOyUEvjqoL2VwW3kJSf5gsE197C9LvIaPMh03FFTpZJVA-6A/viewform';
 
-    const ANIMAIS_EMBUTIDOS = [
-      { id:'ex1', nome:'Bolinha',  status:'perdido',    tipo:'cachorro', idade:'~2 anos',  porte:'Médio',   cidade:'Asa Sul',    descricao:'Vira-lata caramelo com mancha branca no peito. Desapareceu perto da quadra 308 Sul no dia 18/03.',  contato:'(61) 98888-1111' },
-      { id:'ex2', nome:'Mimi',     status:'encontrado', tipo:'gato',     idade:'~1 ano',   porte:'Pequeno', cidade:'Taguatinga', descricao:'Gatinha listrada, muito dócil. Encontrada na QNF 14. Está sendo cuidada — dono entrar em contato.',  contato:'(61) 97777-2222' },
-      { id:'ex3', nome:'Thor',     status:'perdido',    tipo:'cachorro', idade:'~4 anos',  porte:'Grande',  cidade:'Ceilândia',  descricao:'Pastor alemão preto e dourado. Coleira azul. Fugiu durante fogos de artifício na QNN 28.',           contato:'(61) 96666-3333' },
-      { id:'ex4', nome:'Mingau',   status:'encontrado', tipo:'gato',     idade:'~3 anos',  porte:'Médio',   cidade:'Guará',      descricao:'Gato cinza, castrado. Encontrado no Guará II. Muito tranquilo. Aguardando dono.',                    contato:'(61) 95555-4444' },
-      { id:'ex5', nome:'Pipoca',   status:'perdido',    tipo:'cachorro', idade:'~1 ano',   porte:'Pequeno', cidade:'Sobradinho', descricao:'Lhasa apso branca. Usava roupa rosa quando desapareceu. Sumiu há 3 dias no centro de Sobradinho.',   contato:'(61) 94444-5555' },
-      { id:'ex6', nome:'Nala',     status:'encontrado', tipo:'gato',     idade:'~6 meses', porte:'Pequeno', cidade:'Samambaia',  descricao:'Filhote de gato preto com patinhas brancas. Encontrada na QR 416. Precisando de lar temporário.',    contato:'(61) 93333-6666' },
-    ];
+    const ANIMAIS_EMBUTIDOS = [];
 
     let TODOS = [], statusAtual = 'todos', tipoAtual = 'todos', buscaAtual = '';
 
     async function carregar() {
-      // Carrega os dados embutidos imediatamente para garantir que algo aparece
-      TODOS = ANIMAIS_EMBUTIDOS;
-      atualizarContadores();
-      renderizar();
-      // Tenta buscar dados atualizados do JSON (funciona quando hospedado em servidor)
-      try {
-        const resp = await fetch('https://raw.githubusercontent.com/claricenunes/Give-and-Grow/main/animais.json?t=' + Date.now());
-        if (resp.ok) {
-          const d = await resp.json();
-          if (d.length > 0) {
-            TODOS = d;
-            atualizarContadores();
-            renderizar();
-          }
-        }
-      } catch(e) { /* mantém os dados embutidos */ }
+  try {
+    const resp = await fetch('https://raw.githubusercontent.com/claricenunes/Give-and-Grow/main/animais.json?t=' + Date.now());
+    if (resp.ok) {
+      const d = await resp.json();
+      TODOS = d;
     }
+  } catch(e) {
+    console.log('Erro ao carregar animais:', e);
+  }
+  atualizarContadores();
+  renderizar();
+}
 
     function atualizarContadores() {
       const p = TODOS.filter(a => a.status === 'perdido').length;
