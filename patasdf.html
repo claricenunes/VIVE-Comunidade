@@ -13,6 +13,7 @@
 
     /* Modal scroll lock — iOS fix */
     body.modal-open { overflow: hidden; position: fixed; width: 100%; }
+    @media (max-width: 768px) { #statsGrid { grid-template-columns: repeat(2,1fr) !important; } #dicas .container > div:last-of-type { grid-template-columns: 1fr !important; } }
     .nav-back-gg {
       background: var(--sage-pale) !important;
       color: var(--sage) !important;
@@ -48,7 +49,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html" class="nav-back-gg">← Give&amp;Grow</a></li>
         <li><a href="#animais">Animais</a></li>
-        <li><a href="#mapa">Mapa</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#ongs">ONGs</a></li>
         <li><a href="#sobre-criadora">Sobre</a></li>
         <li><a href="#ajudar" class="nav-cta">Quero ajudar</a></li>
@@ -209,29 +210,138 @@
     </div>
   </section>
 
-  <!-- MAPA -->
-  <section class="section map-section" id="mapa">
+
+  <!-- ESTATÍSTICAS — ativar quando o site tiver mais usuários
+  <section class="section" id="estatisticas" style="background:var(--ink);padding:80px 2rem;">
     <div class="container">
-      <span class="label reveal">Mapa</span>
-      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Onde estão<br><em style="color:var(--sage)">os animais</em></h2>
-      <p class="lead reveal" style="max-width:480px;">Cada marcador é um animal perdido ou encontrado no DF. Integrado com Google My Maps — atualizado em tempo real.</p>
-      <div class="map-wrapper reveal">
-        <div class="map-placeholder">
-          <div class="map-grid"></div>
-          <div class="map-dot d1"><span>🐶</span></div>
-          <div class="map-dot d2"><span>🐱</span></div>
-          <div class="map-dot d3"><span>🐶</span></div>
-          <div class="map-dot d4"><span>🐱</span></div>
-          <div class="map-placeholder-content">
-            <div style="font-size:3.5rem;margin-bottom:1rem;">🗺️</div>
-            <h3>Mapa do Distrito Federal</h3>
-            <p>Aqui será exibido o Google My Maps com todos os animais perdidos e encontrados em tempo real.</p>
-            <a href="https://mymaps.google.com" target="_blank" rel="noopener" class="btn-sage" style="margin-top:1.5rem;display:inline-flex;">Criar mapa no Google My Maps →</a>
-          </div>
+      <span class="label reveal" style="color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);">Comunidade em números</span>
+      <h2 class="reveal" style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.1;letter-spacing:-1px;color:white;margin:1rem 0 0.5rem;">O impacto do<br><em style="font-style:italic;color:var(--gold-light)">PatasDF no DF</em></h2>
+      <p class="reveal" style="font-size:15px;font-weight:300;color:rgba(255,255,255,0.5);margin-bottom:3rem;">Atualizado em tempo real com os dados da comunidade.</p>
+
+      <div class="reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:2.5rem;" id="statsGrid">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-xl);padding:2rem 1.5rem;text-align:center;">
+          <div style="font-size:3rem;margin-bottom:0.5rem;">😢</div>
+          <div id="statPerdidos" style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:white;line-height:1;">—</div>
+          <div style="font-size:13px;font-weight:300;color:rgba(255,255,255,0.5);margin-top:8px;">Animais perdidos<br>cadastrados</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-xl);padding:2rem 1.5rem;text-align:center;">
+          <div style="font-size:3rem;margin-bottom:0.5rem;">🐾</div>
+          <div id="statEncontrados" style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:white;line-height:1;">—</div>
+          <div style="font-size:13px;font-weight:300;color:rgba(255,255,255,0.5);margin-top:8px;">Animais encontrados<br>cadastrados</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-xl);padding:2rem 1.5rem;text-align:center;">
+          <div style="font-size:3rem;margin-bottom:0.5rem;">🐶</div>
+          <div id="statCachorros" style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:white;line-height:1;">—</div>
+          <div style="font-size:13px;font-weight:300;color:rgba(255,255,255,0.5);margin-top:8px;">Cachorros<br>no site</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-xl);padding:2rem 1.5rem;text-align:center;">
+          <div style="font-size:3rem;margin-bottom:0.5rem;">🐱</div>
+          <div id="statGatos" style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:white;line-height:1;">—</div>
+          <div style="font-size:13px;font-weight:300;color:rgba(255,255,255,0.5);margin-top:8px;">Gatos<br>no site</div>
+        </div>
+      </div>
+
+      <div class="reveal" style="background:rgba(196,146,42,0.12);border:1px solid rgba(196,146,42,0.25);border-radius:var(--r-xl);padding:2rem 2.5rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
+        <div style="font-size:2.5rem;">🎉</div>
+        <div style="flex:1;min-width:200px;">
+          <div style="font-size:15px;font-weight:600;color:white;margin-bottom:4px;">Reencontros confirmados</div>
+          <div style="font-size:13px;font-weight:300;color:rgba(255,255,255,0.5);">Animais que voltaram para suas famílias através do PatasDF</div>
+        </div>
+        <div style="text-align:center;">
+          <div id="statReencontros" style="font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:var(--gold-light);line-height:1;">—</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:4px;">reencontros</div>
         </div>
       </div>
     </div>
   </section>
+  END ESTATÍSTICAS -->
+
+  <section class="section" id="faq" style="background:var(--white);padding:80px 2rem;">
+    <div class="container">
+      <span class="label reveal">Dúvidas frequentes</span>
+      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Perguntas<br><em style="color:var(--sage)">frequentes</em></h2>
+      <p class="lead reveal" style="max-width:520px;margin-bottom:3rem;">Tudo o que você precisa saber sobre o PatasDF.</p>
+
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:800px;" class="reveal" id="faqList">
+
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span>O PatasDF é gratuito?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-body">Sim, 100% gratuito. Sempre foi e sempre será. O PatasDF é um projeto comunitário sem fins lucrativos.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span>Como cadastro meu animal perdido?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-body">Clique em "Perdi meu animal", leia e aceite os termos e preencha o formulário. Seu animal aparece no site automaticamente após o cadastro. Coloque uma boa foto — isso aumenta muito as chances de reencontro!</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span>Quanto tempo o animal fica no site?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-body">A cada 30 dias você recebe um e-mail perguntando se ainda precisa de ajuda. Se confirmar que o animal foi encontrado, o cadastro é removido automaticamente. Se não responder em 7 dias, removemos para manter a lista atualizada.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span>Meus dados ficam seguros?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-body">Sim. Seu e-mail e nome completo ficam apenas na nossa planilha privada — nenhum dado pessoal sensível é exibido no site. O site mostra apenas as informações do animal e o número de WhatsApp para contato, que é necessário para que alguém possa te avisar.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span>Encontrei um animal — como aviso o dono?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-body">Acesse a lista de animais perdidos e procure pelo animal. Cada card tem um botão que abre o WhatsApp do dono diretamente. Você também pode cadastrar o animal encontrado para que o dono te encontre.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span>Posso cadastrar um animal encontrado sem saber a raça?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-body">Sim! Se não souber a raça, coloque SRD (Sem Raça Definida). O mais importante é a foto, a cor e o local onde foi encontrado.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span>O animal foi encontrado — como retiro o cadastro?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-body">A cada 30 dias você recebe um e-mail automático com dois botões. Clique em "Não, já foi encontrado!" e o cadastro é removido do site na hora. Se preferir remover antes, entre em contato pelo e-mail euclaricenunes@gmail.com.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span>Quem criou o PatasDF?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-body">O PatasDF foi criado por Clarice Nunes, estudante de Engenharia de Software no CEUB, em memória dos seus pets Bolt e Max. É um projeto voluntário dentro da comunidade Give&Grow.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .faq-item { border:1.5px solid var(--border); border-radius:var(--r-lg); overflow:hidden; transition:border-color 0.2s; }
+    .faq-item:hover { border-color:var(--sage-light); }
+    .faq-btn { width:100%; display:flex; justify-content:space-between; align-items:center; padding:1.25rem 1.5rem; background:white; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:var(--ink); text-align:left; gap:1rem; transition:background 0.2s; }
+    .faq-btn:hover { background:var(--sage-pale); }
+    .faq-arrow { font-size:1.1rem; color:var(--sage); transition:transform 0.3s; flex-shrink:0; }
+    .faq-btn.open .faq-arrow { transform:rotate(180deg); }
+    .faq-body { max-height:0; overflow:hidden; transition:max-height 0.35s ease, padding 0.3s; font-size:14px; font-weight:300; color:var(--ink-soft); line-height:1.75; padding:0 1.5rem; background:var(--sage-pale); }
+    .faq-body.open { max-height:200px; padding:1.25rem 1.5rem; }
+  </style>
 
   <!-- ONGs -->
   <section class="section ongs-section" id="ongs">
@@ -389,7 +499,7 @@
         <h4>Navegação</h4>
         <ul>
           <li><a href="#animais">Animais</a></li>
-          <li><a href="#mapa">Mapa do DF</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#ongs">ONGs parceiras</a></li>
           <li><a href="#ajudar">Quero ajudar</a></li>
         </ul>
@@ -513,7 +623,36 @@
       });
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    function toggleFaq(btn) {
+      const body = btn.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+      document.querySelectorAll('.faq-body').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.faq-btn').forEach(b => b.classList.remove('open'));
+      if (!isOpen) { body.classList.add('open'); btn.classList.add('open'); }
+    }
     carregarAnimais();
+
+    async function carregarEstatisticas() {
+      try {
+        const resp = await fetch('https://raw.githubusercontent.com/claricenunes/Give-and-Grow/main/animais.json?t=' + Date.now());
+        if (!resp.ok) return;
+        const animais = await resp.json();
+        const perdidos    = animais.filter(a => a.status === 'perdido').length;
+        const encontrados = animais.filter(a => a.status === 'encontrado').length;
+        const cachorros   = animais.filter(a => (a.tipo||'').toLowerCase() === 'cachorro').length;
+        const gatos       = animais.filter(a => (a.tipo||'').toLowerCase() === 'gato').length;
+        document.getElementById('statPerdidos').textContent    = perdidos;
+        document.getElementById('statEncontrados').textContent = encontrados;
+        document.getElementById('statCachorros').textContent   = cachorros;
+        document.getElementById('statGatos').textContent       = gatos;
+        // Reencontros = animais que foram removidos (não aparecem mais) - contamos pelos que foram marcados como inativos
+        // Por ora mostramos o total já cadastrado como referência
+        document.getElementById('statReencontros').textContent = perdidos + encontrados > 0 ? '🌱' : '0';
+      } catch(e) {
+        console.log('Erro ao carregar estatísticas:', e);
+      }
+    }
+    carregarEstatisticas();
 
     // ── MODAL PATAS ──
     const PATAS_CONFIG = {
