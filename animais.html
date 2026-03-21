@@ -210,7 +210,7 @@
       renderizar();
       // Tenta buscar dados atualizados do JSON (funciona quando hospedado em servidor)
       try {
-        const resp = await fetch('animais.json?t=' + Date.now());
+        const resp = await fetch('https://drive.google.com/uc?export=download&id=1katMmyX2BaC0UhQ1mNrkm7atiA1lma0P');
         if (resp.ok) {
           const d = await resp.json();
           if (d.length > 0) {
