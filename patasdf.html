@@ -428,7 +428,7 @@
       renderizarCards(filtroAtual);
       // Tenta atualizar com JSON do servidor
       try {
-        const resp = await fetch('https://drive.google.com/uc?export=download&id=1katMmyX2BaC0UhQ1mNrkm7atiA1lma0P');
+        const resp = await fetch('https://raw.githubusercontent.com/claricenunes/Give-and-Grow/main/animais.json?t=' + Date.now());
         if (resp.ok) {
           const d = await resp.json();
           if (d.length > 0) { ANIMALS = d; renderizarCards(filtroAtual); }
