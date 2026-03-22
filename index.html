@@ -785,6 +785,7 @@
     position: fixed; top: 68px; left: 0; right: 0;
     background: var(--white); border-bottom: 1px solid var(--border);
     padding: 1rem; z-index: 99;
+    transition: top 0.3s;
   }
   .nav-links.open { display: flex; }
   .nav-links li { width: 100%; }
@@ -1527,12 +1528,14 @@
   </footer>
 
   <script>
-    // Navbar scroll
+  
     window.addEventListener('scroll', () => {
-      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
-    });
+  const scrolled = window.scrollY > 40;
+  document.getElementById('navbar').classList.toggle('scrolled', scrolled);
+  document.getElementById('navLinks').style.top = scrolled ? '58px' : '68px';
+});
 
-    // Menu mobile
+  
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('open');
     }
