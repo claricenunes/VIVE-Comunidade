@@ -1,7 +1,4 @@
-/* ============================================================
-   Give&Grow + PatasDF — Unified Stylesheet
-   Fonts: Playfair Display (display) + DM Sans (body)
-   ============================================================ */
+
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -44,7 +41,7 @@ body {
 
 ::selection { background: rgba(74,124,89,0.18); color: var(--ink); }
 
-/* ── TYPOGRAPHY ── */
+
 .display, h1, h2 {
   font-family: 'Playfair Display', serif;
   font-weight: 900;
@@ -66,11 +63,11 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .body-text { font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--ink-soft); }
 .body-text + .body-text { margin-top: 1rem; }
 
-/* ── CONTAINER ── */
+
 .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 .section { padding: 100px 2rem; }
 
-/* ── BUTTONS ── */
+
 .btn-primary {
   background: var(--ink); color: var(--white);
   padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 600;
@@ -123,7 +120,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 }
 .btn-white-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
 
-/* ── NAVBAR ── */
+
 .navbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   height: 68px; display: flex; align-items: center;
@@ -167,11 +164,11 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
 .hamburger span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: all 0.3s; }
 
-/* ── REVEAL ── */
+
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ── ANIMATIONS ── */
+
 @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes orbFloat { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(20px,-28px) scale(1.05)} }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -180,13 +177,13 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 @keyframes scrollDrop { 0%{top:-100%} 100%{top:100%} }
 @keyframes badgePulse { 0%,100%{box-shadow:0 0 0 0 rgba(74,124,89,0.14)} 50%{box-shadow:0 0 0 8px rgba(74,124,89,0)} }
 
-/* ── TICKER ── */
+
 .ticker { background: var(--sage); padding: 12px 0; overflow: hidden; }
 .ticker-inner { display: flex; animation: ticker 28s linear infinite; width: max-content; }
 .ticker-item { display: flex; align-items: center; gap: 10px; padding: 0 2rem; white-space: nowrap; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.88); }
 .ticker-sep { color: rgba(255,255,255,0.35); font-size: 1.1rem; margin: 0 0.5rem; }
 
-/* ── STATS STRIP ── */
+
 .stats-strip {
   background: var(--ink); padding: 0;
   display: grid; grid-template-columns: repeat(4, 1fr);
@@ -203,7 +200,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 }
 .stat-label { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.45); margin-top: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
 
-/* ── PAGE HEADER (subpages) ── */
+
 .page-header {
   background: var(--ink); padding: 120px 2rem 80px; position: relative; overflow: hidden;
 }
@@ -228,7 +225,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .page-header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 2rem; }
 .meta-chip { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 100px; }
 
-/* ── BACK LINK ── */
+
 .back-link-wrap {
   background: var(--sage-pale); border-bottom: 1px solid rgba(74,124,89,0.15);
   padding: 0.75rem 2rem;
@@ -240,7 +237,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 }
 .back-link:hover { gap: 10px; }
 
-/* ── TOOLBAR (animals page) ── */
+
 .toolbar {
   background: var(--white); border-bottom: 1px solid var(--border);
   padding: 1.25rem 2rem; position: sticky; top: 68px; z-index: 100;
@@ -272,11 +269,11 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .count-badge { font-size: 12px; font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
 .count-badge strong { color: var(--sage); }
 
-/* ── ANIMALS GRID ── */
+
 .animals-section { padding: 60px 2rem 100px; background: var(--white); }
 .animals-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
 
-/* ── ANIMAL CARD ── */
+
 .animal-card {
   background: var(--white); border: 1.5px solid var(--border);
   border-radius: var(--r-xl); overflow: hidden;
@@ -342,7 +339,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .empty-state h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.5rem; }
 .empty-state p { font-weight: 300; }
 
-/* ── ACTION CARDS ── */
+
 .action-section { background: var(--cream); }
 .action-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; margin-top: 3.5rem; }
 .action-card {
@@ -399,7 +396,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .data-note strong { font-size: 14px; font-weight: 600; display: block; margin-bottom: 4px; }
 .data-note p { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.6; }
 
-/* ── MAP ── */
+
 .map-section { background: var(--white); }
 .map-wrapper {
   margin-top: 3rem; border-radius: var(--r-xl); overflow: hidden;
@@ -432,7 +429,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .map-placeholder-content h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem; }
 .map-placeholder-content p { font-size: 14px; font-weight: 300; color: var(--ink-soft); max-width: 400px; line-height: 1.7; }
 
-/* ── ONGS ── */
+
 .ongs-section { background: var(--cream); }
 .ongs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 2.5rem; }
 .ong-card {
@@ -465,7 +462,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .ong-link.primary { background: var(--sage); color: white; border-color: var(--sage); }
 .ong-link.primary:hover { background: #3a6647; }
 
-/* ── CRIADORA ── */
+
 .criadora-section { background: var(--cream); }
 .criadora-inner { display: grid; grid-template-columns: 400px 1fr; gap: 6rem; align-items: center; }
 .criadora-img-wrap { position: relative; }
@@ -499,7 +496,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .social-link { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 100px; font-size: 13px; font-weight: 500; text-decoration: none; border: 1.5px solid var(--border-dark); color: var(--ink-soft); transition: all 0.2s; }
 .social-link:hover { border-color: var(--sage); color: var(--sage); }
 
-/* ── COMMUNITY / PARTICIPATE ── */
+
 .participar-section { background: var(--cream); }
 .participar-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; margin-top: 3rem; }
 .part-card {
@@ -529,7 +526,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .cc-btn { background: var(--ink); color: white; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; display: inline-block; text-decoration: none; }
 .cc-btn:hover { background: var(--sage); }
 
-/* ── PATAS SECTION ── */
+
 .patas-section { background: var(--ink); }
 .patas-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 .patas-label-sm { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; display: block; }
@@ -546,7 +543,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .pm-sub { font-size: 12px; color: rgba(255,255,255,0.38); margin-top: 2px; }
 .pm-badge { margin-left: auto; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.55); font-size: 11px; padding: 3px 12px; border-radius: 100px; white-space: nowrap; }
 
-/* ── CTA SECTION ── */
+
 .cta-section { background: var(--sage); padding: 100px 2rem; position: relative; overflow: hidden; }
 .cta-orb { position: absolute; border-radius: 50%; pointer-events: none; }
 .cta-orb-1 { width: 500px; height: 500px; top: -200px; right: -100px; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); }
@@ -557,7 +554,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .cta-inner p { font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.68); margin-bottom: 2.5rem; }
 .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
-/* ── STEPS ── */
+
 .how-section { background: var(--white); }
 .steps-row { display: flex; gap: 0; margin-top: 4rem; position: relative; }
 .steps-row::before { content: ''; position: absolute; top: 32px; left: 32px; right: 32px; height: 1px; background: var(--border); z-index: 0; }
@@ -567,7 +564,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .step h3 { font-size: 15px; font-weight: 600; margin-bottom: 0.5rem; }
 .step p { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.7; }
 
-/* ── CAUSAS ── */
+
 .causas-section { background: var(--cream); }
 .causas-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem; }
 .causas-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
@@ -580,7 +577,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .causa-name { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
 .causa-desc { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.65; }
 
-/* ── EVENTOS ── */
+
 .eventos-section { background: var(--white); }
 .eventos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 3rem; }
 .evento-card { background: var(--cream); border: 1.5px solid var(--border); border-radius: var(--r-lg); padding: 1.75rem; display: flex; gap: 1.5rem; align-items: flex-start; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; }
@@ -596,7 +593,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .ev-name { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
 .ev-info { font-size: 13px; font-weight: 300; color: var(--ink-soft); }
 
-/* Calendar block */
+
 .cal-block { margin-top: 3rem; border: 1.5px solid var(--border); border-radius: var(--r-xl); overflow: hidden; background: var(--white); box-shadow: var(--shadow); }
 .cal-header { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); flex-wrap: wrap; gap: 1rem; }
 .cal-header-left { display: flex; align-items: center; gap: 14px; }
@@ -609,7 +606,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .cal-btn-outline { background: transparent; color: var(--ink-soft); text-decoration: none; padding: 9px 20px; border-radius: 100px; font-size: 13px; font-weight: 500; border: 1.5px solid var(--border-dark); transition: all 0.2s; display: inline-flex; align-items: center; }
 .cal-btn-outline:hover { border-color: var(--sage); color: var(--sage); }
 
-/* ── PROFILE / SOBRE ── */
+
 .profile-hero { background: var(--cream); padding: 120px 2rem 80px; position: relative; overflow: hidden; }
 .profile-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 60% at 85% 50%, rgba(74,124,89,0.08) 0%, transparent 65%), radial-gradient(ellipse 40% 50% at 10% 80%, rgba(196,146,42,0.07) 0%, transparent 60%); pointer-events: none; }
 .profile-hero::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); opacity: 0.4; }
@@ -631,7 +628,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .social-btn { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--border-dark); border-radius: 100px; padding: 9px 18px; font-size: 13px; font-weight: 500; text-decoration: none; color: var(--ink-soft); background: var(--white); transition: all 0.22s; }
 .social-btn:hover { border-color: var(--sage); color: var(--sage); transform: translateY(-1px); }
 
-/* Two col layout (sobre) */
+
 .content-section { padding: 80px 2rem; }
 .content-section.alt { background: var(--cream); }
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
@@ -643,7 +640,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .pullquote p { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; font-weight: 400; line-height: 1.6; color: var(--sage); }
 .pullquote cite { display: block; margin-top: 0.75rem; font-size: 12px; color: var(--sage-mid); font-style: normal; font-weight: 500; }
 
-/* Timeline */
+
 .timeline { position: relative; padding-left: 2rem; }
 .timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 0; width: 1.5px; background: var(--sage-light); }
 .tl-item { position: relative; padding-bottom: 2rem; }
@@ -652,7 +649,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .tl-item h4 { font-size: 15px; font-weight: 600; margin-bottom: 0.3rem; }
 .tl-item p { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.75; }
 
-/* Pet cards */
+
 .pet-cards { display: flex; flex-direction: column; gap: 1rem; }
 .pet-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r-lg); padding: 1.5rem; display: flex; align-items: flex-start; gap: 1.25rem; transition: transform 0.2s, box-shadow 0.2s; }
 .pet-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
@@ -663,17 +660,17 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .pet-info p { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.7; }
 .pet-card.memorial { border-color: rgba(74,124,89,0.2); background: var(--sage-pale); }
 
-/* Skills */
+
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 0.75rem; margin-top: 1.5rem; }
 .skill-chip { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r-md); padding: 0.75rem 1rem; font-size: 13px; font-weight: 400; text-align: center; transition: all 0.2s; }
 .skill-chip:hover { border-color: var(--sage); background: var(--sage-pale); color: var(--sage); }
 
-/* Stats mini (sobre) */
+
 .stats-mini { display: flex; gap: 2.5rem; flex-wrap: wrap; }
 .stat-mini-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--sage); letter-spacing: -1px; }
 .stat-mini-label { font-size: 12px; color: var(--ink-soft); font-weight: 300; }
 
-/* Contact CTA (sobre) */
+
 .contact-cta { background: var(--ink); color: white; text-align: center; padding: 80px 2rem; }
 .contact-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3rem); font-weight: 700; letter-spacing: -1px; margin-bottom: 1rem; }
 .contact-cta p { font-weight: 300; opacity: 0.55; max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.75; }
@@ -684,7 +681,7 @@ h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink)
 .btn-contact.ghost { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.3); }
 .btn-contact.ghost:hover { border-color: white; transform: translateY(-1px); }
 
-/* ── FOOTER ── */
+
 footer { background: var(--ink); padding: 60px 2rem 0; }
 .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
 .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; letter-spacing: -0.5px; display: inline-block; margin-bottom: 1rem; }
@@ -698,7 +695,7 @@ footer { background: var(--ink); padding: 60px 2rem 0; }
 .footer-bottom a { color: rgba(255,255,255,0.38); text-decoration: none; }
 .footer-bottom a:hover { color: var(--sage-light); }
 
-/* ── RESPONSIVE ── */
+
 @media (max-width: 1024px) {
   .criadora-inner { grid-template-columns: 1fr; gap: 3rem; }
   .profile-layout { grid-template-columns: 1fr; gap: 3rem; }
@@ -708,7 +705,7 @@ footer { background: var(--ink); padding: 60px 2rem 0; }
   .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
   .two-col.reverse { direction: ltr; }
 
-  /* iPad: hamburger menu */
+
   .nav-links { display: none; flex-direction: column; gap: 0; position: fixed; top: 68px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem; z-index: 199; }
   .nav-links.open { display: flex; }
   .hamburger { display: flex; }
@@ -716,11 +713,11 @@ footer { background: var(--ink); padding: 60px 2rem 0; }
   .nav-links li a { display: block; padding: 10px 12px; border-radius: 8px; }
   .nav-links .nav-cta { display: block; text-align: center; padding: 12px 22px !important; }
 
-  /* iPad: badges da criadora mais próximas da foto */
+
   .cb1 { bottom: 10px; right: 0; }
   .cb2 { top: 10px; right: 0; }
 
-  /* iPad: esconder cards flutuantes do patasdf */
+
   [style*="height:420px"] { display: none !important; }
 }
 @media (max-width: 1024px) {

@@ -16,7 +16,7 @@
       .nav-links { transition: top 0.3s; }
     }
 
-    /* Modal scroll lock — iOS fix */
+   
     body.modal-open { overflow: hidden; position: fixed; width: 100%; }
     @media (max-width: 768px) { #statsGrid { grid-template-columns: repeat(2,1fr) !important; } #dicas .container > div:last-of-type { grid-template-columns: 1fr !important; } }
     .nav-back-gg {
@@ -38,12 +38,12 @@
 </head>
 <body>
 
-  <!-- BACK LINK -->
+
   <div class="back-link-wrap">
     <a href="index.html" class="back-link">← Voltar para o Give&Grow</a>
   </div>
 
-  <!-- NAVBAR -->
+
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="#" class="logo">
@@ -64,7 +64,7 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+
   <section style="min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 2rem 80px;background:var(--cream);">
     <div style="position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);opacity:0.4;z-index:0;"></div>
     <div style="position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(74,124,89,0.14) 0%,transparent 70%);top:-100px;right:-80px;z-index:0;animation:orbFloat 12s ease-in-out infinite;"></div>
@@ -108,7 +108,7 @@
     </div>
   </section>
 
-  <!-- TICKER -->
+
   <div class="ticker">
     <div class="ticker-inner">
       <span class="ticker-item">🐾 Ajude a reencontrar · Cadastre um animal →</span><span class="ticker-sep">·</span>
@@ -122,7 +122,7 @@
     </div>
   </div>
 
-  <!-- STATS -->
+
   <div class="stats-strip">
     <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Gratuito</div></div>
     <div class="stat-item"><div class="stat-num">DF</div><div class="stat-label">Distrito Federal</div></div>
@@ -130,7 +130,7 @@
     <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Sem limite</div></div>
   </div>
 
-  <!-- AÇÃO PRINCIPAL -->
+
   <section class="section action-section" id="ajudar">
     <div class="container">
       <span class="label reveal">O que você precisa?</span>
@@ -174,7 +174,7 @@
     </div>
   </section>
 
-  <!-- ANIMALS -->
+  
   <section class="section" id="animais" style="background:var(--white);padding-top:60px;">
     <div class="container">
       <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem;">
@@ -198,7 +198,7 @@
         <h3>Nenhum animal encontrado</h3>
         <p>Tente outro filtro.</p>
       </div>
-      <!-- VER MAIS -->
+  
       <div id="verMaisWrap" style="text-align:center;margin-top:2.5rem;display:none;">
         <div style="width:1px;height:40px;background:var(--border);margin:0 auto 1.5rem;"></div>
         <a href="animais.html" style="
@@ -218,7 +218,7 @@
   </section>
 
 
-  <!-- ESTATÍSTICAS — ativar quando o site tiver mais usuários
+  <!-- 
   <section class="section" id="estatisticas" style="background:var(--ink);padding:80px 2rem;">
     <div class="container">
       <span class="label reveal" style="color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);">Comunidade em números</span>
@@ -261,7 +261,7 @@
       </div>
     </div>
   </section>
-  END ESTATÍSTICAS -->
+ -->
 
   <section class="section" id="faq" style="background:var(--white);padding:80px 2rem;">
     <div class="container">
@@ -350,8 +350,7 @@
     .faq-body.open { max-height:600px; padding:1.25rem 1.5rem; }
   </style>
 
-  <!-- ONGs -->
-  <section class="section ongs-section" id="ongs">
+    <section class="section ongs-section" id="ongs">
     <div class="container">
       <span class="label reveal">Conheça e apoie</span>
       <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">ONGs que fazem<br><em style="color:var(--sage)">a diferença</em></h2>
@@ -418,7 +417,7 @@
     </div>
   </section>
 
-  <!-- CRIADORA -->
+
   <section class="section criadora-section" id="sobre-criadora">
     <div class="container">
       <div class="criadora-inner">
@@ -459,7 +458,7 @@
     </div>
   </section>
 
-  <!-- COMMUNITY -->
+
   <section class="section comunidade-section" id="parte-projeto">
     <div class="container">
       <span class="label reveal">Quero fazer parte</span>
@@ -488,7 +487,7 @@
     </div>
   </section>
 
-  <!-- CTA -->
+
   <section class="cta-section">
     <div class="cta-orb cta-orb-1"></div>
     <div class="cta-orb cta-orb-2"></div>
@@ -502,7 +501,7 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
@@ -566,7 +565,7 @@
       const lista = filtro === 'todos' ? ANIMALS : ANIMALS.filter(a => a.status === filtro);
       if (lista.length === 0) { grid.innerHTML = ''; empty.style.display = 'block'; verMais.style.display = 'block'; verMaisCount.textContent = ''; return; }
       empty.style.display = 'none';
-      // Mostra só os 3 primeiros no patasdf — o resto fica em animais.html
+     
       const preview = lista.slice(0, 3);
       const restante = lista.length - 3;
       const bg = { cachorro:'#FFF3E8', gato:'#F0ECF9' };
@@ -612,7 +611,7 @@
           </div>
         </div>`;
       }).join('');
-      // Botão ver mais
+   
       if (restante > 0) {
         verMais.style.display = 'block';
         verMaisCount.textContent = `Exibindo 3 de ${lista.length} animais cadastrados`;
@@ -661,8 +660,7 @@
         document.getElementById('statEncontrados').textContent = encontrados;
         document.getElementById('statCachorros').textContent   = cachorros;
         document.getElementById('statGatos').textContent       = gatos;
-        // Reencontros = animais que foram removidos (não aparecem mais) - contamos pelos que foram marcados como inativos
-        // Por ora mostramos o total já cadastrado como referência
+        
         document.getElementById('statReencontros').textContent = perdidos + encontrados > 0 ? '🌱' : '0';
       } catch(e) {
         console.log('Erro ao carregar estatísticas:', e);
@@ -670,7 +668,7 @@
     }
     carregarEstatisticas();
 
-    // ── MODAL PATAS ──
+    
     const PATAS_CONFIG = {
       perdido: {
         cor: 'var(--sage)', corPale: 'var(--sage-pale)',
@@ -751,10 +749,10 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModalPatas(); });
   </script>
 
-  <!-- MODAL PATAS -->
+
   <div id="pm-overlay" onclick="if(event.target===this)fecharModalPatas()" style="position:fixed;inset:0;z-index:9000;background:rgba(14,26,15,0.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.25s ease;touch-action:none;">
     <div id="pm-box" style="background:var(--white);border-radius:var(--r-xl);max-width:560px;width:100%;max-height:90dvh;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;box-shadow:0 32px 96px rgba(14,26,15,0.25);transform:translateY(24px) scale(0.97);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);">
-      <!-- Header -->
+    
       <div style="padding:1.75rem 2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;top:0;background:var(--white);z-index:1;border-radius:var(--r-xl) var(--r-xl) 0 0;">
         <div style="display:flex;align-items:center;gap:12px;">
           <div id="pm-icon" style="width:48px;height:48px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;"></div>
@@ -765,26 +763,26 @@
         </div>
         <button onclick="fecharModalPatas()" style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border-dark);background:transparent;cursor:pointer;font-size:15px;color:var(--ink-soft);transition:all 0.2s;flex-shrink:0;">✕</button>
       </div>
-      <!-- Body -->
+      
       <div style="padding:1.75rem 2rem;">
-        <!-- Intro -->
+       
         <p id="pm-intro" style="font-size:14px;font-weight:400;color:var(--ink-soft);line-height:1.75;margin-bottom:1.5rem;"></p>
-        <!-- Termos -->
+        
         <div style="background:var(--cream);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:1.5rem;margin-bottom:1.5rem;">
           <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);opacity:0.6;margin-bottom:1rem;">Termos e condições de uso</div>
           <div id="pm-termos" style="display:flex;flex-direction:column;gap:14px;"></div>
         </div>
-        <!-- Privacidade -->
+       
         <div style="background:var(--sage-pale);border:1.5px solid rgba(74,124,89,0.2);border-radius:var(--r-md);padding:1rem 1.25rem;display:flex;gap:10px;align-items:flex-start;margin-bottom:1.5rem;">
           <span style="font-size:1rem;flex-shrink:0;">🔒</span>
           <p style="font-size:12px;font-weight:300;color:var(--ink-soft);line-height:1.65;">Seus dados ficam no <strong style="font-weight:500;">Google Forms</strong>. O PatasDF não armazena informações diretamente. Os dados são usados exclusivamente para facilitar o reencontro de animais perdidos.</p>
         </div>
-        <!-- Checkbox aceite -->
+       
         <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;margin-bottom:1.75rem;padding:1rem 1.25rem;background:var(--white);border:1.5px solid var(--border-dark);border-radius:var(--r-md);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--sage)'" onmouseout="this.style.borderColor='var(--border-dark)'">
           <input type="checkbox" id="pm-checkbox" onchange="atualizarBtnPatas()" style="width:18px;height:18px;flex-shrink:0;margin-top:1px;accent-color:var(--sage);cursor:pointer;">
           <span style="font-size:13px;font-weight:500;color:var(--ink);line-height:1.6;">Li e estou de acordo com os termos acima, confirmo que as informações são verídicas e autorizo o contato por membros da comunidade PatasDF.</span>
         </label>
-        <!-- Botões -->
+      
         <div style="display:flex;gap:10px;">
           <button onclick="fecharModalPatas()" style="flex:1;padding:13px;border-radius:100px;border:1.5px solid var(--border-dark);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--ink-soft);cursor:pointer;transition:all 0.2s;">Voltar</button>
           <button id="pm-btn" onclick="abrirFormularioPatas()" style="flex:2;padding:13px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:white;border:none;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.2s;opacity:0.45;pointer-events:none;"></button>
