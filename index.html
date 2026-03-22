@@ -798,7 +798,10 @@
       .footer-inner { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
-      .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 68px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem; }
+      .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 68px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem; z-index: 99; }
+      .nav-links li { width: 100%; }
+      .nav-links li a { display: block; padding: 10px 12px; border-radius: 8px; }
+      .nav-links .nav-cta { display: block; text-align: center; padding: 12px 22px !important; }
       .nav-links.open { display: flex; }
       .hamburger { display: flex; }
       .steps-row { flex-direction: column; gap: 2rem; }
@@ -832,7 +835,7 @@
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#patasdf">PatasDF</a></li>
         <li><a href="#sobre-criadora">Sobre</a></li>
-        <li><a href="#participar" class="nav-cta">Quero participar</a></li>
+        <li style="margin-top:8px;"><a href="#participar" class="nav-cta">Quero participar</a></li>
       </ul>
     </div>
   </nav>
@@ -1097,7 +1100,7 @@
         <div class="evento-card reveal">
           <div class="ev-date"><div class="ev-day">Em</div><div class="ev-month">breve</div></div>
           <div class="ev-content">
-            <span class="ev-tag ev-online">Presencial</span>
+            <span class="ev-tag ev-online">Online</span>
             <div class="ev-name">Oficina de Crochê — nível iniciante</div>
             <div class="ev-info">Quer participar? Inscreva-se · 12 vagas</div>
           </div>
@@ -1114,7 +1117,7 @@
           <div class="ev-date"><div class="ev-day">Em</div><div class="ev-month">breve</div></div>
           <div class="ev-content">
             <span class="ev-tag ev-presencial">Presencial</span>
-            <div class="ev-name">Corrida no Parque da Cidade</div>
+            <div class="ev-name">Voluntariado com ONGs do DF</div>
             <div class="ev-info">Local a confirmar · Vagas limitadas</div>
           </div>
         </div>
@@ -1123,7 +1126,7 @@
           <div class="ev-content">
             <span class="ev-tag ev-parceria">Parceria ONG</span>
             <div class="ev-name">Feira de adoção — parceria PatasDF</div>
-            <div class="ev-info">Local a confirmar · Voluntários bem-vindos · Procurando parcerias</div>
+            <div class="ev-info">Local a confirmar · Voluntários bem-vindos</div>
           </div>
         </div>
       </div>
@@ -1244,16 +1247,10 @@
           </div>
           <a href="patasdf.html" class="btn-gold-outline reveal">🐾 Acessar o PatasDF →</a>
         </div>
-        <div class="patas-cards reveal">
-          <div class="patas-mini">
-            <div class="pm-icon">🐶</div>
-            <div><div class="pm-name">Bolinha — Perdido</div><div class="pm-sub">Cachorro · Asa Sul · desde 18/03</div></div>
-            <span class="pm-badge">😢 Perdido</span>
-          </div>
-          <div class="patas-mini">
-            <div class="pm-icon">🐱</div>
-            <div><div class="pm-name">Mimi — Encontrada</div><div class="pm-sub">Gato · Taguatinga · aguardando dono</div></div>
-            <span class="pm-badge">🐾 Encontrado</span>
+        <div class="patas-cards reveal" id="patasMini">
+          <div class="patas-mini" style="justify-content:center;padding:2rem;">
+            <div style="font-size:1.5rem;margin-right:12px;">🐾</div>
+            <div><div class="pm-name">Carregando animais...</div><div class="pm-sub">Buscando dados da comunidade</div></div>
           </div>
           <div class="patas-mini">
             <div class="pm-icon">🏥</div>
@@ -1277,7 +1274,7 @@
         <div class="criadora-img-wrap reveal">
           <div class="criadora-circle">
             <img src="fotos/clarice2.jpg" alt="Clarice Nunes" onerror="this.style.display='none'">
-            👩‍💻
+
           </div>
           <div class="criadora-badge cb1">
             <span class="cb-emoji">🌱</span>
@@ -1285,14 +1282,14 @@
           </div>
           <div class="criadora-badge cb2">
             <span class="cb-emoji">🎓</span>
-            <div class="cb-text"><strong>CEUB · Eng. de Software</strong><span>2º semestre</span></div>
+            <div class="cb-text"><strong>Eng. de Software</strong><span>2º semestre</span></div>
           </div>
         </div>
         <div class="criadora-text">
           <span class="label reveal">Quem está por trás</span>
           <h2 class="reveal">Olá, eu sou<br><em>Clarice Nunes</em></h2>
           <div class="criadora-chips reveal">
-            <span class="chip chip-sage">🏫 CEUB · Brasília</span>
+            <span class="chip chip-sage">🏫 Brasília</span>
             <span class="chip chip-sage">💻 Engenharia de Software</span>
             <span class="chip">🤝 Voluntariado</span>
           </div>
@@ -1306,7 +1303,7 @@
             <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener" class="social-link">💼 LinkedIn</a>
             <a href="https://github.com/claricenunes" target="_blank" rel="noopener" class="social-link">🐙 GitHub</a>
           </div>
-          <a href="sobre.html" class="btn-primary reveal" style="margin-top:1.5rem;">✨ Conheça mais →</a>
+          <a href="sobre.html" class="btn-primary reveal" style="margin-top:1.5rem;"> Conheça mais →</a>
         </div>
       </div>
     </div>
@@ -1428,7 +1425,7 @@
             <span>Como posso fazer parceria com o Give&Grow?</span>
             <span class="gg-faq-arrow">↓</span>
           </button>
-          <div class="gg-faq-body">Se você representa uma ONG, escola, empresa ou projeto social e quer fazer parceria, entre em contato pelo e-mail <a href="mailto:euclaricenunes@gmail.com" style="color:var(--sage);font-weight:600;"><span class="__cf_email__" data-cfemail="731606101f12011a10161d061d160033141e121a1f5d101c1e">[email&#160;protected]</span></a>. Adoramos conversar sobre novas formas de impactar o DF — seja com eventos, espaços para encontros presenciais ou ações conjuntas.</div>
+          <div class="gg-faq-body">Se você representa uma ONG, escola, empresa ou projeto social e quer fazer parceria, entre em contato pelo e-mail <a href="mailto:euclaricenunes@gmail.com" style="color:var(--sage);font-weight:600;">euclaricenunes@gmail.com</a>. Adoramos conversar sobre novas formas de impactar o DF — seja com eventos, espaços para encontros presenciais ou ações conjuntas.</div>
         </div>
 
       </div>
@@ -1668,6 +1665,34 @@
       }
     }
     carregarContagemCausas();
+
+
+    // ── PATAS MINI CARDS ──
+    async function carregarPatasMini() {
+      try {
+        const resp = await fetch('https://raw.githubusercontent.com/claricenunes/Give-and-Grow/main/animais.json?t=' + Date.now());
+        if (!resp.ok) return;
+        const animais = await resp.json();
+        const container = document.getElementById('patasMini');
+        if (!container || animais.length === 0) return;
+        const em = { cachorro:'🐶', gato:'🐱' };
+        const preview = animais.slice(0, 2);
+        const extra = `<div class="patas-mini" style="background:rgba(196,146,42,0.08);border-color:rgba(196,146,42,0.2);">
+          <div class="pm-icon">🐾</div>
+          <div><div class="pm-name">Acessar o PatasDF</div><div class="pm-sub">Perdidos, encontrados e ONGs</div></div>
+          <a href="patasdf.html" style="margin-left:auto;background:var(--gold);color:white;font-size:11px;font-weight:700;padding:6px 14px;border-radius:100px;text-decoration:none;white-space:nowrap;">Entrar →</a>
+        </div>`;
+        container.innerHTML = preview.map(a => {
+          const isPerdido = a.status === 'perdido';
+          return `<div class="patas-mini">
+            <div class="pm-icon">${em[a.tipo]||'🐾'}</div>
+            <div><div class="pm-name">${a.nome || 'Animal ' + a.status} — ${isPerdido ? 'Perdido' : 'Encontrado'}</div><div class="pm-sub">${a.tipo ? a.tipo.charAt(0).toUpperCase()+a.tipo.slice(1) : ''} · ${a.cidade||''}</div></div>
+            <span class="pm-badge">${isPerdido ? '😢 Perdido' : '🐾 Encontrado'}</span>
+          </div>`;
+        }).join('') + extra;
+      } catch(e) { console.log('Erro patas mini:', e); }
+    }
+    carregarPatasMini();
 
     function toggleGGFaq(btn) {
       const body = btn.nextElementSibling;
