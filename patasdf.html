@@ -13,6 +13,7 @@
 
     @media (max-width: 768px) {
       [style*="height:420px"] { display: none !important; }
+      .nav-links { transition: top 0.3s; }
     }
 
     /* Modal scroll lock — iOS fix */
@@ -413,7 +414,7 @@
   <section class="section criadora-section" id="sobre-criadora">
     <div class="container">
       <div class="criadora-inner">
-        <div class="criadora-img-wrap reveal">
+        <div class="criadora-img-wrap reveal" style="position:relative;width:fit-content;padding-right:120px;">
           <div class="criadora-circle">
             <img src="fotos/clarice.jpg" alt="Clarice Nunes" onerror="this.style.display='none'">
           </div>
@@ -614,7 +615,9 @@
     }
 
     window.addEventListener('scroll', () => {
-      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+      const scrolled = window.scrollY > 40;
+      document.getElementById('navbar').classList.toggle('scrolled', scrolled);
+      document.getElementById('navLinks').style.top = scrolled ? '58px' : '68px';
     });
     function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
     document.querySelectorAll('#navLinks a').forEach(l => l.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
