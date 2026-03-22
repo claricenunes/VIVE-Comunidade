@@ -723,7 +723,7 @@ footer { background: var(--ink); padding: 60px 2rem 0; }
   /* iPad: esconder cards flutuantes do patasdf */
   [style*="height:420px"] { display: none !important; }
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .nav-links { display: none; flex-direction: column; gap: 0; position: fixed; top: 68px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem; z-index: 199; }
   .nav-links.open { display: flex; }
   .hamburger { display: flex; }
