@@ -18,5 +18,23 @@
     "foto": "",
     "whatsapp": "669696969",
     "dataCadastro": "21/03/2026"
+  },
+  {
+    "id": "E-2-1774142441969",
+    "status": "encontrado",
+    "tipo": "gato",
+    "raca": "pitbul",
+    "cor": "azul/preto",
+    "porte": "Pequeno",
+    "coleira": "Sim",
+    "caracteristicas": "",
+    "condicao": "Magro, mas bem",
+    "comVoce": "Sim, está comigo",
+    "dataEncontrado": "02/03/2026",
+    "cidade": "Taguatinga",
+    "referencia": "",
+    "foto": "https://lh3.googleusercontent.com/d/1AWFDYrohvQWTjg07V913Nn3KsJbbWdJ_",
+    "whatsapp": "686768",
+    "dataCadastro": "21/03/2026"
   }
 ]
