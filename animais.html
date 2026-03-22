@@ -284,7 +284,7 @@
       const grid  = document.getElementById('animalsGrid');
       const empty = document.getElementById('emptyState');
       const lista = getLista();
-      document.getElementById('countBadge').innerHTML = `<strong>${lista.length}</strong> animal${lista.length!==1?'is':''}`;
+      document.getElementById('countBadge').innerHTML = `<strong>${lista.length}</strong> ${lista.length!==1?'animais':'animal'}`;
 
       if (lista.length === 0) {
         grid.innerHTML = '';
