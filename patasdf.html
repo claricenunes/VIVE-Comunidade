@@ -11,6 +11,10 @@
   <link rel="stylesheet" href="styles.css" />
   <style>
 
+    @media (max-width: 768px) {
+      [style*="height:420px"] { display: none !important; }
+    }
+
     /* Modal scroll lock — iOS fix */
     body.modal-open { overflow: hidden; position: fixed; width: 100%; }
     @media (max-width: 768px) { #statsGrid { grid-template-columns: repeat(2,1fr) !important; } #dicas .container > div:last-of-type { grid-template-columns: 1fr !important; } }
@@ -27,6 +31,8 @@
       background: var(--sage) !important;
       color: white !important;
     }
+
+    
   </style>
 </head>
 <body>
