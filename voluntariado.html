@@ -107,6 +107,7 @@
     /* ONG grid */
     .ong-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 1rem; }
 
+    /* ONG card with circular photo */
     .ong-card {
       background: var(--cream); border: 1.5px solid var(--border);
       border-radius: var(--r-xl); padding: 1.75rem;
@@ -117,10 +118,35 @@
     .ong-card.visible { opacity: 1; transform: translateY(0); }
     .ong-card:hover { transform: translateY(-5px) !important; box-shadow: var(--shadow-lg); border-color: var(--sage-light); }
 
-    .ong-name { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
+    /* Circular photo */
+    .ong-photo-wrap {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 1.25rem;
+    }
+    .ong-avatar {
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 2px solid var(--border-dark);
+      background: var(--sage-pale);
+      overflow: hidden; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+    .ong-avatar img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .ong-name { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+    .ong-cat-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--sage);
+      background: var(--sage-pale); padding: 2px 8px; border-radius: 100px;
+    }
+
     .ong-desc { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.75; flex: 1; margin-bottom: 1.5rem; }
 
     .ong-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* ── Instagram button — GREEN hover ──────────────── */
     .btn-ig {
       display: inline-flex; align-items: center; gap: 6px;
       background: transparent; color: var(--ink-soft);
@@ -129,7 +155,8 @@
       font-size: 13px; font-weight: 500; font-family: 'DM Sans', sans-serif;
       text-decoration: none; cursor: pointer; transition: all 0.2s;
     }
-    .btn-ig:hover { border-color: #e1306c; color: #e1306c; background: #fff0f5; }
+    .btn-ig:hover { border-color: var(--sage); color: var(--sage); background: var(--sage-pale); }
+
     .btn-contact {
       display: inline-flex; align-items: center; gap: 6px;
       background: var(--ink); color: white;
@@ -277,8 +304,14 @@
       <div class="ong-grid">
 
         <div class="ong-card reveal-card">
-          <div class="ong-name">Lar dos Anjos</div>
-          <p class="ong-desc">Exemplo de descrição : ONG dedicada ao resgate, reabilitação e adoção responsável de animais abandonados no Distrito Federal. Realiza feiras de adoção mensais em diferentes regiões do DF.</p>
+          <div class="ong-photo-wrap">
+            <div class="ong-avatar">🐾</div>
+            <div>
+              <div class="ong-name">Lar dos Anjos</div>
+              <span class="ong-cat-badge">🐾 Animais</span>
+            </div>
+          </div>
+          <p class="ong-desc">ONG dedicada ao resgate, reabilitação e adoção responsável de animais abandonados no Distrito Federal. Realiza feiras de adoção mensais em diferentes regiões do DF.</p>
           <div class="ong-actions">
             <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
             <a href="mailto:contato@patinhasdocerrado.org" class="btn-contact">✉️ Contato</a>
@@ -286,7 +319,13 @@
         </div>
 
         <div class="ong-card reveal-card">
-          <div class="ong-name">Ficticia</div>
+          <div class="ong-photo-wrap">
+            <div class="ong-avatar">🐶</div>
+            <div>
+              <div class="ong-name">Amigos dos Bichos</div>
+              <span class="ong-cat-badge">🐾 Animais</span>
+            </div>
+          </div>
           <p class="ong-desc">Grupo de voluntários que atua no resgate e cuidado de animais em situação de rua, com foco em castração comunitária e educação sobre posse responsável.</p>
           <div class="ong-actions">
             <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
@@ -295,7 +334,13 @@
         </div>
 
         <div class="ong-card reveal-card">
-          <div class="ong-name">Lar Animal Brasília</div>
+          <div class="ong-photo-wrap">
+            <div class="ong-avatar">🐱</div>
+            <div>
+              <div class="ong-name">Lar Animal Brasília</div>
+              <span class="ong-cat-badge">🐾 Animais</span>
+            </div>
+          </div>
           <p class="ong-desc">Abrigo comunitário que cuida de animais resgatados enquanto aguardam adoção. Recebe doações de ração, medicamentos e busca famílias adotantes responsáveis.</p>
           <div class="ong-actions">
             <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
@@ -314,7 +359,13 @@
       <div class="ong-grid">
 
         <div class="ong-card reveal-card">
-          <div class="ong-name">Abraço Gentil</div>
+          <div class="ong-photo-wrap">
+            <div class="ong-avatar">🤗</div>
+            <div>
+              <div class="ong-name">Abraço Gentil</div>
+              <span class="ong-cat-badge">👴 Idosos</span>
+            </div>
+          </div>
           <p class="ong-desc">Organização que promove visitas, atividades recreativas e suporte emocional para idosos em instituições de longa permanência no DF. Busca combater o isolamento social.</p>
           <div class="ong-actions">
             <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
@@ -323,7 +374,13 @@
         </div>
 
         <div class="ong-card reveal-card">
-          <div class="ong-name">Viver Bem DF</div>
+          <div class="ong-photo-wrap">
+            <div class="ong-avatar">🌟</div>
+            <div>
+              <div class="ong-name">Viver Bem DF</div>
+              <span class="ong-cat-badge">👴 Idosos</span>
+            </div>
+          </div>
           <p class="ong-desc">Promove oficinas de arte, tecnologia e convivência para idosos em situação de vulnerabilidade social, estimulando autonomia, inclusão digital e bem-estar.</p>
           <div class="ong-actions">
             <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
@@ -332,7 +389,13 @@
         </div>
 
         <div class="ong-card reveal-card">
-          <div class="ong-name">Projeto Memória Viva</div>
+          <div class="ong-photo-wrap">
+            <div class="ong-avatar">📖</div>
+            <div>
+              <div class="ong-name">Projeto Memória Viva</div>
+              <span class="ong-cat-badge">👴 Idosos</span>
+            </div>
+          </div>
           <p class="ong-desc">Resgata histórias e saberes de idosos por meio de rodas de conversa, registros audiovisuais e integração com jovens voluntários — gerando troca e pertencimento.</p>
           <div class="ong-actions">
             <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
@@ -351,7 +414,13 @@
       <div class="ong-grid">
 
         <div class="ong-card reveal-card">
-          <div class="ong-name">Sementinha DF</div>
+          <div class="ong-photo-wrap">
+            <div class="ong-avatar">🌱</div>
+            <div>
+              <div class="ong-name">Sementinha DF</div>
+              <span class="ong-cat-badge">🧒 Crianças</span>
+            </div>
+          </div>
           <p class="ong-desc">Projeto social que oferece reforço escolar, atividades lúdicas e apoio psicossocial para crianças em situação de vulnerabilidade nas periferias do Distrito Federal.</p>
           <div class="ong-actions">
             <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
@@ -360,7 +429,13 @@
         </div>
 
         <div class="ong-card reveal-card">
-          <div class="ong-name">Arte & Futuro</div>
+          <div class="ong-photo-wrap">
+            <div class="ong-avatar">🎨</div>
+            <div>
+              <div class="ong-name">Arte & Futuro</div>
+              <span class="ong-cat-badge">🧒 Crianças</span>
+            </div>
+          </div>
           <p class="ong-desc">Usa a arte, música e esporte como ferramentas de transformação social para crianças e adolescentes, oferecendo oficinas gratuitas em regiões administrativas do DF.</p>
           <div class="ong-actions">
             <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
@@ -369,7 +444,13 @@
         </div>
 
         <div class="ong-card reveal-card">
-          <div class="ong-name">Casa do Pequeno Cidadão</div>
+          <div class="ong-photo-wrap">
+            <div class="ong-avatar">🏠</div>
+            <div>
+              <div class="ong-name">Casa do Pequeno Cidadão</div>
+              <span class="ong-cat-badge">🧒 Crianças</span>
+            </div>
+          </div>
           <p class="ong-desc">Acompanha crianças em situação de risco social com atividades educativas, culturais e acompanhamento familiar, promovendo cidadania desde a infância.</p>
           <div class="ong-actions">
             <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
