@@ -590,7 +590,7 @@
         const badgeCls = isPerdido ? 'badge-perdido' : 'badge-encontrado';
         const badgeLbl = isPerdido ? 'Perdido' : 'Encontrado';
         const btnCls = isPerdido ? '' : 'btn-contato-encontrado';
-        const btnLbl = isPerdido ? '📞 Avisei que vi este animal' : '🏠 Este é meu animal';
+        const btnLbl = isPerdido ? '📞 Vi este animal' : '🏠 Este é meu animal';
         const ctt = (a.contato || 'Não informado').replace(/'/g, "\\'");
         return `<div class="animal-card" style="animation:fadeUp .4s ${i*60}ms ease both;">
           <div class="animal-img" style="background:${bg[a.tipo]||'#f5f0e8'};">
