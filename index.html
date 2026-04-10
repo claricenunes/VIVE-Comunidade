@@ -418,7 +418,7 @@
     .cc-btn:hover { background: var(--sage); }
 
     /* ── ONG SECTION DARK ── */
-    .ong-section { padding: 0 2rem 100px; }
+    .ong-section { padding: 0 2rem 100px; background-color: #F5F0E8;}
     .ong-inner { max-width: 1200px; margin: 0 auto; }
     .ong-card-dark { background: var(--ink); border-radius: var(--r-xl); padding: 3.5rem; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; position: relative; overflow: hidden; }
     .ong-card-dark::before { content: '🏢'; position: absolute; font-size: 18rem; opacity: 0.04; right: -2rem; bottom: -3rem; pointer-events: none; line-height: 1; }
@@ -446,15 +446,7 @@
     .btn-white-outline { background: transparent; color: white; padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 500; text-decoration: none; border: 2px solid rgba(255,255,255,0.4); transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
     .btn-white-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
 
-    /* ── FAQ ── */
-    .gg-faq-item { border: 1.5px solid var(--border); border-radius: var(--r-lg); overflow: hidden; transition: border-color 0.2s; }
-    .gg-faq-item:hover { border-color: var(--sage-light); }
-    .gg-faq-btn { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; background: white; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; color: var(--ink); text-align: left; gap: 1rem; transition: background 0.2s; }
-    .gg-faq-btn:hover { background: var(--sage-pale); }
-    .gg-faq-arrow { font-size: 1.1rem; color: var(--sage); transition: transform 0.3s; flex-shrink: 0; }
-    .gg-faq-btn.open .gg-faq-arrow { transform: rotate(180deg); }
-    .gg-faq-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s; font-size: 14px; font-weight: 300; color: var(--ink-soft); line-height: 1.75; padding: 0 1.5rem; background: var(--sage-pale); }
-    .gg-faq-body.open { max-height: 600px; padding: 1.25rem 1.5rem; }
+
 
     /* ── FOOTER ── */
     footer { background: var(--ink); padding: 60px 2rem 0; }
@@ -553,7 +545,7 @@
         <li><a href="#patasdf">PatasDF</a></li>
         <li><a href="#ongs">ONGs</a></li>
         <li><a href="#sobre-criadora">Sobre</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li><a href="faq.html">FAQ</a></li>
         <li style="margin-top:8px;"><a href="#participar" class="nav-cta">Quero participar</a></li>
       </ul>
     </div>
@@ -1151,24 +1143,6 @@
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="section" id="faq" style="background:var(--white);padding:80px 2rem;">
-    <div class="container">
-      <span class="label reveal">Dúvidas frequentes</span>
-      <h2 class="display reveal" style="margin-bottom:1rem;">Perguntas<br><em>frequentes</em></h2>
-      <p class="lead reveal" style="max-width:520px;margin-bottom:3rem;">Tudo o que você precisa saber sobre o Give&amp;Grow antes de participar.</p>
-      <div style="display:flex;flex-direction:column;gap:12px;max-width:800px;" class="reveal">
-        <div class="gg-faq-item"><button class="gg-faq-btn" onclick="toggleGGFaq(this)"><span>O Give&amp;Grow é gratuito?</span><span class="gg-faq-arrow">↓</span></button><div class="gg-faq-body">Sim, 100% gratuito. O Give&amp;Grow é um projeto comunitário sem fins lucrativos criado para conectar pessoas que querem aprender, ensinar e fazer voluntariado no DF.</div></div>
-        <div class="gg-faq-item"><button class="gg-faq-btn" onclick="toggleGGFaq(this)"><span>Como funciona depois que eu me cadastro?</span><span class="gg-faq-arrow">↓</span></button><div class="gg-faq-body">Após o cadastro, você recebe um e-mail de boas-vindas confirmando que seus dados foram recebidos. Quando um evento for organizado na sua área de interesse, você receberá um convite por e-mail com todos os detalhes.</div></div>
-        <div class="gg-faq-item"><button class="gg-faq-btn" onclick="toggleGGFaq(this)"><span>Preciso ter experiência para ensinar?</span><span class="gg-faq-arrow">↓</span></button><div class="gg-faq-body">Não! Você só precisa saber mais do que quem quer aprender. O importante é a disposição de compartilhar. Você define o quanto pode dar e o formato que prefere.</div></div>
-        <div class="gg-faq-item"><button class="gg-faq-btn" onclick="toggleGGFaq(this)"><span>Os eventos são presenciais ou online?</span><span class="gg-faq-arrow">↓</span></button><div class="gg-faq-body">Os dois! Temos eventos online (como conversação em inglês pelo Google Meet) e eventos presenciais em diferentes regiões do DF. Ao se cadastrar, você indica sua preferência.</div></div>
-        <div class="gg-faq-item"><button class="gg-faq-btn" onclick="toggleGGFaq(this)"><span>Posso me cadastrar para aprender e ensinar ao mesmo tempo?</span><span class="gg-faq-arrow">↓</span></button><div class="gg-faq-body">Claro! Basta preencher os dois formulários. Você pode ensinar crochê e ao mesmo tempo aprender inglês, por exemplo.</div></div>
-        <div class="gg-faq-item"><button class="gg-faq-btn" onclick="toggleGGFaq(this)"><span>Como funciona o voluntariado?</span><span class="gg-faq-arrow">↓</span></button><div class="gg-faq-body">O Give&amp;Grow faz parcerias com ONGs do DF para organizar ações — feiras de adoção, visitas a lares de idosos, limpeza de áreas verdes e mais. Você se cadastra na página de voluntariado e recebe os convites quando uma ação for organizada.</div></div>
-        <div class="gg-faq-item"><button class="gg-faq-btn" onclick="toggleGGFaq(this)"><span>Meus dados ficam seguros?</span><span class="gg-faq-arrow">↓</span></button><div class="gg-faq-body">Sim. Os formulários são hospedados no Google Forms e seus dados ficam apenas na nossa planilha privada. Os dados são usados exclusivamente para organizar eventos e enviar convites relevantes para você.</div></div>
-        <div class="gg-faq-item"><button class="gg-faq-btn" onclick="toggleGGFaq(this)"><span>Como posso fazer parceria com o Give&amp;Grow?</span><span class="gg-faq-arrow">↓</span></button><div class="gg-faq-body">Se você representa uma ONG, escola ou projeto social e quer fazer parceria, entre em contato pelo e-mail <a href="mailto:euclaricenunes@gmail.com" style="color:var(--sage);font-weight:600;">euclaricenunes@gmail.com</a>.</div></div>
-      </div>
-    </div>
-  </section>
 
   <!-- ONG DARK CTA -->
   <section class="ong-section">
@@ -1398,14 +1372,7 @@
       if (e.key === 'Escape') { fecharModal(); fecharOngModal(); }
     });
 
-    // ── FAQ
-    function toggleGGFaq(btn) {
-      const body = btn.nextElementSibling;
-      const isOpen = body.classList.contains('open');
-      document.querySelectorAll('.gg-faq-body').forEach(b => b.classList.remove('open'));
-      document.querySelectorAll('.gg-faq-btn').forEach(b => b.classList.remove('open'));
-      if (!isOpen) { body.classList.add('open'); btn.classList.add('open'); }
-    }
+   
 
     // ── PATAS MINI
     async function carregarPatasMini() {

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Give&Grow · Perguntas Frequentes</title>
+  <meta name="description" content="Perguntas frequentes sobre o Give&Grow — comunidade gratuita de troca, aprendizado e voluntariado no Distrito Federal." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0e1a0f;
+      --ink-soft: #2d3d2e;
+      --sage: #4a7c59;
+      --sage-mid: #6a9e7a;
+      --sage-light: #a8cba8;
+      --sage-pale: #e8f2e8;
+      --cream: #f5f0e8;
+      --cream-warm: #ede7d9;
+      --gold: #c4922a;
+      --gold-light: #f0d898;
+      --rust: #b85c38;
+      --white: #fdfcf8;
+      --border: rgba(14,26,15,0.1);
+      --border-dark: rgba(14,26,15,0.18);
+      --shadow: 0 2px 20px rgba(14,26,15,0.08);
+      --shadow-lg: 0 12px 60px rgba(14,26,15,0.14);
+      --r-sm: 8px;
+      --r-md: 16px;
+      --r-lg: 24px;
+      --r-xl: 32px;
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); overflow-x: hidden; font-weight: 400; }
+    body.modal-open { overflow: hidden; position: fixed; width: 100%; }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 2rem; height: 68px;
+      display: flex; align-items: center;
+      background: rgba(253,252,248,0.88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border); transition: all 0.3s;
+    }
+    .navbar.scrolled { height: 58px; box-shadow: 0 2px 24px rgba(14,26,15,0.08); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.5px; }
+    .logo em { color: var(--sage); font-style: italic; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.01em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-links a.active { color: var(--sage); font-weight: 600; }
+    .nav-cta { background: var(--ink) !important; color: var(--white) !important; padding: 9px 22px !important; border-radius: 100px !important; font-weight: 600 !important; transition: background 0.2s, transform 0.15s !important; }
+    .nav-cta:hover { background: var(--sage) !important; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: all 0.3s; }
+
+    /* ── HERO FAQ ── */
+    .faq-hero {
+      background: var(--cream);
+      padding: 140px 2rem 80px;
+      position: relative; overflow: hidden;
+    }
+    .faq-hero::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4; pointer-events: none;
+    }
+    .faq-hero-bg-letter {
+      position: absolute; right: -2rem; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20rem, 30vw, 40rem);
+      font-weight: 900; font-style: italic;
+      color: var(--sage); opacity: 0.04;
+      line-height: 1; pointer-events: none;
+      user-select: none; z-index: 0;
+    }
+    .faq-hero-inner {
+      max-width: 1200px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+    .faq-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.7s ease both;
+    }
+    .eyebrow-line { width: 32px; height: 1.5px; background: var(--sage); }
+    .eyebrow-text { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); }
+    .faq-hero-inner h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 900; line-height: 0.95;
+      letter-spacing: -3px; color: var(--ink);
+      animation: fadeUp 0.7s 0.08s ease both;
+      margin-bottom: 0.2em;
+    }
+    .faq-hero-inner h1 em { color: var(--sage); font-style: italic; }
+    .faq-hero-inner p {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      font-weight: 300; line-height: 1.75;
+      color: var(--ink-soft); max-width: 500px;
+      margin-top: 1.5rem;
+      animation: fadeUp 0.7s 0.16s ease both;
+    }
+    .faq-hero-inner p strong { font-weight: 600; color: var(--ink); }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 400; color: var(--ink-soft);
+      margin-bottom: 2rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    .breadcrumb a { color: var(--sage); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb-sep { color: var(--border-dark); font-size: 11px; }
+
+    /* ── MAIN CONTENT ── */
+    .faq-main {
+      padding: 80px 2rem 100px;
+      background: var(--white);
+    }
+    .faq-content {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR ── */
+    .faq-sidebar { position: sticky; top: 90px; }
+    .faq-sidebar-title {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-soft); opacity: 0.55;
+      margin-bottom: 1rem;
+    }
+    .faq-nav { display: flex; flex-direction: column; gap: 4px; }
+    .faq-nav-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px; border-radius: var(--r-md);
+      font-size: 13px; font-weight: 500;
+      color: var(--ink-soft); cursor: pointer;
+      border: 1.5px solid transparent;
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      text-align: left; transition: all 0.2s;
+    }
+    .faq-nav-item:hover { background: var(--sage-pale); color: var(--sage); border-color: rgba(74,124,89,0.2); }
+    .faq-nav-item.active { background: var(--sage-pale); color: var(--sage); border-color: rgba(74,124,89,0.25); font-weight: 600; }
+    .faq-nav-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; opacity: 0.5; }
+    .faq-nav-item.active .faq-nav-dot { opacity: 1; }
+
+    .faq-sidebar-cta {
+      margin-top: 2.5rem;
+      background: var(--ink); border-radius: var(--r-lg);
+      padding: 1.5rem;
+    }
+    .faq-sidebar-cta p {
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.6); line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .faq-sidebar-cta a {
+      display: block; text-align: center;
+      background: var(--sage); color: white;
+      padding: 10px 16px; border-radius: 100px;
+      font-size: 13px; font-weight: 600;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .faq-sidebar-cta a:hover { background: var(--sage-mid); }
+
+    /* ── FAQ ITEMS ── */
+    .faq-sections { display: flex; flex-direction: column; gap: 3rem; }
+
+  
+    .faq-section-label {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 1.25rem;
+    }
+    .faq-section-label-icon {
+      width: 36px; height: 36px; border-radius: var(--r-sm);
+      background: var(--sage-pale); display: flex; align-items: center;
+      justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+    }
+    .faq-section-label-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-weight: 700;
+      color: var(--ink); letter-spacing: -0.5px;
+    }
+    .faq-section-items { display: flex; flex-direction: column; gap: 10px; }
+
+    .gg-faq-item {
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-lg); overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .gg-faq-item:hover { border-color: var(--sage-light); }
+    .gg-faq-btn {
+      width: 100%; display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 1.5rem; background: white; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
+      color: var(--ink); text-align: left; gap: 1rem; transition: background 0.2s;
+    }
+    .gg-faq-btn:hover { background: var(--sage-pale); }
+    .gg-faq-arrow { font-size: 1.1rem; color: var(--sage); transition: transform 0.3s; flex-shrink: 0; }
+    .gg-faq-btn.open .gg-faq-arrow { transform: rotate(180deg); }
+    .gg-faq-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s;
+      font-size: 14px; font-weight: 300;
+      color: var(--ink-soft); line-height: 1.75;
+      padding: 0 1.5rem; background: var(--sage-pale);
+    }
+    .gg-faq-body.open { max-height: 600px; padding: 1.25rem 1.5rem; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── CONTACT BLOCK ── */
+    .faq-contact {
+      margin-top: 3.5rem;
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem; align-items: center;
+    }
+    .faq-contact h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--ink); letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
+    }
+    .faq-contact p {
+      font-size: 14px; font-weight: 300;
+      color: var(--ink-soft); line-height: 1.7;
+    }
+    .faq-contact-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--ink); color: white;
+      padding: 13px 24px; border-radius: 100px;
+      font-size: 14px; font-weight: 600;
+      text-decoration: none; white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .faq-contact-btn:hover { background: var(--sage); transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); padding: 60px 2rem 0; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-brand p { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.4); line-height: 1.75; margin-top: 1rem; max-width: 300px; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; }
+    .footer-logo em { color: var(--sage-light); font-style: italic; }
+    .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--sage-light); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; font-size: 12px; color: rgba(255,255,255,0.3); font-weight: 300; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--sage-light); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1200px) {
+      .hamburger { display: flex; }
+      .nav-links { display: none; flex-direction: column; gap: 0; position: fixed; top: 68px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem; z-index: 99; }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links li a { display: block; padding: 10px 12px; border-radius: 8px; }
+      .nav-links .nav-cta { display: block; text-align: center; padding: 12px 22px !important; }
+    }
+    @media (max-width: 900px) {
+      .faq-content { grid-template-columns: 1fr; gap: 2.5rem; }
+      .faq-sidebar { position: static; }
+      .faq-nav { flex-direction: row; flex-wrap: wrap; gap: 6px; }
+      .faq-nav-item { font-size: 12px; padding: 7px 12px; }
+      .faq-sidebar-cta { display: none; }
+    }
+    @media (max-width: 640px) {
+      .faq-hero { padding: 120px 1.5rem 60px; }
+      .faq-main { padding: 50px 1.5rem 80px; }
+      .faq-contact { grid-template-columns: 1fr; gap: 1.5rem; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Give<em>&</em>Grow</a>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#como-funciona">Como funciona</a></li>
+        <li><a href="index.html#causas">Causas</a></li>
+        <li><a href="index.html#eventos">Eventos</a></li>
+        <li><a href="patasdf.html">PatasDF</a></li>
+        <li><a href="index.html#ongs">ONGs</a></li>
+        <li><a href="index.html#sobre-criadora">Sobre</a></li>
+        <li><a href="faq.html" class="active">FAQ</a></li>
+        <li style="margin-top:8px;"><a href="index.html#participar" class="nav-cta">Quero participar</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="faq-hero">
+    <div class="faq-hero-bg-letter">?</div>
+    <div class="faq-hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html">Give&amp;Grow</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Perguntas Frequentes</span>
+      </div>
+      <div class="faq-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Tudo o que você precisa saber</span>
+      </div>
+      <h1>Perguntas<br><em>frequentes</em></h1>
+      <p>Tudo o que você precisa saber sobre o Give&amp;Grow antes de participar. Não encontrou sua dúvida? <strong>Entre em contato.</strong></p>
+    </div>
+  </section>
+
+  <!-- MAIN FAQ -->
+  <section class="faq-main">
+    <div class="faq-content">
+
+      <!-- SIDEBAR -->
+      <aside class="faq-sidebar reveal">
+        <div class="faq-sidebar-title">Categorias</div>
+        <nav class="faq-nav">
+          <button class="faq-nav-item active" onclick="irParaSecao('geral', this)">
+            <span class="faq-nav-dot"></span> Geral
+          </button>
+          <button class="faq-nav-item" onclick="irParaSecao('aprender-ensinar', this)">
+            <span class="faq-nav-dot"></span> Aprender &amp; Ensinar
+          </button>
+          <button class="faq-nav-item" onclick="irParaSecao('voluntariado', this)">
+            <span class="faq-nav-dot"></span> Voluntariado
+          </button>
+          <button class="faq-nav-item" onclick="irParaSecao('eventos', this)">
+            <span class="faq-nav-dot"></span> Eventos
+          </button>
+          <button class="faq-nav-item" onclick="irParaSecao('privacidade', this)">
+            <span class="faq-nav-dot"></span> Privacidade
+          </button>
+          <button class="faq-nav-item" onclick="irParaSecao('parcerias', this)">
+            <span class="faq-nav-dot"></span> Parcerias
+          </button>
+        </nav>
+
+        <div class="faq-sidebar-cta">
+          <p>Não encontrou sua dúvida? Manda uma mensagem para a Clarice.</p>
+          <a href="mailto:euclaricenunes@gmail.com">✉️ Enviar e-mail</a>
+        </div>
+      </aside>
+
+      <!-- FAQ SECTIONS -->
+      <div class="faq-sections">
+
+        <!-- GERAL -->
+        <div class="faq-section-block reveal" id="geral">
+          <div class="faq-section-label">
+            <div class="faq-section-label-icon">🌱</div>
+            <span class="faq-section-label-text">Geral</span>
+          </div>
+          <div class="faq-section-items">
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>O Give&amp;Grow é gratuito?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                Sim, 100% gratuito. O Give&amp;Grow é um projeto comunitário sem fins lucrativos criado para conectar pessoas que querem aprender, ensinar e fazer voluntariado no DF. Não há nenhum custo em nenhuma etapa.
+              </div>
+            </div>
+
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>O que é o Give&amp;Grow?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                O Give&amp;Grow é uma comunidade aberta do Distrito Federal que conecta pessoas que querem aprender, compartilhar conhecimentos e fazer voluntariado. Tudo gratuito, sem burocracia — você escolhe como quer participar.
+              </div>
+            </div>
+
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>Como funciona depois que eu me cadastro?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                Após o cadastro, você recebe um e-mail de boas-vindas confirmando que seus dados foram recebidos. Quando um evento for organizado na sua área de interesse, você receberá um convite por e-mail com todos os detalhes — local, horário e como participar.
+              </div>
+            </div>
+
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>O Give&amp;Grow funciona só em Brasília?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                Os eventos presenciais acontecem no Distrito Federal. Os eventos online estão abertos para qualquer pessoa, de qualquer lugar — mas a comunidade foi criada com foco no DF.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- APRENDER & ENSINAR -->
+        <div class="faq-section-block reveal" id="aprender-ensinar">
+          <div class="faq-section-label">
+            <div class="faq-section-label-icon">📚</div>
+            <span class="faq-section-label-text">Aprender &amp; Ensinar</span>
+          </div>
+          <div class="faq-section-items">
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>Preciso ter experiência para ensinar?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                Não! Você só precisa saber mais do que quem quer aprender. O importante é a disposição de compartilhar. Você define o quanto pode dar, o formato que prefere e o tempo disponível.
+              </div>
+            </div>
+
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>Posso me cadastrar para aprender e ensinar ao mesmo tempo?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                Claro! Basta preencher os dois formulários. Você pode ensinar crochê e ao mesmo tempo aprender inglês, por exemplo. Não há limite para quantas áreas você pode se cadastrar.
+              </div>
+            </div>
+
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>Quais áreas estão disponíveis para aprender?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                Atualmente temos: inglês (conversação online), tecnologia (cybersegurança, programação, inclusão digital), artesanato (crochê, bordado, costura), educação (reforço escolar, mentoria), meio ambiente e muito mais. Acesse a página de <a href="index.html#causas" style="color:var(--sage);font-weight:600;">causas</a> para ver todas as áreas.
+              </div>
+            </div>
+
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>Quanto tempo preciso disponibilizar para ensinar?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                Você decide! Pode ser uma vez por semana, uma vez por mês ou só quando tiver disponibilidade. O formulário de cadastro pergunta sobre sua disponibilidade e a gente organiza de acordo com o que você pode oferecer.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VOLUNTARIADO -->
+        <div class="faq-section-block reveal" id="voluntariado">
+          <div class="faq-section-label">
+            <div class="faq-section-label-icon">🤝</div>
+            <span class="faq-section-label-text">Voluntariado</span>
+          </div>
+          <div class="faq-section-items">
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>Como funciona o voluntariado?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                O Give&amp;Grow faz parcerias com ONGs do DF para organizar ações — feiras de adoção, visitas a lares de idosos, limpeza de áreas verdes e mais. Você se cadastra na <a href="voluntariado.html" style="color:var(--sage);font-weight:600;">página de voluntariado</a> e recebe os convites quando uma ação for organizada.
+              </div>
+            </div>
+
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>Preciso ter algum conhecimento específico para ser voluntário?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                Não! O mais importante é a boa vontade e a disposição de ajudar. Cada ação tem perfis diferentes — desde ajudar a distribuir ração em uma feira de adoção até dar uma aula de tecnologia para idosos.
+              </div>
+            </div>
+
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>Com quais ONGs o Give&amp;Grow trabalha?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                Atualmente trabalhamos com o Lar dos Anjos (causa animal) e estamos construindo parcerias com outras organizações do DF. Se você representa uma ONG e quer fazer parceria, <a href="mailto:euclaricenunes@gmail.com" style="color:var(--sage);font-weight:600;">entre em contato</a>.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EVENTOS -->
+        <div class="faq-section-block reveal" id="eventos">
+          <div class="faq-section-label">
+            <div class="faq-section-label-icon">📅</div>
+            <span class="faq-section-label-text">Eventos</span>
+          </div>
+          <div class="faq-section-items">
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>Os eventos são presenciais ou online?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                Os dois! Temos eventos online (como conversação em inglês pelo Google Meet) e eventos presenciais em diferentes regiões do DF. Ao se cadastrar, você indica sua preferência e a gente organiza de acordo.
+              </div>
+            </div>
+
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>Com que frequência acontecem os eventos?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                Depende da causa. Os grupos de conversação em inglês acontecem semanalmente. Os eventos presenciais e de voluntariado são mensais ou conforme surgem as oportunidades. Você pode acompanhar a agenda completa no nosso <a href="index.html#eventos" style="color:var(--sage);font-weight:600;">Google Calendar</a>.
+              </div>
+            </div>
+
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>Como fico sabendo dos próximos eventos?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                Depois de se cadastrar, você recebe convites por e-mail quando um evento da sua área for organizado. Você também pode acompanhar pelo nosso Instagram <a href="https://www.instagram.com/wegivegrow/" target="_blank" rel="noopener" style="color:var(--sage);font-weight:600;">@wegivegrow</a> e pela agenda no Google Calendar.
+              </div>
+            </div>
+          </div>
+        </div>
+
+       
+        <div class="faq-section-block reveal" id="privacidade">
+          <div class="faq-section-label">
+            <div class="faq-section-label-icon">🔒</div>
+            <span class="faq-section-label-text">Privacidade &amp; Dados</span>
+          </div>
+          <div class="faq-section-items">
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>Meus dados ficam seguros?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                Sim. Os formulários são hospedados no Google Forms e seus dados ficam apenas na nossa planilha privada. Os dados são usados exclusivamente para organizar eventos e enviar convites relevantes para você. Nenhum dado é vendido ou compartilhado com terceiros.
+              </div>
+            </div>
+
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>Posso pedir para meus dados serem removidos?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                Sim, é seu direito. Basta enviar um e-mail para <a href="mailto:euclaricenunes@gmail.com" style="color:var(--sage);font-weight:600;">euclaricenunes@gmail.com</a> solicitando a remoção dos seus dados e providenciaremos o mais rápido possível.
+              </div>
+            </div>
+          </div>
+        </div>
+
+   
+        <div class="faq-section-block reveal" id="parcerias">
+          <div class="faq-section-label">
+            <div class="faq-section-label-icon">🏢</div>
+            <span class="faq-section-label-text">Parcerias</span>
+          </div>
+          <div class="faq-section-items">
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>Como posso fazer parceria com o Give&amp;Grow?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                Se você representa uma ONG, escola ou projeto social e quer fazer parceria, entre em contato pelo e-mail <a href="mailto:euclaricenunes@gmail.com" style="color:var(--sage);font-weight:600;">euclaricenunes@gmail.com</a>. Adoramos conversar sobre novas formas de gerar impacto no DF.
+              </div>
+            </div>
+
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>Quero divulgar o projeto. Como posso ajudar?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                Compartilhando nas redes sociais! Marque <a href="https://www.instagram.com/wegivegrow/" target="_blank" rel="noopener" style="color:var(--sage);font-weight:600;">@wegivegrow</a> no Instagram e use as hashtags #GiveAndGrow #VoluntariadoDF. Cada compartilhamento ajuda a alcançar mais pessoas que querem fazer a diferença no DF.
+              </div>
+            </div>
+
+            <div class="gg-faq-item">
+              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
+                <span>Tenho uma sugestão de melhoria para o projeto. Como envio?</span>
+                <span class="gg-faq-arrow">↓</span>
+              </button>
+              <div class="gg-faq-body">
+                A Clarice está sempre aberta para ouvir! Manda um e-mail para <a href="mailto:euclaricenunes@gmail.com" style="color:var(--sage);font-weight:600;">euclaricenunes@gmail.com</a> ou uma mensagem direta no Instagram <a href="https://www.instagram.com/claricesnunes" target="_blank" rel="noopener" style="color:var(--sage);font-weight:600;">@claricesnunes</a>. Sugestões são muito bem-vindas!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTACT BLOCK -->
+        <div class="faq-contact reveal">
+          <div>
+            <h3>Ainda com dúvidas?</h3>
+            <p>Não encontrou a resposta que precisava? Entre em contato direto com a Clarice — ela responde pessoalmente.</p>
+          </div>
+          <a href="mailto:euclaricenunes@gmail.com" class="faq-contact-btn">✉️ Enviar e-mail</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">Give<em>&</em>Grow</a>
+        <p>Comunidade gratuita de troca, aprendizado e voluntariado no Distrito Federal. Feita por e para pessoas que querem fazer a diferença.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Comunidade</h4>
+        <ul>
+          <li><a href="index.html#como-funciona">Como funciona</a></li>
+          <li><a href="index.html#causas">Causas</a></li>
+          <li><a href="index.html#eventos">Eventos</a></li>
+          <li><a href="index.html#participar">Participar</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Projetos</h4>
+        <ul>
+          <li><a href="patasdf.html">PatasDF</a></li>
+          <li><a href="index.html#sobre-criadora">Sobre a Clarice</a></li>
+          <li><a href="https://github.com/claricenunes" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="mailto:euclaricenunes@gmail.com">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Give&amp;Grow · Todos os direitos reservados</span>
+      <span>Feito por <a href="index.html#sobre-criadora">Clarice Nunes · Engenharia de Software · Brasília</a></span>
+    </div>
+  </footer>
+
+  <script>
+
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY > 40;
+      document.getElementById('navbar').classList.toggle('scrolled', scrolled);
+      document.getElementById('navLinks').style.top = scrolled ? '58px' : '68px';
+    });
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
+    document.querySelectorAll('#navLinks a').forEach(link => link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+
+  
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+   
+    function toggleGGFaq(btn) {
+      const body = btn.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+      document.querySelectorAll('.gg-faq-body').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.gg-faq-btn').forEach(b => b.classList.remove('open'));
+      if (!isOpen) { body.classList.add('open'); btn.classList.add('open'); }
+    }
+
+   
+    function irParaSecao(id, btn) {
+      document.querySelectorAll('.faq-nav-item').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const el = document.getElementById(id);
+      if (el) {
+        const offset = 90;
+        const top = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+
+    const sections = document.querySelectorAll('.faq-section-block');
+    const navItems = document.querySelectorAll('.faq-nav-item');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < 160) current = section.id;
+      });
+      navItems.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('onclick')?.includes(current)) btn.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
