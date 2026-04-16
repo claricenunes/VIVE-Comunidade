@@ -1,4 +1,4 @@
-# Give&Grow + PatasDF
+# VIVE + PatasDF
 
 > Comunidade gratuita de troca, aprendizado e voluntariado no Distrito Federal — com o PatasDF como uma das causas dentro do ecossistema.
 
@@ -6,7 +6,7 @@
 
 ## Sobre o projeto
 
-O **Give&Grow** é uma plataforma comunitária e 100% gratuita que conecta pessoas do Distrito Federal que querem **aprender**, **ensinar** e **fazer voluntariado**. Sem burocracia, sem cadastro obrigatório, sem custo.
+O **VIVE** é uma plataforma comunitária e 100% gratuita que conecta pessoas do Distrito Federal que querem **aprender**, **ensinar** e **fazer voluntariado**. Sem burocracia, sem cadastro obrigatório, sem custo.
 
 O **PatasDF** nasceu dentro desse ecossistema como uma causa dedicada à proteção animal: ajuda a reencontrar animais perdidos no DF, lista animais encontrados aguardando o dono e reúne ONGs da causa animal.
 
@@ -17,9 +17,9 @@ Ambos os projetos foram criados por **Clarice Nunes**, estudante de Engenharia d
 ## Estrutura de arquivos
 
 ```
-give-grow/
+VIVE-Comunidade/
 │
-├── index.html          # Página principal do Give&Grow
+├── index.html          # Página principal do VIVE
 ├── patasdf.html        # Página principal do PatasDF
 ├── animais.html        # Listagem de animais disponíveis para adoção
 ├── causas.html         # Todas as áreas de interesse da comunidade
@@ -275,7 +275,7 @@ Todos os links de ação (confirmar, cancelar, aprovar, reprovar, status) são p
 
 ## Páginas do projeto
 
-### Give&Grow
+### VIVE
 
 | Página | Descrição |
 |---|---|
