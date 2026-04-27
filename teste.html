@@ -14,11 +14,11 @@
       --green: #9cb295;
       --green-dark: #839074;
       --green-light: #b5c8af;
-      --green-deep: #2d4a2a;
+      --green-deep: #9cb295;
       --green-deep-2: #3a5c36;
       --cream: #f8f5ee;
       --cream-dark: #f0ece2;
-      --sage: #e8ede6;
+      --sage: #f0ece2;
       --sage-mid: #dde6d9;
       --border: #d4c7c7;
       --border-light: #e8e0e0;
@@ -28,7 +28,7 @@
       --radius: 20px;
       --radius-sm: 12px;
       --max-w: 1080px;
-      --gold: #c4922a;
+      --gold: #e6d28a;
     }
 
     html { scroll-behavior: smooth; font-family: 'DM Sans', sans-serif; font-size: 16px; }
@@ -153,12 +153,7 @@
     .hero-stat strong { display: block; font-size: 22px; font-family: 'Playfair Display', serif; color: var(--green); line-height: 1; }
     .hero-stat span { font-size: 11px; font-weight: 700; color: var(--text-light); letter-spacing: .06em; text-transform: uppercase; }
 
-    /* ── TICKER ── */
-    .ticker { background: var(--green); padding: 12px 0; overflow: hidden; }
-    .ticker-inner { display: flex; gap: 0; animation: ticker 25s linear infinite; width: max-content; }
-    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-    .ticker-item { display: flex; align-items: center; gap: 10px; padding: 0 2rem; white-space: nowrap; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9); }
-    .ticker-sep { color: rgba(255,255,255,0.4); font-size: 1.2rem; margin: 0 0.5rem; }
+   
 
     /* ── SECTION BASE ── */
     .section { max-width: var(--max-w); margin: 0 auto; padding: 72px 40px; }
@@ -192,7 +187,7 @@
     .step p { font-size: 13px; color: var(--text-gray); line-height: 1.6; }
 
     /* ── CAUSAS — bg: --cream ── */
-    .causas-section { background: var(--cream); }
+    .participar-section { background: var(--cream); }
     .cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
     .card {
       border: 1px solid var(--border); border-radius: var(--radius);
@@ -200,6 +195,11 @@
       display: flex; flex-direction: column; gap: 16px;
       transition: border-color .2s, box-shadow .2s, transform .2s; min-height: 260px;
     }
+    .ticker {
+  background: var(--green);
+  width: 100%;
+  height: 40px;
+}
     .card-icon {
       width: 44px; height: 44px; border-radius: 12px;
       background: rgba(0,128,0,0.08);
@@ -260,6 +260,8 @@
     .agenda-bar-actions { display: flex; gap: 10px; flex-wrap: wrap; flex-shrink: 0; }
     #calendarEmbed { display: none; border-top: 1px solid var(--border); }
     #calendarEmbed iframe { width: 100%; height: 520px; border: 0; display: block; }
+
+    
 
     /* ── GALERIA — bg: --cream-dark ── */
     .fotos-section { background: var(--cream-dark); padding: 72px 40px; max-width: var(--max-w); margin: 0 auto; }
@@ -726,7 +728,7 @@
         Uma plataforma que conecta pessoas que querem aprender, compartilhar e participar de ações de voluntariado no DF — sem custo, sem burocracia.
       </p>
       <div class="hero-actions">
-        <button class="btn btn-green" onclick="document.getElementById('causas').scrollIntoView({behavior:'smooth'})">🌱 Quero participar →</button>
+        <button class="btn btn-green" onclick="document.getElementById('causas').scrollIntoView({behavior:'smooth'})"> Quero participar →</button>
         <a href="causas.html" class="btn btn-outline">Ver causas →</a>
         <a href="https://www.instagram.com/vivecomunidade/" target="_blank" rel="noopener" class="btn btn-outline">Instagram →</a>
       </div>
@@ -740,23 +742,7 @@
   </div>
 </div>
 
-<!-- ── TICKER ── -->
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item">VOLUNTARIADO</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">@vivecomunidade</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">BRASÍLIA, DF</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">🌿</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">VOLUNTARIADO</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">@vivecomunidade</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">BRASÍLIA, DF</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">🌿</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">VOLUNTARIADO</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">@vivecomunidade</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">BRASÍLIA, DF</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">🌿</span><span class="ticker-sep">·</span>
-  </div>
-</div>
+<div class="ticker"></div>
 
 <!-- ── COMO FUNCIONA — bg: cream-dark ── -->
 <div class="como-funciona-section">
@@ -778,10 +764,10 @@
 </div>
 
 <!-- ── CAUSAS — bg: cream ── -->
-<div class="causas-section">
+<div class="participar-section">
   <section class="section" id="causas">
     <div class="section-header">
-      <span class="section-tag">Causas</span>
+      <span class="section-tag">participar</span>
       <hr>
     </div>
     <div class="section-title">como você quer<br><em>fazer a diferença?</em></div>
@@ -798,7 +784,7 @@
           <li>Ações no DF</li>
           <li>Em parceria com OSCs reais</li>
         </ul>
-        <a href="voluntariado.html" class="btn btn-dark btn-sm">🤝 Quero fazer voluntariado →</a>
+        <a href="voluntariado.html" class="btn btn-dark btn-sm"> Quero fazer voluntariado →</a>
         <p class="part-note">Saiba mais sobre como participar</p>
       </div>
       <div class="card">
@@ -811,7 +797,7 @@
           <li>Online ou presencial</li>
           <li>A comunidade cresce com você</li>
         </ul>
-        <button class="btn btn-dark btn-sm" onclick="abrirModal('ensinar')">🙌 Quero ensinar — formulário</button>
+        <button class="btn btn-dark btn-sm" onclick="abrirModal('ensinar')"> Quero ensinar — formulário</button>
         <p class="part-note">Você será levado ao Google Forms</p>
       </div>
       <div class="card">
@@ -824,7 +810,7 @@
           <li>Online ou presencial</li>
           <li>100% gratuito</li>
         </ul>
-        <button class="btn btn-dark btn-sm" onclick="abrirModal('aprender')">🎓 Quero aprender — formulário</button>
+        <button class="btn btn-dark btn-sm" onclick="abrirModal('aprender')"> Quero aprender — formulário</button>
         <p class="part-note">Você será levado ao Google Forms</p>
       </div>
       <div class="card">
@@ -837,7 +823,7 @@
           <li>Aprender, ensinar e voluntariado</li>
           <li>Sem pressão, no seu ritmo</li>
         </ul>
-        <a href="causas.html" class="btn btn-dark btn-sm">💡 Explorar todas as áreas →</a>
+        <a href="causas.html" class="btn btn-dark btn-sm"> Explorar todas as áreas →</a>
         <p class="part-note">Veja o que a comunidade oferece</p>
       </div>
     </div>
