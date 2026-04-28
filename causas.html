@@ -5,208 +5,221 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>O que move você no DF? — VIVE</title>
   <meta name="description" content="Explore todas as áreas de interesse da comunidade VIVE. Aprenda, ensine e faça voluntariado no Distrito Federal." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --ink: #0e1a0f; --ink-soft: #2d3d2e;
-      --sage: #4a7c59; --sage-mid: #6a9e7a;
-      --sage-light: #a8cba8; --sage-pale: #e8f2e8;
-      --cream: #f5f0e8; --cream-warm: #ede7d9;
-      --gold: #c4922a; --gold-light: #f0d898; --gold-pale: #faf3e0;
+      --green: #9cb295;
+      --green-dark: #839074;
+      --green-light: #b5c8af;
+      --green-deep: #9cb295;
+      --green-deep-2: #637a61;
+      --cream: #f8f5ee;
+      --cream-dark: #f0ece2;
+      --sage: #f0ece2;
+      --sage-mid: #dde6d9;
+      --border: #d4c7c7;
+      --border-light: #e8e0e0;
+      --text-dark: #20221f;
+      --text-gray: #5d5d5d;
+      --text-light: #8a8a8a;
+      --radius: 20px;
+      --radius-sm: 12px;
+      --max-w: 1080px;
+      --gold: #e6d28a;
       --rust: #b85c38; --rust-pale: #faede8;
       --teal: #2e7d82; --teal-pale: #e3f4f4;
       --plum: #6d4c8e; --plum-pale: #f0eaf7;
-      --rose: #b5404a; --rose-pale: #faeaeb;
       --blue: #2c5f8a; --blue-pale: #e8f0f8;
-      --white: #fdfcf8;
-      --border: rgba(14,26,15,0.09); --border-dark: rgba(14,26,15,0.16);
-      --shadow: 0 2px 16px rgba(14,26,15,0.07);
-      --shadow-lg: 0 12px 60px rgba(14,26,15,0.13);
-      --r-md: 16px; --r-lg: 22px; --r-xl: 32px;
+      --gold-pale: #faf3e0;
+      --sage-pale: rgba(156,178,149,.12);
+      /* NAV height — used for sticky offsets */
+      --nav-h: 72px;
+      --filter-h: 64px;
     }
-    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); overflow-x: hidden; }
-    ::selection { background: rgba(74,124,89,0.18); }
 
+    html { scroll-behavior: smooth; font-family: 'DM Sans', sans-serif; font-size: 16px; }
+    body { background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
+    body.modal-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
 
-    .navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      height: 68px; display: flex; align-items: center;
-      background: rgba(253,252,248,0.92); backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border); padding: 0 2rem;
-      transition: box-shadow 0.3s;
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 6px; padding: 12px 24px; border-radius: 1000px;
+      font-size: 12px; font-weight: 800; letter-spacing: 0.06em;
+      text-transform: uppercase; transition: opacity .2s, transform .15s, box-shadow .2s;
+      white-space: nowrap; cursor: pointer; font-family: 'DM Sans', sans-serif; border: none;
     }
-    .navbar.scrolled { box-shadow: 0 2px 24px rgba(14,26,15,0.08); }
-    .nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; color: var(--ink); text-decoration: none; }
-    .logo em { color: var(--sage); font-style: italic; }
-    .nav-right { display: flex; align-items: center; gap: 12px; }
-    .nav-back { display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 500; text-decoration: none; border: 1.5px solid var(--border-dark); color: var(--ink-soft); transition: all 0.2s; }
-    .nav-back:hover { border-color: var(--sage); color: var(--sage); }
-    .nav-cta { background: var(--ink); color: white; padding: 9px 22px; border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
-    .nav-cta:hover { background: var(--sage); transform: translateY(-1px); }
+    .btn:hover { opacity: .88; transform: translateY(-1px); }
+    .btn-green { background: var(--green); color: #fff; box-shadow: 0 2px 12px rgba(156,178,149,.35); }
+    .btn-outline { background: transparent; border: 1.5px solid var(--border); color: var(--text-dark); }
+    .btn-outline:hover { border-color: var(--green); color: var(--green); }
+    .btn-dark { background: var(--text-dark); color: #fff; }
+    .btn-sm { padding: 9px 18px; font-size: 11px; }
 
-  
-    .hero {
-      background: var(--ink); padding: 140px 2rem 90px;
-      position: relative; overflow: hidden; text-align: center;
+    /* ══════════════════════════════
+       NAV — FIXED (não sticky) para não conflitar com filter
+       ══════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 10px 24px;
     }
-    .hero::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 60% 70% at 80% 40%, rgba(74,124,89,0.2) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 50% at 15% 80%, rgba(196,146,42,0.12) 0%, transparent 55%);
-      pointer-events: none;
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 18px 10px 24px;
+      background: rgba(248,245,238,0.92); backdrop-filter: blur(16px);
+      border: 1px solid rgba(131,144,116,0.55); border-radius: 100px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.08); gap: 12px;
+      max-width: var(--max-w); margin: 0 auto;
+      /* Prevent any child from overflowing */
+      min-width: 0;
     }
-    .hero-grid {
-      position: absolute; inset: 0;
-      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 100%);
+    .nav-logo { flex-shrink: 0; display: flex; align-items: center; }
+    .nav-logo img { height: 32px; width: auto; object-fit: contain; }
+    .nav-logo-text { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 20px; color: var(--green-deep); letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 2px; align-items: center; flex: 1; justify-content: center; min-width: 0; }
+    .nav-links a {
+      font-size: 11px; font-weight: 700; color: var(--text-gray);
+      letter-spacing: 0.05em; text-transform: uppercase;
+      padding: 6px 9px; border-radius: 100px;
+      transition: color .2s, background .2s; white-space: nowrap;
     }
-    .hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
-    .hero-badge {
+    .nav-links a:hover, .nav-links a.active { color: var(--green); background: rgba(156,178,149,.1); }
+    .nav-cta { flex-shrink: 0; }
+
+    /* Hamburger: sempre visível no mobile, nunca sai do nav */
+    .nav-hamburger {
+      display: none;
+      background: none; border: 1.5px solid var(--border);
+      border-radius: 8px; padding: 6px 10px; color: var(--text-dark);
+      font-size: 18px; line-height: 1; cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* Spacer so page content starts below fixed nav */
+    .nav-spacer { height: calc(var(--nav-h) + 4px); }
+
+    /* ══════════════════════════════
+       HERO
+       ══════════════════════════════ */
+    .hero-section { background: var(--green-deep-2); padding: 72px 40px 64px; }
+    .hero-inner { max-width: var(--max-w); margin: 0 auto; }
+    .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 100px; padding: 6px 16px 6px 8px;
-      font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7);
-      margin-bottom: 2rem;
-      animation: fadeUp 0.5s ease both;
+      font-size: 11px; font-weight: 700; color: var(--green-light);
+      letter-spacing: .14em; text-transform: uppercase; margin-bottom: 20px;
     }
-    .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sage-light); animation: dotPulse 2s ease-in-out infinite; }
-    @keyframes dotPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
-    @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes orbFloat { 0%,100%{transform:translate(0,0)} 50%{transform:translate(16px,-20px)} }
-    .hero h1 {
+    .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1.5px; background: var(--green-light); border-radius: 2px; }
+    .hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      font-weight: 900; line-height: 1.0; letter-spacing: -2px;
-      color: white; margin-bottom: 1.5rem;
-      animation: fadeUp 0.5s 0.1s ease both;
+      font-size: clamp(38px, 7vw, 90px);
+      font-weight: 900; line-height: .95; letter-spacing: -0.03em;
+      color: #fff; margin-bottom: 20px;
     }
-    .hero h1 em { font-style: italic; color: var(--sage-light); }
-    .hero-sub {
-      font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.8;
-      max-width: 540px; margin: 0 auto 3rem;
-      animation: fadeUp 0.5s 0.15s ease both;
-    }
-
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-desc { font-size: 15px; color: rgba(255,255,255,.7); line-height: 1.8; max-width: 520px; margin-bottom: 36px; }
     .hero-stats {
-      display: flex; justify-content: center; gap: 0;
-      border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r-lg);
-      overflow: hidden; max-width: 600px; margin: 0 auto;
-      animation: fadeUp 0.5s 0.2s ease both;
+      display: flex; gap: 0;
+      border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius);
+      overflow: hidden; max-width: 540px;
     }
-    .hero-stat { flex: 1; padding: 1.25rem 1rem; border-right: 1px solid rgba(255,255,255,0.1); text-align: center; }
+    .hero-stat { flex: 1; padding: 1.1rem 1rem; border-right: 1px solid rgba(255,255,255,.1); text-align: center; }
     .hero-stat:last-child { border-right: none; }
-    .hero-stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: white; letter-spacing: -1px; line-height: 1; }
-    .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.38); margin-top: 4px; font-weight: 300; text-transform: uppercase; letter-spacing: 0.08em; }
+    .hero-stat-num { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; color: #fff; line-height: 1; }
+    .hero-stat-label { font-size: 10px; color: rgba(255,255,255,.38); margin-top: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
 
+    .ticker { background: var(--green); width: 100%; height: 40px; }
 
-    .filter-bar {
-      background: var(--white);
+    /* ══════════════════════════════
+       FILTER BAR — STICKY (posição relativa ao fluxo)
+       top = nav-h + nav padding ≈ 72px
+       ══════════════════════════════ */
+    .filter-section {
+      background: var(--cream-dark);
       border-bottom: 1px solid var(--border);
-      padding: 1.25rem 2rem;
-      top: 68px;  
-      left: 0;
-      right: 0;
-      z-index: 150;
-      box-shadow: 0 2px 16px rgba(14,26,15,0.06);
+      padding: 1rem 40px;
+      position: sticky;
+      top: var(--nav-h);        /* cola logo abaixo da nav fixed */
+      z-index: 90;
     }
-    
-    .filter-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-    .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
-    .filter-pill { padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 500; font-family: 'DM Sans', sans-serif; border: 1.5px solid var(--border-dark); background: transparent; color: var(--ink-soft); cursor: pointer; transition: all 0.2s; }
-    .filter-pill.active, .filter-pill:hover { background: var(--ink); color: white; border-color: var(--ink); }
-    .filter-pill.f-aprender.active { background: var(--sage); border-color: var(--sage); }
+    .filter-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .filter-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+    .filter-pill {
+      padding: 7px 16px; border-radius: 100px; font-size: 11px; font-weight: 800;
+      letter-spacing: .05em; text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif; border: 1.5px solid var(--border);
+      background: transparent; color: var(--text-gray); cursor: pointer; transition: all 0.2s;
+    }
+    .filter-pill:hover, .filter-pill.active { background: var(--text-dark); color: white; border-color: var(--text-dark); }
+    .filter-pill.f-aprender.active { background: var(--green); border-color: var(--green); }
     .filter-pill.f-voluntariado.active { background: var(--rust); border-color: var(--rust); }
     .filter-pill.f-expressao.active { background: var(--plum); border-color: var(--plum); }
     .filter-pill.f-bem-estar.active { background: var(--teal); border-color: var(--teal); }
-    .result-count { font-size: 13px; font-weight: 400; color: var(--ink-soft); white-space: nowrap; }
-    .result-count strong { color: var(--sage); }
+    .result-count { font-size: 12px; font-weight: 700; color: var(--text-light); white-space: nowrap; letter-spacing: .04em; text-transform: uppercase; }
+    .result-count strong { color: var(--green); }
 
+    /* ══════════════════════════════
+       MAIN
+       ══════════════════════════════ */
+    .main-section { padding: 56px 40px 100px; max-width: var(--max-w); margin: 0 auto; }
 
-    .main-section { padding: 60px 2rem 100px; }
-    .main-inner { max-width: 1200px; margin: 0 auto; }
-
-
-    .cat-group { margin-bottom: 60px; }
-    .cat-group-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
-    .cat-group-icon { width: 44px; height: 44px; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
-    .cat-group-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
-    .cat-group-subtitle { font-size: 13px; font-weight: 300; color: var(--ink-soft); margin-top: 2px; }
+    .cat-group { margin-bottom: 64px; }
+    .cat-group-header { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+    .cat-group-icon { width: 48px; height: 48px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+    .cat-group-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; letter-spacing: -0.02em; color: var(--green-deep); }
+    .cat-group-subtitle { font-size: 12px; font-weight: 700; color: var(--text-light); margin-top: 2px; text-transform: uppercase; letter-spacing: .06em; }
     .cat-divider { flex: 1; height: 1px; background: var(--border); }
 
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
 
-    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
-
-
+    /* ── CAUSA CARD */
     .causa-card {
-      background: var(--white); border: 1.5px solid var(--border);
-      border-radius: var(--r-lg); padding: 1.75rem 1.5rem;
+      background: var(--cream-dark); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem 1.5rem;
       cursor: pointer; position: relative; overflow: hidden;
-      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s, border-color 0.3s;
+      transition: border-color .2s, box-shadow .2s, transform .3s cubic-bezier(0.34,1.56,0.64,1);
       opacity: 0; transform: translateY(20px);
     }
     .causa-card.visible { opacity: 1; transform: translateY(0); }
-    .causa-card:hover { transform: translateY(-6px) !important; box-shadow: var(--shadow-lg); }
+    .causa-card:hover { transform: translateY(-6px) !important; box-shadow: 0 12px 48px rgba(32,34,31,.1); }
     .causa-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
     .causa-card:hover::after { transform: scaleX(1); }
 
+    .cc-sage::after { background: var(--green); } .cc-sage:hover { border-color: var(--green); }
+    .cc-gold::after { background: #c4922a; } .cc-gold:hover { border-color: rgba(196,146,42,.4); }
+    .cc-rust::after { background: var(--rust); } .cc-rust:hover { border-color: rgba(184,92,56,.35); }
+    .cc-teal::after { background: var(--teal); } .cc-teal:hover { border-color: rgba(46,125,130,.35); }
+    .cc-plum::after { background: var(--plum); } .cc-plum:hover { border-color: rgba(109,76,142,.35); }
 
-    .cc-sage { border-color: var(--border); }
-    .cc-sage::after { background: var(--sage); }
-    .cc-sage:hover { border-color: var(--sage-light); }
-    .cc-gold { border-color: var(--border); }
-    .cc-gold::after { background: var(--gold); }
-    .cc-gold:hover { border-color: rgba(196,146,42,0.3); }
-    .cc-rust { border-color: var(--border); }
-    .cc-rust::after { background: var(--rust); }
-    .cc-rust:hover { border-color: rgba(184,92,56,0.3); }
-    .cc-teal { border-color: var(--border); }
-    .cc-teal::after { background: var(--teal); }
-    .cc-teal:hover { border-color: rgba(46,125,130,0.3); }
-    .cc-plum { border-color: var(--border); }
-    .cc-plum::after { background: var(--plum); }
-    .cc-plum:hover { border-color: rgba(109,76,142,0.3); }
-    .cc-blue { border-color: var(--border); }
-    .cc-blue::after { background: var(--blue); }
-    .cc-blue:hover { border-color: rgba(44,95,138,0.3); }
-
-    .causa-icon { font-size: 2rem; width: 54px; height: 54px; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
-    .ci-sage { background: var(--sage-pale); }
-    .ci-gold { background: var(--gold-pale); }
-    .ci-rust { background: var(--rust-pale); }
-    .ci-teal { background: var(--teal-pale); }
+    .causa-icon { font-size: 2rem; width: 54px; height: 54px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .ci-sage { background: var(--sage-pale); } .ci-gold { background: var(--gold-pale); }
+    .ci-rust { background: var(--rust-pale); } .ci-teal { background: var(--teal-pale); }
     .ci-plum { background: var(--plum-pale); }
-    .ci-blue { background: var(--blue-pale); }
 
-    .causa-tag { position: absolute; top: 14px; right: 14px; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; padding: 3px 10px; border-radius: 100px; text-transform: uppercase; }
-    .ct-sage { color: var(--sage); background: var(--sage-pale); }
-    .ct-gold { color: var(--gold); background: var(--gold-pale); }
-    .ct-rust { color: var(--rust); background: var(--rust-pale); }
-    .ct-teal { color: var(--teal); background: var(--teal-pale); }
-    .ct-plum { color: var(--plum); background: var(--plum-pale); }
-    .ct-blue { color: var(--blue); background: var(--blue-pale); }
+    .causa-tag { position: absolute; top: 14px; right: 14px; font-size: 10px; font-weight: 800; letter-spacing: .07em; padding: 3px 10px; border-radius: 100px; text-transform: uppercase; }
+    .ct-sage { color: var(--green); background: var(--sage-pale); border: 1px solid rgba(156,178,149,.25); }
+    .ct-gold { color: #8a6510; background: var(--gold-pale); border: 1px solid rgba(196,146,42,.2); }
+    .ct-rust { color: var(--rust); background: var(--rust-pale); border: 1px solid rgba(184,92,56,.2); }
+    .ct-teal { color: var(--teal); background: var(--teal-pale); border: 1px solid rgba(46,125,130,.2); }
+    .ct-plum { color: var(--plum); background: var(--plum-pale); border: 1px solid rgba(109,76,142,.2); }
 
-    .causa-name { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
-    .causa-desc { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.7; margin-bottom: 1.25rem; }
+    .causa-name { font-size: 15px; font-weight: 800; margin-bottom: 8px; color: var(--text-dark); letter-spacing: -.01em; }
+    .causa-desc { font-size: 13px; color: var(--text-gray); line-height: 1.7; margin-bottom: 1.25rem; }
     .causa-pills { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 1.25rem; }
-    .causa-pill { font-size: 11px; font-weight: 400; padding: 3px 10px; border-radius: 100px; background: var(--cream); border: 1px solid var(--border); color: var(--ink-soft); }
+    .causa-pill { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; background: rgba(156,178,149,.08); border: 1px solid var(--border); color: var(--text-gray); letter-spacing: .04em; }
     .causa-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border); }
-    .causa-people { font-size: 12px; font-weight: 400; color: var(--ink-soft); display: flex; align-items: center; gap: 5px; }
-    .causa-people span { font-weight: 600; color: var(--sage); }
-    .causa-join { font-size: 12px; font-weight: 600; color: var(--sage); text-decoration: none; transition: gap 0.2s; display: inline-flex; align-items: center; gap: 4px; }
-    .causa-join:hover { gap: 8px; }
+    .causa-people { font-size: 12px; color: var(--text-light); display: flex; align-items: center; gap: 5px; font-weight: 600; }
+    .causa-people .count { font-weight: 800; color: var(--green); transition: all 0.4s; }
+    .causa-people .count.loading { opacity: .4; }
+    .causa-join { font-size: 12px; font-weight: 800; color: var(--green); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: gap .2s, color .2s; text-transform: uppercase; letter-spacing: .06em; }
+    .causa-join:hover { gap: 8px; color: var(--text-dark); }
 
-  
+    /* ── FEATURED CARD */
     .featured-card {
-      background: var(--ink); border-radius: var(--r-xl);
+      background: var(--green-deep-2); border-radius: var(--radius);
       padding: 2.5rem 3rem; display: grid; grid-template-columns: 1fr auto;
       gap: 2rem; align-items: center; margin-bottom: 16px;
       position: relative; overflow: hidden;
@@ -214,771 +227,745 @@
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
     .featured-card.visible { opacity: 1; transform: translateY(0); }
-    .featured-card::before { content: attr(data-emoji); position: absolute; font-size: 14rem; opacity: 0.05; right: -1rem; bottom: -2rem; pointer-events: none; line-height: 1; }
-    .featured-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); padding: 4px 12px; border-radius: 100px; margin-bottom: 1rem; }
-    .featured-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.5px; color: white; margin-bottom: 0.75rem; }
-    .featured-desc { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.52); line-height: 1.8; max-width: 500px; }
-    .featured-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--sage); color: white; padding: 13px 24px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
-    .featured-cta:hover { background: #3a6647; transform: translateY(-2px); }
+    .featured-card::before { content: attr(data-emoji); position: absolute; font-size: 14rem; opacity: 0.06; right: -1rem; bottom: -2rem; pointer-events: none; line-height: 1; }
+    .featured-tag { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.5); background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); padding: 4px 12px; border-radius: 100px; margin-bottom: 1rem; }
+    .featured-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem,2.5vw,2rem); font-weight: 900; line-height: 1.1; letter-spacing: -.02em; color: white; margin-bottom: 0.75rem; }
+    .featured-desc { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.8; max-width: 480px; }
+    .featured-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: white; padding: 14px 24px; border-radius: 100px; font-size: 13px; font-weight: 800; text-decoration: none; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; letter-spacing: .04em; text-transform: uppercase; }
+    .featured-cta:hover { background: var(--text-dark); transform: translateY(-2px); }
 
-
-    .suggest-section { background: var(--cream); padding: 80px 2rem; }
-    .suggest-inner { max-width: 1200px; margin: 0 auto; }
-    .suggest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 3rem; }
-    .suggest-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r-xl); padding: 2.5rem; transition: transform 0.25s, box-shadow 0.25s; opacity: 0; transform: translateY(20px); }
+    /* ── SUGGEST SECTION */
+    .suggest-section { background: var(--sage); padding: 72px 40px; }
+    .suggest-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-tag { font-size: 11px; font-weight: 800; color: var(--green); letter-spacing: .14em; text-transform: uppercase; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(32px,4.5vw,58px); font-weight: 900; color: var(--green-deep); line-height: 1.05; margin-bottom: 16px; letter-spacing: -0.02em; }
+    .section-title em { font-style: italic; color: var(--green); font-weight: 700; }
+    .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+    .section-header hr { flex: 1; border: none; border-top: 1px solid var(--border); }
+    .section-desc { font-size: 13px; font-weight: 700; color: var(--green-dark); letter-spacing: .05em; line-height: 1.75; text-transform: uppercase; max-width: 520px; margin-bottom: 3rem; }
+    .suggest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .suggest-card {
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2.5rem;
+      transition: border-color .2s, box-shadow .2s, transform .25s;
+      opacity: 0; transform: translateY(20px);
+    }
     .suggest-card.visible { opacity: 1; transform: translateY(0); }
-    .suggest-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .suggest-card:hover { border-color: var(--green); box-shadow: 0 8px 32px rgba(156,178,149,.15); transform: translateY(-4px); }
     .suggest-icon { font-size: 2rem; display: block; margin-bottom: 1rem; }
-    .suggest-title { font-size: 18px; font-weight: 700; margin-bottom: 0.75rem; }
-    .suggest-desc { font-size: 14px; font-weight: 300; color: var(--ink-soft); line-height: 1.8; margin-bottom: 2rem; }
-    .btn-ink { background: var(--ink); color: white; padding: 13px 26px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
-    .btn-ink:hover { background: var(--sage); transform: translateY(-1px); }
-    .btn-outline { background: transparent; color: var(--ink-soft); padding: 13px 26px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; border: 1.5px solid var(--border-dark); transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
-    .btn-outline:hover { border-color: var(--sage); color: var(--sage); transform: translateY(-1px); }
+    .suggest-title { font-size: 18px; font-weight: 800; margin-bottom: 0.75rem; color: var(--text-dark); }
+    .suggest-desc { font-size: 14px; color: var(--text-gray); line-height: 1.8; margin-bottom: 2rem; }
 
- 
-    .cta-section { background: var(--sage); padding: 90px 2rem; text-align: center; position: relative; overflow: hidden; }
-    .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle 400px at 80% 30%, rgba(255,255,255,0.08) 0%, transparent 70%); pointer-events: none; }
+    /* ── CTA SECTION */
+    .cta-section { background: var(--green); padding: 80px 40px; text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle 400px at 80% 30%, rgba(255,255,255,.08) 0%, transparent 70%); pointer-events: none; }
     .cta-inner { position: relative; z-index: 1; }
-    .cta-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem,4.5vw,3.8rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.0; color: white; margin-bottom: 1rem; }
-    .cta-inner h2 em { font-style: italic; color: var(--gold-light); }
-    .cta-inner p { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.65); margin-bottom: 2.5rem; }
-    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn-white { background: white; color: var(--sage); padding: 14px 32px; border-radius: 100px; font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 24px rgba(0,0,0,0.14); display: inline-flex; align-items: center; gap: 8px; }
-    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.18); }
-    .btn-white-outline { background: transparent; color: white; padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 500; text-decoration: none; border: 2px solid rgba(255,255,255,0.38); transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
-    .btn-white-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
+    .cta-tag { font-size: 11px; font-weight: 800; color: rgba(255,255,255,.6); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 20px; display: block; }
+    .cta-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(40px,6vw,80px); color: #fff; line-height: .95; margin-bottom: 12px; font-weight: 900; letter-spacing: -0.03em; }
+    .cta-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(28px,4vw,52px); color: rgba(255,255,255,.75); margin-bottom: 28px; display: block; }
+    .cta-inner p { font-size: 14px; color: rgba(255,255,255,.8); line-height: 1.7; max-width: 480px; margin: 0 auto 36px; }
+    .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-white-inv { background: #fff; color: var(--text-dark); }
+    .btn-white-ghost { background: transparent; border: 1.5px solid rgba(255,255,255,.4); color: #fff; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 800; padding: 12px 24px; border-radius: 100px; letter-spacing: .06em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; transition: all .2s; cursor: pointer; }
+    .btn-white-ghost:hover { border-color: rgba(255,255,255,.8); background: rgba(255,255,255,.1); }
 
+    /* ── FOOTER */
+    .footer-wrap { background: var(--sage); border-top: 1px solid var(--border); }
+    .footer-outer { padding: 32px 40px; max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 20px; color: var(--green-deep); letter-spacing: -0.02em; }
+    .footer-outer p { font-size: 12px; color: var(--text-light); }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { font-size: 11px; font-weight: 700; color: var(--text-light); letter-spacing: .06em; text-transform: uppercase; transition: color .2s; }
+    .footer-links a:hover { color: var(--green); }
 
-    footer { background: var(--ink); padding: 60px 2rem 0; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; letter-spacing: -0.5px; display: inline-block; margin-bottom: 1rem; }
-    .footer-logo em { color: var(--sage-light); font-style: italic; }
-    .footer-brand p { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.38); line-height: 1.8; max-width: 280px; }
-    .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 1.25rem; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col a { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.48); text-decoration: none; transition: color 0.2s; }
-    .footer-col a:hover { color: var(--sage-light); }
-    .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; font-size: 12px; color: rgba(255,255,255,0.28); font-weight: 300; flex-wrap: wrap; gap: 0.5rem; }
-    .footer-bottom a { color: rgba(255,255,255,0.38); text-decoration: none; }
-    .footer-bottom a:hover { color: var(--sage-light); }
+    /* ── MODAL */
+    #m-overlay {
+      position: fixed; inset: 0; z-index: 9000;
+      background: rgba(32,34,31,0.55); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center; padding: 1rem;
+      opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+    }
+    #m-box {
+      background: var(--cream); border-radius: var(--radius);
+      max-width: 520px; width: 100%; max-height: 90dvh;
+      overflow-y: auto; overflow-x: hidden;
+      box-shadow: 0 32px 96px rgba(32,34,31,0.22);
+      transform: translateY(24px) scale(0.97);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .m-header { padding: 1.75rem 2rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; position: sticky; top: 0; background: var(--cream); z-index: 1; }
+    .m-header-left { display: flex; align-items: center; gap: 14px; }
+    .m-icon { width: 50px; height: 50px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; background: rgba(156,178,149,.2); }
+    .m-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--text-dark); }
+    .m-sub { font-size: 12px; color: var(--text-gray); margin-top: 3px; }
+    .m-close { width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--border); background: transparent; cursor: pointer; font-size: 15px; color: var(--text-gray); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+    .m-close:hover { background: var(--cream-dark); }
+    .m-body { padding: 1.75rem 2rem; }
+    .m-info { background: rgba(156,178,149,.12); border: 1.5px solid rgba(156,178,149,.3); border-radius: var(--radius-sm); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
+    .m-info p { font-size: 14px; line-height: 1.75; color: var(--text-gray); }
+    .m-items-label { font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--text-light); margin-bottom: 10px; }
+    .m-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-gray); margin-bottom: 9px; }
+    .m-item-check { width: 20px; height: 20px; border-radius: 50%; background: rgba(156,178,149,.2); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--green); flex-shrink: 0; margin-top: 1px; font-weight: 800; }
+    .m-privacy { background: var(--cream-dark); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem 1.25rem; display: flex; gap: 10px; align-items: flex-start; margin-bottom: 1.75rem; }
+    .m-privacy p { font-size: 12px; color: var(--text-gray); line-height: 1.65; }
+    .m-footer { display: flex; gap: 10px; }
+    .m-btn-back { flex: 1; padding: 13px; border-radius: 100px; border: 1.5px solid var(--border); background: transparent; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--text-gray); cursor: pointer; transition: all .2s; }
+    .m-btn-back:hover { border-color: var(--green); color: var(--green); }
+    .m-btn-go { flex: 2; padding: 13px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 800; color: white; border: none; cursor: pointer; background: var(--green); transition: background .2s, transform .15s; }
+    .m-btn-go:hover { background: var(--text-dark); transform: translateY(-1px); }
 
+    /* ── MOBILE MENU */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(248,245,238,.97); backdrop-filter: blur(20px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 18px; font-weight: 800; color: var(--green-dark); text-transform: uppercase; letter-spacing: .08em; }
+    .mobile-close { position: absolute; top: 24px; right: 24px; background: none; border: 1.5px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 18px; color: var(--text-dark); cursor: pointer; }
 
+    /* ══════════════════════════════
+       RESPONSIVE
+       ══════════════════════════════ */
     @media (max-width: 900px) {
-      .suggest-grid { grid-template-columns: 1fr; }
-      .featured-card { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links { display: none; }
+      .nav-cta  { display: none; }        /* esconde o botão desktop */
+      .nav-hamburger { display: block; }  /* mostra hamburger */
     }
+
     @media (max-width: 600px) {
+      :root { --nav-h: 68px; }
+      nav { padding: 8px 16px; }
+      .nav-inner { padding: 8px 14px 8px 18px; }
+      .hero-section, .suggest-section, .cta-section { padding-left: 20px; padding-right: 20px; }
+      .filter-section { padding: .85rem 16px; }
+      .filter-pills { gap: 5px; }
+      .filter-pill { padding: 6px 12px; font-size: 10.5px; }
+      .main-section { padding: 36px 20px 80px; }
       .cards-grid { grid-template-columns: 1fr; }
+      .suggest-grid { grid-template-columns: 1fr; }
+      .featured-card { grid-template-columns: 1fr; padding: 1.75rem; }
       .hero-stats { flex-wrap: wrap; }
-      .cta-btns { flex-direction: column; align-items: center; }
-      .filter-pills { gap: 6px; }
-      .filter-pill { padding: 7px 14px; font-size: 12px; }
-      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-outer { flex-direction: column; text-align: center; gap: 12px; padding: 32px 20px; }
+      .footer-links { justify-content: center; }
     }
-
-   
-      body.modal-open { overflow: hidden; position: fixed; width: 100%; }
-
   </style>
 </head>
 <body>
 
-
-  <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="logo">VIVE</a>
-      <div class="nav-right">
-        <a href="index.html" class="nav-back">← Voltar</a>
-        <a href="index.html#participar" class="nav-cta">Quero participar</a>
-      </div>
-    </div>
-  </nav>
-
-
-  <section class="hero">
-    <div class="hero-grid"></div>
-    <div class="hero-inner">
-      <div class="hero-badge">
-        <div class="badge-dot"></div>
-        VIVE · Comunidade no DF
-      </div>
-      <h1>O que move<br><em>você no DF?</em></h1>
-      <p class="hero-sub">Explore todas as áreas de interesse da comunidade. Tem algo para aprender, para ensinar, ou uma causa para apoiar — estamos aqui para conectar.</p>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-num">10+</div>
-          <div class="hero-stat-label">Áreas</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">100%</div>
-          <div class="hero-stat-label">Gratuito</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">DF</div>
-          <div class="hero-stat-label">Distrito Federal</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">∞</div>
-          <div class="hero-stat-label">Possibilidades</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <div class="filter-bar" id="filterBar">
-    <div class="filter-bar-inner">
-      <div class="filter-pills">
-        <button class="filter-pill active" onclick="filtrar('todas', this)">Todas</button>
-        <button class="filter-pill f-aprender" onclick="filtrar('aprender', this)">📚 Aprender</button>
-        <button class="filter-pill f-voluntariado" onclick="filtrar('voluntariado', this)">🤝 Voluntariado</button>
-        <button class="filter-pill f-expressao" onclick="filtrar('expressao', this)">🎨 Expressão</button>
-        <button class="filter-pill f-bem-estar" onclick="filtrar('bem-estar', this)">💚 Bem-estar</button>
-      </div>
-      <span class="result-count" id="resultCount"><strong>20</strong> áreas encontradas</span>
-    </div>
-  </div>
-
-
-  <section class="main-section">
-    <div class="main-inner">
-
-
-      <div class="cat-group" data-cat="aprender" id="group-aprender">
-        <div class="cat-group-header">
-          <div class="cat-group-icon" style="background:var(--sage-pale);">📚</div>
-          <div>
-            <div class="cat-group-title">Aprender</div>
-            <div class="cat-group-subtitle">Habilidades, idiomas e conhecimento sem custo</div>
-          </div>
-          <div class="cat-divider"></div>
-        </div>
-        <div class="cards-grid">
-
-          <div class="causa-card cc-sage" data-cat="aprender">
-            <div class="causa-tag ct-sage">Online</div>
-            <div class="causa-icon ci-sage">💬</div>
-            <div class="causa-name">Inglês</div>
-            <div class="causa-desc">Conversação online em grupo, todos os níveis. Toda semana, sem custo, sem compromisso. Foco em prática real de fala e escuta.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Online</span>
-              <span class="causa-pill">Iniciante ao avançado</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>0</span> pessoas</div>
-              <a href="index.html#participar" class="causa-join">Participar →</a>
-            </div>
-          </div>
-
-          <!-- <div class="causa-card cc-blue" data-cat="aprender">
-            <div class="causa-tag ct-blue">Online</div>
-            <div class="causa-icon ci-blue">🇪🇸</div>
-            <div class="causa-name">Espanhol</div>
-            <div class="causa-desc">Conversação e gramática básica para quem quer se comunicar com falantes nativos da América Latina. Sessões online semanais.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Online</span>
-              <span class="causa-pill">Semanal</span>
-              <span class="causa-pill">Básico ao intermediário</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>8</span> pessoas</div>
-              <a href="index.html#participar" class="causa-join">Participar →</a>
-            </div>
-          </div> -->
-
-          <div class="causa-card cc-sage" data-cat="aprender">
-            <div class="causa-tag ct-sage">Online</div>
-            <div class="causa-icon ci-sage">💻</div>
-            <div class="causa-name">Tecnologia</div>
-            <div class="causa-desc">Programação do zero, cybersegurança básica e Google Sheets. Workshops práticos para quem quer entrar na área de tecnologia.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Online</span>
-              <span class="causa-pill">Workshops mensais</span>
-              <span class="causa-pill">Do zero</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>0</span> pessoas</div>
-              <a href="index.html#participar" class="causa-join">Participar →</a>
-            </div>
-          </div>
-
-          <!-- <div class="causa-card cc-gold" data-cat="aprender">
-            <div class="causa-tag ct-gold">Presencial</div>
-            <div class="causa-icon ci-gold">📸</div>
-            <div class="causa-name">Fotografia</div>
-            <div class="causa-desc">Do celular à câmera: composição, luz natural, edição básica e como contar histórias com imagens. Encontros presenciais pelo DF.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Presencial</span>
-              <span class="causa-pill">Mensal</span>
-              <span class="causa-pill">Celular ou câmera</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>7</span> pessoas</div>
-              <a href="index.html#participar" class="causa-join">Participar →</a>
-            </div>
-          </div> -->
-
-          <!-- <div class="causa-card cc-sage" data-cat="aprender">
-            <div class="causa-tag ct-sage">Presencial</div>
-            <div class="causa-icon ci-sage">🍳</div>
-            <div class="causa-name">Culinária</div>
-            <div class="causa-desc">Oficinas de cozinha: receitas saudáveis, aproveitamento integral dos alimentos, técnicas básicas e culinária afetiva. Presencial no DF.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Presencial</span>
-              <span class="causa-pill">Quinzenal</span>
-              <span class="causa-pill">Todos os níveis</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>9</span> pessoas</div>
-              <a href="index.html#participar" class="causa-join">Participar →</a>
-            </div>
-          </div> -->
-
-          <!-- <div class="causa-card cc-teal" data-cat="aprender">
-            <div class="causa-tag ct-teal">Online</div>
-            <div class="causa-icon ci-teal">💰</div>
-            <div class="causa-name">Finanças pessoais</div>
-            <div class="causa-desc">Orçamento, poupança, investimentos básicos e como sair das dívidas. Workshops práticos para quem quer tomar as rédeas do próprio dinheiro.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Online</span>
-              <span class="causa-pill">Mensal</span>
-              <span class="causa-pill">Iniciante</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>5</span> pessoas</div>
-              <a href="index.html#participar" class="causa-join">Participar →</a>
-            </div>
-          </div> -->
-
-          <div class="causa-card cc-teal" data-cat="aprender">
-            <div class="causa-icon ci-teal">💡</div>
-            <div class="causa-name">Tem alguma sugestão?</div>
-            <div class="causa-desc">Nos diga o que mais você gostaria de aprender! Quando possível iremos aumentar as opções de cursos! Preencha o formulário "Quero aprender", e nos diga o que falta, leva menos de 2 minutos</div>
-            <div class="causa-footer">
-              <a href="index.html#participar" class="causa-join">Sua sugestão →</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-
-      <div class="cat-group" data-cat="voluntariado" id="group-voluntariado">
-        <div class="cat-group-header">
-          <div class="cat-group-icon" style="background:var(--rust-pale);">🤝</div>
-          <div>
-            <div class="cat-group-title">Voluntariado</div>
-            <div class="cat-group-subtitle">Causas reais que precisam da sua presença e cuidado</div>
-          </div>
-          <div class="cat-divider"></div>
-        </div>
-
-
-        <div class="featured-card" data-emoji="🐾" id="fc-patas">
-          <div>
-            <span class="featured-tag">Causa em destaque · PatasDF</span>
-            <div class="featured-title">Ajude a reencontrar<br>animais perdidos no DF</div>
-            <div class="featured-desc">O PatasDF é a plataforma da comunidade VIVE dedicada à causa animal. Cadastre animais perdidos, informe sobre encontrados e conheça ONGs do DF que precisam de apoio.</div>
-          </div>
-          <a href="patasdf.html" class="featured-cta">🐾 Acessar o PatasDF →</a>
-        </div>
-
-        <div class="cards-grid">
-
-          <div class="causa-card cc-rust" data-cat="voluntariado">
-            <div class="causa-tag ct-rust">Procurando ongs</div>
-            <div class="causa-icon ci-rust">🐾</div>
-            <div class="causa-name">Causa animal</div>
-            <div class="causa-desc">Feiras de adoção, apoio a ONGs, divulgação de animais perdidos e ações de conscientização sobre posse responsável no DF.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Presencial</span>
-              <span class="causa-pill">Mensal</span>
-              <span class="causa-pill">Em parceria com ONGs</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>0</span> pessoas</div>
-              <a href="voluntariado.html" class="causa-join">Participar →</a>
-            </div>
-          </div>
-
-          <div class="causa-card cc-gold" data-cat="voluntariado">
-            <div class="causa-tag ct-gold">Procurando ongs</div>
-            <div class="causa-icon ci-gold">👴</div>
-            <div class="causa-name">Idosos</div>
-            <div class="causa-desc">Visitas regulares a lares de idosos, oficinas de inclusão digital, contação de histórias e companhia. Ação com impacto humano imediato.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Presencial</span>
-              <span class="causa-pill">Asa Sul</span>
-              <span class="causa-pill">Quinzenal</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>0</span> pessoas</div>
-              <a href="voluntariado.html" class="causa-join">Participar →</a>
-            </div>
-          </div>
-
-          <div class="causa-card cc-sage" data-cat="voluntariado">
-            <div class="causa-tag ct-sage">Presencial</div>
-            <div class="causa-icon ci-sage">🧒</div>
-            <div class="causa-name">Crianças</div>
-            <div class="causa-desc">Atividades educativas, leitura, brincadeiras e oficinas criativas com crianças. Uma forma de contribuir para o desenvolvimento e aprendizado de forma leve e acolhedora.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Presencial</span>
-              <span class="causa-pill">Escolas e ONGs</span>
-
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>0</span> pessoas</div>
-              <a href="voluntariado.html" class="causa-join">Participar →</a>
-            </div>
-          </div>
-
-          <div class="causa-card cc-sage" data-cat="voluntariado">
-            <div class="causa-tag ct-sage">Presencial</div>
-            <div class="causa-icon ci-sage">🎓</div>
-            <div class="causa-name">Educação</div>
-            <div class="causa-desc">Reforço escolar, orientação profissional e mentoria de carreira para jovens. Mentores compartilham experiências da área que atuam.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Online</span>
-              <span class="causa-pill">Ensino fundamental ao superior</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>0</span> pessoas</div>
-              <a href="voluntariado.html" class="causa-join">Participar →</a>
-            </div>
-          </div>
-
-        
-
-          <!-- <div class="causa-card cc-sage" data-cat="voluntariado">
-            <div class="causa-tag ct-sage">Presencial</div>
-            <div class="causa-icon ci-sage">🌿</div>
-            <div class="causa-name">Meio ambiente</div>
-            <div class="causa-desc">Mutirões de limpeza de parques, hortas urbanas comunitárias e ações de conscientização ambiental em escolas públicas do DF.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Presencial</span>
-              <span class="causa-pill">Mensal</span>
-              <span class="causa-pill">Parques do DF</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>0</span> pessoas</div>
-              <a href="voluntariado.html" class="causa-join">Participar →</a>
-            </div>
-          </div> -->
-
-          <!-- <div class="causa-card cc-teal" data-cat="voluntariado">
-            <div class="causa-tag ct-teal">4 pessoas</div>
-            <div class="causa-icon ci-teal">♻️</div>
-            <div class="causa-name">Reciclagem e consumo consciente</div>
-            <div class="causa-desc">Oficinas sobre descarte correto, compostagem doméstica e como reduzir o lixo no dia a dia. Parcerias com cooperativas de reciclagem do DF.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Online e presencial</span>
-              <span class="causa-pill">Mensal</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>4</span> pessoas</div>
-              <a href="voluntariado.html" class="causa-join">Participar →</a>
-            </div>
-          </div> -->
-
-          <!-- <div class="causa-card cc-blue" data-cat="voluntariado">
-            <div class="causa-tag ct-blue">Procurando ongs</div>
-            <div class="causa-icon ci-blue">🏘️</div>
-            <div class="causa-name">Comunidades vulneráveis</div>
-            <div class="causa-desc">Apoio a projetos sociais em regiões administrativas do DF, distribuição de alimentos e ações de cidadania com parceiros locais.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Presencial</span>
-              <span class="causa-pill">Sob demanda</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>0</span> pessoas</div>
-              <a href="voluntariado.html" class="causa-join">Participar →</a>
-            </div>
-          </div> -->
-
-        </div>
-      </div>
-
-
-      <div class="cat-group" data-cat="expressao" id="group-expressao">
-        <div class="cat-group-header">
-          <div class="cat-group-icon" style="background:var(--plum-pale);">🎨</div>
-          <div>
-            <div class="cat-group-title">Expressão criativa</div>
-            <div class="cat-group-subtitle">Arte, artesanato, escrita e criatividade compartilhada</div>
-          </div>
-          <div class="cat-divider"></div>
-        </div>
-        <div class="cards-grid">
-
-          <div class="causa-card cc-plum" data-cat="expressao">
-            <div class="causa-tag ct-plum">Vagas Disponíveis</div>
-            <div class="causa-icon ci-plum">🧶</div>
-            <div class="causa-name">Crochê</div>
-            <div class="causa-desc">Crochê para quem está começando do zero, aprenda desde os pontos iniciais até as roupas mais complexas!</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Presencial e online</span>
-              <span class="causa-pill">Híbrido</span>
-              <span class="causa-pill">Iniciante ao Avançado</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>0</span> pessoas</div>
-              <a href="index.html#participar" class="causa-join">Participar →</a>
-            </div>
-          </div>
-
-          <!-- <div class="causa-card cc-plum" data-cat="expressao">
-            <div class="causa-tag ct-plum">9 pessoas</div>
-            <div class="causa-icon ci-plum">🪡</div>
-            <div class="causa-name">Artesanato</div>
-            <div class="causa-desc">Crochê, bordado e costura — encontros presenciais semanais no Parque da Cidade e sessões online para quem está começando do zero.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Presencial e online</span>
-              <span class="causa-pill">Semanal</span>
-              <span class="causa-pill">Iniciante</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>9</span> pessoas</div>
-              <a href="index.html#participar" class="causa-join">Participar →</a>
-            </div>
-          </div> -->
-
-          <!-- <div class="causa-card cc-plum" data-cat="expressao">
-            <div class="causa-tag ct-plum">6 pessoas</div>
-            <div class="causa-icon ci-plum">✍️</div>
-            <div class="causa-name">Escrita criativa</div>
-            <div class="causa-desc">Clube do conto, oficinas de escrita criativa e poesia. Compartilhe seus textos, receba feedback e descubra sua voz como escritor.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Online</span>
-              <span class="causa-pill">Quinzenal</span>
-              <span class="causa-pill">Todos os gêneros</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>6</span> pessoas</div>
-              <a href="index.html#participar" class="causa-join">Participar →</a>
-            </div>
-          </div> -->
-
-          <!-- <div class="causa-card cc-plum" data-cat="expressao">
-            <div class="causa-tag ct-plum">5 pessoas</div>
-            <div class="causa-icon ci-plum">🎵</div>
-            <div class="causa-name">Música</div>
-            <div class="causa-desc">Aprender violão, ukulelê, teoria musical básica ou simplesmente cantar. Encontros presenciais no DF para amantes da música de qualquer nível.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Presencial</span>
-              <span class="causa-pill">Mensal</span>
-              <span class="causa-pill">Qualquer instrumento</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>5</span> pessoas</div>
-              <a href="index.html#participar" class="causa-join">Participar →</a>
-            </div>
-          </div> -->
-
-          <!-- <div class="causa-card cc-gold" data-cat="expressao">
-            <div class="causa-tag ct-gold">4 pessoas</div>
-            <div class="causa-icon ci-gold">🎭</div>
-            <div class="causa-name">Teatro e oratória</div>
-            <div class="causa-desc">Expressão corporal, técnicas de comunicação e confiança em público. Ideal para quem quer melhorar apresentações, entrevistas e o dia a dia.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Presencial</span>
-              <span class="causa-pill">Mensal</span>
-              <span class="causa-pill">Dinâmico e prático</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>4</span> pessoas</div>
-              <a href="index.html#participar" class="causa-join">Participar →</a>
-            </div>
-          </div> -->
-
-          <div class="causa-card cc-rust" data-cat="expressao">
-            <div class="causa-tag ct-rust">Híbrido</div>
-            <div class="causa-icon ci-rust">🎬</div>
-            <div class="causa-name">Vídeo e conteúdo digital</div>
-            <div class="causa-desc">Edição de vídeo para redes sociais, storytelling visual e criação de conteúdo com celular. Do roteiro à publicação, sem precisar de equipamento caro.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Online</span>
-              <span class="causa-pill">Quinzenal</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>0</span> pessoas</div>
-              <a href="index.html#participar" class="causa-join">Participar →</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-
-      <div class="cat-group" data-cat="bem-estar" id="group-bem-estar">
-        <div class="cat-group-header">
-          <div class="cat-group-icon" style="background:var(--teal-pale);">💚</div>
-          <div>
-            <div class="cat-group-title">Bem-estar e saúde</div>
-            <div class="cat-group-subtitle">Corpo, mente e comunidade em equilíbrio</div>
-          </div>
-          <div class="cat-divider"></div>
-        </div>
-        <div class="cards-grid">
-
-          <!-- <div class="causa-card cc-teal" data-cat="bem-estar">
-            <div class="causa-tag ct-teal">8 pessoas</div>
-            <div class="causa-icon ci-teal">🧘</div>
-            <div class="causa-name">Meditação e Yoga</div>
-            <div class="causa-desc">Práticas guiadas de meditação, respiração consciente e atenção plena. Sessões online semanais para quem quer mais calma no dia a dia.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Online</span>
-              <span class="causa-pill">Semanal</span>
-              <span class="causa-pill">Iniciante</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>8</span> pessoas</div>
-              <a href="index.html#participar" class="causa-join">Participar →</a>
-            </div>
-          </div> -->
-
-          <div class="causa-card cc-sage" data-cat="bem-estar">
-            <div class="causa-tag ct-sage">Presencial</div>
-            <div class="causa-icon ci-sage">🏃</div>
-            <div class="causa-name">Atividade física em grupo</div>
-            <div class="causa-desc">Caminhadas, corridas leves e exercícios ao ar livre nos parques do DF. Movimento, comunidade e bem-estar juntos, sem academia.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Presencial</span>
-              <span class="causa-pill">Fim de semana</span>
-              <span class="causa-pill">Parques do DF</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>0</span> pessoas</div>
-              <a href="index.html#participar" class="causa-join">Participar →</a>
-            </div>
-          </div>
-
-          <div class="causa-card cc-teal" data-cat="bem-estar">
-            <div class="causa-tag ct-teal">Presencial</div>
-            <div class="causa-icon ci-teal">🌱</div>
-            <div class="causa-name">Horta urbana</div>
-            <div class="causa-desc">Aprender a cultivar em casa ou em comunidade: vasos, canteiros e hortas comunitárias. Conexão com a natureza e alimentação mais saudável.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Presencial</span>
-              <span class="causa-pill">Mensal</span>
-              <span class="causa-pill">Voluntários bem-vindos</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>0</span> pessoas</div>
-              <a href="index.html#participar" class="causa-join">Participar →</a>
-            </div>
-          </div>
-
-          <div class="causa-card cc-gold" data-cat="bem-estar">
-            <div class="causa-tag ct-gold">Híbrido</div>
-            <div class="causa-icon ci-gold">📖</div>
-            <div class="causa-name">Clube do livro</div>
-            <div class="causa-desc">Leituras mensais, discussões online e encontros presenciais para quem ama livros. Cada mês um gênero diferente, com curadoria da própria comunidade.</div>
-            <div class="causa-pills">
-              <span class="causa-pill">Online e presencial</span>
-              <span class="causa-pill">Mensal</span>
-              <span class="causa-pill">Todos os gêneros</span>
-            </div>
-            <div class="causa-footer">
-              <div class="causa-people">👥 <span>0</span> pessoas</div>
-              <a href="index.html#participar" class="causa-join">Participar →</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <section class="suggest-section">
-    <div class="suggest-inner">
-      <span style="display:inline-block;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--sage);background:var(--sage-pale);padding:4px 12px;border-radius:100px;margin-bottom:1.25rem;" class="reveal-s">Não encontrou?</span>
-      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-1px;line-height:1.05;margin-bottom:1rem;" class="reveal-s">Quer propor algo<br><em style="color:var(--sage)">novo?</em></h2>
-      <p style="font-size:16px;font-weight:300;color:var(--ink-soft);line-height:1.8;max-width:500px;margin-bottom:3rem;" class="reveal-s">Estas são as áreas que a comunidade já tem, mas estamos abertos a novas ideias. Se você tem uma habilidade para ensinar ou uma causa para apoiar, fala com a gente!</p>
-      <div class="suggest-grid">
-        <div class="suggest-card reveal-s">
-          <span class="suggest-icon">💡</span>
-          <div class="suggest-title">Sugira uma nova área</div>
-          <p class="suggest-desc">Tem uma habilidade, um tema ou uma causa que você gostaria de ver na comunidade? Envia a ideia — se tiver interesse de outras pessoas, a gente organiza!</p>
-          <a href="mailto:euclaricenunes@gmail.com?subject=Sugestão%20de%20nova%20área%20—%20VIVE&body=Olá%2C%20Clarice!%0A%0AGostaria%20de%20sugerir%20uma%20nova%20área%20para%20o%20VIVE%3A%0A%0A..." class="btn-ink">💡 Enviar sugestão</a>
-        </div>
-        <div class="suggest-card reveal-s">
-          <span class="suggest-icon">🙌</span>
-          <div class="suggest-title">Quer ensinar algo?</div>
-          <p class="suggest-desc">Se você tem uma habilidade — seja ela técnica, criativa ou humana — e quer compartilhar com a comunidade, preencha o formulário e vamos organizar juntos!</p>
-          <button onclick="abrirModal('ensinar')" class="btn-outline">🙌 Quero ensinar →</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="cta-section">
-    <div class="cta-inner">
-      <h2>Encontrou o que<br><em>te move?</em></h2>
-      <p>Preencha o formulário, leva menos de 2 minutos. Você escolhe o quanto quer se envolver.</p>
-      <div class="cta-btns">
-        <a href="index.html#participar" class="btn-white">🌱 Quero participar agora</a>
-        <a href="index.html" class="btn-white-outline">← Voltar ao início</a>
-      </div>
-    </div>
-  </section>
-
-
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="index.html" class="footer-logo">VIVE</a>
-        <p>Comunidade gratuita de troca, aprendizado e voluntariado no Distrito Federal.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Comunidade</h4>
-        <ul>
-          <li><a href="index.html#como-funciona">Como funciona</a></li>
-          <li><a href="causas.html">Todas as áreas</a></li>
-          <li><a href="index.html#eventos">Eventos</a></li>
-          <li><a href="index.html#participar">Participar</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Projetos</h4>
-        <ul>
-          <li><a href="patasdf.html">PatasDF</a></li>
-          <li><a href="sobre.html">Sobre a Clarice</a></li>
-          <li><a href="https://github.com/claricenunes" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="mailto:euclaricenunes@gmail.com">Contato</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 VIVE · Todos os direitos reservados </span>
-      <span>Feito por <a href="sobre.html">Clarice Nunes · Engenharia de Software · Brasília</a></span>
-    </div>
-  </footer>
-
-  <script>
-    
-    window.addEventListener('scroll', () => {
-      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
-    });
-
-   
-    const ro = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 70);
-          ro.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.07 });
-    document.querySelectorAll('.causa-card, .featured-card, .suggest-card, .reveal-s').forEach(el => ro.observe(el));
-
-
-    let currentFilter = 'todas';
-
-    function filtrar(tipo, btn) {
-      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      currentFilter = tipo;
-
-      const groups = document.querySelectorAll('.cat-group');
-      const cards = document.querySelectorAll('.causa-card, .featured-card');
-      let visibleCount = 0;
-
-      groups.forEach(g => {
-        const cat = g.dataset.cat;
-        if (tipo === 'todas' || cat === tipo) {
-          g.style.display = '';
-        } else {
-          g.style.display = 'none';
-        }
-      });
-
-     
-      document.querySelectorAll('.causa-card:not([style*="display: none"])').forEach(() => visibleCount++);
-      if (tipo === 'todas') visibleCount = document.querySelectorAll('.causa-card').length;
-
-      document.getElementById('resultCount').innerHTML = `<strong>${tipo === 'todas' ? '10+' : visibleCount}</strong> áreas encontradas`;
-
-    
-      if (tipo !== 'todas') {
-        const target = document.getElementById('group-' + tipo);
-        if (target) {
-          setTimeout(() => {
-            const top = target.getBoundingClientRect().top + window.scrollY - 140;
-            window.scrollTo({ top, behavior: 'smooth' });
-          }, 100);
-        }
-      }
-    }
-  </script>
-
-<div id="m-overlay" onclick="if(event.target===this)fecharModal()" style="position:fixed;inset:0;z-index:9000;background:rgba(14,26,15,0.55);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.25s ease;touch-action:none;">
-  <div id="m-box" style="background:#fdfcf8;border-radius:24px;max-width:520px;width:100%;max-height:90dvh;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;box-shadow:0 32px 96px rgba(14,26,15,0.22);transform:translateY(24px) scale(0.97);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);">
-    <div style="padding:1.75rem 2rem 1.5rem;border-bottom:1px solid rgba(14,26,15,0.1);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;position:sticky;top:0;background:#fdfcf8;z-index:1;">
-      <div style="display:flex;align-items:center;gap:14px;">
-        <div id="m-icon" style="width:50px;height:50px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;"></div>
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="index.html" onclick="toggleMenu()">Início</a>
+  <a href="index.html#como-funciona" onclick="toggleMenu()">Como funciona</a>
+  <a href="causas.html" onclick="toggleMenu()">Causas</a>
+  <a href="index.html#eventos" onclick="toggleMenu()">Eventos</a>
+  <a href="index.html#patasdf" onclick="toggleMenu()">PatasDF</a>
+  <a href="index.html#sobre" onclick="toggleMenu()">Sobre</a>
+  <a href="faq.html" onclick="toggleMenu()">FAQ</a>
+  <button class="btn btn-green" onclick="abrirModal('aprender');toggleMenu()">Quero participar →</button>
+</div>
+
+<!-- ── MODAL ── -->
+<div id="m-overlay" onclick="if(event.target===this)fecharModal()">
+  <div id="m-box">
+    <div class="m-header">
+      <div class="m-header-left">
+        <div class="m-icon" id="m-icon"></div>
         <div>
-          <div id="m-title" style="font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#0e1a0f;letter-spacing:-0.5px;"></div>
-          <div id="m-sub" style="font-size:12px;font-weight:300;color:#2d3d2e;margin-top:3px;"></div>
+          <div class="m-title" id="m-title"></div>
+          <div class="m-sub" id="m-sub"></div>
         </div>
       </div>
-      <button onclick="fecharModal()" style="width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(14,26,15,0.18);background:transparent;cursor:pointer;font-size:15px;color:#2d3d2e;flex-shrink:0;">✕</button>
+      <button class="m-close" onclick="fecharModal()">✕</button>
     </div>
-    <div style="padding:1.75rem 2rem;">
-      <div style="background:#e8f2e8;border:1.5px solid rgba(74,124,89,0.2);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;">
-        <p id="m-infotext" style="font-size:14px;font-weight:400;line-height:1.75;color:#2d3d2e;"></p>
+    <div class="m-body">
+      <div class="m-info"><p id="m-infotext"></p></div>
+      <div class="m-items-label">O que você vai preencher</div>
+      <div id="m-items"></div>
+      <div class="m-privacy">
+        <span>🔒</span>
+        <p>Seus dados ficam no <strong style="display:inline;font-weight:700;">Google Forms</strong> e são usados só para organizar eventos. Nenhum dado é vendido ou compartilhado com terceiros.</p>
       </div>
-      <div style="margin-bottom:1.5rem;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2d3d2e;opacity:0.6;margin-bottom:10px;">O que você vai preencher</div>
-        <div id="m-items" style="display:flex;flex-direction:column;gap:9px;"></div>
-      </div>
-      <div style="background:#f5f0e8;border:1px solid rgba(14,26,15,0.1);border-radius:16px;padding:1rem 1.25rem;display:flex;gap:10px;align-items:flex-start;margin-bottom:1.75rem;">
-        <span style="flex-shrink:0;">🔒</span>
-        <p style="font-size:12px;font-weight:300;color:#2d3d2e;line-height:1.65;">Seus dados ficam no <strong style="font-weight:500;">Google Forms</strong> e são usados só para organizar eventos e atividades que combinam com você. Nenhum dado é vendido ou compartilhado com terceiros.</p>
-      </div>
-      <div style="display:flex;gap:10px;">
-        <button onclick="fecharModal()" style="flex:1;padding:13px;border-radius:100px;border:1.5px solid rgba(14,26,15,0.18);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:#2d3d2e;cursor:pointer;">Voltar</button>
-        <button id="m-btn" onclick="abrirFormulario()" style="flex:2;padding:13px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:white;border:none;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;"></button>
+      <div class="m-footer">
+        <button class="m-btn-back" onclick="fecharModal()">Voltar</button>
+        <button class="m-btn-go" id="m-btn" onclick="abrirFormulario()"></button>
       </div>
     </div>
   </div>
 </div>
 
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="fotos/logo.png" alt="VIVE" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="nav-logo-text" style="display:none">VIVE</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Início</a>
+      <a href="index.html#como-funciona">Como funciona</a>
+      <a href="causas.html" class="active">Causas</a>
+      <a href="index.html#eventos">Eventos</a>
+      <a href="index.html#patasdf">PatasDF</a>
+      <a href="index.html#sobre">Sobre</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <div class="nav-cta">
+      <button class="btn btn-green btn-sm" onclick="abrirModal('aprender')">Quero participar →</button>
+    </div>
+    <button class="nav-hamburger" onclick="toggleMenu()">☰</button>
+  </div>
+</nav>
+
+<!-- Espaçador para compensar a nav fixed -->
+<div class="nav-spacer"></div>
+
+<!-- ── HERO ── -->
+<section class="hero-section">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">VIVE · Comunidade no DF</p>
+    <h1 class="hero-title">O que move<br><em>você no DF?</em></h1>
+    <p class="hero-desc">Explore todas as áreas de interesse da comunidade. Tem algo para aprender, para ensinar, ou uma causa para apoiar — estamos aqui para conectar.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">10+</div>
+        <div class="hero-stat-label">Áreas</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">Gratuito</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">DF</div>
+        <div class="hero-stat-label">Distrito Federal</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" id="total-inscritos">…</div>
+        <div class="hero-stat-label">Inscritos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker"></div>
+
+<!-- ── FILTER BAR — sticky ── -->
+<div class="filter-section" id="filterBar">
+  <div class="filter-inner">
+    <div class="filter-pills">
+      <button class="filter-pill active" onclick="filtrar('todas', this)">Todas</button>
+      <button class="filter-pill f-aprender" onclick="filtrar('aprender', this)">📚 Aprender</button>
+      <button class="filter-pill f-voluntariado" onclick="filtrar('voluntariado', this)">🤝 Voluntariado</button>
+      <button class="filter-pill f-expressao" onclick="filtrar('expressao', this)">🎨 Expressão</button>
+      <button class="filter-pill f-bem-estar" onclick="filtrar('bem-estar', this)">💚 Bem-estar</button>
+    </div>
+    <span class="result-count" id="resultCount"><strong>10+</strong> áreas encontradas</span>
+  </div>
+</div>
+
+<!-- ── MAIN CONTENT ── -->
+<div class="main-section">
+
+  <!-- APRENDER -->
+  <div class="cat-group" data-cat="aprender" id="group-aprender">
+    <div class="cat-group-header">
+      <div class="cat-group-icon" style="background:var(--sage-pale);">📚</div>
+      <div>
+        <div class="cat-group-title">Aprender</div>
+        <div class="cat-group-subtitle">Habilidades, idiomas e conhecimento sem custo</div>
+      </div>
+      <div class="cat-divider"></div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="causa-card cc-sage" data-cat="aprender" data-area="ingles">
+        <div class="causa-tag ct-sage">Online</div>
+        <div class="causa-icon ci-sage">💬</div>
+        <div class="causa-name">Inglês</div>
+        <div class="causa-desc">Conversação online em grupo, todos os níveis. Toda semana, sem custo, sem compromisso. Foco em prática real de fala e escuta.</div>
+        <div class="causa-pills">
+          <span class="causa-pill">Online</span>
+          <span class="causa-pill">Iniciante ao avançado</span>
+        </div>
+        <div class="causa-footer">
+          <!-- <div class="causa-people">👥 <span class="count loading" data-area="ingles">…</span> pessoas</div> -->
+          <a href="index.html#causas" class="causa-join">Participar →</a>
+        </div>
+      </div>
+
+      <div class="causa-card cc-sage" data-cat="aprender" data-area="tecnologia">
+        <div class="causa-tag ct-sage">Online</div>
+        <div class="causa-icon ci-sage">💻</div>
+        <div class="causa-name">Tecnologia</div>
+        <div class="causa-desc">Programação do zero, cybersegurança básica e Google Sheets. Workshops práticos para quem quer entrar na área de tecnologia.</div>
+        <div class="causa-pills">
+          <span class="causa-pill">Online</span>
+          <span class="causa-pill">Workshops mensais</span>
+          <span class="causa-pill">Do zero</span>
+        </div>
+        <div class="causa-footer">
+          <!-- <div class="causa-people">👥 <span class="count loading" data-area="tecnologia">…</span> pessoas</div> -->
+          <a href="index.html#causas" class="causa-join">Participar →</a>
+        </div>
+      </div>
+
+      <div class="causa-card cc-teal" data-cat="aprender">
+        <div class="causa-icon ci-teal">💡</div>
+        <div class="causa-name">Tem alguma sugestão?</div>
+        <div class="causa-desc">Nos diga o que mais você gostaria de aprender! Quando possível iremos aumentar as opções de cursos. Preencha o formulário "Quero aprender" e nos diga o que falta — leva menos de 2 minutos.</div>
+        <div class="causa-footer">
+          <a href="index.html#causas" class="causa-join">Sua sugestão →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VOLUNTARIADO -->
+  <div class="cat-group" data-cat="voluntariado" id="group-voluntariado">
+    <div class="cat-group-header">
+      <div class="cat-group-icon" style="background:var(--rust-pale);">🤝</div>
+      <div>
+        <div class="cat-group-title">Voluntariado</div>
+        <div class="cat-group-subtitle">Causas reais que precisam da sua presença e cuidado</div>
+      </div>
+      <div class="cat-divider"></div>
+    </div>
+
+    <div class="featured-card" data-emoji="🐾" id="fc-patas">
+      <div>
+        <span class="featured-tag">Causa em destaque · PatasDF</span>
+        <div class="featured-title">Ajude a reencontrar<br>animais perdidos no DF</div>
+        <div class="featured-desc">O PatasDF é a plataforma da comunidade VIVE dedicada à causa animal. Cadastre animais perdidos, informe sobre encontrados e conheça ONGs do DF que precisam de apoio.</div>
+      </div>
+      <a href="patasdf.html" class="featured-cta">🐾 Acessar o PatasDF →</a>
+    </div>
+
+    <div class="cards-grid">
+
+      <div class="causa-card cc-rust" data-cat="voluntariado" data-area="causa-animal">
+        <div class="causa-tag ct-rust">Procurando ONGs</div>
+        <div class="causa-icon ci-rust">🐾</div>
+        <div class="causa-name">Causa animal</div>
+        <div class="causa-desc">Feiras de adoção, apoio a ONGs, divulgação de animais perdidos e ações de conscientização sobre posse responsável no DF.</div>
+        <div class="causa-pills">
+          <span class="causa-pill">Presencial</span>
+          <span class="causa-pill">Mensal</span>
+          <span class="causa-pill">Em parceria com ONGs</span>
+        </div>
+        <div class="causa-footer">
+          <!-- <div class="causa-people">👥 <span class="count loading" data-area="causa-animal">…</span> pessoas</div> -->
+          <a href="voluntariado.html" class="causa-join">Participar →</a>
+        </div>
+      </div>
+
+      <div class="causa-card cc-gold" data-cat="voluntariado" data-area="idosos">
+        <div class="causa-tag ct-gold">Procurando ONGs</div>
+        <div class="causa-icon ci-gold">👴</div>
+        <div class="causa-name">Idosos</div>
+        <div class="causa-desc">Visitas regulares a lares de idosos, oficinas de inclusão digital, contação de histórias e companhia. Ação com impacto humano imediato.</div>
+        <div class="causa-pills">
+          <span class="causa-pill">Presencial</span>
+          <span class="causa-pill">Asa Sul</span>
+          <span class="causa-pill">Quinzenal</span>
+        </div>
+        <div class="causa-footer">
+          <!-- <div class="causa-people">👥 <span class="count loading" data-area="idosos">…</span> pessoas</div> -->
+          <a href="voluntariado.html" class="causa-join">Participar →</a>
+        </div>
+      </div>
+
+      <div class="causa-card cc-sage" data-cat="voluntariado" data-area="criancas">
+        <div class="causa-tag ct-sage">Presencial</div>
+        <div class="causa-icon ci-sage">🧒</div>
+        <div class="causa-name">Crianças</div>
+        <div class="causa-desc">Atividades educativas, leitura, brincadeiras e oficinas criativas com crianças. Uma forma de contribuir para o desenvolvimento e aprendizado de forma leve e acolhedora.</div>
+        <div class="causa-pills">
+          <span class="causa-pill">Presencial</span>
+          <span class="causa-pill">Escolas e ONGs</span>
+        </div>
+        <div class="causa-footer">
+          <!-- <div class="causa-people">👥 <span class="count loading" data-area="criancas">…</span> pessoas</div> -->
+          <a href="voluntariado.html" class="causa-join">Participar →</a>
+        </div>
+      </div>
+
+      <div class="causa-card cc-sage" data-cat="voluntariado" data-area="educacao">
+        <div class="causa-tag ct-sage">Online</div>
+        <div class="causa-icon ci-sage">🎓</div>
+        <div class="causa-name">Educação</div>
+        <div class="causa-desc">Reforço escolar, orientação profissional e mentoria de carreira para jovens. Mentores compartilham experiências da área que atuam.</div>
+        <div class="causa-pills">
+          <span class="causa-pill">Online</span>
+          <span class="causa-pill">Ensino fundamental ao superior</span>
+        </div>
+        <div class="causa-footer">
+          <!-- <div class="causa-people">👥 <span class="count loading" data-area="educacao">…</span> pessoas</div> -->
+          <a href="voluntariado.html" class="causa-join">Participar →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EXPRESSÃO CRIATIVA -->
+  <div class="cat-group" data-cat="expressao" id="group-expressao">
+    <div class="cat-group-header">
+      <div class="cat-group-icon" style="background:var(--plum-pale);">🎨</div>
+      <div>
+        <div class="cat-group-title">Expressão criativa</div>
+        <div class="cat-group-subtitle">Arte, artesanato, escrita e criatividade compartilhada</div>
+      </div>
+      <div class="cat-divider"></div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="causa-card cc-plum" data-cat="expressao" data-area="croche">
+        <div class="causa-tag ct-plum">Vagas disponíveis</div>
+        <div class="causa-icon ci-plum">🧶</div>
+        <div class="causa-name">Crochê</div>
+        <div class="causa-desc">Crochê para quem está começando do zero. Aprenda desde os pontos iniciais até as roupas mais complexas!</div>
+        <div class="causa-pills">
+          <span class="causa-pill">Presencial e online</span>
+          <span class="causa-pill">Híbrido</span>
+          <span class="causa-pill">Iniciante ao avançado</span>
+        </div>
+        <div class="causa-footer">
+          <!-- <div class="causa-people">👥 <span class="count loading" data-area="croche">…</span> pessoas</div> -->
+          <a href="index.html#causas" class="causa-join">Participar →</a>
+        </div>
+      </div>
+
+      <div class="causa-card cc-rust" data-cat="expressao" data-area="video">
+        <div class="causa-tag ct-rust">Híbrido</div>
+        <div class="causa-icon ci-rust">🎬</div>
+        <div class="causa-name">Vídeo e conteúdo digital</div>
+        <div class="causa-desc">Edição de vídeo para redes sociais, storytelling visual e criação de conteúdo com celular. Do roteiro à publicação, sem precisar de equipamento caro.</div>
+        <div class="causa-pills">
+          <span class="causa-pill">Online</span>
+          <span class="causa-pill">Quinzenal</span>
+        </div>
+        <div class="causa-footer">
+          <!-- <div class="causa-people">👥 <span class="count loading" data-area="video">…</span> pessoas</div> -->
+          <a href="index.html#causas" class="causa-join">Participar →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BEM-ESTAR -->
+  <div class="cat-group" data-cat="bem-estar" id="group-bem-estar">
+    <div class="cat-group-header">
+      <div class="cat-group-icon" style="background:var(--teal-pale);">💚</div>
+      <div>
+        <div class="cat-group-title">Bem-estar e saúde</div>
+        <div class="cat-group-subtitle">Corpo, mente e comunidade em equilíbrio</div>
+      </div>
+      <div class="cat-divider"></div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="causa-card cc-sage" data-cat="bem-estar" data-area="atividade-fisica">
+        <div class="causa-tag ct-sage">Presencial</div>
+        <div class="causa-icon ci-sage">🏃</div>
+        <div class="causa-name">Atividade física em grupo</div>
+        <div class="causa-desc">Caminhadas, corridas leves e exercícios ao ar livre nos parques do DF. Movimento, comunidade e bem-estar juntos, sem academia.</div>
+        <div class="causa-pills">
+          <span class="causa-pill">Presencial</span>
+          <span class="causa-pill">Fim de semana</span>
+          <span class="causa-pill">Parques do DF</span>
+        </div>
+        <div class="causa-footer">
+          <!-- <div class="causa-people">👥 <span class="count loading" data-area="atividade-fisica">…</span> pessoas</div> -->
+          <a href="index.html#causas" class="causa-join">Participar →</a>
+        </div>
+      </div>
+
+      <div class="causa-card cc-teal" data-cat="bem-estar" data-area="horta">
+        <div class="causa-tag ct-teal">Presencial</div>
+        <div class="causa-icon ci-teal">🌱</div>
+        <div class="causa-name">Horta urbana</div>
+        <div class="causa-desc">Aprender a cultivar em casa ou em comunidade: vasos, canteiros e hortas comunitárias. Conexão com a natureza e alimentação mais saudável.</div>
+        <div class="causa-pills">
+          <span class="causa-pill">Presencial</span>
+          <span class="causa-pill">Mensal</span>
+          <span class="causa-pill">Voluntários bem-vindos</span>
+        </div>
+        <div class="causa-footer">
+          <!-- <div class="causa-people">👥 <span class="count loading" data-area="horta">…</span> pessoas</div> -->
+          <a href="index.html#causas" class="causa-join">Participar →</a>
+        </div>
+      </div>
+
+      <div class="causa-card cc-gold" data-cat="bem-estar" data-area="clube-livro">
+        <div class="causa-tag ct-gold">Híbrido</div>
+        <div class="causa-icon ci-gold">📖</div>
+        <div class="causa-name">Clube do livro</div>
+        <div class="causa-desc">Leituras mensais, discussões online e encontros presenciais para quem ama livros. Cada mês um gênero diferente, com curadoria da própria comunidade.</div>
+        <div class="causa-pills">
+          <span class="causa-pill">Online e presencial</span>
+          <span class="causa-pill">Mensal</span>
+          <span class="causa-pill">Todos os gêneros</span>
+        </div>
+        <div class="causa-footer">
+          <!-- <div class="causa-people">👥 <span class="count loading" data-area="clube-livro">…</span> pessoas</div> -->
+          <a href="index.html#causas" class="causa-join">Participar →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /main-section -->
+
+<!-- ── SUGGEST SECTION ── -->
+<section class="suggest-section">
+  <div class="suggest-inner">
+    <div class="section-header">
+      <span class="section-tag">Não encontrou?</span>
+      <hr>
+    </div>
+    <div class="section-title">Quer propor algo<br><em>novo?</em></div>
+    <p class="section-desc">Estas são as áreas que a comunidade já tem, mas estamos abertos a novas ideias. Se você tem uma habilidade para ensinar ou uma causa para apoiar, fala com a gente!</p>
+    <div class="suggest-grid">
+      <div class="suggest-card">
+        <span class="suggest-icon">💡</span>
+        <div class="suggest-title">Sugira uma nova área</div>
+        <p class="suggest-desc">Tem uma habilidade, um tema ou uma causa que você gostaria de ver na comunidade? Envia a ideia — se tiver interesse de outras pessoas, a gente organiza!</p>
+        <a href="mailto:euclaricenunes@gmail.com?subject=Sugestão%20de%20nova%20área%20—%20VIVE&body=Olá%2C%20Clarice!%0A%0AGostaria%20de%20sugerir%20uma%20nova%20área%20para%20o%20VIVE%3A%0A%0A..." class="btn btn-dark">💡 Enviar sugestão</a>
+      </div>
+      <div class="suggest-card">
+        <span class="suggest-icon">🙌</span>
+        <div class="suggest-title">Quer ensinar algo?</div>
+        <p class="suggest-desc">Se você tem uma habilidade — seja ela técnica, criativa ou humana — e quer compartilhar com a comunidade, preencha o formulário e vamos organizar juntos!</p>
+        <button onclick="abrirModal('ensinar')" class="btn btn-outline">🙌 Quero ensinar →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <span class="cta-tag">— Comunidade aberta · Brasília, DF</span>
+    <h2>Encontrou o que</h2>
+    <span class="cta-sub">te move?</span>
+    <p>Preencha o formulário, leva menos de 2 minutos. Você escolhe o quanto quer se envolver.</p>
+    <div class="cta-actions">
+      <button class="btn btn-white-inv" onclick="abrirModal('aprender')">🌱 Quero participar agora</button>
+      <a href="index.html" class="btn-white-ghost">← Voltar ao início</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<div class="footer-wrap">
+  <div class="footer-outer">
+    <div class="footer-logo">VIVE</div>
+    <p>© 2026 · VIVE · Todos os direitos reservados | Feito por <a href="sobre.html" style="color:var(--green);">Clarice Nunes</a></p>
+    <div class="footer-links">
+      <a href="index.html#como-funciona">Como funciona</a>
+      <a href="causas.html">Causas</a>
+      <a href="index.html#eventos">Eventos</a>
+      <a href="index.html#patasdf">PatasDF</a>
+      <a href="index.html#sobre">Sobre</a>
+      <a href="faq.html">FAQ</a>
+      <a href="mailto:euclaricenunes@gmail.com">Contato</a>
+    </div>
+  </div>
+</div>
+
 <script>
+  // ══════════════════════════════════════════════════════════════
+  //  CONFIGURAÇÃO — edite aqui
+  // ══════════════════════════════════════════════════════════════
+  //
+  //  Para conectar ao Google Sheets:
+  //  1. Abra sua planilha do Google
+  //  2. Vá em Arquivo → Compartilhar → Publicar na Web
+  //  3. Escolha "Valores separados por vírgula (.csv)" e publique
+  //  4. Cole a URL gerada abaixo em SHEET_CSV_URL
+  //
+  //  A coluna que indica a área/interesse escolhida precisa existir.
+  //  Edite COLUNA_AREA com o cabeçalho exato dessa coluna na planilha.
+  //  Cada valor na coluna deve conter uma das palavras-chave de AREA_MAP.
+  //
+  const SHEET_CSV_URL = ''; // ← cole a URL CSV aqui
+
+  // Mapeamento: data-area do card → palavras-chave que podem aparecer na coluna
+  // A busca é case-insensitive e por "inclui"
+  const AREA_MAP = {
+    'ingles':          ['inglês', 'ingles', 'english'],
+    'tecnologia':      ['tecnologia', 'programação', 'tech'],
+    'causa-animal':    ['animal', 'pet', 'pata'],
+    'idosos':          ['idoso', 'terceira idade', 'elderly'],
+    'criancas':        ['criança', 'crianças', 'infantil'],
+    'educacao':        ['educação', 'reforço', 'mentoria'],
+    'croche':          ['crochê', 'croche'],
+    'video':           ['vídeo', 'video', 'conteúdo digital'],
+    'atividade-fisica': ['atividade física', 'atividade fisica', 'esporte', 'corrida'],
+    'horta':           ['horta', 'jardinagem'],
+    'clube-livro':     ['livro', 'leitura', 'clube do livro'],
+  };
+
+  // Número da coluna (0-indexed) ou nome do cabeçalho da coluna de interesse/área
+  const COLUNA_AREA = 'Área de interesse'; // ajuste para o cabeçalho real da sua planilha
+
+  // ══════════════════════════════════════════════════════════════
+
+  async function carregarInscritos() {
+    if (!SHEET_CSV_URL) {
+      // Sem URL configurada: mostra 0 em todos
+      document.querySelectorAll('.count').forEach(el => {
+        el.textContent = '0';
+        el.classList.remove('loading');
+      });
+      document.getElementById('total-inscritos').textContent = '0';
+      return;
+    }
+
+    try {
+      const res = await fetch(SHEET_CSV_URL);
+      if (!res.ok) throw new Error('Falha ao buscar planilha');
+      const csv = await res.text();
+      const rows = parseCSV(csv);
+
+      if (rows.length < 2) throw new Error('Planilha vazia');
+
+      const headers = rows[0].map(h => h.trim().toLowerCase());
+      const colIdx  = headers.findIndex(h =>
+        h === COLUNA_AREA.toLowerCase() || h.includes(COLUNA_AREA.toLowerCase())
+      );
+
+      if (colIdx === -1) {
+        console.warn('[VIVE] Coluna "' + COLUNA_AREA + '" não encontrada. Colunas disponíveis:', rows[0]);
+        setAllZero();
+        return;
+      }
+
+      const counts = {};
+      Object.keys(AREA_MAP).forEach(k => counts[k] = 0);
+
+      rows.slice(1).forEach(row => {
+        const val = (row[colIdx] || '').toLowerCase();
+        if (!val) return;
+        Object.entries(AREA_MAP).forEach(([area, keywords]) => {
+          if (keywords.some(kw => val.includes(kw.toLowerCase()))) {
+            counts[area]++;
+          }
+        });
+      });
+
+      const total = rows.length - 1;
+      document.getElementById('total-inscritos').textContent = total;
+
+      document.querySelectorAll('.count[data-area]').forEach(el => {
+        const area = el.dataset.area;
+        el.textContent = counts[area] ?? 0;
+        el.classList.remove('loading');
+      });
+
+    } catch (err) {
+      console.warn('[VIVE] Não foi possível carregar inscrições:', err.message);
+      setAllZero();
+    }
+  }
+
+  function setAllZero() {
+    document.querySelectorAll('.count').forEach(el => {
+      el.textContent = '0';
+      el.classList.remove('loading');
+    });
+    document.getElementById('total-inscritos').textContent = '0';
+  }
+
+  // Parser CSV simples (suporta campos com vírgulas entre aspas)
+  function parseCSV(text) {
+    const rows = [];
+    const lines = text.split(/\r?\n/);
+    for (const line of lines) {
+      if (!line.trim()) continue;
+      const row = [];
+      let cur = '', inQ = false;
+      for (let i = 0; i < line.length; i++) {
+        const c = line[i];
+        if (c === '"') { inQ = !inQ; }
+        else if (c === ',' && !inQ) { row.push(cur); cur = ''; }
+        else { cur += c; }
+      }
+      row.push(cur);
+      rows.push(row);
+    }
+    return rows;
+  }
+
+  // ── MOBILE MENU
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+
+  // ── INTERSECTION OBSERVER
+  const ro = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 70);
+        ro.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.causa-card, .featured-card, .suggest-card').forEach(el => ro.observe(el));
+
+  // ── FILTER
+  function filtrar(tipo, btn) {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.cat-group').forEach(g => {
+      g.style.display = (tipo === 'todas' || g.dataset.cat === tipo) ? '' : 'none';
+    });
+    const visibleCards = tipo === 'todas'
+      ? document.querySelectorAll('.causa-card').length
+      : document.querySelectorAll(`#group-${tipo} .causa-card`).length;
+    document.getElementById('resultCount').innerHTML = `<strong>${tipo === 'todas' ? '10+' : visibleCards}</strong> áreas encontradas`;
+    if (tipo !== 'todas') {
+      const target = document.getElementById('group-' + tipo);
+      if (target) setTimeout(() => {
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 160, behavior: 'smooth' });
+      }, 100);
+    }
+  }
+
+  // ── MODAL
   const MODAL_CONFIG = {
+    aprender: {
+      icon: '🎓', title: 'Quero aprender', sub: 'Antes de ir para o Google Forms',
+      infoText: 'Estamos te redirecionando para o nosso Google Forms. Lá você vai nos contar seus interesses e como prefere aprender.',
+      items: ['Quais áreas te interessam (inglês, tecnologia, artesanato...)', 'Sua disponibilidade de horário', 'Se prefere online, presencial ou os dois', 'Seu nível atual na área escolhida'],
+      btnText: 'Entendi — ir para o formulário',
+      url: 'https://docs.google.com/forms/d/e/1FAIpQLScJ8u40L7ZLrqJ-8bHLFrN5xTUNszXJb8A0HZXE5hpw__xe8A/viewform?usp=publish-editor'
+    },
     ensinar: {
-      icon: '🙌', iconBg: '#e8f2e8',
-      title: 'Quero ensinar',
-      sub: 'Antes de ir para o Google Forms',
-      infoText: 'Estamos te redirecionando para o nosso Google Forms. Você vai nos contar qual habilidade tem para compartilhar e como prefere ensinar. Assim conseguimos organizar grupos, criar atividades e conectar você com as pessoas certas na comunidade.',
-      items: [
-        'Qual habilidade ou conhecimento você quer compartilhar',
-        'Quantas horas por semana pode dedicar',
-        'Se prefere ensinar online, presencial ou os dois',
-        'Para qual público se sente mais a vontade'
-      ],
-      btnBg: '#0e1a0f', btnText: 'Entendi — ir para o formulário',
-      url: 'https://docs.google.com/forms/d/e/1FAIpQLScJ8u40L7ZLrqJ-8bHLFrN5xTUNszXJb8A0HZXE5hpw__xe8A/viewform?usp=dialog'
+      icon: '🙌', title: 'Quero ensinar', sub: 'Antes de ir para o Google Forms',
+      infoText: 'Você vai nos contar qual habilidade tem para compartilhar e como prefere ensinar. Assim conseguimos organizar grupos e conectar você com as pessoas certas.',
+      items: ['Qual habilidade ou conhecimento você quer compartilhar', 'Quantas horas por semana pode dedicar', 'Se prefere ensinar online, presencial ou os dois', 'Para qual público se sente mais à vontade'],
+      btnText: 'Entendi — ir para o formulário',
+      url: 'https://docs.google.com/forms/d/e/1FAIpQLScJ8u40L7ZLrqJ-8bHLFrN5xTUNszXJb8A0HZXE5hpw__xe8A/viewform?usp=publish-editor'
     }
   };
 
   function abrirModal(tipo) {
     const c = MODAL_CONFIG[tipo];
-    document.getElementById('m-icon').style.background = c.iconBg;
     document.getElementById('m-icon').textContent = c.icon;
     document.getElementById('m-title').textContent = c.title;
     document.getElementById('m-sub').textContent = c.sub;
     document.getElementById('m-infotext').textContent = c.infoText;
     document.getElementById('m-items').innerHTML = c.items.map(it =>
-      '<div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#2d3d2e;font-weight:400;"><div style="width:20px;height:20px;border-radius:50%;background:#e8f2e8;display:flex;align-items:center;justify-content:center;font-size:10px;color:#4a7c59;flex-shrink:0;font-weight:700;margin-top:1px;">✓</div>' + it + '</div>'
+      `<div class="m-item"><div class="m-item-check">✓</div>${it}</div>`
     ).join('');
     const btn = document.getElementById('m-btn');
-    btn.style.background = c.btnBg;
     btn.textContent = c.btnText;
     btn.dataset.url = c.url;
     const ov = document.getElementById('m-overlay');
@@ -994,20 +981,18 @@
     const bx = document.getElementById('m-box');
     ov.style.opacity = '0'; ov.style.pointerEvents = 'none';
     bx.style.transform = 'translateY(24px) scale(0.97)';
-    const sy = document.body.dataset.scrollY || 0;
     document.body.classList.remove('modal-open');
-    window.scrollTo(0, parseInt(sy));
   }
 
   function abrirFormulario() {
     const url = document.getElementById('m-btn').dataset.url;
-    if (url) {
-      fecharModal();
-      setTimeout(() => { window.open(url, '_blank', 'noopener,noreferrer'); }, 150);
-    }
+    if (url) { fecharModal(); setTimeout(() => window.open(url, '_blank', 'noopener,noreferrer'), 150); }
   }
 
   document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
+
+  // Inicializar
+  carregarInscritos();
 </script>
 </body>
 </html>
