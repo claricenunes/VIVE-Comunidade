@@ -1,720 +1,831 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FAQ — VIVA · Perguntas Frequentes</title>
-  <meta name="description" content="Perguntas frequentes sobre o VIVA — comunidade gratuita de troca, aprendizado e voluntariado no Distrito Federal." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <title>FAQ — VIVE · Perguntas Frequentes</title>
+  <meta name="description" content="Perguntas frequentes sobre o VIVE — comunidade gratuita de troca, aprendizado e voluntariado no Distrito Federal." />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink: #0e1a0f;
-      --ink-soft: #2d3d2e;
-      --sage: #4a7c59;
-      --sage-mid: #6a9e7a;
-      --sage-light: #a8cba8;
-      --sage-pale: #e8f2e8;
-      --cream: #f5f0e8;
-      --cream-warm: #ede7d9;
-      --gold: #c4922a;
-      --gold-light: #f0d898;
-      --rust: #b85c38;
-      --white: #fdfcf8;
-      --border: rgba(14,26,15,0.1);
-      --border-dark: rgba(14,26,15,0.18);
-      --shadow: 0 2px 20px rgba(14,26,15,0.08);
-      --shadow-lg: 0 12px 60px rgba(14,26,15,0.14);
-      --r-sm: 8px;
-      --r-md: 16px;
-      --r-lg: 24px;
-      --r-xl: 32px;
+      --green: #9cb295;
+      --green-dark: #839074;
+      --green-light: #b5c8af;
+      --green-deep: #9cb295;
+      --green-deep-2: #637a61;
+      --cream: #f8f5ee;
+      --cream-dark: #f0ece2;
+      --sage: #f0ece2;
+      --sage-mid: #dde6d9;
+      --border: #d4c7c7;
+      --border-light: #e8e0e0;
+      --text-dark: #20221f;
+      --text-gray: #5d5d5d;
+      --text-light: #8a8a8a;
+      --radius: 20px;
+      --radius-sm: 12px;
+      --max-w: 1080px;
+      --gold: #e6d28a;
     }
 
-    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); overflow-x: hidden; font-weight: 400; }
+    html { scroll-behavior: smooth; font-family: 'DM Sans', sans-serif; font-size: 16px; }
+    body { background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
     body.modal-open { overflow: hidden; position: fixed; width: 100%; }
 
-    /* ── NAVBAR ── */
-    .navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 0 2rem; height: 68px;
-      display: flex; align-items: center;
-      background: rgba(253,252,248,0.88); backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border); transition: all 0.3s;
-    }
-    .navbar.scrolled { height: 58px; box-shadow: 0 2px 24px rgba(14,26,15,0.08); }
-    .nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; }
-    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.5px; }
-    .logo em { color: var(--sage); font-style: italic; }
-    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
-    .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.01em; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--sage); }
-    .nav-links a.active { color: var(--sage); font-weight: 600; }
-    .nav-cta { background: var(--ink) !important; color: var(--white) !important; padding: 9px 22px !important; border-radius: 100px !important; font-weight: 600 !important; transition: background 0.2s, transform 0.15s !important; }
-    .nav-cta:hover { background: var(--sage) !important; transform: translateY(-1px); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .hamburger span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: all 0.3s; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; font-family: inherit; border: none; }
 
-    /* ── HERO FAQ ── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
+
+    /* ── SECTION TITLES ── */
+    .section-title {
+      font-family: 'Playfair Display', 'DM Serif Display', serif;
+      font-size: clamp(32px, 4.5vw, 58px);
+      font-weight: 900;
+      color: var(--green-deep);
+      line-height: 1.05;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 6px; padding: 12px 24px; border-radius: 1000px;
+      font-size: 12px; font-weight: 800; letter-spacing: 0.06em;
+      text-transform: uppercase; transition: opacity .2s, transform .15s, box-shadow .2s;
+      white-space: nowrap;
+    }
+    .btn:hover { opacity: .88; transform: translateY(-1px); }
+    .btn-green { background: var(--green); color: #fff; box-shadow: 0 2px 12px rgba(156,178,149,.35); }
+    .btn-green:hover { box-shadow: 0 4px 20px rgba(156,178,149,.5); }
+    .btn-outline { background: transparent; border: 1.5px solid var(--border); color: var(--text-dark); }
+    .btn-outline:hover { border-color: var(--green); color: var(--green); }
+    .btn-dark { background: var(--text-dark); color: #fff; }
+    .btn-sm { padding: 9px 18px; font-size: 11px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 14px; z-index: 100;
+      max-width: var(--max-w); margin: 14px auto 0; padding: 0 40px;
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 20px 12px 28px;
+      background: rgba(248,245,238,0.85); backdrop-filter: blur(16px);
+      border: 1px solid rgba(131,144,116,0.55); border-radius: 100px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.08); gap: 16px;
+    }
+    .nav-logo { flex-shrink: 0; display: flex; align-items: center; }
+    .nav-logo img { height: 36px; width: auto; max-height: 100%; object-fit: contain; }
+    .nav-logo-text { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 20px; color: var(--green-deep); letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 4px; align-items: center; flex: 1; justify-content: center; }
+    .nav-links a {
+      font-size: 11px; font-weight: 700; color: var(--text-gray);
+      letter-spacing: 0.05em; text-transform: uppercase;
+      padding: 6px 10px; border-radius: 100px;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--green); background: rgba(156,178,149,.1); }
+    .nav-cta { flex-shrink: 0; }
+    .nav-hamburger {
+      display: none; background: none; border: 1.5px solid var(--border);
+      border-radius: 8px; padding: 6px 10px; color: var(--text-dark);
+      font-size: 18px; line-height: 1;
+    }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(248,245,238,.97); backdrop-filter: blur(20px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 18px; font-weight: 800; color: var(--green-dark); text-transform: uppercase; letter-spacing: .08em; }
+    .mobile-close { position: absolute; top: 24px; right: 24px; background: none; border: 1.5px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 18px; color: var(--text-dark); cursor: pointer; }
+
+    /* ── TICKER ── */
+    .ticker { background: var(--green); width: 100%; height: 40px; }
+
+    /* ── SECTION BASE ── */
+    .section { max-width: var(--max-w); margin: 0 auto; padding: 72px 40px; }
+    .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+    .section-tag { font-size: 11px; font-weight: 800; color: var(--green); letter-spacing: .14em; text-transform: uppercase; }
+    .section-header hr { flex: 1; border: none; border-top: 1px solid var(--border); }
+    .section-desc { font-size: 13px; font-weight: 600; color: var(--green-dark); letter-spacing: .05em; line-height: 1.75; text-transform: uppercase; max-width: 520px; }
+
+    /* ── FAQ HERO — bg: cream ── */
+    .faq-hero-wrap { background: var(--cream); }
     .faq-hero {
-      background: var(--cream);
-      padding: 140px 2rem 80px;
-      position: relative; overflow: hidden;
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 56px 40px 64px;
     }
-    .faq-hero::before {
-      content: '';
-      position: absolute; inset: 0; z-index: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: 0.4; pointer-events: none;
-    }
-    .faq-hero-bg-letter {
-      position: absolute; right: -2rem; top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(20rem, 30vw, 40rem);
-      font-weight: 900; font-style: italic;
-      color: var(--sage); opacity: 0.04;
-      line-height: 1; pointer-events: none;
-      user-select: none; z-index: 0;
-    }
-    .faq-hero-inner {
-      max-width: 1200px; margin: 0 auto;
-      position: relative; z-index: 1;
-    }
-    .faq-eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      margin-bottom: 2rem;
-      animation: fadeUp 0.7s ease both;
-    }
-    .eyebrow-line { width: 32px; height: 1.5px; background: var(--sage); }
-    .eyebrow-text { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); }
-    .faq-hero-inner h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 900; line-height: 0.95;
-      letter-spacing: -3px; color: var(--ink);
-      animation: fadeUp 0.7s 0.08s ease both;
-      margin-bottom: 0.2em;
-    }
-    .faq-hero-inner h1 em { color: var(--sage); font-style: italic; }
-    .faq-hero-inner p {
-      font-size: clamp(1rem, 1.5vw, 1.15rem);
-      font-weight: 300; line-height: 1.75;
-      color: var(--ink-soft); max-width: 500px;
-      margin-top: 1.5rem;
-      animation: fadeUp 0.7s 0.16s ease both;
-    }
-    .faq-hero-inner p strong { font-weight: 600; color: var(--ink); }
-
-    @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
-
-    /* ── BREADCRUMB ── */
-    .breadcrumb {
+    .hero-eyebrow {
       display: flex; align-items: center; gap: 8px;
-      font-size: 13px; font-weight: 400; color: var(--ink-soft);
-      margin-bottom: 2rem;
-      animation: fadeUp 0.6s ease both;
+      font-size: 11px; font-weight: 700; color: var(--green-dark);
+      letter-spacing: .14em; text-transform: uppercase; margin-bottom: 32px;
     }
-    .breadcrumb a { color: var(--sage); text-decoration: none; font-weight: 500; }
-    .breadcrumb a:hover { text-decoration: underline; }
-    .breadcrumb-sep { color: var(--border-dark); font-size: 11px; }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 24px; height: 1.5px;
+      background: var(--green); border-radius: 2px;
+    }
+    .faq-hero-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: end;
+    }
+    .faq-hero-left {}
+    .faq-hero-right {
+      display: flex; flex-direction: column; gap: 20px; padding-bottom: 8px;
+    }
+    .faq-hero-desc {
+      font-size: 18px; font-weight: 600; color: var(--green-dark);
+      letter-spacing: .04em; line-height: 1.65; text-transform: uppercase;
+    }
+    .faq-stat-row { display: flex; gap: 24px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .faq-stat strong { display: block; font-size: 22px; font-family: 'Playfair Display', serif; color: var(--green); line-height: 1; }
+    .faq-stat span { font-size: 11px; font-weight: 700; color: var(--text-light); letter-spacing: .06em; text-transform: uppercase; }
 
-    /* ── MAIN CONTENT ── */
+    /* ── FAQ MAIN SECTION — bg: cream-dark ── */
+    .faq-main-wrap { background: var(--cream-dark); }
     .faq-main {
-      padding: 80px 2rem 100px;
-      background: var(--white);
-    }
-    .faq-content {
-      max-width: 1200px; margin: 0 auto;
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 72px 40px;
       display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 5rem;
+      grid-template-columns: 240px 1fr;
+      gap: 60px;
       align-items: start;
     }
 
     /* ── SIDEBAR ── */
     .faq-sidebar { position: sticky; top: 90px; }
     .faq-sidebar-title {
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--ink-soft); opacity: 0.55;
-      margin-bottom: 1rem;
+      font-size: 10px; font-weight: 800;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 12px;
     }
-    .faq-nav { display: flex; flex-direction: column; gap: 4px; }
+    .faq-nav { display: flex; flex-direction: column; gap: 4px; margin-bottom: 32px; }
     .faq-nav-item {
       display: flex; align-items: center; gap: 10px;
-      padding: 10px 14px; border-radius: var(--r-md);
-      font-size: 13px; font-weight: 500;
-      color: var(--ink-soft); cursor: pointer;
+      padding: 9px 14px; border-radius: 100px;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .04em; text-transform: uppercase;
+      color: var(--text-gray); cursor: pointer;
       border: 1.5px solid transparent;
       background: transparent;
       font-family: 'DM Sans', sans-serif;
       text-align: left; transition: all 0.2s;
     }
-    .faq-nav-item:hover { background: var(--sage-pale); color: var(--sage); border-color: rgba(74,124,89,0.2); }
-    .faq-nav-item.active { background: var(--sage-pale); color: var(--sage); border-color: rgba(74,124,89,0.25); font-weight: 600; }
-    .faq-nav-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; opacity: 0.5; }
+    .faq-nav-item:hover { background: rgba(156,178,149,.1); color: var(--green); border-color: rgba(156,178,149,.25); }
+    .faq-nav-item.active { background: rgba(156,178,149,.12); color: var(--green); border-color: rgba(156,178,149,.35); }
+    .faq-nav-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: currentColor; flex-shrink: 0; opacity: 0.5;
+    }
     .faq-nav-item.active .faq-nav-dot { opacity: 1; }
 
-    .faq-sidebar-cta {
-      margin-top: 2.5rem;
-      background: var(--ink); border-radius: var(--r-lg);
-      padding: 1.5rem;
+    .faq-sidebar-contact {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 20px 18px; background: var(--cream);
     }
-    .faq-sidebar-cta p {
-      font-size: 13px; font-weight: 300;
-      color: rgba(255,255,255,0.6); line-height: 1.65;
-      margin-bottom: 1rem;
+    .faq-sidebar-contact p {
+      font-size: 12px; color: var(--text-gray); line-height: 1.65; margin-bottom: 14px;
     }
-    .faq-sidebar-cta a {
+    .faq-sidebar-contact a {
       display: block; text-align: center;
-      background: var(--sage); color: white;
+      background: var(--text-dark); color: white;
       padding: 10px 16px; border-radius: 100px;
-      font-size: 13px; font-weight: 600;
-      text-decoration: none; transition: background 0.2s;
+      font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+      text-decoration: none; transition: background .2s;
     }
-    .faq-sidebar-cta a:hover { background: var(--sage-mid); }
+    .faq-sidebar-contact a:hover { background: var(--green); }
 
-    /* ── FAQ ITEMS ── */
-    .faq-sections { display: flex; flex-direction: column; gap: 3rem; }
+    /* ── FAQ SECTIONS ── */
+    .faq-sections { display: flex; flex-direction: column; gap: 48px; }
 
-  
+    .faq-section-block {}
     .faq-section-label {
       display: flex; align-items: center; gap: 12px;
-      margin-bottom: 1.25rem;
+      margin-bottom: 20px;
     }
     .faq-section-label-icon {
-      width: 36px; height: 36px; border-radius: var(--r-sm);
-      background: var(--sage-pale); display: flex; align-items: center;
-      justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+      width: 44px; height: 44px; border-radius: var(--radius-sm);
+      border: 1px solid var(--border); background: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
     }
+    /* SVG icons inside label */
+    .faq-section-label-icon svg { width: 20px; height: 20px; stroke: var(--green-dark); }
     .faq-section-label-text {
       font-family: 'Playfair Display', serif;
-      font-size: 1.35rem; font-weight: 700;
-      color: var(--ink); letter-spacing: -0.5px;
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--text-dark); letter-spacing: -0.02em;
     }
     .faq-section-items { display: flex; flex-direction: column; gap: 10px; }
 
-    .gg-faq-item {
-      border: 1.5px solid var(--border);
-      border-radius: var(--r-lg); overflow: hidden;
-      transition: border-color 0.2s;
+    /* ── FAQ ACCORDION ── */
+    .faq-item {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; background: var(--cream);
+      transition: border-color .2s, box-shadow .2s;
     }
-    .gg-faq-item:hover { border-color: var(--sage-light); }
-    .gg-faq-btn {
+    .faq-item:hover { border-color: var(--green); box-shadow: 0 4px 20px rgba(156,178,149,.1); }
+    .faq-btn {
       width: 100%; display: flex; justify-content: space-between; align-items: center;
-      padding: 1.25rem 1.5rem; background: white; border: none; cursor: pointer;
-      font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
-      color: var(--ink); text-align: left; gap: 1rem; transition: background 0.2s;
+      padding: 20px 24px; background: transparent; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700;
+      color: var(--text-dark); text-align: left; gap: 16px;
+      transition: color .2s;
+      letter-spacing: .01em;
     }
-    .gg-faq-btn:hover { background: var(--sage-pale); }
-    .gg-faq-arrow { font-size: 1.1rem; color: var(--sage); transition: transform 0.3s; flex-shrink: 0; }
-    .gg-faq-btn.open .gg-faq-arrow { transform: rotate(180deg); }
-    .gg-faq-body {
+    .faq-btn:hover { color: var(--green); }
+    .faq-arrow {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 1.5px solid var(--border); background: var(--cream-dark);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: transform .3s, background .2s, border-color .2s;
+      color: var(--green-dark);
+    }
+    .faq-arrow svg { width: 12px; height: 12px; stroke: currentColor; transition: transform .3s; }
+    .faq-btn.open .faq-arrow { background: var(--green); border-color: var(--green); color: #fff; }
+    .faq-btn.open .faq-arrow svg { transform: rotate(180deg); }
+    .faq-body {
       max-height: 0; overflow: hidden;
       transition: max-height 0.35s ease, padding 0.3s;
-      font-size: 14px; font-weight: 300;
-      color: var(--ink-soft); line-height: 1.75;
-      padding: 0 1.5rem; background: var(--sage-pale);
+      font-size: 13px; font-weight: 400;
+      color: var(--text-gray); line-height: 1.75;
+      padding: 0 24px; background: var(--cream-dark);
+      border-top: 0px solid var(--border);
     }
-    .gg-faq-body.open { max-height: 600px; padding: 1.25rem 1.5rem; }
+    .faq-body.open { max-height: 600px; padding: 20px 24px; border-top: 1px solid var(--border); }
+    .faq-body a { color: var(--green); font-weight: 600; }
+    .faq-body a:hover { text-decoration: underline; }
+
+    /* ── CONTACT BLOCK — bg: green-deep-2 ── */
+    .faq-contact-wrap { background: var(--green-deep-2); padding: 72px 0; }
+    .faq-contact-inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 40px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .faq-contact-tag { font-size: 11px; font-weight: 800; color: var(--green-light); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 16px; }
+    .faq-contact-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 46px);
+      color: #fff; line-height: 1.1;
+      margin-bottom: 16px; font-weight: 900; letter-spacing: -0.02em;
+    }
+    .faq-contact-title em { font-style: italic; color: var(--gold); }
+    .faq-contact-desc { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.8; margin-bottom: 28px; }
+    .faq-contact-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-white-inv { background: #fff; color: var(--text-dark); }
+    .btn-white-ghost { background: transparent; border: 1.5px solid rgba(255,255,255,.4); color: #fff; }
+    .btn-white-ghost:hover { border-color: rgba(255,255,255,.8); }
+    .faq-contact-visual {
+      border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius);
+      padding: 32px; background: rgba(255,255,255,.05);
+    }
+    .faq-contact-stat { display: flex; flex-direction: column; gap: 4px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .faq-contact-stat:last-child { border-bottom: none; padding-bottom: 0; }
+    .faq-contact-stat:first-child { padding-top: 0; }
+    .faq-contact-stat strong { font-size: 32px; font-family: 'Playfair Display', serif; color: #b5c8af; line-height: 1; }
+    .faq-contact-stat span { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.45); letter-spacing: .06em; text-transform: uppercase; }
+
+    /* ── CTA FINAL — bg: green ── */
+    .cta-section { background: var(--green); padding: 80px 40px; text-align: center; }
+    .cta-section .cta-tag { font-size: 11px; font-weight: 800; color: rgba(255,255,255,.7); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 20px; }
+    .cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(40px, 6vw, 80px); color: #fff; line-height: .95; margin-bottom: 16px; font-weight: 900; letter-spacing: -0.03em; }
+    .cta-section .cta-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(28px, 4vw, 52px); color: rgba(255,255,255,.75); margin-bottom: 32px; }
+    .cta-section p { font-size: 14px; color: rgba(255,255,255,.8); line-height: 1.7; max-width: 480px; margin: 0 auto 36px; }
+    .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER — bg: sage ── */
+    .footer-wrap { background: var(--sage); border-top: 1px solid var(--border); }
+    .footer-outer { padding: 32px 40px; max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 20px; color: var(--green-deep); letter-spacing: -0.02em; }
+    .footer-outer p { font-size: 12px; color: var(--text-light); }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { font-size: 11px; font-weight: 700; color: var(--text-light); letter-spacing: .06em; text-transform: uppercase; transition: color .2s; }
+    .footer-links a:hover { color: var(--green); }
 
     /* ── REVEAL ── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── CONTACT BLOCK ── */
-    .faq-contact {
-      margin-top: 3.5rem;
-      background: var(--cream);
-      border: 1.5px solid var(--border);
-      border-radius: var(--r-xl);
-      padding: 2.5rem;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 2rem; align-items: center;
-    }
-    .faq-contact h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem; font-weight: 700;
-      color: var(--ink); letter-spacing: -0.5px;
-      margin-bottom: 0.5rem;
-    }
-    .faq-contact p {
-      font-size: 14px; font-weight: 300;
-      color: var(--ink-soft); line-height: 1.7;
-    }
-    .faq-contact-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--ink); color: white;
-      padding: 13px 24px; border-radius: 100px;
-      font-size: 14px; font-weight: 600;
-      text-decoration: none; white-space: nowrap;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .faq-contact-btn:hover { background: var(--sage); transform: translateY(-1px); }
-
-    /* ── FOOTER ── */
-    footer { background: var(--ink); padding: 60px 2rem 0; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .footer-brand p { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.4); line-height: 1.75; margin-top: 1rem; max-width: 300px; }
-    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; }
-    .footer-logo em { color: var(--sage-light); font-style: italic; }
-    .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1rem; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col a { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
-    .footer-col a:hover { color: var(--sage-light); }
-    .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; font-size: 12px; color: rgba(255,255,255,0.3); font-weight: 300; flex-wrap: wrap; gap: 0.5rem; }
-    .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
-    .footer-bottom a:hover { color: var(--sage-light); }
-
     /* ── RESPONSIVE ── */
-    @media (max-width: 1200px) {
-      .hamburger { display: flex; }
-      .nav-links { display: none; flex-direction: column; gap: 0; position: fixed; top: 68px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem; z-index: 99; }
-      .nav-links.open { display: flex; }
-      .nav-links li { width: 100%; }
-      .nav-links li a { display: block; padding: 10px 12px; border-radius: 8px; }
-      .nav-links .nav-cta { display: block; text-align: center; padding: 12px 22px !important; }
-    }
     @media (max-width: 900px) {
-      .faq-content { grid-template-columns: 1fr; gap: 2.5rem; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
+      .faq-hero-layout { grid-template-columns: 1fr; gap: 32px; }
+      .faq-main { grid-template-columns: 1fr; gap: 32px; }
       .faq-sidebar { position: static; }
       .faq-nav { flex-direction: row; flex-wrap: wrap; gap: 6px; }
-      .faq-nav-item { font-size: 12px; padding: 7px 12px; }
-      .faq-sidebar-cta { display: none; }
+      .faq-sidebar-contact { display: none; }
+      .faq-contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-outer { flex-direction: column; text-align: center; gap: 12px; }
     }
-    @media (max-width: 640px) {
-      .faq-hero { padding: 120px 1.5rem 60px; }
-      .faq-main { padding: 50px 1.5rem 80px; }
-      .faq-contact { grid-template-columns: 1fr; gap: 1.5rem; }
-      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .faq-hero, .section { padding-left: 20px; padding-right: 20px; }
+      .faq-main { padding: 48px 20px; }
+      .faq-contact-inner { padding: 0 20px; }
+      .cta-section { padding: 64px 24px; }
+      .footer-outer { padding: 32px 20px; }
+      .faq-stat-row { flex-wrap: wrap; gap: 16px; }
     }
   </style>
 </head>
 <body>
 
-  <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="logo">VIVA</a>
-      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html#como-funciona">Como funciona</a></li>
-        <li><a href="index.html#causas">Causas</a></li>
-        <li><a href="index.html#eventos">Eventos</a></li>
-        <li><a href="patasdf.html">PatasDF</a></li>
-        <li><a href="index.html#ongs">ONGs</a></li>
-        <li><a href="index.html#sobre-criadora">Sobre</a></li>
-        <li><a href="faq.html" class="active">FAQ</a></li>
-        <li style="margin-top:8px;"><a href="index.html#participar" class="nav-cta">Quero participar</a></li>
-      </ul>
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">&#215;</button>
+  <a href="index.html#como-funciona" onclick="toggleMenu()">Como funciona</a>
+  <a href="causas.html" onclick="toggleMenu()">Causas</a>
+  <a href="index.html#eventos" onclick="toggleMenu()">Eventos</a>
+  <a href="index.html#patasdf" onclick="toggleMenu()">PatasDF</a>
+  <a href="index.html#parceiros" onclick="toggleMenu()">Parceiros</a>
+  <a href="index.html#sobre" onclick="toggleMenu()">Sobre</a>
+  <a href="faq.html" onclick="toggleMenu()">FAQ</a>
+</div>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="fotos/logo.png" alt="VIVE" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="nav-logo-text" style="display:none">VIVE</span>
     </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="faq-hero">
-    <div class="faq-hero-bg-letter">?</div>
-    <div class="faq-hero-inner">
-      <div class="breadcrumb">
-        <a href="index.html">VIVA</a>
-        <span class="breadcrumb-sep">›</span>
-        <span>Perguntas Frequentes</span>
-      </div>
-      <div class="faq-eyebrow">
-        <div class="eyebrow-line"></div>
-        <span class="eyebrow-text">Tudo o que você precisa saber</span>
-      </div>
-      <h1>Perguntas<br><em>frequentes</em></h1>
-      <p>Tudo o que você precisa saber sobre o VIVA antes de participar. Não encontrou sua dúvida? <strong>Entre em contato.</strong></p>
+    <div class="nav-links">
+      <a href="index.html#como-funciona">Como funciona</a>
+      <a href="causas.html">Causas</a>
+      <a href="index.html#eventos">Eventos</a>
+      <a href="index.html#patasdf">PatasDF</a>
+      <a href="index.html#parceiros">Parceiros</a>
+      <a href="index.html#sobre">Sobre</a>
+      <a href="faq.html" class="active">FAQ</a>
     </div>
-  </section>
+    <div class="nav-cta">
+      <a href="index.html#causas" class="btn btn-green btn-sm">Quero participar &rarr;</a>
+    </div>
+    <button class="nav-hamburger" onclick="toggleMenu()">&#9776;</button>
+  </div>
+</nav>
 
-  <!-- MAIN FAQ -->
-  <section class="faq-main">
-    <div class="faq-content">
-
-      <!-- SIDEBAR -->
-      <aside class="faq-sidebar reveal">
-        <div class="faq-sidebar-title">Categorias</div>
-        <nav class="faq-nav">
-          <button class="faq-nav-item active" onclick="irParaSecao('geral', this)">
-            <span class="faq-nav-dot"></span> Geral
-          </button>
-          <button class="faq-nav-item" onclick="irParaSecao('aprender-ensinar', this)">
-            <span class="faq-nav-dot"></span> Aprender &amp; Ensinar
-          </button>
-          <button class="faq-nav-item" onclick="irParaSecao('voluntariado', this)">
-            <span class="faq-nav-dot"></span> Voluntariado
-          </button>
-          <button class="faq-nav-item" onclick="irParaSecao('eventos', this)">
-            <span class="faq-nav-dot"></span> Eventos
-          </button>
-          <button class="faq-nav-item" onclick="irParaSecao('privacidade', this)">
-            <span class="faq-nav-dot"></span> Privacidade
-          </button>
-          <button class="faq-nav-item" onclick="irParaSecao('parcerias', this)">
-            <span class="faq-nav-dot"></span> Parcerias
-          </button>
-        </nav>
-
-        <div class="faq-sidebar-cta">
-          <p>Não encontrou sua dúvida? Manda uma mensagem para a Clarice.</p>
-          <a href="mailto:euclaricenunes@gmail.com">✉️ Enviar e-mail</a>
+<!-- ── HERO — bg: cream ── -->
+<div class="faq-hero-wrap">
+  <div class="faq-hero">
+    <p class="hero-eyebrow">Perguntas frequentes &middot; VIVE &middot; DF</p>
+    <div class="faq-hero-layout">
+      <div class="faq-hero-left">
+        <div class="section-title">tudo o que<br>você precisa<br><em>saber</em></div>
+      </div>
+      <div class="faq-hero-right">
+        <p class="faq-hero-desc">
+          Respostas diretas sobre como o VIVE funciona &mdash; sem burocracia, sem enrolação.
+        </p>
+        <div class="faq-stat-row">
+          <div class="faq-stat"><strong>6</strong><span>Categorias</span></div>
+          <div class="faq-stat"><strong>18+</strong><span>Perguntas</span></div>
+          <div class="faq-stat"><strong>100%</strong><span>Gratuito</span></div>
         </div>
-      </aside>
-
-      <!-- FAQ SECTIONS -->
-      <div class="faq-sections">
-
-        <!-- GERAL -->
-        <div class="faq-section-block reveal" id="geral">
-          <div class="faq-section-label">
-            <div class="faq-section-label-icon">🌱</div>
-            <span class="faq-section-label-text">Geral</span>
-          </div>
-          <div class="faq-section-items">
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>O VIVA é gratuito?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                Sim, 100% gratuito. O VIVA é um projeto comunitário sem fins lucrativos criado para conectar pessoas que querem aprender, ensinar e fazer voluntariado no DF. Não há nenhum custo em nenhuma etapa.
-              </div>
-            </div>
-
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>O que é o VIVA?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                O VIVA é uma comunidade aberta do Distrito Federal que conecta pessoas que querem aprender, compartilhar conhecimentos e fazer voluntariado. Tudo gratuito, sem burocracia — você escolhe como quer participar.
-              </div>
-            </div>
-
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>Como funciona depois que eu me cadastro?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                Após o cadastro, você recebe um e-mail de boas-vindas confirmando que seus dados foram recebidos. Quando um evento for organizado na sua área de interesse, você receberá um convite por e-mail com todos os detalhes — local, horário e como participar.
-              </div>
-            </div>
-
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>O VIVA funciona só em Brasília?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                Os eventos presenciais acontecem no Distrito Federal. Os eventos online estão abertos para qualquer pessoa, de qualquer lugar — mas a comunidade foi criada com foco no DF.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- APRENDER & ENSINAR -->
-        <div class="faq-section-block reveal" id="aprender-ensinar">
-          <div class="faq-section-label">
-            <div class="faq-section-label-icon">📚</div>
-            <span class="faq-section-label-text">Aprender &amp; Ensinar</span>
-          </div>
-          <div class="faq-section-items">
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>Preciso ter experiência para ensinar?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                Não! Você só precisa saber mais do que quem quer aprender. O importante é a disposição de compartilhar. Você define o quanto pode dar, o formato que prefere e o tempo disponível.
-              </div>
-            </div>
-
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>Posso me cadastrar para aprender e ensinar ao mesmo tempo?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                Claro! Basta preencher os dois formulários. Você pode ensinar crochê e ao mesmo tempo aprender inglês, por exemplo. Não há limite para quantas áreas você pode se cadastrar.
-              </div>
-            </div>
-
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>Quais áreas estão disponíveis para aprender?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                Atualmente temos: inglês (conversação online), tecnologia (cybersegurança, programação, inclusão digital), artesanato (crochê, bordado, costura), educação (reforço escolar, mentoria), meio ambiente e muito mais. Acesse a página de <a href="index.html#causas" style="color:var(--sage);font-weight:600;">causas</a> para ver todas as áreas.
-              </div>
-            </div>
-
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>Quanto tempo preciso disponibilizar para ensinar?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                Você decide! Pode ser uma vez por semana, uma vez por mês ou só quando tiver disponibilidade. O formulário de cadastro pergunta sobre sua disponibilidade e a gente organiza de acordo com o que você pode oferecer.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- VOLUNTARIADO -->
-        <div class="faq-section-block reveal" id="voluntariado">
-          <div class="faq-section-label">
-            <div class="faq-section-label-icon">🤝</div>
-            <span class="faq-section-label-text">Voluntariado</span>
-          </div>
-          <div class="faq-section-items">
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>Como funciona o voluntariado?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                O VIVA faz parcerias com ONGs do DF para organizar ações — feiras de adoção, visitas a lares de idosos, limpeza de áreas verdes e mais. Você se cadastra na <a href="voluntariado.html" style="color:var(--sage);font-weight:600;">página de voluntariado</a> e recebe os convites quando uma ação for organizada.
-              </div>
-            </div>
-
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>Preciso ter algum conhecimento específico para ser voluntário?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                Não! O mais importante é a boa vontade e a disposição de ajudar. Cada ação tem perfis diferentes — desde ajudar a distribuir ração em uma feira de adoção até dar uma aula de tecnologia para idosos.
-              </div>
-            </div>
-
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>Com quais ONGs o VIVA trabalha?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                Atualmente trabalhamos com o Lar dos Anjos (causa animal) e estamos construindo parcerias com outras organizações do DF. Se você representa uma ONG e quer fazer parceria, <a href="mailto:euclaricenunes@gmail.com" style="color:var(--sage);font-weight:600;">entre em contato</a>.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- EVENTOS -->
-        <div class="faq-section-block reveal" id="eventos">
-          <div class="faq-section-label">
-            <div class="faq-section-label-icon">📅</div>
-            <span class="faq-section-label-text">Eventos</span>
-          </div>
-          <div class="faq-section-items">
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>Os eventos são presenciais ou online?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                Os dois! Temos eventos online (como conversação em inglês pelo Google Meet) e eventos presenciais em diferentes regiões do DF. Ao se cadastrar, você indica sua preferência e a gente organiza de acordo.
-              </div>
-            </div>
-
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>Com que frequência acontecem os eventos?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                Depende da causa. Os grupos de conversação em inglês acontecem semanalmente. Os eventos presenciais e de voluntariado são mensais ou conforme surgem as oportunidades. Você pode acompanhar a agenda completa no nosso <a href="index.html#eventos" style="color:var(--sage);font-weight:600;">Google Calendar</a>.
-              </div>
-            </div>
-
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>Como fico sabendo dos próximos eventos?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                Depois de se cadastrar, você recebe convites por e-mail quando um evento da sua área for organizado. Você também pode acompanhar pelo nosso Instagram <a href="https://www.instagram.com/vivecomunidade/" target="_blank" rel="noopener" style="color:var(--sage);font-weight:600;">@vivecomunidade</a> e pela agenda no Google Calendar.
-              </div>
-            </div>
-          </div>
-        </div>
-
-       
-        <div class="faq-section-block reveal" id="privacidade">
-          <div class="faq-section-label">
-            <div class="faq-section-label-icon">🔒</div>
-            <span class="faq-section-label-text">Privacidade &amp; Dados</span>
-          </div>
-          <div class="faq-section-items">
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>Meus dados ficam seguros?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                Sim. Os formulários são hospedados no Google Forms e seus dados ficam apenas na nossa planilha privada. Os dados são usados exclusivamente para organizar eventos e enviar convites relevantes para você. Nenhum dado é vendido ou compartilhado com terceiros.
-              </div>
-            </div>
-
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>Posso pedir para meus dados serem removidos?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                Sim, é seu direito. Basta enviar um e-mail para <a href="mailto:euclaricenunes@gmail.com" style="color:var(--sage);font-weight:600;">euclaricenunes@gmail.com</a> solicitando a remoção dos seus dados e providenciaremos o mais rápido possível.
-              </div>
-            </div>
-          </div>
-        </div>
-
-   
-        <div class="faq-section-block reveal" id="parcerias">
-          <div class="faq-section-label">
-            <div class="faq-section-label-icon">🏢</div>
-            <span class="faq-section-label-text">Parcerias</span>
-          </div>
-          <div class="faq-section-items">
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>Como posso fazer parceria com o VIVA?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                Se você representa uma ONG, escola ou projeto social e quer fazer parceria, entre em contato pelo e-mail <a href="mailto:euclaricenunes@gmail.com" style="color:var(--sage);font-weight:600;">euclaricenunes@gmail.com</a>. Adoramos conversar sobre novas formas de gerar impacto no DF.
-              </div>
-            </div>
-
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>Quero divulgar o projeto. Como posso ajudar?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                Compartilhando nas redes sociais! Marque <a href="https://www.instagram.com/vivecomunidade/" target="_blank" rel="noopener" style="color:var(--sage);font-weight:600;">@vivecomunidade</a> no Instagram e use as hashtags #VIVA #VoluntariadoDF. Cada compartilhamento ajuda a alcançar mais pessoas que querem fazer a diferença no DF.
-              </div>
-            </div>
-
-            <div class="gg-faq-item">
-              <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-                <span>Tenho uma sugestão de melhoria para o projeto. Como envio?</span>
-                <span class="gg-faq-arrow">↓</span>
-              </button>
-              <div class="gg-faq-body">
-                A Clarice está sempre aberta para ouvir! Manda um e-mail para <a href="mailto:euclaricenunes@gmail.com" style="color:var(--sage);font-weight:600;">euclaricenunes@gmail.com</a> ou uma mensagem direta no Instagram <a href="https://www.instagram.com/claricesnunes" target="_blank" rel="noopener" style="color:var(--sage);font-weight:600;">@claricesnunes</a>. Sugestões são muito bem-vindas!
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CONTACT BLOCK -->
-        <div class="faq-contact reveal">
-          <div>
-            <h3>Ainda com dúvidas?</h3>
-            <p>Não encontrou a resposta que precisava? Entre em contato direto com a Clarice — ela responde pessoalmente.</p>
-          </div>
-          <a href="mailto:euclaricenunes@gmail.com" class="faq-contact-btn">✉️ Enviar e-mail</a>
-        </div>
-
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="index.html" class="footer-logo">VIVA</a>
-        <p>Comunidade gratuita de troca, aprendizado e voluntariado no Distrito Federal. Feita por e para pessoas que querem fazer a diferença.</p>
+<div class="ticker"></div>
+
+<!-- ── FAQ MAIN — bg: cream-dark ── -->
+<div class="faq-main-wrap">
+  <div class="faq-main">
+
+    <!-- SIDEBAR -->
+    <aside class="faq-sidebar reveal">
+      <div class="faq-sidebar-title">Categorias</div>
+      <nav class="faq-nav">
+        <button class="faq-nav-item active" onclick="irParaSecao('geral', this)">
+          <span class="faq-nav-dot"></span> Geral
+        </button>
+        <button class="faq-nav-item" onclick="irParaSecao('aprender-ensinar', this)">
+          <span class="faq-nav-dot"></span> Aprender &amp; Ensinar
+        </button>
+        <button class="faq-nav-item" onclick="irParaSecao('voluntariado', this)">
+          <span class="faq-nav-dot"></span> Voluntariado
+        </button>
+        <button class="faq-nav-item" onclick="irParaSecao('eventos', this)">
+          <span class="faq-nav-dot"></span> Eventos
+        </button>
+        <button class="faq-nav-item" onclick="irParaSecao('privacidade', this)">
+          <span class="faq-nav-dot"></span> Privacidade
+        </button>
+        <button class="faq-nav-item" onclick="irParaSecao('parcerias', this)">
+          <span class="faq-nav-dot"></span> Parcerias
+        </button>
+      </nav>
+
+      <div class="faq-sidebar-contact">
+        <p>N&atilde;o encontrou sua d&uacute;vida? Manda uma mensagem para a Clarice.</p>
+        <a href="mailto:euclaricenunes@gmail.com">Enviar e-mail &rarr;</a>
       </div>
-      <div class="footer-col">
-        <h4>Comunidade</h4>
-        <ul>
-          <li><a href="index.html#como-funciona">Como funciona</a></li>
-          <li><a href="index.html#causas">Causas</a></li>
-          <li><a href="index.html#eventos">Eventos</a></li>
-          <li><a href="index.html#participar">Participar</a></li>
-        </ul>
+    </aside>
+
+    <!-- FAQ SECTIONS -->
+    <div class="faq-sections">
+
+      <!-- GERAL -->
+      <div class="faq-section-block reveal" id="geral">
+        <div class="faq-section-label">
+          <div class="faq-section-label-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
+            </svg>
+          </div>
+          <span class="faq-section-label-text">Geral</span>
+        </div>
+        <div class="faq-section-items">
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>O VIVE é gratuito?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              Sim, 100% gratuito. O VIVE é um projeto comunit&aacute;rio sem fins lucrativos criado para conectar pessoas que querem aprender, ensinar e fazer volunt&aacute;riado no DF. N&atilde;o h&aacute; nenhum custo em nenhuma etapa.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>O que é o VIVE?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              O VIVE é uma comunidade aberta do Distrito Federal que conecta pessoas que querem aprender, compartilhar conhecimentos e fazer volunt&aacute;riado. Tudo gratuito, sem burocracia &mdash; voc&ecirc; escolhe como quer participar.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>Como funciona depois que eu me cadastro?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              Ap&oacute;s o cadastro, voc&ecirc; recebe um e-mail de boas-vindas confirmando que seus dados foram recebidos. Quando um evento for organizado na sua &aacute;rea de interesse, voc&ecirc; receber&aacute; um convite por e-mail com todos os detalhes &mdash; local, hor&aacute;rio e como participar.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>O VIVE funciona só em Brasília?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              Os eventos presenciais acontecem no Distrito Federal. Os eventos online est&atilde;o abertos para qualquer pessoa, de qualquer lugar &mdash; mas a comunidade foi criada com foco no DF.
+            </div>
+          </div>
+
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Projetos</h4>
-        <ul>
-          <li><a href="patasdf.html">PatasDF</a></li>
-          <li><a href="index.html#sobre-criadora">Sobre a Clarice</a></li>
-          <li><a href="https://github.com/claricenunes" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="mailto:euclaricenunes@gmail.com">Contato</a></li>
-        </ul>
+
+      <!-- APRENDER & ENSINAR -->
+      <div class="faq-section-block reveal" id="aprender-ensinar">
+        <div class="faq-section-label">
+          <div class="faq-section-label-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M20 22V6a2 2 0 00-2-2H6.5A2.5 2.5 0 004 6.5v13z"/>
+            </svg>
+          </div>
+          <span class="faq-section-label-text">Aprender &amp; Ensinar</span>
+        </div>
+        <div class="faq-section-items">
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>Preciso ter experiência para ensinar?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              N&atilde;o! Voc&ecirc; s&oacute; precisa saber mais do que quem quer aprender. O importante é a disposi&ccedil;&atilde;o de compartilhar. Voc&ecirc; define o quanto pode dar, o formato que prefere e o tempo dispon&iacute;vel.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>Posso me cadastrar para aprender e ensinar ao mesmo tempo?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              Claro! Basta preencher os dois formul&aacute;rios. Voc&ecirc; pode ensinar croch&ecirc; e ao mesmo tempo aprender ingl&ecirc;s, por exemplo. N&atilde;o h&aacute; limite para quantas &aacute;reas voc&ecirc; pode se cadastrar.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>Quais áreas estão disponíveis para aprender?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              Atualmente temos: ingl&ecirc;s (convers&aacute;&ccedil;&atilde;o online), tecnologia (ciberseguran&ccedil;a, programa&ccedil;&atilde;o, inclus&atilde;o digital), artesanato (croch&ecirc;, bordado, costura), educa&ccedil;&atilde;o (refor&ccedil;o escolar, mentoria), meio ambiente e muito mais. Acesse a <a href="causas.html">p&aacute;gina de causas</a> para ver todas as &aacute;reas.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>Quanto tempo preciso disponibilizar para ensinar?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              Voc&ecirc; decide! Pode ser uma vez por semana, uma vez por m&ecirc;s ou s&oacute; quando tiver disponibilidade. O formul&aacute;rio de cadastro pergunta sobre sua disponibilidade e a gente organiza de acordo com o que voc&ecirc; pode oferecer.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- VOLUNTARIADO -->
+      <div class="faq-section-block reveal" id="voluntariado">
+        <div class="faq-section-label">
+          <div class="faq-section-label-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+            </svg>
+          </div>
+          <span class="faq-section-label-text">Voluntariado</span>
+        </div>
+        <div class="faq-section-items">
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>Como funciona o voluntariado?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              O VIVE faz parcerias com ONGs do DF para organizar a&ccedil;&otilde;es &mdash; feiras de ado&ccedil;&atilde;o, visitas a lares de idosos, limpeza de &aacute;reas verdes e mais. Voc&ecirc; se cadastra na <a href="voluntariado.html">p&aacute;gina de volunt&aacute;riado</a> e recebe os convites quando uma a&ccedil;&atilde;o for organizada.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>Preciso ter conhecimento específico para ser voluntário?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              N&atilde;o! O mais importante é a boa vontade e a disposi&ccedil;&atilde;o de ajudar. Cada a&ccedil;&atilde;o tem perfis diferentes &mdash; desde ajudar a distribuir ra&ccedil;&atilde;o em uma feira de ado&ccedil;&atilde;o at&eacute; dar uma aula de tecnologia para idosos.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>Com quais ONGs o VIVE trabalha?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              Atualmente trabalhamos com o Lar dos Anjos (causa animal) e estamos construindo parcerias com outras organiza&ccedil;&otilde;es do DF. Se voc&ecirc; representa uma ONG e quer fazer parceria, <a href="mailto:euclaricenunes@gmail.com">entre em contato</a>.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- EVENTOS -->
+      <div class="faq-section-block reveal" id="eventos">
+        <div class="faq-section-label">
+          <div class="faq-section-label-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <span class="faq-section-label-text">Eventos</span>
+        </div>
+        <div class="faq-section-items">
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>Os eventos são presenciais ou online?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              Os dois! Temos eventos online (como convers&aacute;&ccedil;&atilde;o em ingl&ecirc;s pelo Google Meet) e eventos presenciais em diferentes regi&otilde;es do DF. Ao se cadastrar, voc&ecirc; indica sua prefer&ecirc;ncia e a gente organiza de acordo.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>Com que frequência acontecem os eventos?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              Depende da causa. Os grupos de convers&aacute;&ccedil;&atilde;o em ingl&ecirc;s acontecem semanalmente. Os eventos presenciais e de volunt&aacute;riado s&atilde;o mensais ou conforme surgem as oportunidades. Voc&ecirc; pode acompanhar a agenda completa no nosso <a href="index.html#eventos">Google Calendar</a>.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>Como fico sabendo dos próximos eventos?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              Depois de se cadastrar, voc&ecirc; recebe convites por e-mail quando um evento da sua &aacute;rea for organizado. Voc&ecirc; tamb&eacute;m pode acompanhar pelo nosso Instagram <a href="https://www.instagram.com/vivecomunidade/" target="_blank" rel="noopener">@vivecomunidade</a> e pela agenda no Google Calendar.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PRIVACIDADE -->
+      <div class="faq-section-block reveal" id="privacidade">
+        <div class="faq-section-label">
+          <div class="faq-section-label-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+            </svg>
+          </div>
+          <span class="faq-section-label-text">Privacidade &amp; Dados</span>
+        </div>
+        <div class="faq-section-items">
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>Meus dados ficam seguros?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              Sim. Os formul&aacute;rios s&atilde;o hospedados no Google Forms e seus dados ficam apenas na nossa planilha privada. Os dados s&atilde;o usados exclusivamente para organizar eventos e enviar convites relevantes para voc&ecirc;. Nenhum dado é vendido ou compartilhado com terceiros.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>Posso pedir para meus dados serem removidos?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              Sim, é seu direito. Basta enviar um e-mail para <a href="mailto:euclaricenunes@gmail.com">euclaricenunes@gmail.com</a> solicitando a remo&ccedil;&atilde;o dos seus dados e providenciaremos o mais r&aacute;pido poss&iacute;vel.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PARCERIAS -->
+      <div class="faq-section-block reveal" id="parcerias">
+        <div class="faq-section-label">
+          <div class="faq-section-label-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <span class="faq-section-label-text">Parcerias</span>
+        </div>
+        <div class="faq-section-items">
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>Como posso fazer parceria com o VIVE?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              Se voc&ecirc; representa uma ONG, escola ou projeto social e quer fazer parceria, entre em contato pelo e-mail <a href="mailto:euclaricenunes@gmail.com">euclaricenunes@gmail.com</a>. Adoramos conversar sobre novas formas de gerar impacto no DF.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>Quero divulgar o projeto. Como posso ajudar?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              Compartilhando nas redes sociais! Marque <a href="https://www.instagram.com/vivecomunidade/" target="_blank" rel="noopener">@vivecomunidade</a> no Instagram e use as hashtags #VIVE #VoluntariadoDF. Cada compartilhamento ajuda a alcançar mais pessoas que querem fazer a diferença no DF.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              <span>Tenho uma sugestão de melhoria. Como envio?</span>
+              <span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              A Clarice est&aacute; sempre aberta para ouvir! Manda um e-mail para <a href="mailto:euclaricenunes@gmail.com">euclaricenunes@gmail.com</a> ou uma mensagem direta no Instagram <a href="https://www.instagram.com/vivecomunidade/" target="_blank" rel="noopener">@vivecomunidade</a>. Sugest&otilde;es s&atilde;o muito bem-vindas!
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── CONTACT BLOCK — bg: green-deep-2 ── -->
+<div class="faq-contact-wrap">
+  <div class="faq-contact-inner">
+    <div>
+      <p class="faq-contact-tag">Ainda com d&uacute;vidas?</p>
+      <div class="faq-contact-title">N&atilde;o encontrou<br>o que <em>precisava?</em></div>
+      <p class="faq-contact-desc">A Clarice responde pessoalmente. Manda uma mensagem &mdash; sem burocracia, sem demora.</p>
+      <div class="faq-contact-actions">
+        <a href="mailto:euclaricenunes@gmail.com" class="btn btn-white-inv btn-sm">Enviar e-mail &rarr;</a>
+        <a href="https://www.instagram.com/vivecomunidade/" target="_blank" rel="noopener" class="btn btn-white-ghost btn-sm">Instagram &rarr;</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 VIVA · Todos os direitos reservados</span>
-      <span>Feito por <a href="index.html#sobre-criadora">Clarice Nunes · Engenharia de Software · Brasília</a></span>
+    <div class="faq-contact-visual">
+      <div class="faq-contact-stat"><strong>6</strong><span>Categorias de perguntas</span></div>
+      <div class="faq-contact-stat"><strong>18+</strong><span>Perguntas respondidas</span></div>
+      <div class="faq-contact-stat"><strong>100%</strong><span>Gratuito, sempre</span></div>
     </div>
-  </footer>
+  </div>
+</div>
 
-  <script>
+<!-- ── CTA FINAL — bg: green ── -->
+<section class="cta-section">
+  <p class="cta-tag">&mdash; Comunidade aberta &middot; Bras&iacute;lia, DF</p>
+  <h2>Pronto para</h2>
+  <div class="cta-sub">fazer a diferen&ccedil;a?</div>
+  <p>Leva menos de 2 minutos. Voc&ecirc; escolhe o quanto quer se envolver.</p>
+  <div class="cta-actions">
+    <a href="index.html#causas" class="btn btn-white-inv">Quero participar agora &rarr;</a>
+    <a href="patasdf.html" class="btn btn-white-ghost">Ver o PatasDF &rarr;</a>
+    <a href="index.html#eventos" class="btn btn-white-ghost">Ver eventos &rarr;</a>
+  </div>
+</section>
 
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY > 40;
-      document.getElementById('navbar').classList.toggle('scrolled', scrolled);
-      document.getElementById('navLinks').style.top = scrolled ? '58px' : '68px';
-    });
-    function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
-    document.querySelectorAll('#navLinks a').forEach(link => link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+<!-- ── FOOTER — bg: sage ── -->
+<div class="footer-wrap">
+  <div class="footer-outer">
+    <div class="footer-logo">VIVE</div>
+    <p>&copy; 2026 &middot; VIVE &middot; Todos os direitos reservados | Feito por <a href="index.html#sobre" style="color:var(--green);">Clarice Nunes</a></p>
+    <div class="footer-links">
+      <a href="index.html#como-funciona">Como funciona</a>
+      <a href="index.html#eventos">Eventos</a>
+      <a href="index.html#patasdf">PatasDF</a>
+      <a href="index.html#sobre">Sobre</a>
+      <a href="faq.html">FAQ</a>
+      <a href="mailto:euclaricenunes@gmail.com">Contato</a>
+    </div>
+  </div>
+</div>
 
-  
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+<script>
+  // ── NAV HAMBURGER
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
 
-   
-    function toggleGGFaq(btn) {
-      const body = btn.nextElementSibling;
-      const isOpen = body.classList.contains('open');
-      document.querySelectorAll('.gg-faq-body').forEach(b => b.classList.remove('open'));
-      document.querySelectorAll('.gg-faq-btn').forEach(b => b.classList.remove('open'));
-      if (!isOpen) { body.classList.add('open'); btn.classList.add('open'); }
+  // ── FAQ ACCORDION
+  function toggleFaq(btn) {
+    const body = btn.nextElementSibling;
+    const isOpen = body.classList.contains('open');
+    document.querySelectorAll('.faq-body').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.faq-btn').forEach(b => b.classList.remove('open'));
+    if (!isOpen) { body.classList.add('open'); btn.classList.add('open'); }
+  }
+
+  // ── SIDEBAR NAVIGATION
+  function irParaSecao(id, btn) {
+    document.querySelectorAll('.faq-nav-item').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = 100;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
     }
+  }
 
-   
-    function irParaSecao(id, btn) {
-      document.querySelectorAll('.faq-nav-item').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const el = document.getElementById(id);
-      if (el) {
-        const offset = 90;
-        const top = el.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
+  // ── ACTIVE SIDEBAR ON SCROLL
+  const sections = document.querySelectorAll('.faq-section-block');
+  const navItems = document.querySelectorAll('.faq-nav-item');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      if (section.getBoundingClientRect().top < 160) current = section.id;
+    });
+    navItems.forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.getAttribute('onclick')?.includes(current)) btn.classList.add('active');
+    });
+  });
+
+  // ── REVEAL ON SCROLL
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        revealObserver.unobserve(entry.target);
       }
-    }
-
-    const sections = document.querySelectorAll('.faq-section-block');
-    const navItems = document.querySelectorAll('.faq-nav-item');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const top = section.getBoundingClientRect().top;
-        if (top < 160) current = section.id;
-      });
-      navItems.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.getAttribute('onclick')?.includes(current)) btn.classList.add('active');
-      });
     });
-  </script>
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
 </body>
 </html>
