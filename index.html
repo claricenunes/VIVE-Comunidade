@@ -1231,14 +1231,14 @@
 </div>
 
 <script>
-  // ── NAV HAMBURGER
+
   function toggleMenu() {
     const menu = document.getElementById('mobileMenu');
     menu.classList.toggle('open');
     document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
   }
 
-  // ── NAV CTA aparece após rolar além do hero
+
   const navBtn = document.getElementById('navBtnDesktop');
   const heroEl = document.getElementById('hero');
   const heroObserver = new IntersectionObserver((entries) => {
@@ -1246,7 +1246,7 @@
   }, { threshold: 0.2 });
   heroObserver.observe(heroEl);
 
-  // ── CALENDAR TOGGLE
+
   function toggleCalendar() {
     const embed = document.getElementById('calendarEmbed');
     const btn = document.querySelector('.agenda-bar .btn-green');
@@ -1255,12 +1255,12 @@
     btn.textContent = open ? 'Ver agenda completa ↓' : 'Fechar agenda ↑';
   }
 
-  // ── COPIAR LINK
+
   function copiarLink() {
     navigator.clipboard.writeText(window.location.href).then(() => alert('Link copiado! 🌱'));
   }
 
-  // ── MODAL CONFIGS
+
   const MODAL_CONFIG = {
     aprender: {
       icon: '🎓', title: 'Quero aprender', sub: 'Antes de ir para o Google Forms',
@@ -1320,7 +1320,7 @@
     if (url && url !== '#') { fecharModal(); setTimeout(() => window.open(url, '_blank', 'noopener,noreferrer'), 150); }
   }
 
-  // ── ONG MODAL
+
   function abrirOngModal(ong) {
     const overlay = document.getElementById('ongModalOverlay');
     const avatar = document.getElementById('ongModalAvatar');
@@ -1351,12 +1351,12 @@
     window.scrollTo(0, parseInt(sy));
   }
 
-  // ── ESC fecha modais
+
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') { fecharModal(); fecharOngModal(); }
   });
 
-  // ── PATAS MINI (carrega animais do JSON)
+
   async function carregarPatasMini() {
     try {
       const resp = await fetch('https://raw.githubusercontent.com/claricenunes/VIVE-Comunidade/main/animais.json?t=' + Date.now());
