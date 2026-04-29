@@ -269,7 +269,7 @@
     .btn-white-ghost { background: transparent; border: 1.5px solid rgba(255,255,255,.4); color: #fff; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 800; padding: 12px 24px; border-radius: 100px; letter-spacing: .06em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; transition: all .2s; cursor: pointer; }
     .btn-white-ghost:hover { border-color: rgba(255,255,255,.8); background: rgba(255,255,255,.1); }
 
-    /* ── FOOTER */
+
     .footer-wrap { background: var(--sage); border-top: 1px solid var(--border); }
     .footer-outer { padding: 32px 40px; max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
     .footer-logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 20px; color: var(--green-deep); letter-spacing: -0.02em; }
@@ -278,7 +278,7 @@
     .footer-links a { font-size: 11px; font-weight: 700; color: var(--text-light); letter-spacing: .06em; text-transform: uppercase; transition: color .2s; }
     .footer-links a:hover { color: var(--green); }
 
-    /* ── MODAL */
+
     #m-overlay {
       position: fixed; inset: 0; z-index: 9000;
       background: rgba(32,34,31,0.55); backdrop-filter: blur(8px);
@@ -314,7 +314,7 @@
     .m-btn-go { flex: 2; padding: 13px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 800; color: white; border: none; cursor: pointer; background: var(--green); transition: background .2s, transform .15s; }
     .m-btn-go:hover { background: var(--text-dark); transform: translateY(-1px); }
 
-    /* ── MOBILE MENU */
+
     .mobile-menu {
       display: none; position: fixed; inset: 0; z-index: 200;
       background: rgba(248,245,238,.97); backdrop-filter: blur(20px);
@@ -324,13 +324,11 @@
     .mobile-menu a { font-size: 18px; font-weight: 800; color: var(--green-dark); text-transform: uppercase; letter-spacing: .08em; }
     .mobile-close { position: absolute; top: 24px; right: 24px; background: none; border: 1.5px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 18px; color: var(--text-dark); cursor: pointer; }
 
-    /* ══════════════════════════════
-       RESPONSIVE
-       ══════════════════════════════ */
+ 
     @media (max-width: 900px) {
       .nav-links { display: none; }
-      .nav-cta  { display: none; }        /* esconde o botão desktop */
-      .nav-hamburger { display: block; }  /* mostra hamburger */
+      .nav-cta  { display: none; }       
+      .nav-hamburger { display: block; } 
     }
 
     @media (max-width: 600px) {
@@ -353,7 +351,7 @@
 </head>
 <body>
 
-<!-- ── MOBILE MENU ── -->
+
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="toggleMenu()">✕</button>
   <a href="index.html" onclick="toggleMenu()">Início</a>
@@ -366,7 +364,7 @@
   <button class="btn btn-green" onclick="abrirModal('aprender');toggleMenu()">Quero participar →</button>
 </div>
 
-<!-- ── MODAL ── -->
+
 <div id="m-overlay" onclick="if(event.target===this)fecharModal()">
   <div id="m-box">
     <div class="m-header">
@@ -395,7 +393,7 @@
   </div>
 </div>
 
-<!-- ── NAV ── -->
+
 <nav>
   <div class="nav-inner">
     <div class="nav-logo">
@@ -418,10 +416,10 @@
   </div>
 </nav>
 
-<!-- Espaçador para compensar a nav fixed -->
+
 <div class="nav-spacer"></div>
 
-<!-- ── HERO ── -->
+
 <section class="hero-section">
   <div class="hero-inner">
     <p class="hero-eyebrow">VIVE · Comunidade no DF</p>
@@ -450,7 +448,7 @@
 
 <div class="ticker"></div>
 
-<!-- ── FILTER BAR — sticky ── -->
+
 <div class="filter-section" id="filterBar">
   <div class="filter-inner">
     <div class="filter-pills">
@@ -464,10 +462,10 @@
   </div>
 </div>
 
-<!-- ── MAIN CONTENT ── -->
+
 <div class="main-section">
 
-  <!-- APRENDER -->
+
   <div class="cat-group" data-cat="aprender" id="group-aprender">
     <div class="cat-group-header">
       <div class="cat-group-icon" style="background:var(--sage-pale);">📚</div>
@@ -718,9 +716,9 @@
     </div>
   </div>
 
-</div><!-- /main-section -->
+</div>
 
-<!-- ── SUGGEST SECTION ── -->
+
 <section class="suggest-section">
   <div class="suggest-inner">
     <div class="section-header">
@@ -746,7 +744,7 @@
   </div>
 </section>
 
-<!-- ── CTA ── -->
+
 <section class="cta-section">
   <div class="cta-inner">
     <span class="cta-tag">— Comunidade aberta · Brasília, DF</span>
@@ -760,7 +758,7 @@
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+
 <div class="footer-wrap">
   <div class="footer-outer">
     <div class="footer-logo">VIVE</div>
@@ -901,14 +899,14 @@
     return rows;
   }
 
-  // ── MOBILE MENU
+
   function toggleMenu() {
     const menu = document.getElementById('mobileMenu');
     menu.classList.toggle('open');
     document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
   }
 
-  // ── INTERSECTION OBSERVER
+
   const ro = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
@@ -919,7 +917,7 @@
   }, { threshold: 0.07 });
   document.querySelectorAll('.causa-card, .featured-card, .suggest-card').forEach(el => ro.observe(el));
 
-  // ── FILTER
+
   function filtrar(tipo, btn) {
     document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
@@ -938,7 +936,7 @@
     }
   }
 
-  // ── MODAL
+
   const MODAL_CONFIG = {
     aprender: {
       icon: '🎓', title: 'Quero aprender', sub: 'Antes de ir para o Google Forms',
