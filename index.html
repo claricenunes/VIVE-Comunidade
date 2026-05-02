@@ -624,6 +624,13 @@
       .ong-section-inner { padding: 0 20px; }
       .footer-outer { padding: 32px 20px; }
     }
+
+    @media (max-width: 600px) {
+      .numeros-grid { grid-template-columns: 1fr !important; }
+      .agenda-bar { flex-direction: column; align-items: flex-start; }
+      .agenda-bar-actions { width: 100%; }
+      .agenda-bar-actions .btn { flex: 1; text-align: center; }
+}
   </style>
 </head>
 <body>
@@ -683,7 +690,7 @@
   <a href="#como-funciona" onclick="toggleMenu()">Como funciona</a>
   <a href="#causas" onclick="toggleMenu()">Causas</a>
   <a href="#eventos" onclick="toggleMenu()">Eventos</a>
-  <a href="#patasdf" onclick="toggleMenu()">PatasDF</a>
+  <!--<a href="#patasdf" onclick="toggleMenu()">PatasDF</a>-->
   <a href="#parceiros" onclick="toggleMenu()">Parceiros</a>
   <a href="#sobre" onclick="toggleMenu()">Sobre</a>
   <a href="faq.html" onclick="toggleMenu()">FAQ</a>
@@ -702,7 +709,7 @@
       <a href="#como-funciona">Como funciona</a>
       <a href="causas.html">Causas</a>
       <a href="#eventos">Eventos</a>
-      <a href="#patasdf">PatasDF</a>
+     <!-- <a href="#patasdf">PatasDF</a> -->
       <a href="#parceiros">Parceiros</a>
       <a href="#sobre">Sobre</a>
       <a href="faq.html">FAQ</a>
@@ -771,6 +778,8 @@
     </div>
   </section>
 </div>
+
+
 
 
 <div class="participar-section">
@@ -918,7 +927,7 @@
       </div>
       <div class="agenda-bar-actions">
         <button class="btn btn-green btn-sm" onclick="toggleCalendar()">Ver agenda completa ↓</button>
-        <a class="btn btn-outline btn-sm" href="https://calendar.google.com/calendar/embed?src=f966a5aa6c3a2e6e953029df6875e0b035dfc5a0577ab1ee072df353fa7fc4fa%40group.calendar.google.com&ctz=America%2FSao_Paulo" target="_blank" rel="noopener">Abrir no Google →</a>
+        <a class="btn btn-outline btn-sm" href="https://calendar.google.com/calendar/embed?src=f966a5aa6c3a2e6e953029df6875e0b035dfc5a0577ab1ee072df353fa7fc4fa%40group.calendar.google.com&ctz=America%2FSao_Paulo" target="_blank" rel="noopener" style="white-space: nowrap;">Abrir no Google →</a>
       </div>
     </div>
     <div id="calendarEmbed">
@@ -926,6 +935,7 @@
     </div>
   </section>
 </div>
+
 
 
 <div class="fotos-outer">
@@ -972,7 +982,7 @@
         <div class="fotos-footer">
           <div class="fotos-hashtags">
             <span class="fotos-hashtag">#VIVE</span>
-            <span class="fotos-hashtag">#PatasDF</span>
+            <span class="fotos-hashtag">#Comunidade</span>
             <span class="fotos-hashtag">#VoluntariadoDF</span>
           </div>
         </div>
@@ -1005,7 +1015,36 @@
   </section>
 </div>
 
+<div style="background: var(--sage); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="section" style="padding-top: 56px; padding-bottom: 56px;">
+    <div class="section-header">
+      <span class="section-tag">Números</span>
+      <hr>
+    </div>
+    <div class="section-title">a comunidade<br><em>em números</em></div>
+    <div class="numeros-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-top: 40px;">
+      <div style="background: var(--cream); padding: 40px 32px; display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-size: 11px; font-weight: 800; color: var(--green-dark); letter-spacing: .12em; text-transform: uppercase;">Cadastros</span>
+        <span style="font-family: 'Playfair Display', serif; font-size: clamp(52px, 7vw, 80px); font-weight: 900; color: var(--green); line-height: 1; letter-spacing: -0.03em;">+100</span> <!-- *** -->
+        <span style="font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: .06em;">pessoas na comunidade</span>
+      </div>
+      <div style="background: var(--cream-dark); padding: 40px 32px; display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-size: 11px; font-weight: 800; color: var(--green-dark); letter-spacing: .12em; text-transform: uppercase;">Voluntários</span>
+        <span style="font-family: 'Playfair Display', serif; font-size: clamp(52px, 7vw, 80px); font-weight: 900; color: var(--green); line-height: 1; letter-spacing: -0.03em;">+80</span> <!-- *** -->
+        <span style="font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: .06em;">querem fazer voluntariado</span>
+      </div>
+      <div style="background: var(--cream); padding: 40px 32px; display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-size: 11px; font-weight: 800; color: var(--green-dark); letter-spacing: .12em; text-transform: uppercase;">Eventos</span>
+        <span style="font-family: 'Playfair Display', serif; font-size: clamp(52px, 7vw, 80px); font-weight: 900; color: var(--green); line-height: 1; letter-spacing: -0.03em;">2</span> <!-- *** -->
+        <span style="font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: .06em;">eventos já realizados</span>
+      </div>
+    </div>
+  </div>
+</div>
 
+
+
+<!--
 <section class="patas-section" id="patasdf">
   <div class="patas-inner">
     <div>
@@ -1039,7 +1078,7 @@
     </div>
   </div>
 </section>
-
+-->
 
 <div class="ongs-apoiadoras" id="parceiros">
   <div class="section" style="padding-top:64px;padding-bottom:64px;">
@@ -1112,7 +1151,7 @@
       </div>
       <div class="criadora-badge">
         <span class="criadora-badge-icon"></span>
-        <div class="criadora-badge-text">Criadora do VIVE<small>e do PatasDF</small></div>
+        <div class="criadora-badge-text">Criadora do VIVE<small></small></div>
       </div>
       <div class="criadora-badge criadora-badge2">
         <span class="criadora-badge-icon">🎓</span>
@@ -1129,10 +1168,20 @@
         <span>🤝 Voluntariado</span>
       </div>
       <div class="quote-block">
-        <p>"Queria usar a tecnologia para gerar impacto social de verdade. Vejo gente querendo ajudar, mas sem saber como. Vejo gente querendo aprender, mas sem acesso."</p>
-      </div>
-      <p class="criadora-text">Sempre gostei muito de animais e de comunidade. O PatasDF nasceu da partida da minha cachorra Max — e foi crescendo até virar algo maior: uma rede de pessoas que querem transformar o DF de dentro pra fora.</p>
-      <p class="criadora-text">O VIVE é a evolução natural disso. Feito com a rotina corrida de quem ainda está na faculdade e acredita que tecnologia pode mudar o mundo.</p>
+  <p>"Eu queria usar a tecnologia para gerar impacto social de verdade — mas também criar experiências diferentes, que conectem pessoas e tragam mais sentido pra rotina."</p>
+</div>
+
+<p class="criadora-text">
+Sempre acreditei no poder da comunidade. Vejo muita gente querendo ajudar, mas sem saber como — e também pessoas buscando fazer algo novo, sair da rotina e se conectar com outras.
+</p>
+
+<p class="criadora-text">
+O VIVE nasce desse encontro: um espaço que reúne tanto ações voluntárias com impacto real em animais, crianças e idosos, quanto atividades leves e criativas — como oficinas, encontros e experiências diferentes.
+</p>
+
+<p class="criadora-text">
+A ideia é simples: criar uma comunidade onde você pode tanto fazer o bem quanto viver algo novo. Tudo no mesmo lugar, com propósito, conexão e experiências que realmente marcam.
+</p>
       <div class="criadora-social">
         <a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener" class="social-link">📸 Instagram</a>
         <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener" class="social-link">💼 LinkedIn</a>
@@ -1208,7 +1257,6 @@
   <p>Leva menos de 2 minutos. Você escolhe o quanto quer se envolver.</p>
   <div class="cta-actions">
     <button class="btn btn-white-inv" onclick="abrirModal('aprender')">🌱 Quero participar agora</button>
-    <a href="patasdf.html" class="btn btn-white-ghost">🐾 Ver o PatasDF →</a>
     <a href="#eventos" class="btn btn-white-ghost">Ver eventos →</a>
   </div>
 </section>
@@ -1222,7 +1270,6 @@
     <div class="footer-links">
       <a href="#como-funciona">Como funciona</a>
       <a href="#eventos">Eventos</a>
-      <a href="#patasdf">PatasDF</a>
       <a href="#sobre">Sobre</a>
       <a href="faq.html">FAQ</a>
       <a href="mailto:euclaricenunes@gmail.com">Contato</a>
