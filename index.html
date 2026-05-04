@@ -566,6 +566,23 @@
     .m-btn-go { flex: 2; padding: 13px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 800; color: white; border: none; cursor: pointer; background: var(--green); transition: background .2s, transform .15s; }
     .m-btn-go:hover { background: var(--text-dark); transform: translateY(-1px); }
 
+    .vv-slide {
+  flex: 0 0 calc(33.33% - 11px);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #20221f;
+  position: relative;
+  aspect-ratio: 9/16;
+  max-height: 480px;
+  cursor: pointer;
+  transition: transform .2s;
+}
+
+@media (max-width: 700px) {
+  .vv-slide {
+    flex: 0 0 calc(100% - 0px) !important;
+  }
+}
 
     .mobile-menu {
       display: none; position: fixed; inset: 0; z-index: 200;
@@ -912,7 +929,7 @@
         <div class="event-card-body">
           <span class="event-tag">Yoga</span>
           <h4>Dia de Yoga com Cachorrinhos — Lar dos Anjos</h4>
-          <p>Data a confirmar · Eixão</p>
+          <p>24 MAIO · Eixão</p>
         </div>
       </div>
     </div>
@@ -1015,6 +1032,166 @@
   </section>
 </div>
 
+
+<!-- ===== SEÇÃO DE VÍDEOS ===== -->
+<div style="background: var(--cream-dark);">
+  <section class="section" id="videos" style="padding-top:64px;padding-bottom:64px;">
+    <div class="section-header">
+      <span class="section-tag">Vídeos</span>
+      <hr>
+    </div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:36px;">
+      <div>
+        <div class="section-title">nossa comunidade<br><em>em movimento</em></div>
+      </div>
+      <a href="https://www.tiktok.com/@vivecomunidade" target="_blank" rel="noopener" class="btn btn-green">Ver no TikTok →</a>
+    </div>
+
+    <div id="vvCarousel" style="display:flex;gap:16px;overflow:hidden;scroll-behavior:smooth;">
+
+      <div class="vv-slide" id="slide1" onclick="togglePlay(1)" style="flex:0 0 calc(33.33% - 11px);border-radius:16px;overflow:hidden;background:#20221f;position:relative;aspect-ratio:9/16;max-height:480px;cursor:pointer;">
+        <video id="vid1" src="fotos/videos/videovive.mp4" muted loop playsinline preload="metadata" poster="fotos/capavive.jpeg" style="width:100%;height:100%;object-fit:cover;display:block;"></video>
+        <div class="vv-play-btn" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;">
+          <div style="width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:16px solid white;margin-left:3px;"></div>
+        </div>
+        <button id="mute1" onclick="event.stopPropagation();toggleMute(1)" style="position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;cursor:pointer;display:none;align-items:center;justify-content:center;font-size:14px;">🔇</button>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 50%);pointer-events:none;">
+          <div style="font-size:12px;font-weight:700;color:#fff;">Vive - Comunidade no DF</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;">Faça parte desse projeto!</div>
+        </div>
+      </div>
+      
+      <div class="vv-slide" id="slide0" onclick="togglePlay(0)" style="flex:0 0 calc(33.33% - 11px);border-radius:16px;overflow:hidden;background:#20221f;position:relative;aspect-ratio:9/16;max-height:480px;cursor:pointer;">
+        <video id="vid0" src="fotos/videos/videomultirao.mp4" muted loop playsinline preload="metadata" poster="fotos/capamultirao.jpeg" style="width:100%;height:100%;object-fit:cover;display:block;"></video>
+        <div class="vv-play-btn" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;">
+          <div style="width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:16px solid white;margin-left:3px;"></div>
+        </div>
+        <button id="mute0" onclick="event.stopPropagation();toggleMute(0)" style="position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;cursor:pointer;display:none;align-items:center;justify-content:center;font-size:14px;" id="mute0">🔇</button>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 50%);pointer-events:none;">
+          <div style="font-size:12px;font-weight:700;color:#fff;">Multirão de Banho</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;">Lar dos Anjos · Abril 2026</div>
+        </div>
+      </div>
+
+    
+      <div class="vv-slide" id="slide2" onclick="togglePlay(2)" style="flex:0 0 calc(33.33% - 11px);border-radius:16px;overflow:hidden;background:#20221f;position:relative;aspect-ratio:9/16;max-height:480px;cursor:pointer;">
+        <video id="vid2" src="fotos/videos/videoflores.mp4" muted loop playsinline preload="metadata" poster="fotos/capaflores.jpeg" style="width:100%;height:100%;object-fit:cover;display:block;"></video>
+        <div class="vv-play-btn" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;">
+          <div style="width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:16px solid white;margin-left:3px;"></div>
+        </div>
+        <button id="mute2" onclick="event.stopPropagation();toggleMute(2)" style="position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;cursor:pointer;display:none;align-items:center;justify-content:center;font-size:14px;">🔇</button>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 50%);pointer-events:none;">
+          <div style="font-size:12px;font-weight:700;color:#fff;">Oficina Floral</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;">Parque da Cidade · Maio 2026</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navegação -->
+    <div style="display:flex;gap:10px;margin-top:20px;justify-content:center;align-items:center;">
+      <button onclick="vvNav(-1)" style="width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);background:var(--cream);cursor:pointer;font-size:16px;">←</button>
+      <div id="vvDots" style="display:flex;gap:6px;"></div>
+      <button onclick="vvNav(1)" style="width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);background:var(--cream);cursor:pointer;font-size:16px;">→</button>
+    </div>
+
+    <p style="text-align:center;font-size:12px;color:var(--text-light);margin-top:14px;">
+      Mais vídeos no <a href="https://www.instagram.com/vivecomunidade/" target="_blank" rel="noopener" style="color:var(--green);font-weight:700;">@vivecomunidade</a>
+    </p>
+  </section>
+</div>
+
+<script>
+(function(){
+  const TOTAL_VV = 3; // atualize quando adicionar vídeos
+  let vvCurrent = 0;
+  const isMobileVV = () => window.innerWidth <= 700;
+  const visibleVV = () => isMobileVV() ? 1 : 3;
+
+  function buildDotsVV() {
+    const c = document.getElementById('vvDots');
+    if (!c) return;
+    c.innerHTML = '';
+    const pages = Math.ceil(TOTAL_VV / visibleVV());
+    for (let i = 0; i < pages; i++) {
+      const d = document.createElement('div');
+      d.style.cssText = 'width:6px;height:6px;border-radius:50%;background:' + (i===0?'var(--green)':'var(--border)') + ';transition:background .2s,width .2s;cursor:pointer;';
+      d.onclick = () => goToPageVV(i);
+      c.appendChild(d);
+    }
+  }
+
+  function updateDotsVV() {
+    const dots = document.querySelectorAll('#vvDots div');
+    const page = Math.round(vvCurrent / visibleVV());
+    dots.forEach((d, i) => {
+      d.style.background = i === page ? 'var(--green)' : 'var(--border)';
+      d.style.width = i === page ? '18px' : '6px';
+      d.style.borderRadius = i === page ? '3px' : '50%';
+    });
+  }
+
+  function goToPageVV(page) {
+    const vc = visibleVV();
+    const slides = document.querySelectorAll('.vv-slide');
+    if (!slides.length) return;
+    const slideW = slides[0].offsetWidth + 16;
+    vvCurrent = Math.max(0, Math.min(page * vc, TOTAL_VV - vc));
+    document.getElementById('vvCarousel').scrollLeft = vvCurrent * slideW;
+    updateDotsVV();
+  }
+
+  window.vvNav = function(dir) {
+    const vc = visibleVV();
+    const pages = Math.ceil(TOTAL_VV / vc);
+    const cur = Math.round(vvCurrent / vc);
+    goToPageVV(Math.max(0, Math.min(cur + dir, pages - 1)));
+  };
+
+  const playingVV = {}, mutedVV = {};
+
+  window.togglePlay = function(i) {
+    const vid = document.getElementById('vid' + i);
+    const slide = document.getElementById('slide' + i);
+    const muteBtn = document.getElementById('mute' + i);
+    if (!vid) return;
+    if (playingVV[i]) {
+      vid.pause(); playingVV[i] = false;
+      slide.querySelector('.vv-play-btn').style.display = 'flex';
+      if (muteBtn) muteBtn.style.display = 'none';
+    } else {
+      for (let j = 0; j < TOTAL_VV; j++) {
+        if (j !== i && playingVV[j]) {
+          const v2 = document.getElementById('vid' + j);
+          if (v2) v2.pause();
+          playingVV[j] = false;
+          const s2 = document.getElementById('slide' + j);
+          if (s2) { s2.querySelector('.vv-play-btn').style.display = 'flex'; }
+          const m2 = document.getElementById('mute' + j);
+          if (m2) m2.style.display = 'none';
+        }
+      }
+      vid.muted = true; mutedVV[i] = true;
+      vid.play().catch(() => {});
+      playingVV[i] = true;
+      slide.querySelector('.vv-play-btn').style.display = 'none';
+      if (muteBtn) muteBtn.style.display = 'flex';
+    }
+  };
+
+  window.toggleMute = function(i) {
+    const vid = document.getElementById('vid' + i);
+    const btn = document.getElementById('mute' + i);
+    if (!vid || !btn) return;
+    mutedVV[i] = !mutedVV[i];
+    vid.muted = mutedVV[i];
+    btn.textContent = mutedVV[i] ? '🔇' : '🔊';
+  };
+
+  buildDotsVV();
+})();
+</script>
+
 <div style="background: var(--sage); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
   <div class="section" style="padding-top: 56px; padding-bottom: 56px;">
     <div class="section-header">
@@ -1025,12 +1202,12 @@
     <div class="numeros-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-top: 40px;">
       <div style="background: var(--cream); padding: 40px 32px; display: flex; flex-direction: column; gap: 8px;">
         <span style="font-size: 11px; font-weight: 800; color: var(--green-dark); letter-spacing: .12em; text-transform: uppercase;">Cadastros</span>
-        <span style="font-family: 'Playfair Display', serif; font-size: clamp(52px, 7vw, 80px); font-weight: 900; color: var(--green); line-height: 1; letter-spacing: -0.03em;">+120</span> <!-- *** -->
+        <span style="font-family: 'Playfair Display', serif; font-size: clamp(52px, 7vw, 80px); font-weight: 900; color: var(--green); line-height: 1; letter-spacing: -0.03em;">+150</span> <!-- *** -->
         <span style="font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: .06em;">pessoas na comunidade</span>
       </div>
       <div style="background: var(--cream-dark); padding: 40px 32px; display: flex; flex-direction: column; gap: 8px;">
         <span style="font-size: 11px; font-weight: 800; color: var(--green-dark); letter-spacing: .12em; text-transform: uppercase;">Voluntários</span>
-        <span style="font-family: 'Playfair Display', serif; font-size: clamp(52px, 7vw, 80px); font-weight: 900; color: var(--green); line-height: 1; letter-spacing: -0.03em;">+90</span> <!-- *** -->
+        <span style="font-family: 'Playfair Display', serif; font-size: clamp(52px, 7vw, 80px); font-weight: 900; color: var(--green); line-height: 1; letter-spacing: -0.03em;">+110</span> <!-- *** -->
         <span style="font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: .06em;">querem fazer voluntariado</span>
       </div>
       <div style="background: var(--cream); padding: 40px 32px; display: flex; flex-direction: column; gap: 8px;">
